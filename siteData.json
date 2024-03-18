@@ -115,6 +115,7 @@
         "listing-all-contacts-list": "Listing all contacts : list",
         "editing-a-contact-edit": "Editing a contact : edit",
         "locating-contacts-by-name-find": "Locating contacts by name: find",
+        "locating-contacts-by-tags-find-tag": "Locating contacts by tags: find-tag",
         "deleting-a-contact-delete": "Deleting a contact : delete",
         "clearing-all-entries-clear": "Clearing all entries : clear",
         "exiting-the-program-exit": "Exiting the program : exit",
