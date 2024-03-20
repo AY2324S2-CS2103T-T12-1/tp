@@ -117,6 +117,7 @@
         "editing-a-contact-edit": "Editing a contact : edit",
         "locating-contacts-by-name-find": "Locating contacts by name: find",
         "locating-contacts-by-tags-find-tags": "Locating contacts by tags: find-tags",
+        "locating-contacts-by-tech-stack-find-ts": "Locating contacts by tech stack: find-ts",
         "deleting-a-contact-delete": "Deleting a contact : delete",
         "clearing-all-entries-clear": "Clearing all entries : clear",
         "exiting-the-program-exit": "Exiting the program : exit",
@@ -133,7 +134,7 @@
       "src": "index.md",
       "title": "",
       "headings": {
-        "addressbook-level-3": "AddressBook Level-3"
+        "codeconnect": "CodeConnect"
       },
       "headingKeywords": {}
     },
@@ -141,7 +142,7 @@
       "src": "team/johndoe.md",
       "title": "John Doe's Project Portfolio Page",
       "headings": {
-        "project-addressbook-level-3": "Project: AddressBook Level 3"
+        "project-codeconnect": "Project: CodeConnect"
       },
       "headingKeywords": {}
     },
@@ -161,9 +162,9 @@
         "add-a-new-remark-class": "Add a new Remark class",
         "make-use-of-remark": "Make use of Remark",
         "add-a-placeholder-element-for-remark-to-the-ui": "Add a placeholder element for remark to the UI",
-        "modify-person-to-support-a-remark-field": "Modify Person to support a Remark field",
-        "modify-person": "Modify Person",
-        "update-other-usages-of-person": "Update other usages of Person",
+        "modify-contact-to-support-a-remark-field": "Modify Contact to support a Remark field",
+        "modify-contact": "Modify Contact",
+        "update-other-usages-of-contact": "Update other usages of Contact",
         "updating-storage": "Updating Storage",
         "finalizing-the-ui": "Finalizing the UI",
         "putting-everything-together": "Putting everything together",
