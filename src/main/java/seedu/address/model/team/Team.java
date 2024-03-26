@@ -31,4 +31,37 @@ public class Team {
     public List<Contact> getMembers() {
         return members.asUnmodifiableObservableList();
     }
+
+    /**
+     * Returns true if both teams have the same name.
+     * This defines a weaker notion of equality between two teams.
+     */
+    public boolean isSameTeam(Team otherTeam) {
+        if (otherTeam == this) {
+            return true;
+        }
+
+        return otherTeam != null
+                && otherTeam.getName().equals(getName());
+    }
+
+    /**
+     * Returns true if both teams have the same identity and data fields.
+     * This defines a stronger notion of equality between two teams.
+     */
+    @Override
+    public boolean equals(Object other) {
+        if (other == this) {
+            return true;
+        }
+
+        // instanceof handles nulls
+        if (!(other instanceof Team)) {
+            return false;
+        }
+
+        Team otherTeam = (Team) other;
+        return name.equals(otherTeam.name)
+                && members.equals(otherTeam.members);
+    }
 }

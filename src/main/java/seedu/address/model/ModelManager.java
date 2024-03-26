@@ -12,6 +12,7 @@ import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.contact.Contact;
+import seedu.address.model.team.Team;
 
 /**
  * Represents the in-memory model of the address book data.
@@ -109,6 +110,26 @@ public class ModelManager implements Model {
         requireAllNonNull(target, editedContact);
 
         codeConnect.setContact(target, editedContact);
+    }
+
+    @Override
+    public boolean hasTeam(Team team) {
+        return codeConnect.hasTeam(team);
+    }
+
+    @Override
+    public void addTeam(Team team) {
+        codeConnect.addTeam(team);
+    }
+
+    @Override
+    public void deleteTeam(Team target) {
+        codeConnect.deleteTeam(target);
+    }
+
+    @Override
+    public void setTeam(Team target, Team editedTeam) {
+        codeConnect.setTeam(target, editedTeam);
     }
 
     //=========== Filtered Contact List Accessors =============================================================

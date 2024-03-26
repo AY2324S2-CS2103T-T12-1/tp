@@ -23,6 +23,7 @@ import seedu.address.model.Model;
 import seedu.address.model.ReadOnlyCodeConnect;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.contact.Contact;
+import seedu.address.model.team.Team;
 import seedu.address.testutil.ContactBuilder;
 
 public class AddCommandTest {
@@ -146,6 +147,28 @@ public class AddCommandTest {
         @Override
         public void setContact(Contact target, Contact editedContact) {
             throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public boolean hasTeam(Team team) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void addTeam(Team team) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void setTeam(Team target, Team editedTeam) {
+            throw new AssertionError("This method should not be called.");
+
+        }
+
+        @Override
+        public void deleteTeam(Team target) {
+            throw new AssertionError("This method should not be called.");
+
         }
 
         @Override
