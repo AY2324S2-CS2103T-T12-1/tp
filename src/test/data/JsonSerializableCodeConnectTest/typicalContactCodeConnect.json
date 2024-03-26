@@ -5,59 +5,70 @@
     "phone" : "94351253",
     "email" : "alice@example.com",
     "address" : "123, Jurong West Ave 6, #08-111",
-    "github_username": "AliceInWonderland2",
-    "profile_picture": "",
     "tags" : [ "friends" ],
-    "tech_stack" : [ "java" ]
+    "gitHubUsername" : "AliceInWonderland2",
+    "profilePicture" : "",
+    "techStack" : [ "java" ]
   }, {
     "name" : "Benson Meier",
     "phone" : "98765432",
     "email" : "johnd@example.com",
     "address" : "311, Clementi Ave 2, #02-25",
-    "github_username": "BenSon0",
-    "profile_picture": "",
     "tags" : [ "owesMoney", "friends" ],
-    "tech_stack" : [ "java", "python" ]
+    "gitHubUsername" : "BenSon0",
+    "profilePicture" : "",
+    "techStack" : [ "python", "java" ]
   }, {
     "name" : "Carl Kurz",
     "phone" : "95352563",
     "email" : "heinz@example.com",
     "address" : "wall street",
-    "github_username": "CarlKurzCK",
-    "profile_picture": "",
-    "tags" : [ ]
+    "tags" : [ ],
+    "gitHubUsername" : "CarlKurzCK",
+    "profilePicture" : "",
+    "techStack" : [ ]
   }, {
     "name" : "Daniel Meier",
     "phone" : "87652533",
     "email" : "cornelia@example.com",
     "address" : "10th street",
-    "github_username": "Meier200",
-    "profile_picture": "",
     "tags" : [ "friends" ],
-    "tech_stack" : [ "java" ]
+    "gitHubUsername" : "Meier200",
+    "profilePicture" : "",
+    "techStack" : [ "java" ]
   }, {
     "name" : "Elle Meyer",
     "phone" : "9482224",
     "email" : "werner@example.com",
-    "profile_picture": "",
     "address" : "michegan ave",
-    "github_username": "Ellieellie",
-    "tags" : [ ]
+    "tags" : [ ],
+    "gitHubUsername" : "Ellieellie",
+    "profilePicture" : "",
+    "techStack" : [ ]
   }, {
     "name" : "Fiona Kunz",
     "phone" : "9482427",
     "email" : "lydia@example.com",
     "address" : "little tokyo",
-    "github_username": "FifiKunz",
-    "profile_picture": "",
-    "tags" : [ ]
+    "tags" : [ ],
+    "gitHubUsername" : "FifiKunz",
+    "profilePicture" : "",
+    "techStack" : [ ]
   }, {
     "name" : "George Best",
     "phone" : "9482442",
     "email" : "anna@example.com",
     "address" : "4th street",
-    "github_username": "GeBest2103",
-    "profile_picture": "",
-    "tags" : [ ]
+    "tags" : [ ],
+    "gitHubUsername" : "GeBest2103",
+    "profilePicture" : "",
+    "techStack" : [ ]
+  } ],
+  "teams" : [ {
+    "name" : "NUS",
+    "members" : [ "Alice Pauline", "Benson Meier", "Carl Kurz" ]
+  }, {
+    "name" : "NTU",
+    "members" : [ "Alice Pauline", "Daniel Meier", "Elle Meyer" ]
   } ]
 }

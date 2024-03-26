@@ -6,6 +6,8 @@ import java.util.List;
 
 import seedu.address.model.CodeConnect;
 import seedu.address.model.contact.Contact;
+import seedu.address.model.contact.Name;
+import seedu.address.model.team.Team;
 
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_BOB;
@@ -98,10 +100,19 @@ public class TypicalContacts {
         for (Contact contact : getTypicalContacts()) {
             ab.addContact(contact);
         }
+        for (Team team : getTypicalTeams()) {
+            ab.addTeam(team);
+        }
         return ab;
     }
 
     public static List<Contact> getTypicalContacts() {
         return new ArrayList<>(Arrays.asList(ALICE, BENSON, CARL, DANIEL, ELLE, FIONA, GEORGE));
+    }
+
+    public static List<Team> getTypicalTeams() {
+        return List.of(
+                new Team(new Name("NUS"), List.of(ALICE, BENSON, CARL)),
+                new Team(new Name("NTU"), List.of(ALICE, DANIEL, ELLE)));
     }
 }

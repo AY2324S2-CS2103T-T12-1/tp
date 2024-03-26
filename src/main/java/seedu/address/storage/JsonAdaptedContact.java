@@ -24,10 +24,6 @@ import seedu.address.model.contact.ProfilePicture;
 /**
  * Jackson-friendly version of {@link Contact}.
  */
-@JsonIdentityInfo(
-        scope = JsonAdaptedContact.class,
-        generator = ObjectIdGenerators.PropertyGenerator.class,
-        property = "id")
 
 class JsonAdaptedContact {
 
@@ -42,8 +38,6 @@ class JsonAdaptedContact {
 
     private final List<JsonAdaptedTechStack> techStack = new ArrayList<>();
     private final List<JsonAdaptedTag> tags = new ArrayList<>();
-
-
 
     final static String SAMPLE_PROFILE_PICTURE_URL = "https://static.vecteezy.com/system/resources/previews/019/766/19" +
             "8/non_2x/apple-logo-apple-icon-transparent-free-png.png";

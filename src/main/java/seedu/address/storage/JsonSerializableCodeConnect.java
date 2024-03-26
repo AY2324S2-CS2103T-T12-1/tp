@@ -12,6 +12,7 @@ import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.CodeConnect;
 import seedu.address.model.ReadOnlyCodeConnect;
 import seedu.address.model.contact.Contact;
+import seedu.address.model.team.Team;
 
 /**
  * An Immutable CodeConnect that is serializable to JSON format.
@@ -59,6 +60,13 @@ class JsonSerializableCodeConnect {
                 throw new IllegalValueException(MESSAGE_DUPLICATE_CONTACT);
             }
             codeConnect.addContact(contact);
+        }
+        for (JsonAdaptedTeam jsonTeam : teams) {
+            Team team = jsonTeam.toModelType(codeConnect.getContactList());
+            if (codeConnect.hasTeam(team)) {
+                throw new IllegalValueException(MESSAGE_DUPLICATE_TEAM);
+            }
+            codeConnect.addTeam(team);
         }
         return codeConnect;
     }

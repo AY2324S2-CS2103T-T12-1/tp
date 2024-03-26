@@ -60,6 +60,7 @@ public class CodeConnect implements ReadOnlyCodeConnect {
         requireNonNull(newData);
 
         setContacts(newData.getContactList());
+        setTeams(newData.getTeamList());
     }
 
     //// contact-level operations
@@ -130,6 +131,14 @@ public class CodeConnect implements ReadOnlyCodeConnect {
     public void setTeam(Team target, Team editedTeam) {
         requireAllNonNull(target, editedTeam);
         teams.setTeam(target, editedTeam);
+    }
+
+    /**
+     * Replaces the contents of the contact list with {@code contacts}.
+     * {@code contacts} must not contain duplicate contacts.
+     */
+    public void setTeams(List<Team> teams) {
+        this.teams.setTeams(teams);
     }
 
     //// util methods
