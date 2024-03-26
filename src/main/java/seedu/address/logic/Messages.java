@@ -6,6 +6,7 @@ import java.util.stream.Stream;
 
 import seedu.address.logic.parser.Prefix;
 import seedu.address.model.contact.Contact;
+import seedu.address.model.team.Team;
 
 /**
  * Container for user visible messages.
@@ -54,4 +55,13 @@ public class Messages {
         return builder.toString();
     }
 
+    /**
+     * Formats the {@code team} for display to the user.
+     */
+    public static String format(Team team) {
+        final StringBuilder builder = new StringBuilder();
+        builder.append(team.getName());
+        team.getMembers().forEach(builder::append);
+        return builder.toString();
+    }
 }

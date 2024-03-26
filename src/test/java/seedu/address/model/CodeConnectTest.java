@@ -18,7 +18,6 @@ import org.junit.jupiter.api.Test;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import jdk.jshell.spi.ExecutionControl;
 import seedu.address.model.contact.Contact;
 import seedu.address.model.contact.exceptions.DuplicateContactException;
 import seedu.address.model.team.Team;

@@ -7,8 +7,10 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.contact.Address;
 import seedu.address.model.contact.Contact;
@@ -22,6 +24,11 @@ import seedu.address.model.contact.ProfilePicture;
 /**
  * Jackson-friendly version of {@link Contact}.
  */
+@JsonIdentityInfo(
+        scope = JsonAdaptedContact.class,
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "id")
+
 class JsonAdaptedContact {
 
     public static final String MISSING_FIELD_MESSAGE_FORMAT = "Contact's %s field is missing!";

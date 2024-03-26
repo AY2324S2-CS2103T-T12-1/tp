@@ -9,6 +9,7 @@ import java.util.regex.Pattern;
 
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.logic.commands.AddCommand;
+import seedu.address.logic.commands.AddTeamCommand;
 import seedu.address.logic.commands.ClearCommand;
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.DeleteCommand;
@@ -58,6 +59,9 @@ public class CodeConnectParser {
         case AddCommand.COMMAND_WORD:
             return new AddCommandParser().parse(arguments);
 
+        case AddTeamCommand.COMMAND_WORD:
+            return new AddTeamCommandParser().parse(arguments);
+
         case EditCommand.COMMAND_WORD:
             return new EditCommandParser().parse(arguments);
 
@@ -84,6 +88,9 @@ public class CodeConnectParser {
 
         case HelpCommand.COMMAND_WORD:
             return new HelpCommand();
+
+        case TeamCommandsParser.COMMAND_WORD:
+            return TeamCommandsParser.parse(arguments);
 
         default:
             logger.finer("This user input caused a ParseException: " + userInput);
