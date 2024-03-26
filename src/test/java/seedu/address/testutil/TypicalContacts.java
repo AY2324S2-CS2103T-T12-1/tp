@@ -112,7 +112,7 @@ public class TypicalContacts {
 
     public static List<Team> getTypicalTeams() {
         return List.of(
-                new Team(new Name("NUS"), List.of(ALICE, BENSON, CARL)),
-                new Team(new Name("NTU"), List.of(ALICE, DANIEL, ELLE)));
+                new Team(new Name("NUS"), List.of(ELLE, BENSON, CARL)),
+                new Team(new Name("NTU"), List.of(FIONA, DANIEL, ELLE)));
     }
 }
