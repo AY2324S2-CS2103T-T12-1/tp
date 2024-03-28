@@ -23,8 +23,6 @@ public class TeamCommandsParser {
             + ListTeamCommand.MESSAGE_USAGE + "\n\n"
             + DeleteTeamCommand.MESSAGE_USAGE;
 
-
-
     private static final Pattern COMMAND_FORMAT =
             Pattern.compile("^(?<index>\\d *)(?<subcommand>[a-zA-z-]*) *(?<args>.*)");
 

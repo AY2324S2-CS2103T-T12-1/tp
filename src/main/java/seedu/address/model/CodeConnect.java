@@ -107,6 +107,7 @@ public class CodeConnect implements ReadOnlyCodeConnect {
         requireNonNull(team);
         return teams.contains(team);
     }
+
     /**
      * Adds the given team.
      * {@code team} must not already exist in CodeConnect.
@@ -115,6 +116,7 @@ public class CodeConnect implements ReadOnlyCodeConnect {
         requireNonNull(team);
         teams.add(team);
     }
+
     /**
      * Deletes the given team.
      * The team must exist in CodeConnect.
@@ -123,6 +125,7 @@ public class CodeConnect implements ReadOnlyCodeConnect {
         requireNonNull(target);
         teams.remove(target);
     }
+
     /**
      * Replaces the given team {@code target} with {@code editedTeam}.
      * {@code target} must exist in CodeConnect.
