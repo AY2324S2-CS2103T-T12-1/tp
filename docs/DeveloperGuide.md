@@ -197,6 +197,17 @@ Classes used by multiple components are in the `seedu.address.commons` package.
 
 --------------------------------------------------------------------------------------------------------------------
 
+### Contact Class
+The Contact class is a fundamental component of the contact management system within the application. 
+It represents an individual contact entry, encapsulating various details such as name, contact information, address, GitHub username, associated tech stack, tags, and a profile picture.
+
+<puml src="diagrams/ContactClassDiagram.puml" width="550" />
+
+Take note that while contacts may not always have all valid details, such as a missing profile picture, these
+null cases should be handled seperately within the ProfilePicture class. A contacts's attribute should never
+be left null. This ensures that such invalid cases are always handled in that seperate class, keeping contact lean.
+
+
 ## **Implementation**
 
 This section describes some noteworthy details on how certain features are implemented.
@@ -341,6 +352,7 @@ The following activity diagram summarizes what happens when a user executes a ne
     * Cons: We must ensure that the implementation of each individual command are correct.
 
 _{more aspects and alternatives to be added}_
+
 
 ### \[Proposed\] Data archiving
 
