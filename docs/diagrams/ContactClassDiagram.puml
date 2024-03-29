@@ -1,0 +1,26 @@
+@startuml ContactClassDiagram
+
+
+    class Contact {
+    }
+
+    class Name
+    class Phone
+    class Email
+    class Address
+    class GitHubUsername
+    class TechStack
+    class Tag
+    class ProfilePicture
+
+    Contact *-- Name
+    Contact *-- Phone
+    Contact *-- Email
+    Contact *-- Address
+    Contact *-- GitHubUsername
+    Contact *-- TechStack
+    Contact *-- Tag
+    Contact *-- ProfilePicture
+
+
+@enduml
