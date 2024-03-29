@@ -50,6 +50,7 @@
         "model-component": "Model component",
         "storage-component": "Storage component",
         "common-classes": "Common classes",
+        "contact-class": "Contact Class",
         "implementation": "Implementation",
         "command-history-feature": "Command history feature",
         "send-email-directly-feature": "Send email directly feature",
