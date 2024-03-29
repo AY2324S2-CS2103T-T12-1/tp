@@ -18,8 +18,8 @@
     Contact *-- Email
     Contact *-- Address
     Contact *-- GitHubUsername
-    Contact *-- TechStack
-    Contact *-- Tag
+    Contact *--> "*" TechStack
+    Contact *--> "*" Tag
     Contact *-- ProfilePicture
 
 
