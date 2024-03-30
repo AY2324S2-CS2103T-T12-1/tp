@@ -1,7 +1,6 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.Messages.MESSAGE_UNKNOWN_COMMAND;
 
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
@@ -26,36 +25,42 @@ public class TeamCommandsParser {
             + ExportTeamCommand.MESSAGE_USAGE;
 
     private static final Pattern COMMAND_FORMAT =
-            Pattern.compile("^(?<index>\\d *)(?<subcommand>[a-zA-z-]*) *(?<args>.*)");
+            Pattern.compile("(?<index>\\d+(?: | *$))?(?<subcommand>[a-zA-Z-]*)(?: | *$)(?<args>.*)");
 
     private static final Logger logger = LogsCenter.getLogger(CodeConnectParser.class);
 
     public static Command parse(String arguments) throws ParseException {
         final Matcher matcher = COMMAND_FORMAT.matcher(arguments.trim());
-        if (!matcher.matches()) {
+        if (!matcher.matches() || arguments.isBlank()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, MESSAGE_USAGE));
         }
 
         final String index = matcher.group("index");
         final String subCommand = matcher.group("subcommand");
-        final String args = matcher.group("args");
+        //ArgumentTokenizer wants whitespace before its input
+        final String args = " " + matcher.group("args");
 
-        Index parsedIndex = ParserUtil.parseIndex(index);
-
-        if (subCommand.isEmpty() && !args.isEmpty()) {
+        // ListTeamCommand has blank subcommand, ensure that there are no extra arguments.
+        if (subCommand.isEmpty() && (index.isEmpty() || !args.isBlank())) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, MESSAGE_USAGE));
         }
 
+        Index parsedIndex;
+
         switch (subCommand) {
+        case AddTeamCommand.COMMAND_WORD:
+            return new AddTeamCommandParser().parse(args);
         case ListTeamCommand.COMMAND_WORD:
+            parsedIndex = ParserUtil.parseIndex(index);
             return new ListTeamCommand(parsedIndex);
         case DeleteTeamCommand.COMMAND_WORD:
+            parsedIndex = ParserUtil.parseIndex(index);
             return new DeleteTeamCommand(parsedIndex);
         case ExportTeamCommand.COMMAND_WORD:
             return new ExportTeamCommand(parsedIndex);
         default:
             logger.finer("This user input caused a ParseException: " + arguments);
-            throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, MESSAGE_USAGE));
         }
 
     }

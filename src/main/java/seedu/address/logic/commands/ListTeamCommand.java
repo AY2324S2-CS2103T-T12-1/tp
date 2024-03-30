@@ -3,7 +3,6 @@ package seedu.address.logic.commands;
 import static java.util.Objects.requireNonNull;
 
 import java.util.List;
-import java.util.StringJoiner;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.Messages;
@@ -13,6 +12,9 @@ import seedu.address.model.Model;
 import seedu.address.model.contact.Contact;
 import seedu.address.model.team.Team;
 
+/**
+ * Lists all contacts belonging to a team in the address book to the user.
+ */
 public class ListTeamCommand extends Command {
     public static final String COMMAND_WORD = "";
 
@@ -39,14 +41,10 @@ public class ListTeamCommand extends Command {
 
         Team teamToList = teamList.get(targetIndex.getZeroBased());
         List<Contact> teamMembers = teamToList.getMembers();
-        StringJoiner sj = new StringJoiner("\n");
-        for (Contact c : teamToList.getMembers()) {
-            sj.add(" - " + c.getName().fullName);
-        }
 
         model.updateFilteredContactList(a -> teamMembers.stream().anyMatch(a::isSameContact));
 
-        return new CommandResult(MESSAGE_SUCCESS + teamToList.getName() + "\n" + sj);
+        return new CommandResult(MESSAGE_SUCCESS + teamToList.getName());
     }
 }
 

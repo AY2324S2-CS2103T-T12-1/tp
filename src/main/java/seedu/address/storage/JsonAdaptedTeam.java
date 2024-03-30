@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
+
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.contact.Contact;
 import seedu.address.model.contact.Name;
@@ -42,19 +43,26 @@ public class JsonAdaptedTeam {
         members.addAll(source.getMembers().stream().map(x -> x.getName().fullName).collect(Collectors.toList()));
     }
 
+    /**
+     * Converts this Jackson-friendly adapted team object into the model's {@code Team} object.
+     *
+     * @throws IllegalValueException if there were any data constraints violated in the adapted contact.
+     */
     public Team toModelType(List<Contact> allContacts) throws IllegalValueException {
         requireAllNonNull(name, members);
 
         if (!Name.isValidName(name)) {
             throw new IllegalValueException(Name.MESSAGE_CONSTRAINTS);
         }
+
         final Name modelName = new Name(name);
 
         List<Contact> contacts = new ArrayList<>();
         for (String c : members) {
-            if(!allContacts.stream().anyMatch(e -> e.getName().fullName.equals(c))) {
+            if (!allContacts.stream().anyMatch(e -> e.getName().fullName.equals(c))) {
                 throw new IllegalValueException("Unable to find team member in contact list");
             }
+
             contacts.addAll(
                     allContacts.stream().filter(e -> e.getName().fullName.equals(c)).collect(Collectors.toList()));
         }
