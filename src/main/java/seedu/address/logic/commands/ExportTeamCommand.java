@@ -22,9 +22,10 @@ import seedu.address.model.team.Team;
  */
 public class ExportTeamCommand extends Command {
 
-    public static final String COMMAND_WORD = "export-team";
+    public static final String COMMAND_WORD = "export";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Copies your team members' details to your clipboard. "
+    public static final String MESSAGE_USAGE = TeamCommandsParser.COMMAND_WORD + " TEAM_INDEX " + COMMAND_WORD
+            + ": Exports team members' details identified by the index number used in the displayed team list.\n"
             + "Parameters: TEAM_INDEX (must be a positive integer)\n"
             + "Example: " + TeamCommandsParser.COMMAND_WORD + " 1 " + COMMAND_WORD;
 
@@ -45,6 +46,7 @@ public class ExportTeamCommand extends Command {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
         List<Team> teamList = model.getCodeConnect().getTeamList();
+        System.out.println(teamList.size());
 
         if (targetIndex.getZeroBased() >= teamList.size()) {
             throw new CommandException(Messages.MESSAGE_INVALID_TEAM_DISPLAYED_INDEX);
@@ -65,7 +67,7 @@ public class ExportTeamCommand extends Command {
         clipboard.setContents(stringSelection, null);
     }
 
-    private String getDetails(Team teamToExport) {
+    public String getDetails(Team teamToExport) {
         // TODO: Test if filtering works
         StringBuilder details = new StringBuilder();
         List<Contact> teamMembers = teamToExport.getMembers();
