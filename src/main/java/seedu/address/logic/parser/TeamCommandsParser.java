@@ -57,6 +57,7 @@ public class TeamCommandsParser {
             parsedIndex = ParserUtil.parseIndex(index);
             return new DeleteTeamCommand(parsedIndex);
         case ExportTeamCommand.COMMAND_WORD:
+            parsedIndex = ParserUtil.parseIndex(index);
             return new ExportTeamCommand(parsedIndex);
         default:
             logger.finer("This user input caused a ParseException: " + arguments);
