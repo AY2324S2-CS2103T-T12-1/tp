@@ -39,14 +39,10 @@ public class ListTeamCommand extends Command {
 
         Team teamToList = teamList.get(targetIndex.getZeroBased());
         List<Contact> teamMembers = teamToList.getMembers();
-        StringJoiner sj = new StringJoiner("\n");
-        for (Contact c : teamToList.getMembers()) {
-            sj.add(" - " + c.getName().fullName);
-        }
 
         model.updateFilteredContactList(a -> teamMembers.stream().anyMatch(a::isSameContact));
 
-        return new CommandResult(MESSAGE_SUCCESS + teamToList.getName() + "\n" + sj);
+        return new CommandResult(MESSAGE_SUCCESS + teamToList.getName());
     }
 }
 
