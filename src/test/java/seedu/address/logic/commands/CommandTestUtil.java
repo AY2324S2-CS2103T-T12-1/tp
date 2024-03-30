@@ -14,13 +14,16 @@ import static seedu.address.testutil.Assert.assertThrows;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.CodeConnect;
 import seedu.address.model.Model;
 import seedu.address.model.contact.Contact;
+import seedu.address.model.contact.Name;
 import seedu.address.model.contact.NameContainsKeywordsPredicate;
+import seedu.address.model.team.Team;
 import seedu.address.testutil.EditContactDescriptorBuilder;
 
 /**
@@ -140,4 +143,17 @@ public class CommandTestUtil {
         assertEquals(1, model.getFilteredContactList().size());
     }
 
+    /**
+     * Updates {@code model}'s filtered list to show only the contact belonging to the team
+     * at the given {@code targetIndex} in the {@code model}'s address book.
+     */
+    public static void showTeamAtIndex(Model model, Index targetIndex) {
+        assertTrue(targetIndex.getZeroBased() < model.getCodeConnect().getTeamList().size());
+
+        Team team = model.getCodeConnect().getTeamList().get(targetIndex.getZeroBased());
+        final List<Name> names = team.getMembers().stream().map(Contact::getName).collect(Collectors.toList());
+        model.updateFilteredContactList(a -> names.stream().anyMatch(b -> a.getName().equals(b)));
+
+        assertEquals(team.getMembers().size(), model.getFilteredContactList().size());
+    }
 }

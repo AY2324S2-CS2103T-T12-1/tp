@@ -14,6 +14,9 @@ import seedu.address.logic.commands.DeleteTeamCommand;
 import seedu.address.logic.commands.ListTeamCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
+/**
+ * Second level parser for commands under prefix {@code team}.
+ */
 public class TeamCommandsParser {
     public static final String COMMAND_WORD = "team";
 
@@ -27,6 +30,13 @@ public class TeamCommandsParser {
 
     private static final Logger logger = LogsCenter.getLogger(CodeConnectParser.class);
 
+    /**
+     * Parses user input into command for execution.
+     *
+     * @param arguments input string. {@code team} prefix is assumed to already have been parsed.
+     * @return the command based on the user input
+     * @throws ParseException if the user input does not conform the expected format
+     */
     public static Command parse(String arguments) throws ParseException {
         final Matcher matcher = COMMAND_FORMAT.matcher(arguments.trim());
         if (!matcher.matches() || arguments.isBlank()) {
