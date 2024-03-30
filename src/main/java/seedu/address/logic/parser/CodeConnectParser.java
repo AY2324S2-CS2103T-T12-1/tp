@@ -59,9 +59,6 @@ public class CodeConnectParser {
         case AddCommand.COMMAND_WORD:
             return new AddCommandParser().parse(arguments);
 
-        case AddTeamCommand.COMMAND_WORD:
-            return new AddTeamCommandParser().parse(arguments);
-
         case EditCommand.COMMAND_WORD:
             return new EditCommandParser().parse(arguments);
 
