@@ -1,7 +1,6 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.Messages.MESSAGE_UNKNOWN_COMMAND;
 
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
@@ -14,7 +13,6 @@ import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.DeleteTeamCommand;
 import seedu.address.logic.commands.ListTeamCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.team.Team;
 
 public class TeamCommandsParser {
     public static final String COMMAND_WORD = "team";

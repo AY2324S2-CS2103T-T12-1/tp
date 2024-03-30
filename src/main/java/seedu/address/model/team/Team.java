@@ -9,15 +9,25 @@ import seedu.address.model.contact.Contact;
 import seedu.address.model.contact.Name;
 import seedu.address.model.contact.UniqueContactList;
 
+/**
+ * Represents a team in CodeConnect.
+ * Guarantees: details are present and not null, field values are validated, immutable.
+ */
 public class Team {
     private final Name name;
     private final UniqueContactList members = new UniqueContactList();
 
+    /**
+     * Every field must be present and not null.
+     */
     public Team(Name name) {
         requireNonNull(name);
         this.name = name;
     }
 
+    /**
+     * Additional constructor for creating a team with members.
+     */
     public Team(Name name, List<Contact> members) {
         requireAllNonNull(name, members);
         this.name = name;
