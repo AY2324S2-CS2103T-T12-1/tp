@@ -74,8 +74,6 @@ public class TagsContainKeywordsPredicateTest{
         TagsContainKeywordsPredicate predicate = new TagsContainKeywordsPredicate(keywords);
 
         String expected = TagsContainKeywordsPredicate.class.getCanonicalName() + "{tagKeywords=" + keywords + "}";
-        System.out.println(expected);
-        System.out.println(predicate.toString());
         assertEquals(expected, predicate.toString());
     }
 }

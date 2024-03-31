@@ -46,13 +46,15 @@ public class ExportTeamCommand extends Command {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
         List<Team> teamList = model.getCodeConnect().getTeamList();
-        System.out.println(teamList.size());
 
         if (targetIndex.getZeroBased() >= teamList.size()) {
             throw new CommandException(Messages.MESSAGE_INVALID_TEAM_DISPLAYED_INDEX);
         }
 
         Team teamToExport = teamList.get(targetIndex.getZeroBased());
+        if (teamToExport.getMembers().size() == 0) {
+            throw new CommandException(Messages.MESSAGE_EMPTY_TEAM);
+        }
         // TODO: Remove stub and uncomment the line below
         // String teamDetails = getDetails(teamToExport);
         String teamDetails = testGetDetails(model.getCodeConnect().getContactList());

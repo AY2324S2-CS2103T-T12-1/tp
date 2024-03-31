@@ -30,6 +30,14 @@ public class ExportTeamCommandTest {
     }
 
     @Test
+    public void execute_emptyTeam_throwsCommandException() {
+        Index validIndex = Index.fromOneBased(3);
+        ExportTeamCommand exportTeamCommand = new ExportTeamCommand(validIndex);
+
+        assertCommandFailure(exportTeamCommand, model, Messages.MESSAGE_EMPTY_TEAM);
+    }
+
+    @Test
     public void getDetails_validIndex_returnsDetails() {
         Index validIndex = Index.fromZeroBased(0);
         ExportTeamCommand exportTeamCommand = new ExportTeamCommand(validIndex);
