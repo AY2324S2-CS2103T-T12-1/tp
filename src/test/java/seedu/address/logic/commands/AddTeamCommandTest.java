@@ -6,6 +6,8 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalContacts.ALICE;
+import static seedu.address.testutil.TypicalContacts.BOB;
+import static seedu.address.testutil.TypicalContacts.CARL;
 
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -23,49 +25,48 @@ import seedu.address.model.Model;
 import seedu.address.model.ReadOnlyCodeConnect;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.contact.Contact;
+import seedu.address.model.contact.Name;
 import seedu.address.model.team.Team;
-import seedu.address.testutil.ContactBuilder;
 
-public class AddCommandTest {
+public class AddTeamCommandTest {
+    Team validTeam = new Team(new Name("Team"), Arrays.asList(ALICE, BOB, CARL));
+    Team teamA = new Team(new Name("A"), Arrays.asList(ALICE, BOB, CARL));
+    Team teamB = new Team(new Name("B"), Arrays.asList(ALICE, BOB, CARL));
 
     @Test
-    public void constructor_nullContact_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> new AddCommand(null));
+    public void constructor_nullTeam_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> new AddTeamCommand(null));
     }
 
     @Test
-    public void execute_ContactAcceptedByModel_addSuccessful() throws Exception {
-        ModelStubAcceptingContactAdded modelStub = new ModelStubAcceptingContactAdded();
-        Contact validContact = new ContactBuilder().build();
+    public void execute_TeamAcceptedByModel_addSuccessful() throws Exception {
+        seedu.address.logic.commands.AddTeamCommandTest.ModelStubAcceptingTeamAdded modelStub = new seedu.address.logic.commands.AddTeamCommandTest.ModelStubAcceptingTeamAdded();
 
-        CommandResult commandResult = new AddCommand(validContact).execute(modelStub);
+        CommandResult commandResult = new AddTeamCommand(validTeam).execute(modelStub);
 
-        assertEquals(String.format(AddCommand.MESSAGE_SUCCESS, Messages.format(validContact)),
+        assertEquals(String.format(AddTeamCommand.MESSAGE_SUCCESS, Messages.format(validTeam)),
                 commandResult.getFeedbackToUser());
-        assertEquals(Arrays.asList(validContact), modelStub.contactsAdded);
+        assertEquals(Arrays.asList(validTeam), modelStub.teamsAdded);
     }
 
     @Test
-    public void execute_duplicateContact_throwsCommandException() {
-        Contact validContact = new ContactBuilder().build();
-        AddCommand addCommand = new AddCommand(validContact);
-        ModelStub modelStub = new ModelStubWithContact(validContact);
+    public void execute_duplicateTeam_throwsCommandException() {
+        AddTeamCommand addCommand = new AddTeamCommand(validTeam);
+        seedu.address.logic.commands.AddTeamCommandTest.ModelStub modelStub = new seedu.address.logic.commands.AddTeamCommandTest.ModelStubWithTeam(validTeam);
 
-        assertThrows(CommandException.class, AddCommand.MESSAGE_DUPLICATE_CONTACT, () -> addCommand.execute(modelStub));
+        assertThrows(CommandException.class, AddTeamCommand.MESSAGE_DUPLICATE_TEAM, () -> addCommand.execute(modelStub));
     }
 
     @Test
     public void equals() {
-        Contact alice = new ContactBuilder().withName("Alice").build();
-        Contact bob = new ContactBuilder().withName("Bob").build();
-        AddCommand addAliceCommand = new AddCommand(alice);
-        AddCommand addBobCommand = new AddCommand(bob);
+        AddTeamCommand addAliceCommand = new AddTeamCommand(teamA);
+        AddTeamCommand addBobCommand = new AddTeamCommand(teamB);
 
         // same object -> returns true
         assertTrue(addAliceCommand.equals(addAliceCommand));
 
         // same values -> returns true
-        AddCommand addAliceCommandCopy = new AddCommand(alice);
+        AddTeamCommand addAliceCommandCopy = new AddTeamCommand(teamA);
         assertTrue(addAliceCommand.equals(addAliceCommandCopy));
 
         // different types -> returns false
@@ -74,14 +75,14 @@ public class AddCommandTest {
         // null -> returns false
         assertFalse(addAliceCommand.equals(null));
 
-        // different contact -> returns false
+        // different team -> returns false
         assertFalse(addAliceCommand.equals(addBobCommand));
     }
 
     @Test
     public void toStringMethod() {
-        AddCommand addCommand = new AddCommand(ALICE);
-        String expected = AddCommand.class.getCanonicalName() + "{toAdd=" + ALICE + "}";
+        AddTeamCommand addCommand = new AddTeamCommand(teamA);
+        String expected = AddTeamCommand.class.getCanonicalName() + "{toAdd=" + teamA + "}";
         assertEquals(expected, addCommand.toString());
     }
 
@@ -120,7 +121,17 @@ public class AddCommandTest {
         }
 
         @Override
-        public void addContact(Contact contact) {
+        public void addTeam(Team team) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void deleteTeam(Team target) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void setTeam(Team target, Team editedTeam) {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -145,30 +156,13 @@ public class AddCommandTest {
         }
 
         @Override
+        public void addContact(Contact contact) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public void setContact(Contact target, Contact editedContact) {
             throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
-        public boolean hasTeam(Team team) {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
-        public void addTeam(Team team) {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
-        public void setTeam(Team target, Team editedTeam) {
-            throw new AssertionError("This method should not be called.");
-
-        }
-
-        @Override
-        public void deleteTeam(Team target) {
-            throw new AssertionError("This method should not be called.");
-
         }
 
         @Override
@@ -180,42 +174,47 @@ public class AddCommandTest {
         public void updateFilteredContactList(Predicate<Contact> predicate) {
             throw new AssertionError("This method should not be called.");
         }
-    }
-
-    /**
-     * A Model stub that contains a single contact.
-     */
-    private class ModelStubWithContact extends ModelStub {
-        private final Contact contact;
-
-        ModelStubWithContact(Contact contact) {
-            requireNonNull(contact);
-            this.contact = contact;
-        }
 
         @Override
-        public boolean hasContact(Contact contact) {
-            requireNonNull(contact);
-            return this.contact.isSameContact(contact);
+        public boolean hasTeam(Team team) {
+            throw new AssertionError("This method should not be called.");
         }
     }
 
     /**
-     * A Model stub that always accept the contact being added.
+     * A Model stub that contains a single team.
      */
-    private class ModelStubAcceptingContactAdded extends ModelStub {
-        final ArrayList<Contact> contactsAdded = new ArrayList<>();
+    private class ModelStubWithTeam extends seedu.address.logic.commands.AddTeamCommandTest.ModelStub {
+        private final Team team;
 
-        @Override
-        public boolean hasContact(Contact contact) {
-            requireNonNull(contact);
-            return contactsAdded.stream().anyMatch(contact::isSameContact);
+        ModelStubWithTeam(Team team) {
+            requireNonNull(team);
+            this.team = team;
         }
 
         @Override
-        public void addContact(Contact contact) {
-            requireNonNull(contact);
-            contactsAdded.add(contact);
+        public boolean hasTeam(Team team) {
+            requireNonNull(team);
+            return this.team.isSameTeam(team);
+        }
+    }
+
+    /**
+     * A Model stub that always accept the team being added.
+     */
+    private class ModelStubAcceptingTeamAdded extends seedu.address.logic.commands.AddTeamCommandTest.ModelStub {
+        final ArrayList<Team> teamsAdded = new ArrayList<>();
+
+        @Override
+        public boolean hasTeam(Team team) {
+            requireNonNull(team);
+            return teamsAdded.stream().anyMatch(team::isSameTeam);
+        }
+
+        @Override
+        public void addTeam(Team team) {
+            requireNonNull(team);
+            teamsAdded.add(team);
         }
 
         @Override

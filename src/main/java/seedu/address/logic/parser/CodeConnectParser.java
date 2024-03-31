@@ -85,6 +85,9 @@ public class CodeConnectParser {
         case HelpCommand.COMMAND_WORD:
             return new HelpCommand();
 
+        case TeamCommandsParser.COMMAND_WORD:
+            return TeamCommandsParser.parse(arguments);
+
         default:
             logger.finer("This user input caused a ParseException: " + userInput);
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);

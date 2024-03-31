@@ -214,7 +214,7 @@ This section describes some noteworthy details on how certain features are imple
 
 ### Command history feature
 
-This feature saves previously entered commands so that the user can easily view them again. 
+This feature saves previously entered commands so that the user can easily view them again.
 
 #### Steps to trigger
 1. User focuses the command input.
@@ -240,7 +240,7 @@ The following sequence diagram shows what happens as the user double clicks on t
 
 ### \[Proposed\] Undo/redo feature
 
-#### Proposed Implementation 
+#### Proposed Implementation
 
 The proposed undo/redo mechanism is facilitated by `VersionedCodeConnect`. It extends `CodeConnect` with an undo/redo
 history, stored internally as `codeConnectStateList` and `currentStatePointer`. Additionally, it implements the
@@ -552,7 +552,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 1b. There are no contacts in the list that match the criteria.
     * 1b1. CodeConnect shows an empty list.
-      Use case ends. 
+      Use case ends.
 
 **Use case: UC08 - Sending an email to a specific contact**
 

@@ -6,7 +6,7 @@
 # CodeConnect User Guide
 Hello fellow student developers! Welcome to your one-stop shop for managing developers' contacts!
 
-Codeconnect is a **developer-first networking app** for student developers to keep track of and reach out easily to other student developers, so they form teams for hackathons. 
+Codeconnect is a **developer-first networking app** for student developers to keep track of and reach out easily to other student developers, so they form teams for hackathons.
 
 We are **optimized for use via a Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, CC can get your contact management tasks done faster than traditional GUI apps.
 

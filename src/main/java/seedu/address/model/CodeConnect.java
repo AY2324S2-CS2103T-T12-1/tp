@@ -1,6 +1,7 @@
 package seedu.address.model;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.util.List;
 
@@ -8,6 +9,8 @@ import javafx.collections.ObservableList;
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.model.contact.Contact;
 import seedu.address.model.contact.UniqueContactList;
+import seedu.address.model.team.Team;
+import seedu.address.model.team.UniqueTeamList;
 
 /**
  * Wraps all data at the CodeConnect level
@@ -16,6 +19,7 @@ import seedu.address.model.contact.UniqueContactList;
 public class CodeConnect implements ReadOnlyCodeConnect {
 
     private final UniqueContactList contacts;
+    private final UniqueTeamList teams;
 
     /*
      * The 'unusual' code block below is a non-static initialization block, sometimes used to avoid duplication
@@ -26,6 +30,7 @@ public class CodeConnect implements ReadOnlyCodeConnect {
      */
     {
         contacts = new UniqueContactList();
+        teams = new UniqueTeamList();
     }
 
     public CodeConnect() {}
@@ -55,6 +60,7 @@ public class CodeConnect implements ReadOnlyCodeConnect {
         requireNonNull(newData);
 
         setContacts(newData.getContactList());
+        setTeams(newData.getTeamList());
     }
 
     //// contact-level operations
@@ -94,6 +100,50 @@ public class CodeConnect implements ReadOnlyCodeConnect {
         contacts.remove(key);
     }
 
+    /**
+     * Returns true if a team with the same identity as {@code team} exists in CodeConnect.
+     */
+    public boolean hasTeam(Team team) {
+        requireNonNull(team);
+        return teams.contains(team);
+    }
+
+    /**
+     * Adds the given team.
+     * {@code team} must not already exist in CodeConnect.
+     */
+    public void addTeam(Team team) {
+        requireNonNull(team);
+        teams.add(team);
+    }
+
+    /**
+     * Deletes the given team.
+     * The team must exist in CodeConnect.
+     */
+    public void deleteTeam(Team target) {
+        requireNonNull(target);
+        teams.remove(target);
+    }
+
+    /**
+     * Replaces the given team {@code target} with {@code editedTeam}.
+     * {@code target} must exist in CodeConnect.
+     * The contact identity of {@code editedTeam} must not be the same as another existing team in CodeConnect.
+     */
+    public void setTeam(Team target, Team editedTeam) {
+        requireAllNonNull(target, editedTeam);
+        teams.setTeam(target, editedTeam);
+    }
+
+    /**
+     * Replaces the contents of the contact list with {@code contacts}.
+     * {@code contacts} must not contain duplicate contacts.
+     */
+    public void setTeams(List<Team> teams) {
+        this.teams.setTeams(teams);
+    }
+
     //// util methods
 
     @Override
@@ -106,6 +156,11 @@ public class CodeConnect implements ReadOnlyCodeConnect {
     @Override
     public ObservableList<Contact> getContactList() {
         return contacts.asUnmodifiableObservableList();
+    }
+
+    @Override
+    public ObservableList<Team> getTeamList() {
+        return teams.asUnmodifiableObservableList();
     }
 
     @Override

@@ -6,6 +6,7 @@ import java.util.function.Predicate;
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.contact.Contact;
+import seedu.address.model.team.Team;
 
 /**
  * The API of the Model component.
@@ -84,4 +85,29 @@ public interface Model {
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredContactList(Predicate<Contact> predicate);
+
+    /**
+     * Returns true if a team with the same identity as {@code team} exists in CodeConnect.
+     */
+    boolean hasTeam(Team team);
+
+    /**
+     * Adds the given team.
+     * {@code team} must not already exist in CodeConnect.
+     */
+    void addTeam(Team team);
+
+    /**
+     * Deletes the given team.
+     * The team must exist in CodeConnect.
+     */
+    void deleteTeam(Team target);
+
+    /**
+     * Replaces the given team {@code target} with {@code editedTeam}.
+     * {@code target} must exist in CodeConnect.
+     * The contact identity of {@code editedTeam} must not be the same as another existing team in CodeConnect.
+     */
+    void setTeam(Team target, Team editedTeam);
+
 }
