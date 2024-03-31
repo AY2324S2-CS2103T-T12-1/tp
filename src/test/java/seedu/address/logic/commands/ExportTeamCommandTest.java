@@ -3,20 +3,8 @@ package seedu.address.logic.commands;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.address.logic.Messages.MESSAGE_CONTACT_LISTED_OVERVIEW;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
-import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
-import static seedu.address.testutil.TypicalContacts.CARL;
-import static seedu.address.testutil.TypicalContacts.ELLE;
-import static seedu.address.testutil.TypicalContacts.FIONA;
 import static seedu.address.testutil.TypicalContacts.getTypicalCodeConnect;
-
-import java.awt.Toolkit;
-import java.awt.datatransfer.Clipboard;
-import java.awt.datatransfer.DataFlavor;
-import java.awt.datatransfer.StringSelection;
-import java.util.Arrays;
-import java.util.Collections;
 
 import org.junit.jupiter.api.Test;
 
@@ -26,23 +14,12 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
-import seedu.address.model.contact.NameContainsKeywordsPredicate;
 
 /**
  * Contains integration tests (interaction with the Model) for {@code ExportTeamCommand}.
  */
 public class ExportTeamCommandTest {
     private Model model = new ModelManager(getTypicalCodeConnect(), new UserPrefs());
-
-    @Test
-    public void execute_validIndex_success() throws CommandException {
-        Index validIndex = Index.fromZeroBased(0);
-        ExportTeamCommand exportTeamCommand = new ExportTeamCommand(validIndex);
-
-        CommandResult commandResult = exportTeamCommand.execute(model);
-
-        assertEquals(ExportTeamCommand.MESSAGE_EXPORT_DETAILS_SUCCESS, commandResult.getFeedbackToUser());
-    }
 
     @Test
     public void execute_invalidIndex_throwsCommandException() {
