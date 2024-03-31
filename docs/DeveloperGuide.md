@@ -579,7 +579,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1. User requests to export the details of team members of a specific team. 
+1. User requests to export the details of team members of a specific team.
 2. CodeConnect retrieves the details of the team members.
 3. CodeConnect copies the teams' details to the clipboard.
 
