@@ -3,12 +3,16 @@ package seedu.address.ui;
 import java.util.Comparator;
 
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
 import javafx.scene.control.Label;
+import javafx.scene.control.OverrunStyle;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
+import javafx.scene.layout.VBox;
+import javafx.scene.shape.Circle;
 import seedu.address.logic.MailApp;
 import seedu.address.model.contact.Contact;
 import seedu.address.model.contact.ProfilePicture;
@@ -50,9 +54,10 @@ public class ContactCard extends UiPart<Region> {
     private HBox techStacks;
     @FXML
     private HBox tags;
-
     @FXML
     private ImageView profilePicture;
+    @FXML
+    private VBox ball;
     /**
      * Creates a {@code ContactCode} with the given {@code Contact} and index to display.
      */
@@ -70,6 +75,7 @@ public class ContactCard extends UiPart<Region> {
         }
 
         id.setText(displayedIndex + ". ");
+        id.setTextOverrun(OverrunStyle.CLIP);
         name.setText(contact.getName().fullName);
         phone.setText("Phone: " + contact.getPhone().value);
         address.setText("Address: " + contact.getAddress().value);
@@ -89,6 +95,34 @@ public class ContactCard extends UiPart<Region> {
             MailApp mailApp = new MailApp(contact);
             mailApp.handleEmailClicked();
         });
+        ball.setVisible(false);
+        ball.managedProperty().bind(ball.visibleProperty());
+        switch(contact.getName().fullName) {
+            case "Tresa":
+                if (displayedIndex == 1) {
+                    ball.setVisible(true);
+                }
+                break;
+            case "Guo Yang":
+                if (displayedIndex == 2) {
+                    ball.setVisible(true);
+                    ball.setStyle("-fx-background-color: #d9cf1c");
+                }
+                break;
+            case "Sumaiya":
+                if (displayedIndex == 3) {
+                    ball.setVisible(true);
+                    ball.setStyle("-fx-background-color: #d9cf1c");
+                }
+                break;
+            case "Song Yee":
+                if (displayedIndex == 4) {
+                    ball.setVisible(true);
+                    ball.setStyle("-fx-background-color: #a11c15");
+                }
+                break;
+        }
+
     }
 
 

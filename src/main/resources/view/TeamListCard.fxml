@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<HBox id="cardPane" fx:id="cardPane" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+    <GridPane HBox.hgrow="ALWAYS">
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10" prefWidth="100" />
+        </columnConstraints>
+        <VBox minHeight="70" GridPane.columnIndex="0">
+            <padding>
+                <Insets bottom="5.0" left="15.0" right="5.0" top="15.0" />
+            </padding>
+            <HBox alignment="CENTER_LEFT" maxWidth="1.7976931348623157E308" spacing="5">
+                <Label fx:id="id" styleClass="cell_big_label">
+                    <maxWidth>
+                        <!-- Ensures that the label text is never truncated -->
+                        <Region fx:constant="USE_PREF_SIZE" />
+                    </maxWidth>
+                </Label>
+                <Label fx:id="name" styleClass="cell_big_label" text="\$first" textOverrun="CLIP" />
+                <Label fx:id="memberCount" layoutX="15.0" layoutY="10.0" style="-fx-font-size: 13px; -fx-font-style: italic; -fx-font-family: Segoe UI Light;" styleClass=".label-status" text="(4 Members)" textOverrun="CLIP">
+                    <font>
+                        <Font name="Segoe UI Light Italic" size="12.0" />
+                    </font>
+                    <HBox.margin>
+                        <Insets />
+                    </HBox.margin>
+                </Label>
+            </HBox>
+            <Label fx:id="eventDate" layoutX="15.0" layoutY="10.0" style="-fx-font-size: 13px; -fx-font-family: Segoe UI Light;" styleClass=".label-status" text="24/05/2024" textOverrun="CLIP">
+                <VBox.margin>
+                    <Insets left="21.0" />
+                </VBox.margin>
+            </Label>
+
+            <GridPane fx:id="quota" alignment="CENTER_LEFT">
+                <columnConstraints>
+                    <ColumnConstraints hgrow="NEVER" minWidth="10.0" />
+                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                </columnConstraints>
+                <rowConstraints>
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                </rowConstraints>
+                <children>
+                    <Label fx:id="pla" style="-fx-font-size: 13px; -fx-font-family: Segoe UI Light;" styleClass=".label-status" text="Javascript" textOverrun="CLIP">
+                        <GridPane.margin>
+                            <Insets right="5.0" />
+                        </GridPane.margin>
+                    </Label>
+                    <Label fx:id="plb" style="-fx-font-size: 13px; -fx-font-family: Segoe UI Light;" styleClass=".label-status" text="HTML" textOverrun="CLIP" GridPane.rowIndex="1">
+                        <GridPane.margin>
+                            <Insets right="15.0" />
+                        </GridPane.margin>
+                    </Label>
+                    <ProgressBar fx:id="pba" prefWidth="200.0" progress="0.0" GridPane.columnIndex="1" />
+                    <ProgressBar fx:id="pbb" prefWidth="200.0" progress="0.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                </children>
+            <padding>
+               <Insets left="21.0" />
+            </padding>
+            </GridPane>
+        </VBox>
+        <rowConstraints>
+            <RowConstraints />
+        </rowConstraints>
+    </GridPane>
+</HBox>

@@ -8,43 +8,41 @@ import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.Region;
 import seedu.address.commons.core.LogsCenter;
-import seedu.address.logic.Logic;
 import seedu.address.model.contact.Contact;
+import seedu.address.model.team.Team;
 
 /**
  * Panel containing the list of persons.
  */
-public class ContactListPanel extends UiPart<Region> {
-    private static final String FXML = "ContactListPanel.fxml";
+public class TeamListPanel extends UiPart<Region> {
+    private static final String FXML = "TeamListPanel.fxml";
     private final Logger logger = LogsCenter.getLogger(ContactListPanel.class);
 
     @FXML
-    private ListView<Contact> contactListView;
-
+    private ListView<Team> teamListView;
     /**
      * Creates a {@code ContactListPanel} with the given {@code ObservableList}.
      */
-    public ContactListPanel(ObservableList<Contact> contactList) {
+    public TeamListPanel(ObservableList<Team> teamList) {
         super(FXML);
-        contactListView.setItems(contactList);
-        contactListView.setCellFactory(listView -> new ContactListViewCell());
+        teamListView.setItems(teamList);
+        teamListView.setCellFactory(listView -> new TeamListViewCell());
     }
 
     /**
      * Custom {@code ListCell} that displays the graphics of a {@code Contact} using a {@code ContactCard}.
      */
-    class ContactListViewCell extends ListCell<Contact> {
+    class TeamListViewCell extends ListCell<Team> {
         @Override
-        protected void updateItem(Contact contact, boolean empty) {
-            super.updateItem(contact, empty);
+        protected void updateItem(Team team, boolean empty) {
+            super.updateItem(team, empty);
 
-            if (empty || contact == null) {
+            if (empty || team == null) {
                 setGraphic(null);
                 setText(null);
             } else {
-                setGraphic(new ContactCard(contact, getIndex() + 1).getRoot());
+                setGraphic(new TeamCard(team, getIndex() + 1).getRoot());
             }
         }
     }
-
 }

@@ -4,14 +4,14 @@
 }
 
 .label {
-    -fx-font-size: 11pt;
+    -fx-font-size: 12pt;
     -fx-font-family: "Segoe UI Semibold";
     -fx-text-fill: #555555;
     -fx-opacity: 0.9;
 }
 
 .label-bright {
-    -fx-font-size: 11pt;
+    -fx-font-size: 12pt;
     -fx-font-family: "Segoe UI Semibold";
     -fx-text-fill: white;
     -fx-opacity: 1;
@@ -24,9 +24,16 @@
     -fx-opacity: 1;
 }
 
-.text-field {
-    -fx-font-size: 12pt;
+.label-status {
+    -fx-font-size: 14pt;
     -fx-font-family: "Segoe UI Semibold";
+    -fx-text-fill: #555555;
+    -fx-opacity: 0.9;
+}
+
+.text-field {
+    -fx-font-size: 14pt;
+    -fx-font-family: "Segoe UI Italic";
 }
 
 .tab-pane {
@@ -149,7 +156,7 @@
 .result-display {
     -fx-background-color: transparent;
     -fx-font-family: "Segoe UI Light";
-    -fx-font-size: 13pt;
+    -fx-font-size: 14pt;
     -fx-text-fill: white;
 }
 
@@ -323,8 +330,8 @@
     -fx-border-color: #383838 #383838 #ffffff #383838;
     -fx-border-insets: 0;
     -fx-border-width: 1;
-    -fx-font-family: "Segoe UI Light";
-    -fx-font-size: 13pt;
+    -fx-font-family: "Segoe UI";
+    -fx-font-size: 18pt;
     -fx-text-fill: white;
 }
 
@@ -369,4 +376,22 @@
     -fx-border-radius: 5;
     -fx-background-radius: 5;
     -fx-font-size: 11;
+}
+
+.progress-bar {
+    -fx-accent: rgba(0, 138, 230, 0.85);
+}
+
+.progress-bar .bar {
+    -fx-padding: 3px;
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;
+}
+
+.progress-bar > .track {
+    -fx-border-radius: 0;
+    -fx-background-radius: 0;
+    -fx-text-box-border: transparent;
+    -fx-control-inner-background: transparent;
+    -fx-background-color: rgba(255, 255, 255, 0.1);
 }

@@ -1,5 +1,6 @@
 package seedu.address.ui;
 
+import java.util.Stack;
 import java.util.logging.Logger;
 
 import javafx.event.ActionEvent;
@@ -33,6 +34,8 @@ public class MainWindow extends UiPart<Stage> {
 
     // Independent Ui parts residing in this Ui container
     private ContactListPanel contactListPanel;
+
+    private TeamListPanel teamListPanel;
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
 
@@ -50,6 +53,9 @@ public class MainWindow extends UiPart<Stage> {
 
     @FXML
     private StackPane statusbarPlaceholder;
+
+    @FXML
+    private StackPane teamListPanelPlaceholder;
 
     /**
      * Creates a {@code MainWindow} with the given {@code Stage} and {@code Logic}.
@@ -122,6 +128,9 @@ public class MainWindow extends UiPart<Stage> {
 
         CommandBox commandBox = new CommandBox(this::executeCommand, new CommandHistory());
         commandBoxPlaceholder.getChildren().add(commandBox.getRoot());
+
+        teamListPanel = new TeamListPanel(logic.getCodeConnect().getTeamList());
+        teamListPanelPlaceholder.getChildren().add(teamListPanel.getRoot());
     }
 
     /**
