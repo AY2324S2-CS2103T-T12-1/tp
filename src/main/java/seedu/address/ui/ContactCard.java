@@ -65,7 +65,7 @@ public class ContactCard extends UiPart<Region> {
             profilePicture.setImage(image);
         } catch (IllegalArgumentException e) {
             // Handle invalid image URL
-            System.err.println("Invalid image URL: " + contact.getProfilePicture().get());
+            //System.err.println("Invalid image URL: " + contact.getProfilePicture().get());
             profilePicture.setImage(new Image(ProfilePicture.DEFAULT_URL));
         }
 
