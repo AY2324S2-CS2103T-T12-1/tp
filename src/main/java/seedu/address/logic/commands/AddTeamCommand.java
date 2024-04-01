@@ -6,6 +6,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.logic.parser.TeamCommandsParser;
 import seedu.address.model.Model;
 import seedu.address.model.team.Team;
 
@@ -13,12 +14,13 @@ import seedu.address.model.team.Team;
  * Adds a team to the address book.
  */
 public class AddTeamCommand extends Command {
-    public static final String COMMAND_WORD = "add-team";
+    public static final String COMMAND_WORD = "add";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a team to the address book. "
+    public static final String MESSAGE_USAGE = TeamCommandsParser.COMMAND_WORD + " "
+            + COMMAND_WORD + " " + PREFIX_NAME + "TEAM_NAME" + ": Adds a team to the address book. \n"
             + "Parameters: "
-            + PREFIX_NAME + "TEAM_NAME \n"
-            + "Example: " + COMMAND_WORD + " "
+            + PREFIX_NAME + "TEAM_NAME (only alphanumeric characters)\n"
+            + "Example: " + TeamCommandsParser.COMMAND_WORD + " " + COMMAND_WORD + " "
             + PREFIX_NAME + "NUSHack2024 ";
 
 
