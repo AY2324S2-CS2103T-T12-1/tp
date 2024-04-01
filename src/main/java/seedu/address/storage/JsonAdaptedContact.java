@@ -7,10 +7,8 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.contact.Address;
 import seedu.address.model.contact.Contact;
@@ -18,9 +16,9 @@ import seedu.address.model.contact.Email;
 import seedu.address.model.contact.GitHubUsername;
 import seedu.address.model.contact.Name;
 import seedu.address.model.contact.Phone;
+import seedu.address.model.contact.ProfilePicture;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.techstack.TechStack;
-import seedu.address.model.contact.ProfilePicture;
 /**
  * Jackson-friendly version of {@link Contact}.
  */
@@ -39,8 +37,8 @@ class JsonAdaptedContact {
     private final List<JsonAdaptedTechStack> techStack = new ArrayList<>();
     private final List<JsonAdaptedTag> tags = new ArrayList<>();
 
-    final static String SAMPLE_PROFILE_PICTURE_URL = "https://static.vecteezy.com/system/resources/previews/019/766/19" +
-            "8/non_2x/apple-logo-apple-icon-transparent-free-png.png";
+    final static String SAMPLE_PROFILE_PICTURE_URL = "https://static.vecteezy.com/system/resources/previews/019/766/19"
+            + "8/non_2x/apple-logo-apple-icon-transparent-free-png.png";
 
     /**
      * Constructs a {@code JsonAdaptedContact} with the given contact details.

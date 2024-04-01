@@ -14,27 +14,27 @@ public class Team {
     private final Name name;
     private final UniqueContactList members = new UniqueContactList();
 
-    /**
-     * Constructs a {@code Team} with the given name.
-     *
-     * @param name A valid name for the team.
-     */
-    public Team(Name name) {
-        requireNonNull(name);
-        this.name = name;
-    }
+  /**
+   * Constructs a {@code Team} with the given name.
+   *
+   * @param name A valid name for the team.
+   */
+  public Team(Name name) {
+      requireNonNull(name);
+      this.name = name;
+  }
 
-    /**
-     * Constructs a {@code Team} with the given name and members.
-     *
-     * @param name    A valid name for the team.
-     * @param members A list of contacts to be members of the team.
-     */
-    public Team(Name name, List<Contact> members) {
-        requireAllNonNull(name, members);
-        this.name = name;
-        this.members.setContacts(members);
-    }
+  /**
+   * Additional constructor for creating a team with members.
+   *
+   * @param name    A valid name for the team.
+   * @param members A list of contacts to be members of the team.
+   */
+  public Team(Name name, List<Contact> members) {
+      requireAllNonNull(name, members);
+      this.name = name;
+      this.members.setContacts(members);
+  }
 
     /**
      * Returns the name of the team.
