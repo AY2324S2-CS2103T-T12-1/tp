@@ -107,4 +107,19 @@ public interface Model {
      */
     void setTeam(Team target, Team editedTeam);
 
+    /**
+     * Adds a contact to the specified team.
+     *
+     * @param team The team to which the contact will be added.
+     * @param contact The contact to be added to the team.
+     */
+    void addContactToTeam(Team team, Contact contact);
+
+    /**
+     * Deletes a contact from the specified team.
+     *
+     * @param team The team from which the contact will be deleted.
+     * @param contact The contact to be deleted from the team.
+     */
+    void deleteContactFromTeam(Team team, Contact contact);
 }

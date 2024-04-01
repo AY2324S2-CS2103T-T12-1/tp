@@ -106,6 +106,18 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public void addContactToTeam(Team team, Contact contact) {
+        requireAllNonNull(team, contact);
+        codeConnect.addContactToTeam(team, contact);
+    }
+
+    @Override
+    public void deleteContactFromTeam(Team team, Contact contact) {
+        requireAllNonNull(team, contact);
+        codeConnect.deleteContactFromTeam(team, contact);
+    }
+
+    @Override
     public void setContact(Contact target, Contact editedContact) {
         requireAllNonNull(target, editedContact);
 
