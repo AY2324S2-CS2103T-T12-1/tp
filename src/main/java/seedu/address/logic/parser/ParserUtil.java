@@ -39,6 +39,7 @@ public class ParserUtil {
         return Index.fromOneBased(Integer.parseInt(trimmedIndex));
     }
 
+
     /**
      * Parses a {@code String name} into a {@code Name}.
      * Leading and trailing whitespaces will be trimmed.
@@ -133,7 +134,7 @@ public class ParserUtil {
     public static TechStack parseTechStack(String techStack) throws ParseException {
         requireNonNull(techStack);
         String trimmedTechStack = techStack.trim();
-        if (!Tag.isValidTagName(trimmedTechStack)) {
+        if (!TechStack.isValidTechStackName(trimmedTechStack)) {
             throw new ParseException(TechStack.MESSAGE_CONSTRAINTS);
         }
         return new TechStack(trimmedTechStack);
