@@ -13,6 +13,7 @@ public class TechStack {
             " underscores (_), number signs (#), hyphens (-), periods (.), and plus signs (+).";
     public static final String VALIDATION_REGEX = "[\\p{Alnum}+.#-]+";
     public final String techStackName;
+    public int rating = -1;
 
     /**
      * Constructs a {@code TechStack}.
@@ -23,6 +24,11 @@ public class TechStack {
         requireNonNull(techStackName);
         checkArgument(isValidTechStackName(techStackName), MESSAGE_CONSTRAINTS);
         this.techStackName = techStackName;
+    }
+
+    public void setRating(int rating) {
+        requireNonNull(rating);
+        this.rating = rating;
     }
 
     /**
