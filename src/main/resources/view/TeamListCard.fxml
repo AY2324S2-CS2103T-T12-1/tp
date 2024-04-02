@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox id="cardPane" fx:id="cardPane" minWidth="10.0" HBox.hgrow="ALWAYS" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+    <FlowPane alignment="CENTER_LEFT" maxWidth="1.7976931348623157E308" vgap="5">
+        <HBox>
+            <children>
+                <Label fx:id="id" styleClass="cell_big_label">
+                    <minWidth>
+                        <!-- Ensures that the label text is never truncated -->
+                        <Region fx:constant="USE_PREF_SIZE" />
+                    </minWidth>
+                </Label>
+                <Label fx:id="name" styleClass="cell_big_label" text="\$first" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" />
+            </children>
+        </HBox>
+        <Label fx:id="memberCount" layoutX="15.0" layoutY="10.0" style="-fx-font-size: 13px; -fx-font-style: italic; -fx-font-family: Segoe UI Light;" styleClass=".label-status" text="(4 Members)" textOverrun="CLIP">
+            <font>
+                <Font name="Segoe UI Light Italic" size="12.0" />
+            </font>
+            <HBox.margin>
+                <Insets />
+            </HBox.margin>
+        </Label>
+    </FlowPane>
+   <padding>
+      <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+   </padding>
+</VBox>
