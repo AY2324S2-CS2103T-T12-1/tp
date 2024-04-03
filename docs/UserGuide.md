@@ -256,7 +256,7 @@ All teams related commands start with the prefix: `team`
 
 Copies to your clipboard the details of all the members in a particular team, so that you have an easy time signing up for hackathons!
 
-Format: `INDEX export`
+Format: `team INDEX export`
 
 - Export the members' details of the team at the specified `INDEX`.
 - The index refers to the index number shown in the displayed teams list.
