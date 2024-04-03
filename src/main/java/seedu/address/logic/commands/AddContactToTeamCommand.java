@@ -22,8 +22,8 @@ public class AddContactToTeamCommand extends Command {
 
 
     public static final String MESSAGE_SUCCESS = "New contact added to team: %1$s";
-    public static final String MESSAGE_DUPLICATE_CONTACT_IN_TEAM = "A contact with this name already exists in " +
-            "the team";
+    public static final String MESSAGE_DUPLICATE_CONTACT_IN_TEAM = "A contact with the name corresponding to this" +
+            " index already exists in the team";
 
     private final Index teamIndex;
     private final Index contactIndex;
@@ -49,13 +49,25 @@ public class AddContactToTeamCommand extends Command {
         }
 
         Team originalTeam = model.getCodeConnect().getTeamList().get(teamIndex.getZeroBased());
-        Contact contactToAdd = model.getCodeConnect().getContactList().get(contactIndex.getZeroBased());
-       // Contact contactToAdd = model.getFilteredContactList().get(contactIndex.getZeroBased());
+
+        Contact filteredContact = null;
+        Contact originalContact = null;
+
+        // Check if the index is within bounds of the filtered contact list
+        if (contactIndex.getZeroBased() >= 0 && contactIndex.getZeroBased() < model.getFilteredContactList().size()) {
+            filteredContact = model.getFilteredContactList().get(contactIndex.getZeroBased());
+        }
+
+        // Check if the index is within bounds of the original contact list
+        if (contactIndex.getZeroBased() >= 0 && contactIndex.getZeroBased() < model.getCodeConnect().getContactList().size()) {
+            originalContact = model.getCodeConnect().getContactList().get(contactIndex.getZeroBased());
+        }
+
+        Contact contactToAdd = (filteredContact != null) ? filteredContact : originalContact;
 
         if (originalTeam.hasMember(contactToAdd)) {
             throw new CommandException(MESSAGE_DUPLICATE_CONTACT_IN_TEAM);
         }
-
 
         Team updatedTeam = originalTeam.withAddedMember(contactToAdd);
 
