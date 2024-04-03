@@ -79,9 +79,7 @@ public class ContactCard extends UiPart<Region> {
         contact.getTechStack().stream()
                 .sorted(Comparator.comparing(techStack -> techStack.techStackName))
                 .forEach(techStack -> techStacks.getChildren()
-                        .add(new Label(techStack.rating == null
-                                ? techStack.techStackName
-                                : techStack.techStackName + " | " + techStack.rating)));
+                        .add(new Label(techStack.toStringGui())));
 
         contact.getTags().stream()
                 .sorted(Comparator.comparing(tag-> tag.tagName))

@@ -54,11 +54,10 @@ class JsonAdaptedTechStack {
         if (rating != null && (rating < 0 || rating > 10)) {
             throw new IllegalValueException("Rating must be between 0 and 10.");
         }
-        TechStack ts = new TechStack(techStackName);
         if (rating != null) {
-            ts.setRating(rating);
+            return new TechStack(techStackName, rating);
         }
-        return ts;
+        return new TechStack(techStackName);
     }
 
 }

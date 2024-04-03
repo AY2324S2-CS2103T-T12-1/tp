@@ -45,8 +45,9 @@ public class RateCommand extends Command {
 
     public static final String MESSAGE_RATE_CONTACT_SUCCESS = "Rated Contact: %1$s";
     public static final String MESSAGE_INVALID_TECHSTACK_TO_RATE = "This contact does not have stated Tech Stack.";
+    public static final String MESSAGE_INVALID_RATING = "Rating should be between 0 and 10.";
+
     private final Index index;
-    private final RateContactDescriptor rateContactDescriptor;
     private final int rating;
     private final String techStackName;
 
@@ -63,7 +64,6 @@ public class RateCommand extends Command {
         this.index = index;
         this.rating = rating;
         this.techStackName = techStackName;
-        this.rateContactDescriptor = new RateContactDescriptor();
     }
 
     @Override
@@ -80,6 +80,10 @@ public class RateCommand extends Command {
 
         if (!contactToRate.getTechStack().contains(techStackToRate)) {
             throw new CommandException(MESSAGE_INVALID_TECHSTACK_TO_RATE);
+        }
+
+        if (rating < 0 || rating > 10) {
+            throw new CommandException(MESSAGE_INVALID_RATING);
         }
 
         Contact ratedContact = rateTechStack(contactToRate, techStackToRate, rating);
@@ -108,8 +112,7 @@ public class RateCommand extends Command {
         for (TechStack existingTechStack : contactToRate.getTechStack()) {
             if (existingTechStack.equals(techStack)) {
                 // Update the rating for the existing tech stack
-                TechStack techStackToAdd = new TechStack(existingTechStack.techStackName);
-                techStackToAdd.setRating(rating);
+                TechStack techStackToAdd = new TechStack(existingTechStack.techStackName, rating);
                 updatedTechStacks.add(techStackToAdd);
 
             } else {
@@ -135,73 +138,15 @@ public class RateCommand extends Command {
 
         RateCommand otherRateCommand = (RateCommand) other;
         return index.equals(otherRateCommand.index)
-                && rateContactDescriptor.equals(otherRateCommand.rateContactDescriptor);
+                && rating == otherRateCommand.rating
+                && techStackName.equals(otherRateCommand.techStackName);
     }
 
     @Override
     public String toString() {
         return new ToStringBuilder(this)
                 .add("index", index)
-                .add("rateContactDescriptor", rateContactDescriptor)
                 .toString();
     }
 
-    /**
-     * Stores the details to rate the contact with. Each non-empty field value will replace the
-     * corresponding field value of the contact.
-     */
-    public static class RateContactDescriptor {
-        private Set<TechStack> techStack;
-
-        /**
-         * Copy constructor.
-         * A defensive copy of {@code tags} is used internally.
-         */
-        public RateContactDescriptor(RateContactDescriptor toCopy) {
-            setTechStack(toCopy.techStack);
-        }
-
-        public RateContactDescriptor() {
-        }
-
-        /**
-         * Sets {@code techStack} to this object's {@code techStack}.
-         * A defensive copy of {@code techStack} is used internally.
-         */
-        public void setTechStack(Set<TechStack> techStack) {
-            this.techStack = (techStack != null) ? new HashSet<>(techStack) : null;
-        }
-
-        /**
-         * Returns an unmodifiable tech stack set, which throws {@code UnsupportedOperationException}
-         * if modification is attempted.
-         * Returns {@code Optional#empty()} if {@code techStack} is null.
-         */
-        public Optional<Set<TechStack>> getTechStack() {
-            return (techStack != null) ? Optional.of(Collections.unmodifiableSet(techStack)) : Optional.empty();
-        }
-
-
-        @Override
-        public boolean equals(Object other) {
-            if (other == this) {
-                return true;
-            }
-
-            // instanceof handles nulls
-            if (!(other instanceof RateContactDescriptor)) {
-                return false;
-            }
-
-            RateContactDescriptor otherRateContactDescriptor = (RateContactDescriptor) other;
-            return Objects.equals(techStack, otherRateContactDescriptor.techStack);
-        }
-
-        @Override
-        public String toString() {
-            return new ToStringBuilder(this)
-                    .add("tech_stack", techStack)
-                    .toString();
-        }
-    }
 }

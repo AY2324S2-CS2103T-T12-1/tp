@@ -2,7 +2,6 @@ package seedu.address.logic.parser;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.RateCommand;
-import seedu.address.logic.commands.RateCommand.RateContactDescriptor;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.techstack.TechStack;
 
@@ -45,27 +44,11 @@ public class RateCommandParser {
             techStackName = techStackParts[0].trim();
             rating = Integer.parseInt(techStackParts[1].trim());
 
-        } catch (ParseException pe) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, RateCommand.MESSAGE_USAGE), pe);
+        } catch (ParseException | NumberFormatException e) {
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, RateCommand.MESSAGE_USAGE), e);
         }
 
         return new RateCommand(index, techStackName, rating);
-    }
-
-    /**
-     * Parses {@code Collection<String> tech stack} into a {@code Set<TechStack>} if {@code techStack} is non-empty.
-     * If {@code techStack} contain only one element which is an empty string, it will be parsed into a
-     * {@code Set<TechStack>} containing zero tech stack.
-     */
-    private Optional<Set<TechStack>> parseTechStackForRate(Collection<String> techStack) throws ParseException {
-        assert techStack != null;
-
-        if (techStack.isEmpty()) {
-            return Optional.empty();
-        }
-        Collection<String> techStackSet = techStack.size() == 1 && techStack.contains("") ? Collections.emptySet() :
-                techStack;
-        return Optional.of(ParserUtil.parseTechStacks(techStackSet));
     }
 
 }

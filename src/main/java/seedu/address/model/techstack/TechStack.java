@@ -26,6 +26,13 @@ public class TechStack {
         this.techStackName = techStackName;
     }
 
+    public TechStack(String techStackName, Integer rating) {
+        requireNonNull(techStackName);
+        checkArgument(isValidTechStackName(techStackName), MESSAGE_CONSTRAINTS);
+        this.techStackName = techStackName;
+        this.rating = rating;
+    }
+
     public void setRating(int rating) {
         requireNonNull(rating);
         this.rating = rating;
@@ -56,6 +63,17 @@ public class TechStack {
     @Override
     public int hashCode() {
         return techStackName.hashCode();
+    }
+
+    /**
+     * Format state as text for GUI.
+     */
+    public String toStringGui() {
+        if (rating !=  null) {
+            return techStackName + " | " + rating;
+        } else {
+            return techStackName;
+        }
     }
 
     /**
