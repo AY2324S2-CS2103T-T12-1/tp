@@ -1,7 +1,7 @@
 package seedu.address.storage;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonValue;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.techstack.TechStack;
@@ -19,7 +19,7 @@ class JsonAdaptedTechStack {
      * Constructs a {@code JsonAdaptedTechStack} with the given {@code techStackName} and {@code rating}.
      */
     @JsonCreator
-    public JsonAdaptedTechStack(String techStackName, Integer rating) {
+    public JsonAdaptedTechStack(@JsonProperty("name") String techStackName, @JsonProperty("rating") Integer rating) {
         this.techStackName = techStackName;
         this.rating = rating;
     }
@@ -32,7 +32,7 @@ class JsonAdaptedTechStack {
         rating = source.rating;
     }
 
-    @JsonValue
+
     public String getTechStackName() {
         return techStackName;
     }
@@ -50,11 +50,13 @@ class JsonAdaptedTechStack {
         if (!TechStack.isValidTechStackName(techStackName)) {
             throw new IllegalValueException(TechStack.MESSAGE_CONSTRAINTS);
         }
-        if (rating < 0 || rating > 10) {
+        if (rating != null && (rating < 0 || rating > 10)) {
             throw new IllegalValueException("Rating must be between 0 and 10.");
         }
         TechStack ts = new TechStack(techStackName);
-        ts.setRating(rating);
+        if (rating != null) {
+            ts.setRating(rating);
+        }
         return ts;
     }
 
