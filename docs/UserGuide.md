@@ -221,6 +221,20 @@ Format: `find-ts KEYWORD [MORE_KEYWORDS]`
 Examples:
 - image to be inserted
 
+#### Rate skills of contacts: `rate`
+
+Rates specified skill of specified contact.
+
+Format: `rate INDEX ts/KEYWORD r/RATING`
+
+- The rating is case-sensitive. e.g `java` will not match `Java`
+- Only the tech stack in specified contact are searched.
+- Only full words will be matched e.g. `java` will not match `javascript`
+- Rating can only be between 0 and 10
+
+Examples:
+- image to be inserted
+
 #### Deleting a contact : `delete`
 
 Deletes the specified contact from the address book.
