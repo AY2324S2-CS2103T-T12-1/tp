@@ -39,7 +39,8 @@ public class RateCommandParser {
             index = ParserUtil.parseIndex(argMultimap.getPreamble());
             String[] techStackParts = argMultimap.getValue(PREFIX_TECH_STACK).get().split("r/");
             if (techStackParts.length != 2) {
-                throw new ParseException("Tech stack rating format is incorrect. Please use the format: <techStack> r/<rating>");
+                throw new ParseException("Tech stack rating format is incorrect. " +
+                        "Please use the format: ts/<techStack> r/<rating>");
             }
             techStackName = techStackParts[0].trim();
             rating = Integer.parseInt(techStackParts[1].trim());

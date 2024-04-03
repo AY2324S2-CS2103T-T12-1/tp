@@ -13,7 +13,7 @@ public class TechStack {
             " underscores (_), number signs (#), hyphens (-), periods (.), and plus signs (+).";
     public static final String VALIDATION_REGEX = "[\\p{Alnum}+.#-]+";
     public final String techStackName;
-    public int rating = -1;
+    public Integer rating = null;
 
     /**
      * Constructs a {@code TechStack}.
@@ -62,7 +62,11 @@ public class TechStack {
      * Format state as text for viewing.
      */
     public String toString() {
-        return '[' + techStackName + ']';
+        if (rating !=  null) {
+            return '[' + techStackName + '|' + rating + ']';
+        } else {
+            return '[' + techStackName + ']';
+        }
     }
 
 }
