@@ -69,9 +69,11 @@ public class TeamCommandsParser {
                 parsedIndex = ParserUtil.parseIndex(index);
                 return new DeleteTeamCommand(parsedIndex);
             case AddContactToTeamCommand.COMMAND_WORD:
-                return new AddContactToTeamCommandParser().parse(args);
+                String indices = index + args;
+                return new AddContactToTeamCommandParser().parse(indices);
             case DeleteContactFromTeamCommand.COMMAND_WORD:
-                return new DeleteContactFromTeamCommandParser().parse(args);
+                indices = index + args;
+                return new DeleteContactFromTeamCommandParser().parse(indices);
             default:
                 logger.finer("This user input caused a ParseException: " + arguments);
                 throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, MESSAGE_USAGE));

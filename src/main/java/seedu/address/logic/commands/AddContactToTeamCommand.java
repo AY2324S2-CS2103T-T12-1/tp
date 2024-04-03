@@ -1,8 +1,10 @@
 package seedu.address.logic.commands;
 
+import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.logic.parser.TeamCommandsParser;
 import seedu.address.model.Model;
 import seedu.address.model.contact.Contact;
 import seedu.address.model.team.Team;
@@ -11,49 +13,55 @@ import static java.util.Objects.requireNonNull;
 
 public class AddContactToTeamCommand extends Command {
 
-    public static final String COMMAND_WORD = "add-to-team";
+    public static final String COMMAND_WORD = "add-contact";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a contact to the team. "
-            + "Parameters: "
-            + "Team index number, contact index number \n"
-            + "Example: add-to-team 2 3";
+    public static final String MESSAGE_USAGE = TeamCommandsParser.COMMAND_WORD + " TEAM_INDEX " + COMMAND_WORD
+            + " CONTACT_INDEX : Adds a contact to the team. \n"
+            + "Parameters: TEAM_INDEX (must be a positive integer), CONTACT_INDEX (must be a positive integer)\n"
+            + "Example: " + TeamCommandsParser.COMMAND_WORD + " 1 " + COMMAND_WORD + " 2 ";
 
 
     public static final String MESSAGE_SUCCESS = "New contact added to team: %1$s";
     public static final String MESSAGE_DUPLICATE_CONTACT_IN_TEAM = "A contact with this name already exists in " +
             "the team";
 
-    private final int teamIndex;
-    private final int contactIndex;
+    private final Index teamIndex;
+    private final Index contactIndex;
 
     /**
      * Creates an AddContactToTeamCommand to add the specified {@code Contact}
      */
-    public AddContactToTeamCommand(int teamIndex, int contactIndex) {
-        this.teamIndex = teamIndex - 1;
-        this.contactIndex = contactIndex - 1;
+    public AddContactToTeamCommand(Index teamIndex, Index contactIndex) {
+        this.teamIndex = teamIndex;
+        this.contactIndex = contactIndex;
     }
 
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
 
-        if (teamIndex < 0 || teamIndex >= model.getCodeConnect().getTeamList().size()) {
+        if (teamIndex.getZeroBased() < 0 || teamIndex.getZeroBased() >= model.getCodeConnect().getTeamList().size()) {
             throw new CommandException(Messages.MESSAGE_INVALID_TEAM_DISPLAYED_INDEX);
         }
 
-        if (contactIndex < 0 || contactIndex >= model.getCodeConnect().getContactList().size()) {
+        if (contactIndex.getZeroBased() < 0 || contactIndex.getZeroBased() >= model.getCodeConnect().getContactList().size()) {
             throw new CommandException(Messages.MESSAGE_INVALID_CONTACT_DISPLAYED_INDEX);
         }
 
-        Team teamToAdd = model.getCodeConnect().getTeamList().get(teamIndex);
-        Contact contactToAdd = model.getCodeConnect().getContactList().get(contactIndex);
+        Team originalTeam = model.getCodeConnect().getTeamList().get(teamIndex.getZeroBased());
+        Contact contactToAdd = model.getCodeConnect().getContactList().get(contactIndex.getZeroBased());
+       // Contact contactToAdd = model.getFilteredContactList().get(contactIndex.getZeroBased());
 
-        if (teamToAdd.hasMember(contactToAdd)) {
+        if (originalTeam.hasMember(contactToAdd)) {
             throw new CommandException(MESSAGE_DUPLICATE_CONTACT_IN_TEAM);
         }
 
-        model.addContactToTeam(teamToAdd, contactToAdd);
+
+        Team updatedTeam = originalTeam.withAddedMember(contactToAdd);
+
+        // Update the model with the updated team
+        model.setTeam(originalTeam, updatedTeam);
+
         return new CommandResult(String.format(MESSAGE_SUCCESS, contactToAdd.getName()));
     }
 
@@ -68,7 +76,7 @@ public class AddContactToTeamCommand extends Command {
         }
 
         AddContactToTeamCommand otherCommand = (AddContactToTeamCommand) other;
-        return teamIndex == otherCommand.teamIndex && contactIndex == otherCommand.contactIndex;
+        return teamIndex.equals(otherCommand.teamIndex) && contactIndex.equals(otherCommand.contactIndex);
     }
 
     @Override

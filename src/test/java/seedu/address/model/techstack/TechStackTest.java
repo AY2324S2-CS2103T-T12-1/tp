@@ -25,7 +25,6 @@ public class TechStackTest {
     public void isValidTechStackName() {
         assertThrows(NullPointerException.class, () -> TechStack.isValidTechStackName(null));
         assertEquals(true, TechStack.isValidTechStackName("C++"));
-     //   assertFalse(TechStack.isValidTechStackName("Python"));
     }
 
 }

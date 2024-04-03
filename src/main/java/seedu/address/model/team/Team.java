@@ -10,6 +10,10 @@ import seedu.address.model.contact.Contact;
 import seedu.address.model.contact.Name;
 import seedu.address.model.contact.UniqueContactList;
 
+/**
+ * Represents a team in CodeConnect.
+ * Guarantees: details are present and not null, field values are validated, immutable.
+ */
 public class Team {
     private final Name name;
     private final UniqueContactList members = new UniqueContactList();
@@ -65,35 +69,49 @@ public class Team {
     }
 
     /**
-     * Adds a member to the team.
-     * Sorts the members alphabetically after adding.
+     * Returns a new Team instance with the specified {@code contact} added as a member.
+     * The members list will be sorted alphabetically after adding the new member.
      *
      * @param contact The contact to add as a member.
+     * @return A new Team instance with the added member and sorted members.
+     * @throws NullPointerException if the contact is null.
      */
-    public void addMember(Contact contact) {
+    public Team withAddedMember(Contact contact) {
         requireNonNull(contact);
-        members.add(contact);
-        sortMembersAlphabetically();
+        UniqueContactList updatedMembers = new UniqueContactList();
+        updatedMembers.setContacts(members);
+        updatedMembers.add(contact);
+        return new Team(name, updatedMembers.asUnmodifiableObservableList()).sortMembersAlphabetically();
     }
 
-    // Private method to sort members alphabetically
-    private void sortMembersAlphabetically() {
+    /**
+     * Returns a new Team instance with the specified {@code contact} removed as a member.
+     *
+     * @param contact The contact to remove as a member.
+     * @return A new Team instance with the specified member removed.
+     * @throws NullPointerException if the contact is null.
+     */
+    public Team withRemovedMember(Contact contact) {
+        requireNonNull(contact);
+        UniqueContactList updatedMembers = new UniqueContactList();
+        updatedMembers.setContacts(members);
+        updatedMembers.remove(contact);
+        return new Team(name, updatedMembers.asUnmodifiableObservableList());
+    }
+
+    /**
+     * Private method to sort members alphabetically and return a new Team instance.
+     *
+     * @return A new Team instance with sorted members.
+     */
+    private Team sortMembersAlphabetically() {
         List<Contact> sortedMembers = new ArrayList<>(members.asUnmodifiableObservableList());
         sortedMembers.sort((contact1, contact2) -> {
             String name1 = contact1.getName().fullName.toLowerCase();
             String name2 = contact2.getName().fullName.toLowerCase();
             return name1.compareTo(name2);
         });
-        members.setContacts(sortedMembers);
-    }
-
-    /**
-     * Removes a member from the team.
-     *
-     * @param contact The contact to remove as a member.
-     */
-    public void deleteMember(Contact contact) {
-        members.remove(contact);
+        return new Team(name, sortedMembers);
     }
 
     /**

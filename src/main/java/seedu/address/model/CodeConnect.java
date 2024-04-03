@@ -100,6 +100,8 @@ public class CodeConnect implements ReadOnlyCodeConnect {
         contacts.remove(key);
     }
 
+    //// team-level operations
+
     /**
      * Returns true if a team with the same identity as {@code team} exists in CodeConnect.
      */
@@ -115,44 +117,6 @@ public class CodeConnect implements ReadOnlyCodeConnect {
     public void addTeam(Team team) {
         requireNonNull(team);
         teams.add(team);
-    }
-
-    /**
-     * Adds the given contact to the specific team.
-     * {@code contact} must not already exist in the team.
-     */
-    public void addContactToTeam(Team team, Contact contact) {
-        requireNonNull(team);
-        requireNonNull(contact);
-
-        if (!hasTeam(team)) {
-            throw new IllegalArgumentException("The specified team does not exist in CodeConnect.");
-        }
-
-        if (team.hasMember(contact)) {
-            throw new IllegalArgumentException("The specified contact already exists in the team.");
-        }
-
-        teams.addContactToTeam(team, contact);
-    }
-
-    /**
-     * Deletes the given contact from the specific team.
-     * {@code contact} must already exist in the team.
-     */
-    public void deleteContactFromTeam(Team team, Contact contact) {
-        requireNonNull(team);
-        requireNonNull(contact);
-
-        if (!hasTeam(team)) {
-            throw new IllegalArgumentException("The specified team does not exist in CodeConnect.");
-        }
-
-        if (!team.hasMember(contact)) {
-            throw new IllegalArgumentException("The specified contact does not exist in the team.");
-        }
-
-        teams.deleteContactFromTeam(team, contact);
     }
 
     /**
