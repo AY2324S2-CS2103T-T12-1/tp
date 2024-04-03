@@ -55,9 +55,8 @@ public class ExportTeamCommand extends Command {
         if (teamToExport.getMembers().size() == 0) {
             throw new CommandException(Messages.MESSAGE_EMPTY_TEAM);
         }
-        // TODO: Remove stub and uncomment the line below
-        // String teamDetails = getDetails(teamToExport);
-        String teamDetails = testGetDetails(model.getCodeConnect().getContactList());
+
+        String teamDetails = getDetails(teamToExport);
         copyToClipboard(teamDetails);
 
         return new CommandResult(String.format(MESSAGE_EXPORT_DETAILS_SUCCESS, Messages.format(teamToExport)));
@@ -70,7 +69,6 @@ public class ExportTeamCommand extends Command {
     }
 
     public String getDetails(Team teamToExport) {
-        // TODO: Test if filtering works
         StringBuilder details = new StringBuilder();
         List<Contact> teamMembers = teamToExport.getMembers();
 
@@ -87,29 +85,6 @@ public class ExportTeamCommand extends Command {
 
             details.append(tempContact);
             details.append(System.getProperty("line.separator"));
-        }
-
-        return details.toString();
-    }
-
-    // Stub
-    private String testGetDetails(ObservableList<Contact> contacts) {
-        StringBuilder details = new StringBuilder();
-
-        for (int i = 0; i < contacts.size(); i++) {
-            Contact currentMember = contacts.get(i);
-
-            StringBuilder tempContact = new StringBuilder();
-            tempContact.append("Member ").append(i + 1).append('\n');
-            tempContact.append("Name: ").append(currentMember.getName().fullName).append('\n');
-            tempContact.append("Phone Number: ").append(currentMember.getPhone().value).append('\n');
-            tempContact.append("Email: ").append(currentMember.getEmail().value).append('\n');
-            tempContact.append("Address: ").append(currentMember.getAddress().value).append('\n');
-            tempContact.append("GitHub Username: ").append(currentMember.getGitHubUsername());
-            tempContact.append('\n');
-
-            details.append(tempContact);
-            details.append("\n");
         }
 
         return details.toString();
