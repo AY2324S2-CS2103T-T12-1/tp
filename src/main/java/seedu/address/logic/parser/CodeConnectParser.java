@@ -64,7 +64,7 @@ public class CodeConnectParser {
 
         case RateCommand.COMMAND_WORD:
             return new RateCommandParser().parse(arguments);
-        
+
         case DeleteCommand.COMMAND_WORD:
             return new DeleteCommandParser().parse(arguments);
 
