@@ -24,10 +24,6 @@ public class TsContainsKeywordsPredicateTest {
         // same object -> returns true
         assertTrue(firstPredicate.equals(firstPredicate));
 
-        // same values -> returns true
-//        TsContainsKeywordsPredicate firstPredicateCopy = new TsContainsKeywordsPredicate(firstPredicateKeywordList);
-//        assertTrue(firstPredicate.equals(firstPredicateCopy));
-
         // different types -> returns false
         assertFalse(firstPredicate.equals(1));
 

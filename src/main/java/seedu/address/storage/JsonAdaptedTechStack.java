@@ -19,7 +19,8 @@ class JsonAdaptedTechStack {
      * Constructs a {@code JsonAdaptedTechStack} with the given {@code techStackName} and {@code rating}.
      */
     @JsonCreator
-    public JsonAdaptedTechStack(@JsonProperty("name") String techStackName, @JsonProperty("rating") Integer rating) {
+    public JsonAdaptedTechStack(@JsonProperty("techStackName") String techStackName,
+                                @JsonProperty("rating") Integer rating) {
         this.techStackName = techStackName;
         this.rating = rating;
     }
