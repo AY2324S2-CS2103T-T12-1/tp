@@ -158,16 +158,7 @@ public class AddCommandTest {
         public void addTeam(Team team) {
             throw new AssertionError("This method should not be called.");
         }
-
-        @Override
-        public void addContactToTeam(Team team, Contact contact) {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
-        public void deleteContactFromTeam(Team team, Contact contact) {
-            throw new AssertionError("This method should not be called.");
-        }
+        
         @Override
         public void setTeam(Team target, Team editedTeam) {
             throw new AssertionError("This method should not be called.");
