@@ -33,11 +33,6 @@ public class TechStack {
         this.rating = rating;
     }
 
-    public void setRating(int rating) {
-        requireNonNull(rating);
-        this.rating = rating;
-    }
-
     /**
      * Returns true if a given string is a valid tech stack name.
      */
