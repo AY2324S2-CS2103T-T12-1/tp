@@ -37,7 +37,7 @@ public class RateCommand extends Command {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Rates the skills of the contact identified "
             + "by the index number used in the displayed contact list. "
-            + "Existing tech stack will be overwritten by the input values.\n"
+            + "Existing tech stack matching the input will be rated with the input values.\n"
             + "Parameters: INDEX (must be a positive integer) "
             + "[" + PREFIX_TECH_STACK + "TECH_STACK...\n"
             + "Example: " + COMMAND_WORD + " 1 "
