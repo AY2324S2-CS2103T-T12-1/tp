@@ -29,7 +29,7 @@ public class Team {
     }
 
     /**
-     * Constructs a {@code Team} with the given name and members.
+     * Additional constructor for creating a team with members.
      *
      * @param name    A valid name for the team.
      * @param members A list of contacts to be members of the team.
@@ -40,14 +40,14 @@ public class Team {
         this.members.setContacts(members);
     }
 
-    /**
-     * Returns the name of the team.
-     *
-     * @return The name of the team.
-     */
-    public Name getName() {
-        return name;
-    }
+      /**
+       * Returns the name of the team.
+       *
+       * @return The name of the team.
+       */
+      public Name getName() {
+          return name;
+      }
 
     /**
      * Returns an unmodifiable list of members in the team.

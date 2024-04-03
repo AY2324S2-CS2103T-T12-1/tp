@@ -127,6 +127,7 @@ public class CodeConnect implements ReadOnlyCodeConnect {
         requireNonNull(target);
         teams.remove(target);
     }
+
     /**
      * Replaces the given team {@code target} with {@code editedTeam}.
      * {@code target} must exist in CodeConnect.
