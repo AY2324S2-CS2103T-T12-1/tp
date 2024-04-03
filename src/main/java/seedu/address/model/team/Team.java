@@ -17,12 +17,16 @@ public class Team {
     private final Name name;
     private final UniqueContactList members = new UniqueContactList();
 
+    public final TeamStats stats;
+
+
     /**
      * Every field must be present and not null.
      */
     public Team(Name name) {
         requireNonNull(name);
         this.name = name;
+        this.stats = new TeamStats();
     }
 
     /**
@@ -32,6 +36,7 @@ public class Team {
         requireAllNonNull(name, members);
         this.name = name;
         this.members.setContacts(members);
+        this.stats = new TeamStats(members);
     }
 
     public Name getName() {
