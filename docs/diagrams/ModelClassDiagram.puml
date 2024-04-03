@@ -43,7 +43,7 @@ CodeConnect *-down-> "1" UniqueContactList
 CodeConnect *--> "1" UniqueTeamList
 UniqueContactList --> "~* all" Contact
 UniqueTeamList --> "~* all" Team
-Team *-up-> UniqueContactList
+Team *-up-> "1" UniqueContactList
 Team *--> Name
 
 Contact *--> Name
