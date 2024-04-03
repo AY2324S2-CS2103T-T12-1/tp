@@ -1,0 +1,13 @@
+@startuml ContactClassDiagram
+    class Team {
+    }
+
+    class Name
+    class UniqueContactList
+    class Contact
+
+    Team *-- Name
+    Team *--> "1" UniqueContactList
+    UniqueContactList "1" --> "*" Contact
+
+@enduml

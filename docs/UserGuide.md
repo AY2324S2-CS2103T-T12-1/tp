@@ -248,6 +248,66 @@ Exits the program.
 
 Format: `exit`
 
+### Team related commands
+
+All teams related commands start with the prefix: `team`
+
+#### Adding a team: `add`
+
+You can use the `add` team command to create teams of contacts, which will help you to keep track of your teams when joining hackathons!
+
+  Format: `team add n/TEAM_NAME`
+
+- TEAM_NAME can only contain alphanumeric characters and spaces and cannot be blank.
+- Each team in CodeConnect needs to have a unique name, so you can't add a team if another team with the same name is already present in the team list.
+- Team names are case-sensitive, so it's fine to have two teams named `NUS HACK 2024` and `Nus Hack 2024`.
+
+Examples:
+
+- `team add n/NUS HACK 2024` adds a new team named `NUS HACK 2024` into the teams list.
+
+#### List members belonging to a team:
+
+You can enter `team` followed by a team's index number to list the members that are in it.
+
+Format: `team TEAM_INDEX`
+
+- Export the members' details of the team at the specified `TEAM_INDEX`.
+- The index refers to the index number shown in the displayed teams list.
+- The index **must be a positive integer** 1, 2, 3, …​
+
+Examples:
+
+- `team 1` updates the contact list to show the members of the first team.
+
+#### Deleting a team: `delete`
+
+You can use the `delete` team command to delete a team from your team list. After deleting a team, you will still be able to find its members in the contact list.
+
+Format: `team TEAM_INDEX delete`
+
+- Export the members' details of the team at the specified `TEAM_INDEX`.
+- The index refers to the index number shown in the displayed teams list.
+- The index **must be a positive integer** 1, 2, 3, …​
+
+Examples:
+
+- `team 1 export` deletes the first team in the team list.
+
+#### Exporting team details: `export`
+
+Copies to your clipboard the details of all the members in a particular team, so that you have an easy time signing up for hackathons!
+
+Format: `team TEAM_INDEX export`
+
+- Export the members' details of the team at the specified `TEAM_INDEX`.
+- The index refers to the index number shown in the displayed teams list.
+- The index **must be a positive integer** 1, 2, 3, …​
+
+Examples:
+
+- `team 1 export` exports the members' details of the 1st team in the teams list.
+
 ### Other features
 
 #### Sending an email to a specific contact
@@ -302,14 +362,16 @@ _Details coming soon ..._
 ## Command Summary
 
 
-| Action              | Format, Examples                                                                                                                                                                                                                                                                                                                      |
-|---------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Add**             | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS g/GITHUB_USERNAME pp/PROFILE_PICTURE [t/TAG] [ts/TECH_STACK]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 g/Jamesho123  pp/https://api-prod-minimal-v510.vercel.app/assets/images/avatar/avatar_1.jpg t/friend t/colleague ts/Java ts/C++` |
-| **Clear**           | `clear`                                                                                                                                                                                                                                                                                                                               |
-| **Delete**          | `delete INDEX`<br> e.g., `delete 3`                                                                                                                                                                                                                                                                                                   |
-| **Edit**            | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [g/GITHUB_USERNAME] [pp/PROFILE_PICTURE] [t/TAG]…​ [ts/TECH_STACK]…​ `<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`                                                                                                                                               |
-| **Find**            | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`                                                                                                                                                                                                                                                                            |
-| **Find by Tags**    | `find-tags KEYWORD [MORE_KEYWORDS]`<br> e.g., `find-tags School Work`                                                                                                                                                                                                                                                                 |
-| **Find Tech Stack** | `find-ts KEYWORD [MORE_KEYWORDS]`<br> e.g., `find-ts Java Python`                                                                                                                                                                                                                                                                     |
-| **List**            | `list`                                                                                                                                                                                                                                                                                                                                |
-| **Help**            | `help`                                                                                                                                                                                                                                                                                                                                |
+| Action                    | Format, Examples                                                                                                                                                                                                                                                                                                                      |
+|---------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Add**                   | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS g/GITHUB_USERNAME pp/PROFILE_PICTURE [t/TAG] [ts/TECH_STACK]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 g/Jamesho123  pp/https://api-prod-minimal-v510.vercel.app/assets/images/avatar/avatar_1.jpg t/friend t/colleague ts/Java ts/C++` |
+| **Clear**                 | `clear`                                                                                                                                                                                                                                                                                                                               |
+| **Delete**                | `delete INDEX`<br> e.g., `delete 3`                                                                                                                                                                                                                                                                                                   |
+| **Edit**                  | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [g/GITHUB_USERNAME] [pp/PROFILE_PICTURE] [t/TAG]…​ [ts/TECH_STACK]…​ `<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`                                                                                                                                               |
+| **Find**                  | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`                                                                                                                                                                                                                                                                            |
+| **Find by Tags**          | `find-tags KEYWORD [MORE_KEYWORDS]`<br> e.g., `find-tags School Work`                                                                                                                                                                                                                                                                 |
+| **Find Tech Stack**       | `find-ts KEYWORD [MORE_KEYWORDS]`<br> e.g., `find-ts Java Python`                                                                                                                                                                                                                                                                     |
+| **List**                  | `list`                                                                                                                                                                                                                                                                                                                                |
+| **Help**                  | `help`                                                                                                                                                                                                                                                                                                                                |
+| **Team - Export Details** | `team INDEX export`<br> e.g., `team 1 export`                                                                                                                                                                                                                                                                                         |
+| **Exit**                  | `exit`                                                                                                                                                                                                                                                                                                                                |
