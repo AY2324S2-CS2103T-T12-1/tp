@@ -15,6 +15,7 @@ public class TechStack {
 
     public static final String VALIDATION_REGEX = "[\\p{Alnum}+.#-]+";
     public final String techStackName;
+    public Integer rating = null;
 
     /**
      * Constructs a {@code TechStack}.
@@ -27,6 +28,13 @@ public class TechStack {
         this.techStackName = techStackName;
     }
 
+    public TechStack(String techStackName, Integer rating) {
+        requireNonNull(techStackName);
+        checkArgument(isValidTechStackName(techStackName), MESSAGE_CONSTRAINTS);
+        this.techStackName = techStackName;
+        this.rating = rating;
+    }
+
     /**
      * Returns true if a given string is a valid tech stack name.
      */
@@ -35,10 +43,18 @@ public class TechStack {
     }
 
     /**
+     * Returns true if a given integer is a valid rating.
+     */
+    public static boolean isValidTechStackRating(Integer rating) {
+        return rating >= 0 && rating <= 10;
+    }
+
+    /**
      * Returns true if a given string is a valid tech stack name length.
      */
     public static boolean isValidTechStackNameLength(String test) {
         return test.length() <= 15;
+
     }
 
     @Override
@@ -62,10 +78,25 @@ public class TechStack {
     }
 
     /**
+     * Format state as text for GUI.
+     */
+    public String toStringGui() {
+        if (rating !=  null) {
+            return techStackName + " | " + rating;
+        } else {
+            return techStackName;
+        }
+    }
+
+    /**
      * Format state as text for viewing.
      */
     public String toString() {
-        return '[' + techStackName + ']';
+        if (rating !=  null) {
+            return '[' + techStackName + '|' + rating + ']';
+        } else {
+            return '[' + techStackName + ']';
+        }
     }
 
 }

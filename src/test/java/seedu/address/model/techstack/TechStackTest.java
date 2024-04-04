@@ -29,9 +29,24 @@ public class TechStackTest {
     }
 
     @Test
+
+    public void isValidTechStackWithValidRating() {
+        assertThrows(NullPointerException.class, () -> TechStack.isValidTechStackName(null));
+        assertEquals(true, TechStack.isValidTechStackName("C++") && TechStack.isValidTechStackRating(7));
+    }
+
+    @Test
+    public void isValidTechStackWithInvalidRating() {
+        assertThrows(NullPointerException.class, () -> TechStack.isValidTechStackName(null));
+        assertEquals(false, TechStack.isValidTechStackName("C++")
+                && TechStack.isValidTechStackRating(17));
+    }
+
+    @Test
     public void isValidTechStackNameLength() {
         assertThrows(NullPointerException.class, () -> TechStack.isValidTechStackName(null));
         assertEquals(true, TechStack.isValidTechStackNameLength("C++"));
         assertEquals(false, TechStack.isValidTechStackNameLength("C+++++++++++++++++++++"));
     }
+
 }

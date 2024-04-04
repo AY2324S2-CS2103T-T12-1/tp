@@ -249,6 +249,20 @@ Format: `find-ts KEYWORD [MORE_KEYWORDS]`
 Examples:
 - image to be inserted
 
+#### Rate skills of contacts: `rate`
+
+Rates specified skill of specified contact.
+
+Format: `rate INDEX ts/KEYWORD r/RATING`
+
+- The rating is case-sensitive. e.g `java` will not match `Java`
+- Only the tech stack in specified contact are searched.
+- Only full words will be matched e.g. `java` will not match `javascript`
+- Rating can only be between 0 and 10
+
+Examples:
+- image to be inserted
+
 #### Deleting a contact : `delete`
 
 Deletes the specified contact from the address book.
@@ -432,6 +446,7 @@ _Details coming soon ..._
 | **Find**                  | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`                                                                                                                                                                                                                                                                            |
 | **Find by Tags**          | `find-tags KEYWORD [MORE_KEYWORDS]`<br> e.g., `find-tags School Work`                                                                                                                                                                                                                                                                 |
 | **Find Tech Stack**       | `find-ts KEYWORD [MORE_KEYWORDS]`<br> e.g., `find-ts Java Python`                                                                                                                                                                                                                                                                     |
+| **Rate**                  | `rate INDEX ts/TECH_STACK r/RATING`<br> e.g., `rate 3 ts/Java r/7`                                                                                                                                                                                                                                                                    |
 | **List**                  | `list`                                                                                                                                                                                                                                                                                                                                |
 | **Help**                  | `help`                                                                                                                                                                                                                                                                                                                                |
 | **Team - Add**            | `team add n/NAME`<br> e.g., `team add n/NUS HACK 2024`                                                                                                                                                                                                                                                                                |

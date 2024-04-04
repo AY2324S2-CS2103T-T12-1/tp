@@ -1,7 +1,7 @@
 package seedu.address.storage;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonValue;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.techstack.TechStack;
@@ -13,13 +13,16 @@ import seedu.address.model.techstack.TechStack;
 class JsonAdaptedTechStack {
 
     private final String techStackName;
+    private Integer rating;
 
     /**
-     * Constructs a {@code JsonAdaptedTechStack} with the given {@code techStackName}.
+     * Constructs a {@code JsonAdaptedTechStack} with the given {@code techStackName} and {@code rating}.
      */
     @JsonCreator
-    public JsonAdaptedTechStack(String techStackName) {
+    public JsonAdaptedTechStack(@JsonProperty("techStackName") String techStackName,
+                                @JsonProperty("rating") Integer rating) {
         this.techStackName = techStackName;
+        this.rating = rating;
     }
 
     /**
@@ -27,12 +30,17 @@ class JsonAdaptedTechStack {
      */
     public JsonAdaptedTechStack(TechStack source) {
         techStackName = source.techStackName;
+        rating = source.rating;
     }
 
-    @JsonValue
+
     public String getTechStackName() {
         return techStackName;
     }
+    public Integer getRating() {
+        return rating;
+    }
+
 
     /**
      * Converts this Jackson-friendly adapted tech stack object into the model's {@code TechStack} object.
@@ -42,6 +50,12 @@ class JsonAdaptedTechStack {
     public TechStack toModelType() throws IllegalValueException {
         if (!TechStack.isValidTechStackName(techStackName)) {
             throw new IllegalValueException(TechStack.MESSAGE_CONSTRAINTS);
+        }
+        if (rating != null && (!TechStack.isValidTechStackRating(rating))) {
+            throw new IllegalValueException("Rating must be between 0 and 10.");
+        }
+        if (rating != null) {
+            return new TechStack(techStackName, rating);
         }
         return new TechStack(techStackName);
     }

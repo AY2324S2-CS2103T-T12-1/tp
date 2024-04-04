@@ -78,7 +78,8 @@ public class ContactCard extends UiPart<Region> {
         githubUsername.setText("@"+ contact.getGitHubUsername().username);
         contact.getTechStack().stream()
                 .sorted(Comparator.comparing(techStack -> techStack.techStackName))
-                .forEach(techStack -> techStacks.getChildren().add(new Label(techStack.techStackName)));
+                .forEach(techStack -> techStacks.getChildren()
+                        .add(new Label(techStack.toStringGui())));
 
         contact.getTags().stream()
                 .sorted(Comparator.comparing(tag-> tag.tagName))
