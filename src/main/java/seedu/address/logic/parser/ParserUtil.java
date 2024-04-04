@@ -136,8 +136,11 @@ public class ParserUtil {
         String trimmedTechStack = techStack.trim();
         if (!TechStack.isValidTechStackName(trimmedTechStack)) {
             throw new ParseException(TechStack.MESSAGE_CONSTRAINTS);
+        } else if (!TechStack.isValidTechStackNameLength(trimmedTechStack)) {
+            throw new ParseException(TechStack.MESSAGE_CONSTRAINTS_LENGTH);
+        } else {
+            return new TechStack(trimmedTechStack);
         }
-        return new TechStack(trimmedTechStack);
     }
 
     /**
@@ -146,6 +149,9 @@ public class ParserUtil {
     public static Set<TechStack> parseTechStacks(Collection<String> techStack) throws ParseException {
         requireNonNull(techStack);
         final Set<TechStack> techStackSet = new HashSet<>();
+        if (techStack.size() > 3) {
+            throw new ParseException(TechStack.MESSAGE_CONSTRAINTS_LENGTH);
+        }
         for (String techStackName : techStack) {
             techStackSet.add(parseTechStack(techStackName));
         }
@@ -163,8 +169,11 @@ public class ParserUtil {
         String trimmedTag = tag.trim();
         if (!Tag.isValidTagName(trimmedTag)) {
             throw new ParseException(Tag.MESSAGE_CONSTRAINTS);
+        } else if (!Tag.isValidTagNameLength(trimmedTag)) {
+            throw new ParseException(Tag.MESSAGE_CONSTRAINTS_LENGTH);
+        } else {
+            return new Tag(trimmedTag);
         }
-        return new Tag(trimmedTag);
     }
 
     /**
@@ -173,6 +182,9 @@ public class ParserUtil {
     public static Set<Tag> parseTags(Collection<String> tags) throws ParseException {
         requireNonNull(tags);
         final Set<Tag> tagSet = new HashSet<>();
+        if (tags.size() > 3) {
+            throw new ParseException(Tag.MESSAGE_CONSTRAINTS_LENGTH);
+        }
         for (String tagName : tags) {
             tagSet.add(parseTag(tagName));
         }

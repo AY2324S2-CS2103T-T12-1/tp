@@ -75,7 +75,6 @@ public class ContactCard extends UiPart<Region> {
         address.setText("Address: " + contact.getAddress().value);
         emailLabel.setText("Email: ");
         email.setText(contact.getEmail().value);
-        //email.setText("Email: " + contact.getEmail().value);
         githubUsername.setText("@"+ contact.getGitHubUsername().username);
         contact.getTechStack().stream()
                 .sorted(Comparator.comparing(techStack -> techStack.techStackName))
@@ -90,7 +89,5 @@ public class ContactCard extends UiPart<Region> {
             mailApp.handleEmailClicked();
         });
     }
-
-
 }
 

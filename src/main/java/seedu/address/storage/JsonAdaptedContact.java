@@ -91,12 +91,34 @@ class JsonAdaptedContact {
         final List<TechStack> personTechStack = new ArrayList<>();
         final List<Tag> personTags = new ArrayList<>();
 
+        if (techStack.size() >= 3) {
+            throw new IllegalValueException(TechStack.MESSAGE_CONSTRAINTS_LENGTH);
+        }
+
         for (JsonAdaptedTechStack techStack : techStack) {
-            personTechStack.add(techStack.toModelType());
+            TechStack tsModel = techStack.toModelType();
+            if (!TechStack.isValidTechStackNameLength(tsModel.techStackName)) {
+                throw new IllegalValueException(TechStack.MESSAGE_CONSTRAINTS_LENGTH);
+            } else if (!TechStack.isValidTechStackName(tsModel.techStackName)) {
+                throw new IllegalValueException(TechStack.MESSAGE_CONSTRAINTS);
+            } else {
+                personTechStack.add(tsModel);
+            }
+        }
+
+        if (tags.size() >= 3) {
+            throw new IllegalValueException(TechStack.MESSAGE_CONSTRAINTS_LENGTH);
         }
 
         for (JsonAdaptedTag tag : tags) {
-            personTags.add(tag.toModelType());
+            Tag tagModel = tag.toModelType();
+            if (!Tag.isValidTagNameLength(tagModel.tagName)) {
+                throw new IllegalValueException(TechStack.MESSAGE_CONSTRAINTS_LENGTH);
+            } else if (!Tag.isValidTagName(tagModel.tagName)) {
+                throw new IllegalValueException(TechStack.MESSAGE_CONSTRAINTS);
+            } else {
+                personTags.add(tagModel);
+            }
         }
 
         if (name == null) {

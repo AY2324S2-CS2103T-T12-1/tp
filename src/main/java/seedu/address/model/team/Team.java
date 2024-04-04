@@ -18,6 +18,9 @@ public class Team {
     private final Name name;
     private final UniqueContactList members = new UniqueContactList();
 
+    private final TeamStats stats;
+
+
     /**
      * Constructs a {@code Team} with the given name.
      *
@@ -26,6 +29,7 @@ public class Team {
     public Team(Name name) {
         requireNonNull(name);
         this.name = name;
+        this.stats = new TeamStats();
     }
 
     /**
@@ -38,6 +42,7 @@ public class Team {
         requireAllNonNull(name, members);
         this.name = name;
         this.members.setContacts(members);
+        this.stats = new TeamStats(members);
     }
 
       /**
@@ -49,7 +54,11 @@ public class Team {
           return name;
       }
 
-    /**
+    public TeamStats getStats() {
+        return stats;
+    }
+
+   /**
      * Returns an unmodifiable list of members in the team.
      *
      * @return An unmodifiable list of members in the team.
