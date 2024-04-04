@@ -5,6 +5,7 @@ import java.util.Comparator;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.OverrunStyle;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
@@ -29,9 +30,9 @@ public class TeamCard extends UiPart<Region> {
     @FXML
     private Label memberCount;
     @FXML
-    private HBox techStacks;
+    private FlowPane techStacks;
     @FXML
-    private HBox tags;
+    private FlowPane tags;
 
     /**
      * Creates a {@code TeamCard} with the given {@code Team} and index to display.
