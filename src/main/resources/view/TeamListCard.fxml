@@ -29,6 +29,14 @@
             </HBox.margin>
         </Label>
     </FlowPane>
+    <HBox spacing="1">
+        <Label styleClass="cell_small_label" text="Tech Stack: " />
+        <HBox fx:id="techStacks" spacing="4" />
+    </HBox>
+    <HBox spacing="1">
+        <Label styleClass="cell_small_label" text="Tag: " />
+        <HBox fx:id="tags" spacing="4" />
+    </HBox>
    <padding>
       <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
    </padding>

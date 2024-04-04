@@ -4,12 +4,10 @@ import java.util.logging.Logger;
 
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Control;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.Region;
 import seedu.address.commons.core.LogsCenter;
-import seedu.address.model.contact.Contact;
 import seedu.address.model.team.Team;
 
 /**
@@ -17,10 +15,11 @@ import seedu.address.model.team.Team;
  */
 public class TeamListPanel extends UiPart<Region> {
     private static final String FXML = "TeamListPanel.fxml";
-    private final Logger logger = LogsCenter.getLogger(ContactListPanel.class);
+    private final Logger logger = LogsCenter.getLogger(TeamListPanel.class);
 
     @FXML
     private ListView<Team> teamListView;
+
     /**
      * Creates a {@code TeamListPanel} with the given {@code ObservableList}.
      */
