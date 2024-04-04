@@ -301,7 +301,7 @@ Copies to your clipboard the details of all the members in a particular team, so
 
 Format: `team TEAM_INDEX export`
 
-- Export the members' details of the team at the specified `INDEX`.
+- Export the members' details of the team at the specified `TEAM_INDEX`.
 - The index refers to the index number shown in the displayed teams list.
 - The index **must be a positive integer** 1, 2, 3, …​
 
