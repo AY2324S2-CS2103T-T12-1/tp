@@ -1,6 +1,7 @@
 package seedu.address.logic;
 
 import java.util.Set;
+import java.util.StringJoiner;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -63,7 +64,11 @@ public class Messages {
     public static String format(Team team) {
         final StringBuilder builder = new StringBuilder();
         builder.append(team.getName());
-        team.getMembers().forEach(builder::append);
+        builder.append(" [ ");
+        final StringJoiner joiner = new StringJoiner(", ");
+        team.getMembers().forEach(c -> joiner.add(c.getName().fullName));
+        builder.append(joiner);
+        builder.append(" ] ");
         return builder.toString();
     }
 }

@@ -198,7 +198,7 @@ Classes used by multiple components are in the `seedu.address.commons` package.
 --------------------------------------------------------------------------------------------------------------------
 
 ### Contact Class
-The Contact class is a fundamental component of the contact management system within the application. 
+The Contact class is a fundamental component of the contact management system within the application.
 It represents an individual contact entry, encapsulating various details such as name, contact information, address, GitHub username, associated tech stack, tags, and a profile picture.
 
 <puml src="diagrams/ContactClassDiagram.puml" width="550" />
