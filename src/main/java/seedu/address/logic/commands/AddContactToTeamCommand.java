@@ -48,28 +48,20 @@ public class AddContactToTeamCommand extends Command {
             throw new CommandException(Messages.MESSAGE_INVALID_CONTACT_DISPLAYED_INDEX);
         }
 
+        if (teamIndex.getZeroBased() < 0 || teamIndex.getZeroBased() >= model.getCodeConnect().getTeamList().size()) {
+            throw new CommandException(Messages.MESSAGE_INVALID_TEAM_DISPLAYED_INDEX);
+        }
+        if (contactIndex.getZeroBased() < 0 || contactIndex.getZeroBased() >= model.getFilteredContactList().size()) {
+            throw new CommandException(Messages.MESSAGE_INVALID_CONTACT_DISPLAYED_INDEX);
+        }
         Team originalTeam = model.getCodeConnect().getTeamList().get(teamIndex.getZeroBased());
 
-        Contact filteredContact = null;
-        Contact originalContact = null;
-
-        // Check if the index is within bounds of the filtered contact list
-        if (contactIndex.getZeroBased() >= 0 && contactIndex.getZeroBased() < model.getFilteredContactList().size()) {
-            filteredContact = model.getFilteredContactList().get(contactIndex.getZeroBased());
-        }
-
-        // Check if the index is within bounds of the original contact list
-        if (contactIndex.getZeroBased() >= 0 && contactIndex.getZeroBased() < model.getCodeConnect().getContactList().size()) {
-            originalContact = model.getCodeConnect().getContactList().get(contactIndex.getZeroBased());
-        }
-
-        Contact contactToAdd = (filteredContact != null) ? filteredContact : originalContact;
-
+        Contact contactToAdd = model.getFilteredContactList().get(contactIndex.getZeroBased());
         if (originalTeam.hasMember(contactToAdd)) {
             throw new CommandException(MESSAGE_DUPLICATE_CONTACT_IN_TEAM);
         }
+            Team updatedTeam = originalTeam.withAddedMember(contactToAdd);
 
-        Team updatedTeam = originalTeam.withAddedMember(contactToAdd);
 
         // Update the model with the updated team
         model.setTeam(originalTeam, updatedTeam);
