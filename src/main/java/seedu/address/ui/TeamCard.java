@@ -4,9 +4,11 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
+import seedu.address.model.tag.Tag;
 import seedu.address.model.team.Team;
 
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -23,11 +25,9 @@ public class TeamCard extends UiPart<Region> {
     @FXML
     private Label name;
 
-    @FXML
-    private Label sizeLabel;
 
-//    @FXML
-//    private HBox techStacks;
+    @FXML
+    private HBox techStacks;
     @FXML
     private HBox tags;
 
@@ -38,18 +38,30 @@ public class TeamCard extends UiPart<Region> {
         super(FXML);
         this.team = team;
 
-        name.setText(team.getName().fullName);
-        sizeLabel.setText(team.stats.size.toString());
+        name.setText(team.getName().fullName + "(" + team.stats.size.toString() + ")");
 
         tags.getChildren().clear();
 
+        Map<Tag, Integer> tagsMap = new HashMap<Tag, Integer>();
+        tagsMap.put(new Tag("Java"), 5);
+        tagsMap.put(new Tag("Python"), 3);
+        tagsMap.put(new Tag("JavaScript"), 2);
+
         // Populate tags
-        team.stats.tags.entrySet().stream()
-                .sorted()
+        tagsMap.entrySet().stream()
+                .sorted(Comparator.comparing(entry -> entry.getKey().tagName))
                 .forEach(entry -> {
                     Label tagLabel = new Label(entry.getKey().tagName + ": " + entry.getValue());
                     tags.getChildren().add(tagLabel);
                 });
+
+        tagsMap.entrySet().stream()
+                .sorted(Comparator.comparing(entry -> entry.getKey().tagName))
+                .forEach(entry -> {
+                    Label tagLabel = new Label(entry.getKey().tagName + ": " + entry.getValue());
+                    techStacks.getChildren().add(tagLabel);
+                });
+
 
     }
 }
