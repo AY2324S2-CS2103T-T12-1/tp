@@ -44,6 +44,9 @@ Well, look no further! Codeconnect is your developer-first networking app, desig
 So, get ready to explore, connect, and create with Codeconnect! 🎉 Let's turn those tech dreams into reality, one collaboration at a time! 💻✨
 
 ---
+
+
+
 ## Usage of User Guide
 This guide is designed to help you learn how to use CodeConnect effectively and explore its various features. If you are unfamiliar with programming, don't worry - we have intentionally made it beginner-friendly so that even non-developers will be able to use our guide with ease.
 
@@ -96,6 +99,30 @@ Without further ado, let's dive in and uncover the power of CodeConnect! 🚀
    - `exit` : Exits the app.
 
 1. Refer to the [Features](#features) below for details of each command.
+
+---
+
+## Getting Started
+ 
+Below you will find explanations for each key element listed on the left side of the interface.in the CodeConnect GUI.
+
+This is the text input area. This is the most important part of the program. Here is where you will key in the commands you need.
+![quickstart-input.png](images%2Fquickstart-input.png)
+
+This is the file button. Here is where you can exit the program.
+![quickstart-file.png](images%2Fquickstart-file.png)
+ 
+This is the help button. Here is where you can find any kind of help with CodeConnect.
+![quickstart-help.png](images%2Fquickstart-help.png)
+
+This is our Team display panel. All the teams added are displayed here.
+![quickstart-teamlist.png](images%2Fquickstart-teamlist.png)
+
+This si our response panel. It is where we provide responses to your CLI commands, or offer assistance.
+![quickstart-response.png](images%2Fquickstart-response.png)
+
+This is our Contact display panel. This is where results of your searches for contacts will be displayed.
+![quickstart-personlist.png](images%2Fquickstart-personlist.png)~~
 
 ---
 
