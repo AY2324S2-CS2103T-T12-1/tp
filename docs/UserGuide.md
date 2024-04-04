@@ -141,7 +141,8 @@ Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS g/GITHUB_USERNAME [t/TAG] p
 
 <box type="tip" seamless>
 
-**Tip:** A contact can have any number of tags and tech stack (including 0)
+**Tip:**
+- Note that tags and tech stacks are limited to 15 characters per label and a maximum of 3 each per contact.
 </box>
 
 Examples:
