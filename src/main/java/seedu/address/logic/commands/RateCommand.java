@@ -84,7 +84,6 @@ public class RateCommand extends Command {
 
         Contact ratedContact = rateTechStack(contactToRate, techStackToRate, rating);
 
-
         model.setContact(contactToRate, ratedContact);
         model.updateFilteredContactList(PREDICATE_SHOW_ALL_CONTACTS);
         return new CommandResult(String.format(MESSAGE_RATE_CONTACT_SUCCESS, Messages.format(ratedContact)));
@@ -144,5 +143,4 @@ public class RateCommand extends Command {
                 .add("index", index)
                 .toString();
     }
-
 }
