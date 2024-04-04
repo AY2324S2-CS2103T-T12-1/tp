@@ -19,6 +19,7 @@ import seedu.address.model.contact.Email;
 import seedu.address.model.contact.Name;
 import seedu.address.model.contact.Phone;
 import seedu.address.model.tag.Tag;
+import seedu.address.model.techstack.TechStack;
 
 public class ParserUtilTest {
     private static final String INVALID_NAME = "R@chel";
@@ -26,6 +27,9 @@ public class ParserUtilTest {
     private static final String INVALID_ADDRESS = " ";
     private static final String INVALID_EMAIL = "example.com";
     private static final String INVALID_TAG = "#friend";
+    private static final String INVALID_TAG_LENGTH = "frienddddddddddddd";
+    private static final String INVALID_TS = "C++!";
+    private static final String INVALID_TS_LENGTH = "C++!dddddddddddddddd";
 
     private static final String VALID_NAME = "Rachel Walker";
     private static final String VALID_PHONE = "123456";
@@ -33,6 +37,13 @@ public class ParserUtilTest {
     private static final String VALID_EMAIL = "rachel@example.com";
     private static final String VALID_TAG_1 = "friend";
     private static final String VALID_TAG_2 = "neighbour";
+    private static final String VALID_TAG_3 = "school";
+    private static final String VALID_TAG_4 = "colleague";
+
+    private static final String VALID_TS_1 = "Python";
+    private static final String VALID_TS_2 = "Java";
+    private static final String VALID_TS_3 = "JavaScript";
+    private static final String VALID_TS_4 = "MongoDB";
 
     private static final String WHITESPACE = " \t\r\n";
 
@@ -182,6 +193,16 @@ public class ParserUtilTest {
     }
 
     @Test
+    public void parseTags_collectionWithInvalidTagLength_throwsParseException() {
+        assertThrows(ParseException.class, () -> ParserUtil.parseTags(Arrays.asList(VALID_TAG_1, INVALID_TAG_LENGTH)));
+    }
+
+    @Test
+    public void parseTags_collectionWithTooManyTags_throwsParseException() {
+        assertThrows(ParseException.class, () -> ParserUtil.parseTags(Arrays.asList(VALID_TAG_1, VALID_TAG_2, VALID_TAG_3, VALID_TAG_4)));
+    }
+
+    @Test
     public void parseTags_emptyCollection_returnsEmptySet() throws Exception {
         assertTrue(ParserUtil.parseTags(Collections.emptyList()).isEmpty());
     }
@@ -192,5 +213,61 @@ public class ParserUtilTest {
         Set<Tag> expectedTagSet = new HashSet<Tag>(Arrays.asList(new Tag(VALID_TAG_1), new Tag(VALID_TAG_2)));
 
         assertEquals(expectedTagSet, actualTagSet);
+    }
+
+    @Test
+    public void parseTS_null_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> ParserUtil.parseTechStack(null));
+    }
+
+    @Test
+    public void parseTS_invalidValue_throwsParseException() {
+        assertThrows(ParseException.class, () -> ParserUtil.parseTechStack(INVALID_TS));
+    }
+
+    @Test
+    public void parseTechStack_validValueWithoutWhitespace_returnsTS() throws Exception {
+        TechStack expectedTS = new TechStack(VALID_TS_1);
+        assertEquals(expectedTS, ParserUtil.parseTechStack(VALID_TS_1));
+    }
+
+    @Test
+    public void parseTechStack_validValueWithWhitespace_returnsTrimmedTS() throws Exception {
+        String TSWithWhitespace = WHITESPACE + VALID_TS_1 + WHITESPACE;
+        TechStack expectedTS = new TechStack(VALID_TS_1);
+        assertEquals(expectedTS, ParserUtil.parseTechStack(TSWithWhitespace));
+    }
+
+    @Test
+    public void parseTechStacks_null_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> ParserUtil.parseTechStacks(null));
+    }
+
+    @Test
+    public void parseTechStacks_collectionWithInvalidTechStacks_throwsParseException() {
+        assertThrows(ParseException.class, () -> ParserUtil.parseTechStacks(Arrays.asList(VALID_TS_1, INVALID_TS)));
+    }
+
+    @Test
+    public void parseTechStacks_collectionWithInvalidTSLength_throwsParseException() {
+        assertThrows(ParseException.class, () -> ParserUtil.parseTechStacks(Arrays.asList(VALID_TS_1, INVALID_TS_LENGTH)));
+    }
+
+    @Test
+    public void parseTechStacks_collectionWithTooManyTechStacks_throwsParseException() {
+        assertThrows(ParseException.class, () -> ParserUtil.parseTechStacks(Arrays.asList(VALID_TS_1, VALID_TS_2, VALID_TS_3, VALID_TS_4)));
+    }
+
+    @Test
+    public void parseTechStacks_emptyCollection_returnsEmptySet() throws Exception {
+        assertTrue(ParserUtil.parseTechStacks(Collections.emptyList()).isEmpty());
+    }
+
+    @Test
+    public void parseTechStacks_collectionWithValidTechStacks_returnsTSSet() throws Exception {
+        Set<TechStack> actualTechStackset = ParserUtil.parseTechStacks(Arrays.asList(VALID_TS_1, VALID_TS_2));
+        Set<TechStack> expectedTechStackset = new HashSet<TechStack>(Arrays.asList(new TechStack(VALID_TS_1), new TechStack(VALID_TS_2)));
+
+        assertEquals(expectedTechStackset, actualTechStackset);
     }
 }

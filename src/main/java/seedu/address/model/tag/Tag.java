@@ -10,6 +10,7 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 public class Tag {
 
     public static final String MESSAGE_CONSTRAINTS = "Tags names should be alphanumeric";
+    public static final String MESSAGE_CONSTRAINTS_LENGTH = "Tag names should not exceed 15 characters, and no more than 3 tags should be added.";
     public static final String VALIDATION_REGEX = "\\p{Alnum}+";
 
     public final String tagName;
@@ -31,6 +32,14 @@ public class Tag {
     public static boolean isValidTagName(String test) {
         return test.matches(VALIDATION_REGEX);
     }
+
+    /**
+     * Returns true if a given string is a valid tag name length.
+     */
+    public static boolean isValidTagNameLength(String test) {
+        return test.length() <= 15;
+    }
+
 
     @Override
     public boolean equals(Object other) {

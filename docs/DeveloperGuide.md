@@ -577,7 +577,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 1a. The default desktop mail application is not available on the system.
     * 1a1. CodeConnect displays an error message indicating that the desktop mail application is not supported.
-
       Use case ends.
 
 **Use case: UC09 - Viewing command history**
@@ -595,6 +594,25 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 3a. CodeConnect does not find any previous/next command in the command history.
       Use case ends.
+
+**Use case: UC10 - Export team members' details**
+
+**MSS**
+
+1. User requests to export the details of team members of a specific team.
+2. CodeConnect retrieves the details of the team members.
+3. CodeConnect copies the teams' details to the clipboard.
+
+   Use case ends.
+
+**Extensions**
+
+* 2a. An invalid index is passed into the command.
+  * 2a1. CodeConnect shows an error message.
+    Use case ends.
+* 2b. CodeConnect does not find any team members in the team.
+  * 2b1. CodeConnect shows an error message.
+    Use case ends.
 
 *{More to be added}*
 

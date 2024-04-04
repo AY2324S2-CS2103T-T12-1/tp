@@ -11,6 +11,8 @@ public class TechStack {
 
     public static final String MESSAGE_CONSTRAINTS = "Tech stack names should contain only alphanumeric characters," +
             " underscores (_), number signs (#), hyphens (-), periods (.), and plus signs (+).";
+    public static final String MESSAGE_CONSTRAINTS_LENGTH = "Tech stack names should not exceed 15 characters, and no more than 3 tech stacks should be added.";
+
     public static final String VALIDATION_REGEX = "[\\p{Alnum}+.#-]+";
     public final String techStackName;
 
@@ -30,6 +32,13 @@ public class TechStack {
      */
     public static boolean isValidTechStackName(String test) {
         return test.matches(VALIDATION_REGEX);
+    }
+
+    /**
+     * Returns true if a given string is a valid tech stack name length.
+     */
+    public static boolean isValidTechStackNameLength(String test) {
+        return test.length() <= 15;
     }
 
     @Override

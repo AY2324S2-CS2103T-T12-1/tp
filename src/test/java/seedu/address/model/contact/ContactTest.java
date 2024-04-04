@@ -5,6 +5,8 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_GITHUB_USERNAME_AMY;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_GITHUB_USERNAME_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
@@ -37,17 +39,30 @@ public class ContactTest {
                 .withAddress(VALID_ADDRESS_BOB).withTags(VALID_TAG_HUSBAND).build();
         assertTrue(ALICE.isSameContact(editedAlice));
 
-        // different name, all other attributes same -> returns false
+        // different name, all other attributes same -> returns true
         editedAlice = new ContactBuilder(ALICE).withName(VALID_NAME_BOB).build();
+        assertTrue(ALICE.isSameContact(editedAlice));
+
+        // different name, different GitHub username, all other attributes same -> return false
+        editedAlice = new ContactBuilder(ALICE).withName(VALID_NAME_BOB).withGitHubUsername(VALID_GITHUB_USERNAME_BOB).build();
         assertFalse(ALICE.isSameContact(editedAlice));
 
-        // name differs in case, all other attributes same -> returns false
+        // name differs in case, all other attributes same -> returns true
         Contact editedBob = new ContactBuilder(BOB).withName(VALID_NAME_BOB.toLowerCase()).build();
+        assertTrue(BOB.isSameContact(editedBob));
+
+        // name differs in case, different GitHub username, all other attributes same -> returns false
+        editedBob = new ContactBuilder(BOB).withName(VALID_NAME_BOB.toLowerCase()).withGitHubUsername(VALID_GITHUB_USERNAME_AMY).build();
         assertFalse(BOB.isSameContact(editedBob));
 
-        // name has trailing spaces, all other attributes same -> returns false
+        // name has trailing spaces, all other attributes same -> returns true
         String nameWithTrailingSpaces = VALID_NAME_BOB + " ";
         editedBob = new ContactBuilder(BOB).withName(nameWithTrailingSpaces).build();
+        assertTrue(BOB.isSameContact(editedBob));
+
+        // name has trailing spaces, different GitHub username, all other attributes same -> returns false
+        nameWithTrailingSpaces = VALID_NAME_BOB + " ";
+        editedBob = new ContactBuilder(BOB).withName(nameWithTrailingSpaces).withGitHubUsername(VALID_GITHUB_USERNAME_AMY).build();
         assertFalse(BOB.isSameContact(editedBob));
     }
 

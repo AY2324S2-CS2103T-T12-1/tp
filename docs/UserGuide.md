@@ -141,7 +141,8 @@ Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS g/GITHUB_USERNAME [t/TAG] p
 
 <box type="tip" seamless>
 
-**Tip:** A contact can have any number of tags and tech stack (including 0)
+**Tip:**
+- Note that tags and tech stacks are limited to 15 characters per label and a maximum of 3 each per contact.
 </box>
 
 Examples:
@@ -250,7 +251,7 @@ Format: `exit`
 
 ### Team related commands
 
-All teams related commands start with the prefix: `team`
+All team related commands start with the prefix: `team`
 
 #### Adding a team: `add`
 
@@ -298,9 +299,9 @@ Examples:
 
 Copies to your clipboard the details of all the members in a particular team, so that you have an easy time signing up for hackathons!
 
-Format: `team TEAM_INDEX export`
+Format: `team INDEX export`
 
-- Export the members' details of the team at the specified `TEAM_INDEX`.
+- Export the members' details of the team at the specified `INDEX`.
 - The index refers to the index number shown in the displayed teams list.
 - The index **must be a positive integer** 1, 2, 3, …​
 

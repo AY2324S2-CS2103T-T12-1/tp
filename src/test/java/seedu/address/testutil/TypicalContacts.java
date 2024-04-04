@@ -2,6 +2,7 @@ package seedu.address.testutil;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import seedu.address.model.CodeConnect;
@@ -67,8 +68,6 @@ public class TypicalContacts {
             .withAddress("4th street")
             .withGitHubUsername("GeBest2103").build();
 
-    public static final String KEYWORD_MATCHING_MEIER = "Meier"; // A keyword that matches MEIER
-
     // Manually added
     public static final Contact HOON = new ContactBuilder().withName("Hoon Meier")
             .withPhone("8482424")
@@ -113,6 +112,7 @@ public class TypicalContacts {
     public static List<Team> getTypicalTeams() {
         return List.of(
                 new Team(new Name("NUS"), List.of(ELLE, BENSON, CARL)),
-                new Team(new Name("NTU"), List.of(FIONA, DANIEL, ELLE)));
+                new Team(new Name("NTU"), List.of(FIONA, DANIEL, ELLE)),
+                new Team(new Name("SMU"), Collections.emptyList()));
     }
 }
