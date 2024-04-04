@@ -259,7 +259,7 @@ You can use the `add` team command to create teams of contacts, which will help 
 
   Format: `team add n/TEAM_NAME`
 
-- TEAM_NAME can only contain alphanumeric characters and spaces and cannot be blank.
+- `TEAM_NAME` can only contain alphanumeric characters and spaces and cannot be blank.
 - Each team in CodeConnect needs to have a unique name, so you can't add a team if another team with the same name is already present in the team list.
 - Team names are case-sensitive, so it's fine to have two teams named `NUS HACK 2024` and `Nus Hack 2024`.
 
