@@ -1,12 +1,15 @@
 package seedu.address.ui;
 
+import java.util.Comparator;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.OverrunStyle;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
+import javafx.scene.layout.VBox;
 import seedu.address.model.team.Team;
-
-import java.util.Comparator;
 
 
 /**
@@ -19,15 +22,17 @@ public class TeamCard extends UiPart<Region> {
     public final Team team;
 
     @FXML
-    private HBox cardPane;
+    private VBox cardPane;
     @FXML
     private Label name;
-
-
     @FXML
-    private HBox techStacks;
+    private Label id;
     @FXML
-    private HBox tags;
+    private Label memberCount;
+    @FXML
+    private FlowPane techStacks;
+    @FXML
+    private FlowPane tags;
 
     /**
      * Creates a {@code TeamCard} with the given {@code Team} and index to display.
@@ -36,11 +41,12 @@ public class TeamCard extends UiPart<Region> {
         super(FXML);
         this.team = team;
 
-        name.setText(team.getName().fullName + "(" + team.getStats().size.toString() + ")");
+        id.setText(displayedIndex + ". ");
+        id.setTextOverrun(OverrunStyle.CLIP);
+        name.setText(team.getName().fullName);
+        memberCount.setText(String.format("(%d members)", team.getMembers().size()));
 
         tags.getChildren().clear();
-
-
         // Populate tags
         team.getStats().tags.entrySet().stream()
                 .sorted(Comparator.comparing(entry -> entry.getKey().tagName))

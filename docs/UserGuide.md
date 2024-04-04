@@ -249,17 +249,59 @@ Exits the program.
 
 Format: `exit`
 
-### Teams related commands
+### Team related commands
 
-All teams related commands start with the prefix: `team`
+All team related commands start with the prefix: `team`
+
+#### Adding a team: `add`
+
+You can use the `add` team command to create teams of contacts, which will help you to keep track of your teams when joining hackathons!
+
+  Format: `team add n/TEAM_NAME`
+
+- `TEAM_NAME` can only contain alphanumeric characters and spaces and cannot be blank.
+- Each team in CodeConnect needs to have a unique name, so you can't add a team if another team with the same name is already present in the team list.
+- Team names are case-sensitive, so it's fine to have two teams named `NUS HACK 2024` and `Nus Hack 2024`.
+
+Examples:
+
+- `team add n/NUS HACK 2024` adds a new team named `NUS HACK 2024` into the teams list.
+
+#### List members belonging to a team:
+
+You can enter `team` followed by a team's index number to list the members that are in it.
+
+Format: `team TEAM_INDEX`
+
+- Export the members' details of the team at the specified `TEAM_INDEX`.
+- The index refers to the index number shown in the displayed teams list.
+- The index **must be a positive integer** 1, 2, 3, …​
+
+Examples:
+
+- `team 1` updates the contact list to show the members of the first team.
+
+#### Deleting a team: `delete`
+
+You can use the `delete` team command to delete a team from your team list. After deleting a team, you will still be able to find its members in the contact list.
+
+Format: `team TEAM_INDEX delete`
+
+- Deletes the team at the specified `TEAM_INDEX`.
+- The index refers to the index number shown in the displayed teams list.
+- The index **must be a positive integer** 1, 2, 3, …​
+
+Examples:
+
+- `team 1 delete` deletes the first team in the team list.
 
 #### Exporting team details: `export`
 
 Copies to your clipboard the details of all the members in a particular team, so that you have an easy time signing up for hackathons!
 
-Format: `team INDEX export`
+Format: `team TEAM_INDEX export`
 
-- Export the members' details of the team at the specified `INDEX`.
+- Export the members' details of the team at the specified `TEAM_INDEX`.
 - The index refers to the index number shown in the displayed teams list.
 - The index **must be a positive integer** 1, 2, 3, …​
 
@@ -332,5 +374,8 @@ _Details coming soon ..._
 | **Find Tech Stack**       | `find-ts KEYWORD [MORE_KEYWORDS]`<br> e.g., `find-ts Java Python`                                                                                                                                                                                                                                                                     |
 | **List**                  | `list`                                                                                                                                                                                                                                                                                                                                |
 | **Help**                  | `help`                                                                                                                                                                                                                                                                                                                                |
-| **Team - Export Details** | `team INDEX export`<br> e.g., `team 1 export`                                                                                                                                                                                                                                                                                         |
+| **Team - Add**            | `team add n/NAME`<br> e.g., `team add n/NUS HACK 2024`                                                                                                                                                                                                                                                                                |
+| **Team - Delete**         | `team TEAM_INDEX delete`<br> e.g., `team 1 delete`                                                                                                                                                                                                                                                                                    |
+| **Team - List**           | `team TEAM_INDEX`<br> e.g., `team 1`                                                                                                                                                                                                                                                                                                  |
+| **Team - Export Details** | `team TEAM_INDEX export`<br> e.g., `team 1 export`                                                                                                                                                                                                                                                                                    |
 | **Exit**                  | `exit`                                                                                                                                                                                                                                                                                                                                |
