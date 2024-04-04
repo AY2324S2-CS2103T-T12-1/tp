@@ -38,20 +38,20 @@ public class TeamCard extends UiPart<Region> {
         super(FXML);
         this.team = team;
 
-        name.setText(team.getName().fullName + "(" + team.stats.size.toString() + ")");
+        name.setText(team.getName().fullName + "(" + team.getStats().size.toString() + ")");
 
         tags.getChildren().clear();
 
 
         // Populate tags
-        team.stats.tags.entrySet().stream()
+        team.getStats().tags.entrySet().stream()
                 .sorted(Comparator.comparing(entry -> entry.getKey().tagName))
                 .forEach(entry -> {
                     Label tagLabel = new Label(entry.getKey().tagName + ": " + entry.getValue());
                     tags.getChildren().add(tagLabel);
                 });
 
-        team.stats.techStack.entrySet().stream()
+        team.getStats().techStack.entrySet().stream()
                 .sorted(Comparator.comparing(entry -> entry.getKey().techStackName))
                 .forEach(entry -> {
                     Label tagLabel = new Label(entry.getKey().techStackName + ": " + entry.getValue());

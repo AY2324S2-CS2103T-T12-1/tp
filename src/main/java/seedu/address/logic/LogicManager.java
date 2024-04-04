@@ -74,7 +74,9 @@ public class LogicManager implements Logic {
     }
 
     @Override
-    public ObservableList<Team> getTeamList() {return model.getCodeConnect().getTeamList();}
+    public ObservableList<Team> getTeamList() {
+        return model.getCodeConnect().getTeamList();
+    }
 
     @Override
     public Path getCodeConnectFilePath() {

@@ -17,7 +17,7 @@ public class Team {
     private final Name name;
     private final UniqueContactList members = new UniqueContactList();
 
-    public final TeamStats stats;
+    private final TeamStats stats;
 
 
     /**
@@ -41,6 +41,10 @@ public class Team {
 
     public Name getName() {
         return name;
+    }
+
+    public TeamStats getStats() {
+        return stats;
     }
 
     public List<Contact> getMembers() {

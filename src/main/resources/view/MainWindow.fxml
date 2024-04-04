@@ -48,7 +48,7 @@
         </StackPane>
 
         <!-- Team List Panel -->
-        <HBox VBox.vgrow="NEVER" HBox.hgrow="ALWAYS" alignment="CENTER_LEFT">
+        <HBox VBox.vgrow="ALWAYS" HBox.hgrow="ALWAYS" alignment="CENTER_LEFT">
 
 
 
