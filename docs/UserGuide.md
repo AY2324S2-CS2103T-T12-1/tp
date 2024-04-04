@@ -299,7 +299,7 @@ Examples:
 
 Copies to your clipboard the details of all the members in a particular team, so that you have an easy time signing up for hackathons!
 
-Format: `team INDEX export`
+Format: `team TEAM_INDEX export`
 
 - Export the members' details of the team at the specified `INDEX`.
 - The index refers to the index number shown in the displayed teams list.
