@@ -48,7 +48,7 @@ public class TechStack {
     public static boolean isValidTechStackRating(Integer rating) {
         return rating >= 0 && rating <= 10;
     }
-    
+
     /**
      * Returns true if a given string is a valid tech stack name length.
      */

@@ -155,7 +155,7 @@ public class JsonAdaptedContactTest {
     @Test
     public void toModelType_invalidTechStacks_throwsIllegalValueException() {
         List<JsonAdaptedTechStack> invalidTS = new ArrayList<>(VALID_TECH_STACK);
-        invalidTS.add(new JsonAdaptedTechStack(INVALID_TECH_STACK));
+        invalidTS.add(new JsonAdaptedTechStack(INVALID_TECH_STACK, 15));
         JsonAdaptedContact contact =
                 new JsonAdaptedContact(VALID_NAME, VALID_PHONE, VALID_EMAIL, VALID_ADDRESS,
                         VALID_GITHUB_USERNAME, VALID_PROFILE_PICTURE, invalidTS, VALID_TAGS);
@@ -165,9 +165,9 @@ public class JsonAdaptedContactTest {
     @Test
     public void toModelType_tooManyTechStacks_throwsIllegalValueException() {
         List<JsonAdaptedTechStack> tooManyTS = new ArrayList<>(VALID_TECH_STACK);
-        tooManyTS.add(new JsonAdaptedTechStack("my ts1"));
-        tooManyTS.add(new JsonAdaptedTechStack("my ts2"));
-        tooManyTS.add(new JsonAdaptedTechStack("my ts3"));
+        tooManyTS.add(new JsonAdaptedTechStack("my ts1", 4));
+        tooManyTS.add(new JsonAdaptedTechStack("my ts2", 7));
+        tooManyTS.add(new JsonAdaptedTechStack("my ts3", 9));
         JsonAdaptedContact contact =
                 new JsonAdaptedContact(VALID_NAME, VALID_PHONE, VALID_EMAIL, VALID_ADDRESS,
                         VALID_GITHUB_USERNAME, VALID_PROFILE_PICTURE, tooManyTS, VALID_TAGS);
