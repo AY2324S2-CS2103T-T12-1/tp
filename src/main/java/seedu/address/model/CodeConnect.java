@@ -98,6 +98,7 @@ public class CodeConnect implements ReadOnlyCodeConnect {
      */
     public void removeContact(Contact key) {
         contacts.remove(key);
+        getTeamList().stream().filter(t -> t.hasMember(key)).forEach(t -> setTeam(t, t.withRemovedMember(key)));
     }
 
     //// team-level operations
