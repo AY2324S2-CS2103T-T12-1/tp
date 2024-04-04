@@ -13,14 +13,16 @@ Class ModelManager
 Class UserPrefs
 
 Class UniqueContactList
+Class UniqueTeamList
 Class Contact
-Class Address
-Class Email
 Class Name
 Class Phone
+Class Address
+Class Email
 Class GitHubUsername
 Class Tag
 Class TechStack
+Class Team
 
 Class I #FFFFFF
 }
@@ -37,21 +39,29 @@ ModelManager -left-> "1" CodeConnect
 ModelManager -right-> "1" UserPrefs
 UserPrefs .up.|> ReadOnlyUserPrefs
 
-CodeConnect *--> "1" UniqueContactList
+CodeConnect *-down-> "1" UniqueContactList
+CodeConnect *--> "1" UniqueTeamList
 UniqueContactList --> "~* all" Contact
+UniqueTeamList --> "~* all" Team
+Team *-up-> "1" UniqueContactList
+Team *--> Name
+
 Contact *--> Name
 Contact *--> Phone
 Contact *--> Email
 Contact *--> Address
+Contact *--> GitHubUsername
 Contact *--> "*" Tag
 Contact *--> "*" TechStack
 
-Contact -[hidden]up--> I
-UniqueContactList -[hidden]right-> I
 
-Name -[hidden]right-> Phone
-Phone -[hidden]right-> Address
-Address -[hidden]right-> Email
+Name -[hidden]r-> Phone
+Phone -[hidden]r-> Address
+Address -[hidden]r-> Email
+Email -[hidden]r-> GitHubUsername
+GitHubUsername -[hidden]r-> Tag
+Tag -[hidden]r-> TechStack
+
 
 ModelManager --> "~* filtered" Contact
 @enduml

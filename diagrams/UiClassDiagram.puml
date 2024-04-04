@@ -13,6 +13,8 @@ Class HelpWindow
 Class ResultDisplay
 Class ContactListPanel
 Class ContactCard
+Class TeamListPanel
+Class TeamCard
 Class StatusBarFooter
 Class CommandBox
 }
@@ -33,10 +35,12 @@ UiManager -down-> "1" MainWindow
 MainWindow *-down->  "1" CommandBox
 MainWindow *-down-> "1" ResultDisplay
 MainWindow *-down-> "1" ContactListPanel
+MainWindow *-down-> "1" TeamListPanel
 MainWindow *-down-> "1" StatusBarFooter
 MainWindow --> "0..1" HelpWindow
 
 ContactListPanel -down-> "*" ContactCard
+TeamListPanel -down-> "*" TeamCard
 
 MainWindow -left-|> UiPart
 
@@ -44,10 +48,12 @@ ResultDisplay --|> UiPart
 CommandBox --|> UiPart
 ContactListPanel --|> UiPart
 ContactCard --|> UiPart
+TeamCard --|> UiPart
 StatusBarFooter --|> UiPart
 HelpWindow --|> UiPart
 
 ContactCard ..> Model
+TeamCard ..> Model
 UiManager -right-> Logic
 MainWindow -left-> Logic
 
