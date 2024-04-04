@@ -42,23 +42,19 @@ public class TeamCard extends UiPart<Region> {
 
         tags.getChildren().clear();
 
-        Map<Tag, Integer> tagsMap = new HashMap<Tag, Integer>();
-        tagsMap.put(new Tag("Java"), 5);
-        tagsMap.put(new Tag("Python"), 3);
-        tagsMap.put(new Tag("JavaScript"), 2);
 
         // Populate tags
-        tagsMap.entrySet().stream()
+        team.stats.tags.entrySet().stream()
                 .sorted(Comparator.comparing(entry -> entry.getKey().tagName))
                 .forEach(entry -> {
                     Label tagLabel = new Label(entry.getKey().tagName + ": " + entry.getValue());
                     tags.getChildren().add(tagLabel);
                 });
 
-        tagsMap.entrySet().stream()
-                .sorted(Comparator.comparing(entry -> entry.getKey().tagName))
+        team.stats.techStack.entrySet().stream()
+                .sorted(Comparator.comparing(entry -> entry.getKey().techStackName))
                 .forEach(entry -> {
-                    Label tagLabel = new Label(entry.getKey().tagName + ": " + entry.getValue());
+                    Label tagLabel = new Label(entry.getKey().techStackName + ": " + entry.getValue());
                     techStacks.getChildren().add(tagLabel);
                 });
 
