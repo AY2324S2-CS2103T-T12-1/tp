@@ -1,39 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.RowConstraints?>
 
-<HBox id="cardPane" fx:id="cardPane" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
-    <VBox alignment="CENTER_LEFT" minWidth="200">
-        <padding>
-            <Insets bottom="5" left="15" right="5" top="5" />
-        </padding>
-        <Label fx:id="name" styleClass="cell_big_label" text="\$first" />
-        <padding>
-            <Insets bottom="5" left="15" right="5" top="5" />
-        </padding>
-        <HBox spacing="1">
-            <Label styleClass="cell_small_label" text="Tech Stack: " />
-            <HBox fx:id="techStacks" spacing="4" />
-        </HBox>
-        <HBox spacing="1">
-            <Label styleClass="cell_small_label" text="Tag: " />
-            <HBox fx:id="tags" spacing="4" />
-        </HBox>
-    </VBox>
-    <GridPane HBox.hgrow="ALWAYS">
-        <columnConstraints>
-            <ColumnConstraints hgrow="ALWAYS" />
-        </columnConstraints>
-        <rowConstraints>
-            <RowConstraints />
-        </rowConstraints>
-        <VBox alignment="CENTER_LEFT" GridPane.columnIndex="0">
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-        </VBox>
-    </GridPane>
-</HBox>
+<VBox id="cardPane" fx:id="cardPane" minWidth="10.0" spacing="5.0" HBox.hgrow="ALWAYS" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+    <FlowPane alignment="CENTER_LEFT" maxWidth="1.7976931348623157E308" vgap="5">
+        <HBox>
+            <children>
+                <Label fx:id="id" styleClass="cell_big_label">
+                    <minWidth>
+                        <!-- Ensures that the label text is never truncated -->
+                        <Region fx:constant="USE_PREF_SIZE" />
+                    </minWidth>
+                </Label>
+                <Label fx:id="name" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="cell_big_label" text="\$first" />
+            </children>
+        </HBox>
+        <Label fx:id="memberCount" layoutX="15.0" layoutY="10.0" style="-fx-font-size: 13px; -fx-font-style: italic; -fx-font-family: Segoe UI Light;" styleClass=".label-status" text="(4 Members)" textOverrun="CLIP">
+            <font>
+                <Font name="Segoe UI Light Italic" size="12.0" />
+            </font>
+            <HBox.margin>
+                <Insets />
+            </HBox.margin>
+        </Label>
+    </FlowPane>
+    <HBox spacing="1" VBox.vgrow="ALWAYS">
+        <Label minWidth="-Infinity" styleClass="cell_small_label" text="Tech Stack: " />
+        <FlowPane fx:id="techStacks" vgap="3" HBox.hgrow="ALWAYS" />
+    </HBox>
+    <HBox spacing="1" VBox.vgrow="ALWAYS">
+        <Label minWidth="-Infinity" styleClass="cell_small_label" text="Tag: " />
+        <FlowPane fx:id="tags" vgap="3" HBox.hgrow="ALWAYS" />
+    </HBox>
+   <padding>
+      <Insets bottom="10.0" left="15.0" right="15.0" top="10.0" />
+   </padding>
+</VBox>
