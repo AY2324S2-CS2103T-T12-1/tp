@@ -286,13 +286,13 @@ You can use the `delete` team command to delete a team from your team list. Afte
 
 Format: `team TEAM_INDEX delete`
 
-- Export the members' details of the team at the specified `TEAM_INDEX`.
+- Deletes the team at the specified `TEAM_INDEX`.
 - The index refers to the index number shown in the displayed teams list.
 - The index **must be a positive integer** 1, 2, 3, …​
 
 Examples:
 
-- `team 1 export` deletes the first team in the team list.
+- `team 1 delete` deletes the first team in the team list.
 
 #### Exporting team details: `export`
 
