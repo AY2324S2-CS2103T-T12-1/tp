@@ -10,7 +10,8 @@
 
 ![Ui](images/Ui.png)
 
-**CodeConnect is a desktop application for managing your contact details.** While it has a GUI, most of the user interactions happen using a CLI (Command Line Interface).
+CodeConnect is a **developer-first networking application** for student developers to keep track of and reach out easily to other student developers, so they can easily form teams for hackathons.<br>
+While it has a GUI, most of the user interactions happen using a **CLI (Command Line Interface)**.
 
 * If you are interested in using CodeConnect, head over to the [_Quick Start_ section of the **User Guide**](UserGuide.html#quick-start).
 * If you are interested about developing CodeConnect, the [**Developer Guide**](DeveloperGuide.html) is a good place to start.
