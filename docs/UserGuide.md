@@ -295,6 +295,39 @@ Examples:
 
 - `team 1 delete` deletes the first team in the team list.
 
+#### Adding a contact to a team: `add-contact`
+
+Adds a contact to a specific team in your team list. 
+A user can only add a contact from the list they are currently viewing (after filtering). 
+Otherwise, they have to first enter the command `list` to view the contacts and then add a contact to the team.
+
+Format: `team TEAM_INDEX add-contact CONTACT_INDEX`
+
+- Adds the contact at the specified `CONTACT_INDEX` to the team at the specified `TEAM_INDEX`.
+- The `TEAM_INDEX` refers to the index number shown in the displayed teams list.
+- The `CONTACT_INDEX` refers to the index number of the contact shown in the contact list the user sees.
+- Both indexes must be positive integers.
+
+Examples:
+- `team 4 add-contact 1` adds the contact at index 1 of the contact list you are currently viewing to the fourth team in the team list.
+- Enter `team 4` to view the updated members of the team.
+
+#### Deleting a contact from a team: `delete-contact`
+
+Deletes a contact from a specific team in your team list.
+
+Format: team `TEAM_INDEX` delete-contact `CONTACT_INDEX`
+
+- Deletes the contact at the specified `CONTACT_INDEX` from the team at the specified `TEAM_INDEX`.
+- The `TEAM_INDEX` refers to the index number shown in the displayed teams list.
+- The `CONTACT_INDEX` refers to the index number of the contact shown in the contact list the user sees.
+- Both indexes must be positive integers.
+
+Examples:
+
+- `team 1 delete-contact 3` deletes the contact at index 3 from the first team in the team list.
+- Enter `team 1` to view the updated members of the team.
+
 #### Exporting team details: `export`
 
 Copies to your clipboard the details of all the members in a particular team, so that you have an easy time signing up for hackathons!

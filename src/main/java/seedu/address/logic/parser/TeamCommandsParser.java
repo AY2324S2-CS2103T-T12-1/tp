@@ -8,8 +8,10 @@ import java.util.regex.Pattern;
 
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.core.index.Index;
+import seedu.address.logic.commands.AddContactToTeamCommand;
 import seedu.address.logic.commands.AddTeamCommand;
 import seedu.address.logic.commands.Command;
+import seedu.address.logic.commands.DeleteContactFromTeamCommand;
 import seedu.address.logic.commands.DeleteTeamCommand;
 import seedu.address.logic.commands.ExportTeamCommand;
 import seedu.address.logic.commands.ListTeamCommand;
@@ -23,6 +25,8 @@ public class TeamCommandsParser {
 
     public static final String MESSAGE_USAGE = "Commands for team management:\n"
             + AddTeamCommand.MESSAGE_USAGE + "\n\n"
+            + AddContactToTeamCommand.MESSAGE_USAGE + "\n\n"
+            + DeleteContactFromTeamCommand.MESSAGE_USAGE + "\n\n"
             + ListTeamCommand.MESSAGE_USAGE + "\n\n"
             + DeleteTeamCommand.MESSAGE_USAGE + "\n\n"
             + ExportTeamCommand.MESSAGE_USAGE;
@@ -58,20 +62,26 @@ public class TeamCommandsParser {
         Index parsedIndex;
 
         switch (subCommand) {
-        case AddTeamCommand.COMMAND_WORD:
-            return new AddTeamCommandParser().parse(args);
-        case ListTeamCommand.COMMAND_WORD:
-            parsedIndex = ParserUtil.parseIndex(index);
-            return new ListTeamCommand(parsedIndex);
-        case DeleteTeamCommand.COMMAND_WORD:
-            parsedIndex = ParserUtil.parseIndex(index);
-            return new DeleteTeamCommand(parsedIndex);
-        case ExportTeamCommand.COMMAND_WORD:
+            case AddTeamCommand.COMMAND_WORD:
+                return new AddTeamCommandParser().parse(args);
+            case ListTeamCommand.COMMAND_WORD:
+                parsedIndex = ParserUtil.parseIndex(index);
+                return new ListTeamCommand(parsedIndex);
+            case DeleteTeamCommand.COMMAND_WORD:
+                parsedIndex = ParserUtil.parseIndex(index);
+                return new DeleteTeamCommand(parsedIndex);
+            case AddContactToTeamCommand.COMMAND_WORD:
+                String indices = index + args;
+                return new AddContactToTeamCommandParser().parse(indices);
+            case DeleteContactFromTeamCommand.COMMAND_WORD:
+                indices = index + args;
+                return new DeleteContactFromTeamCommandParser().parse(indices);
+            case ExportTeamCommand.COMMAND_WORD:
             parsedIndex = ParserUtil.parseIndex(index);
             return new ExportTeamCommand(parsedIndex);
-        default:
-            logger.finer("This user input caused a ParseException: " + arguments);
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, MESSAGE_USAGE));
+            default:
+                logger.finer("This user input caused a ParseException: " + arguments);
+                throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, MESSAGE_USAGE));
         }
 
     }

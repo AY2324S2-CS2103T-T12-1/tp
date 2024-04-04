@@ -100,6 +100,8 @@ public class CodeConnect implements ReadOnlyCodeConnect {
         contacts.remove(key);
     }
 
+    //// team-level operations
+
     /**
      * Returns true if a team with the same identity as {@code team} exists in CodeConnect.
      */

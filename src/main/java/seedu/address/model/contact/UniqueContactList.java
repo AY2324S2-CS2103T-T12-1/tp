@@ -147,4 +147,5 @@ public class UniqueContactList implements Iterable<Contact> {
         }
         return true;
     }
+
 }

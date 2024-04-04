@@ -9,7 +9,6 @@ import java.util.Set;
 
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.model.tag.Tag;
-
 import seedu.address.model.techstack.TechStack;
 
 /**
@@ -28,7 +27,6 @@ public class Contact {
     private final GitHubUsername gitHubUsername;
     private final Set<TechStack> techStack = new HashSet<>();
     private final Set<Tag> tags = new HashSet<>();
-
     private final ProfilePicture profilePicture;
 
     /**
