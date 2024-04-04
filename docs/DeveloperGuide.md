@@ -207,6 +207,12 @@ Take note that while contacts may not always have all valid details, such as a m
 null cases should be handled seperately within the ProfilePicture class. A contacts's attribute should never
 be left null. This ensures that such invalid cases are always handled in that seperate class, keeping contact lean.
 
+### Team Class
+The Team class represents a group of contacts in the application.
+<puml src="diagrams/TeamClassDiagram.puml" width="550" />
+
+Note that with the use of `UniqueTeamList`, each contact in a team is guaranteed to be unique. However, each contact
+may belong in more than one team.
 
 ## **Implementation**
 
@@ -406,6 +412,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* *`    | Forgetful Student                       | add profile pictures for each contact                                                                             | know who I am contacting                                                |
 | `* * *`  | Student                                 | search for contacts based on their technical skills                                                               | form teams for hackathons more easily                                   |
 | `*`      | Student                                 | view my most used commands while typing                                                                           | save time typing out the full command                                   |
+| `* * *`  | Student                                 | create teams of contacts                                                                                          | keep track of my teammates when participating in hackathons             |
+| `* * *`  | Student                                 | add contacts to a team                                                                                            | can update my team as it changes                                        |
 | `*`      | Student signing up for a hackathon      | export the contact details of my team                                                                             | easily sign up for events                                               |
 | `*`      | Student                                 | place reminders for meetings with my contacts                                                                     | keep track of them                                                      |
 | `* *`    | New user                                | import existing contacts into this application                                                                    | reuse contacts that I have saved previously                             |
@@ -569,7 +577,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 1a. The default desktop mail application is not available on the system.
     * 1a1. CodeConnect displays an error message indicating that the desktop mail application is not supported.
-
       Use case ends.
 
 **Use case: UC09 - Viewing command history**
@@ -588,6 +595,72 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 * 3a. CodeConnect does not find any previous/next command in the command history.
       Use case ends.
 
+**Use case: UC10 - Export team members' details**
+
+**MSS**
+
+1. User requests to export the details of team members of a specific team.
+2. CodeConnect retrieves the details of the team members.
+3. CodeConnect copies the teams' details to the clipboard.
+
+   Use case ends.
+
+**Extensions**
+
+* 2a. An invalid index is passed into the command.
+  * 2a1. CodeConnect shows an error message.
+    Use case ends.
+* 2b. CodeConnect does not find any team members in the team.
+  * 2b1. CodeConnect shows an error message.
+    Use case ends.
+
+*{More to be added}*
+
+**Use case: UC10 - Adding a team**
+
+**MSS**
+
+1. User requests to add a team.
+2. CodeConnect adds the team and displays it in the team list.
+   Use case ends.
+
+**Extensions**
+
+* 1a. No name is provided.
+    * 1a1. CodeConnect shows an error message.
+    Use case ends.
+* 2a. Another team with the same name already exists in CodeConnect.
+    * 2a1. CodeConnect shows an error message.
+    Use case ends.
+
+**Use case: UC11 - Delete a team**
+
+**MSS**
+
+1. User requests to delete a specific team.
+2. CodeConnect deletes the team.
+   Use case ends.
+
+**Extensions**
+
+* 1a. The given index does not exist in CodeConnect.
+    * 1a1. CodeConnect shows an error message.
+      Use case ends.
+
+**Use case: UC12 - List a team's members**
+
+**MSS**
+
+1. User requests to list a specific team's members.
+2. CodeConnect shows the members of the team.
+   Use case ends.
+
+**Extensions**
+
+* 1a. The given index does not exist in CodeConnect.
+    * 1a1. CodeConnect shows an error message.
+      Use case ends.
+
 *{More to be added}*
 
 ### Non-Functional Requirements
@@ -601,11 +674,12 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 7.  Should be able to launch and load its saved data below 10 seconds.
 8.  Should be able to run basic commands (add, list, update, delete) without a network connection.
 9.  Any stored data should be in a human-readable format.
+10. Must support a minimum window size of 800x600.
 
 
 ### Glossary
 
-* **Mainstream OS**: Windows, Linux, Unix, MacOS
+* **Mainstream OS**: Windows, Linux, MacOS
 * **Contact**: An entry that holds information about someone that the user wants to save.
 * **Private contact detail**: A contact detail that is not meant to be shared with others
 * **Details of contact**:

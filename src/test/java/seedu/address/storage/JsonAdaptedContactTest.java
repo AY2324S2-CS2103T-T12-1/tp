@@ -125,7 +125,7 @@ public class JsonAdaptedContactTest {
     @Test
     public void toModelType_nullGitHubUsername_throwsIllegalValueException() {
         JsonAdaptedContact contact = new JsonAdaptedContact(VALID_NAME, VALID_PHONE, VALID_EMAIL, VALID_ADDRESS,
-                null, VALID_PROFILE_PICTURE, VALID_TECH_STACK,  VALID_TAGS);
+                null, VALID_PROFILE_PICTURE, VALID_TECH_STACK, VALID_TAGS);
         String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, GitHubUsername.class.getSimpleName());
         assertThrows(IllegalValueException.class, expectedMessage, contact::toModelType);
     }
@@ -140,4 +140,37 @@ public class JsonAdaptedContactTest {
         assertThrows(IllegalValueException.class, contact::toModelType);
     }
 
+    @Test
+    public void toModelType_tooManyTags_throwsIllegalValueException() {
+        List<JsonAdaptedTag> tooManyTags = new ArrayList<>(VALID_TAGS);
+        tooManyTags.add(new JsonAdaptedTag("my homie1"));
+        tooManyTags.add(new JsonAdaptedTag("my homie2"));
+        tooManyTags.add(new JsonAdaptedTag("my homie3"));
+        JsonAdaptedContact contact =
+                new JsonAdaptedContact(VALID_NAME, VALID_PHONE, VALID_EMAIL, VALID_ADDRESS,
+                        VALID_GITHUB_USERNAME, VALID_PROFILE_PICTURE, VALID_TECH_STACK, tooManyTags);
+        assertThrows(IllegalValueException.class, contact::toModelType);
+    }
+
+    @Test
+    public void toModelType_invalidTechStacks_throwsIllegalValueException() {
+        List<JsonAdaptedTechStack> invalidTS = new ArrayList<>(VALID_TECH_STACK);
+        invalidTS.add(new JsonAdaptedTechStack(INVALID_TECH_STACK));
+        JsonAdaptedContact contact =
+                new JsonAdaptedContact(VALID_NAME, VALID_PHONE, VALID_EMAIL, VALID_ADDRESS,
+                        VALID_GITHUB_USERNAME, VALID_PROFILE_PICTURE, invalidTS, VALID_TAGS);
+        assertThrows(IllegalValueException.class, contact::toModelType);
+    }
+
+    @Test
+    public void toModelType_tooManyTechStacks_throwsIllegalValueException() {
+        List<JsonAdaptedTechStack> tooManyTS = new ArrayList<>(VALID_TECH_STACK);
+        tooManyTS.add(new JsonAdaptedTechStack("my ts1"));
+        tooManyTS.add(new JsonAdaptedTechStack("my ts2"));
+        tooManyTS.add(new JsonAdaptedTechStack("my ts3"));
+        JsonAdaptedContact contact =
+                new JsonAdaptedContact(VALID_NAME, VALID_PHONE, VALID_EMAIL, VALID_ADDRESS,
+                        VALID_GITHUB_USERNAME, VALID_PROFILE_PICTURE, tooManyTS, VALID_TAGS);
+        assertThrows(IllegalValueException.class, contact::toModelType);
+    }
 }

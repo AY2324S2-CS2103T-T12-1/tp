@@ -9,6 +9,7 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.ReadOnlyCodeConnect;
 import seedu.address.model.contact.Contact;
+import seedu.address.model.team.Team;
 
 /**
  * API of the Logic component
@@ -32,6 +33,8 @@ public interface Logic {
 
     /** Returns an unmodifiable view of the filtered list of persons */
     ObservableList<Contact> getFilteredContactList();
+
+    ObservableList<Team> getTeamList();
 
     /**
      * Returns the user prefs' CodeConnect file path.

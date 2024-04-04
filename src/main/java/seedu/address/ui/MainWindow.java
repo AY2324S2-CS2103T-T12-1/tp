@@ -1,5 +1,6 @@
 package seedu.address.ui;
 
+import java.util.Stack;
 import java.util.logging.Logger;
 
 import javafx.event.ActionEvent;
@@ -33,6 +34,8 @@ public class MainWindow extends UiPart<Stage> {
 
     // Independent Ui parts residing in this Ui container
     private ContactListPanel contactListPanel;
+    private TeamListPanel teamListPanel;
+
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
 
@@ -44,6 +47,9 @@ public class MainWindow extends UiPart<Stage> {
 
     @FXML
     private StackPane personListPanelPlaceholder;
+
+    @FXML
+    private StackPane teamListPanelPlaceholder;
 
     @FXML
     private StackPane resultDisplayPlaceholder;
@@ -113,6 +119,9 @@ public class MainWindow extends UiPart<Stage> {
     void fillInnerParts() {
         contactListPanel = new ContactListPanel(logic.getFilteredContactList());
         personListPanelPlaceholder.getChildren().add(contactListPanel.getRoot());
+
+        teamListPanel = new TeamListPanel(logic.getTeamList());
+        teamListPanelPlaceholder.getChildren().add(teamListPanel.getRoot());
 
         resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());

@@ -90,7 +90,5 @@ public class ContactCard extends UiPart<Region> {
             mailApp.handleEmailClicked();
         });
     }
-
-
 }
 
