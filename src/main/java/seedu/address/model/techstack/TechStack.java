@@ -40,6 +40,10 @@ public class TechStack {
         return test.matches(VALIDATION_REGEX);
     }
 
+    public static boolean isValidTechStackRating(Integer rating) {
+        return rating >= 0 && rating <= 10;
+    }
+
     @Override
     public boolean equals(Object other) {
         if (other == this) {

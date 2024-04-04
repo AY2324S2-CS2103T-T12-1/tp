@@ -51,7 +51,7 @@ class JsonAdaptedTechStack {
         if (!TechStack.isValidTechStackName(techStackName)) {
             throw new IllegalValueException(TechStack.MESSAGE_CONSTRAINTS);
         }
-        if (rating != null && (rating < 0 || rating > 10)) {
+        if (rating != null && (!TechStack.isValidTechStackRating(rating))) {
             throw new IllegalValueException("Rating must be between 0 and 10.");
         }
         if (rating != null) {

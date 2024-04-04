@@ -15,15 +15,11 @@ import seedu.address.model.contact.ProfilePicture;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.techstack.TechStack;
 
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
 import java.util.Set;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_RATING;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TECH_STACK;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_CONTACTS;
@@ -55,7 +51,7 @@ public class RateCommand extends Command {
     /**
      * @param index of the contact in the filtered contact list to rate
      * @param techStackName details of skill to rate
-     * @param rating number to rate the skill of contact with out of 10
+     * @param rating number to rate the skill of contact with, out of 10
      */
     public RateCommand(Index index, String techStackName, int rating) {
         requireNonNull(index);
@@ -82,7 +78,7 @@ public class RateCommand extends Command {
             throw new CommandException(MESSAGE_INVALID_TECHSTACK_TO_RATE);
         }
 
-        if (rating < 0 || rating > 10) {
+        if (!TechStack.isValidTechStackRating(rating)) {
             throw new CommandException(MESSAGE_INVALID_RATING);
         }
 
