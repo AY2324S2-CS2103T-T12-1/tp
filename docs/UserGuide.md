@@ -366,7 +366,7 @@ Examples:
 
 Deletes a contact from a specific team in your team list.
 
-Format: team `TEAM_INDEX` delete-contact `CONTACT_INDEX`
+Format: `team TEAM_INDEX delete-contact CONTACT_INDEX`
 
 **Tip:**
 - Deletes the contact at the specified `CONTACT_INDEX` from the team at the specified `TEAM_INDEX`.
