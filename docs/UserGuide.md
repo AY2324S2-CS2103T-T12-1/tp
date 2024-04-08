@@ -142,6 +142,7 @@ This is our contacts display panel. This is where results of your searches for c
   e.g. `[t/TAG]…​` can be used as ` ` (i.e. 0 times), `t/friend`, `t/friend t/family` etc.
 
 - Parameters can be in any order.<br>
+  *Note: Excludes Rate Command.<br>
   e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
 
 - Extraneous parameters for commands that do not take in parameters (such as `help`, `list`, `exit` and `clear`) will be ignored.<br>
@@ -154,7 +155,7 @@ This is our contacts display panel. This is where results of your searches for c
 
 Shows a message explaining how to access the help page.
 
-![help message](images/helpMessage.png)
+![help message](images/helpMessageUpdated.png)
 
 Format: `help`
 
@@ -169,6 +170,14 @@ Format: `list`
 Adds a contact to the address book.
 
 Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS g/GITHUB_USERNAME [t/TAG] pp/PROFILE_PICTURE [ts/TECH_STACK]…​`
+* `g/GITHUB_USERNAME​` : Github Username of contact.
+  * e.g. `g/jonhdoee`
+* `pp/PROFILE_PICTURE​` : Profile picture of contact.
+  * *Note: This is a compulsory field. Any Valid URL is acceptable.
+  * e.g. `pp/https://api-prod-minimal-v510.vercel.app/assets/images/avatar/avatar_1.jpg`
+* `[ts/TECH_STACK]…​` : Technical Skills of contact.
+  * e.g. `ts/JavaScript` `ts/Python`
+
 
 <box type="tip" seamless>
 
@@ -192,7 +201,7 @@ Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [g/GITHUB_USERNAME]
 - At least one of the optional fields must be provided.
 - Existing values will be updated to the input values.
 - When editing tags, the existing tags of the contact will be removed i.e. adding of tags is not cumulative.
-- You can remove all the contact’s tags and tech stack by typing `t/` and `/ts` without
+- You can remove all the contact’s tags and tech stack by typing `t/` and `ts/` without
   specifying any tags after it.
 
 Examples:
