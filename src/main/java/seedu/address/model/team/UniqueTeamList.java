@@ -15,9 +15,9 @@ import seedu.address.model.team.exceptions.TeamNotFoundException;
 /**
  * A list of persons that enforces uniqueness between its elements and does not allow nulls.
  * A team is considered unique by comparing using {@code Team#isSamePerson(Team)}. As such, adding and updating of
- * persons uses Team#isSamePerson(Team) for equality so as to ensure that the team being added or updated is
- * unique in terms of identity in the UniqueTeamList. However, the removal of a team uses Team#equals(Object) so
- * as to ensure that the team with exactly the same fields will be removed.
+ * persons uses Team#isSamePerson(Team) for equality to ensure that the team being added or updated is
+ * unique in terms of identity in the UniqueTeamList. However, the removal of a team uses Team#equals(Object)
+ * to ensure that the team with exactly the same fields will be removed.
  *
  * Supports a minimal set of list operations.
  *
