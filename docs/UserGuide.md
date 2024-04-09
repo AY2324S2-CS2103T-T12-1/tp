@@ -104,6 +104,8 @@ Without further ado, let's dive in and uncover the power of CodeConnect! 🚀
  
 Below you will find explanations for each key element in the CodeConnect GUI.
 
+***Note:*** What you see in the GUI may differ slightly from the images below, as it depends on the data that is stored locally.
+
 This is the text input area. This is the most important part of the program. Here is where you will key in the commands you need.<br>
 ![quickstart-input.png](images%2Fquickstart-input.png)
 
@@ -116,10 +118,10 @@ This is the help button. Here is where you can find any kind of help with CodeCo
 This is our teams display panel. All the teams added are displayed here.<br>
 ![quickstart-teamlist.png](images%2Fquickstart-teamlist.png)
 
-This is our response panel. It is where we provide responses to your CLI commands, or offer assistance.<br>
+This is our response panel. Here is where we provide responses to your CLI commands, or offer assistance.<br>
 ![quickstart-response.png](images%2Fquickstart-response.png)
 
-This is our contacts display panel. This is where results of your searches for contacts will be displayed.<br>
+This is our contacts display panel. Here is where results of your searches for contacts will be displayed.<br>
 ![quickstart-personlist.png](images%2Fquickstart-personlist.png)
 
 ---
