@@ -25,7 +25,11 @@ public class TechStackTest {
     public void isValidTechStackName() {
         assertThrows(NullPointerException.class, () -> TechStack.isValidTechStackName(null));
         assertEquals(true, TechStack.isValidTechStackName("C++"));
-        assertEquals(false, TechStack.isValidTechStackName("C++$$$"));
+        assertEquals(true, TechStack.isValidTechStackName("C+_.-#")); // test all valid non-alphanumeric characters
+        assertEquals(true, TechStack.isValidTechStackName("Cc++123###")); // test mix of alphanumeric and non-alphanumeric
+        assertEquals(false, TechStack.isValidTechStackName("C++!!!"));
+        assertEquals(false, TechStack.isValidTechStackName("123///"));
+        assertEquals(false, TechStack.isValidTechStackName("Java?~`';:"));
     }
 
     @Test

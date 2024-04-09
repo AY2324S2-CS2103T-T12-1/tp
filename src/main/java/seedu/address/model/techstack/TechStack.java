@@ -13,7 +13,7 @@ public class TechStack {
             " underscores (_), number signs (#), hyphens (-), periods (.), and plus signs (+).";
     public static final String MESSAGE_CONSTRAINTS_LENGTH = "Tech stack names should not exceed 15 characters, and no more than 3 tech stacks should be added.";
 
-    public static final String VALIDATION_REGEX = "[\\p{Alnum}+.#-]+";
+    public static final String VALIDATION_REGEX = "[a-zA-Z0-9_+.#-]+";
     public final String techStackName;
     public Integer rating = null;
 
