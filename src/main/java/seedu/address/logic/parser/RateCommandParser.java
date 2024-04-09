@@ -6,6 +6,7 @@ import seedu.address.logic.parser.exceptions.ParseException;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.logic.commands.RateCommand.MESSAGE_INVALID_RATING;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TECH_STACK;
 
 
@@ -29,19 +30,26 @@ public class RateCommandParser {
         int rating;
 
         try {
+            String techStackArg = argMultimap.getValue(PREFIX_TECH_STACK).orElse(null);
+            if (techStackArg == null) {
+                throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                        RateCommand.MESSAGE_USAGE));
+            }
             index = ParserUtil.parseIndex(argMultimap.getPreamble());
             String[] techStackParts = argMultimap.getValue(PREFIX_TECH_STACK).get().split("r/");
-            if (techStackParts.length != 2) {
-                throw new ParseException("Tech stack rating format is incorrect. " +
-                        "Please use the format: ts/<techStack> r/<rating>");
+            if (techStackParts.length != 2 || !techStackParts[0].endsWith(" ")) {
+                throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                        RateCommand.MESSAGE_USAGE));
             }
+
             techStackName = techStackParts[0].trim();
             rating = Integer.parseInt(techStackParts[1].trim());
 
-        } catch (ParseException | NumberFormatException e) {
+        } catch (NumberFormatException e) {
+            throw new ParseException(MESSAGE_INVALID_RATING);
+        } catch (ParseException e) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, RateCommand.MESSAGE_USAGE), e);
         }
-
         return new RateCommand(index, techStackName, rating);
     }
 
