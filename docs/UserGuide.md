@@ -178,14 +178,6 @@ Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS g/GITHUB_USERNAME [t/TAG] p
 * `[ts/TECH_STACK]…​` : Technical Skills of contact.
   * e.g. `ts/JavaScript` `ts/Python`
 
-ℹ️ While the email address field accepts any values, it is important to adhere to the following:
-* The local-part before the '@' symbol can only contain alphanumeric characters and the special characters +_.-.
-* The local-part cannot start or end with any special characters.
-* After the '@' symbol, there should be a domain name composed of domain labels separated by periods.
-* The domain name must end with a label containing at least 2 characters.
-* Each domain label should start and end with alphanumeric characters, and consist only of alphanumeric characters
-  with hyphens allowed as separators, if necessary.
-
 ℹ️ There can be a maximum of 3 tags and tech stacks each, per contact.
 
 ⚠️ Contacts will be considered the same if they share the same names or GitHub usernames. 
@@ -432,7 +424,14 @@ Furthermore, certain edits can cause the CodeConnect to behave in unexpected way
 1. **NAME**: Must contain alphanumeric characters and may include spaces. All names must be unique.
 2. **ADDRESS**: Can contain any value.
 3. **PHONE NUMBER**: Must contain only numbers and should be at least 3 digits long.
-4. **EMAIL ADDRESS**: Can contain any values.
+4. **EMAIL ADDRESS**: Can contain any values. <br>
+   ℹ️ While the email address field accepts any values, it is important to adhere to the following:
+    * The local-part before the '@' symbol can only contain alphanumeric characters and the special characters +_.-.
+    * The local-part cannot start or end with any special characters.
+    * After the '@' symbol, there should be a domain name composed of domain labels separated by periods.
+    * The domain name must end with a label containing at least 2 characters.
+    * Each domain label should start and end with alphanumeric characters, and consist only of alphanumeric characters
+      with hyphens allowed as separators, if necessary.
 5. **GITHUB USERNAME**: Can contain only alphanumeric characters and hyphens(-). All GitHub usernames must be unique.
 6. **PROFILE PICTURE**: Must be a valid URI to an image. Supports png, jpg, jpeg and gif formats.
 7. **TAGS**: Must contain alphanumeric characters only. They are limited to only 15 characters.
