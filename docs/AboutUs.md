@@ -12,7 +12,7 @@ We are a team based in the [School of Computing, National University of Singapor
 
 ### Guo Yang
 
-<img src="images/tanguoyang.png" width="200px">
+<img src="images/developers/tanguoyang.png" width="200px">
 
 [[github](http://github.com/tanguoyang)]
 
@@ -21,7 +21,7 @@ We are a team based in the [School of Computing, National University of Singapor
 
 ### Song Yee
 
-<img src="images/angsongyee.png" width="200px">
+<img src="images/developers/angsongyee.png" width="200px">
 
 [[github](http://github.com/angsongyee)]
 
@@ -30,7 +30,7 @@ We are a team based in the [School of Computing, National University of Singapor
 
 ### Tresa
 
-<img src="images/teee728.png" width="200px">
+<img src="images/developers/teee728.png" width="200px">
 
 [[github](http://github.com/Teee728)]
 
@@ -39,7 +39,7 @@ We are a team based in the [School of Computing, National University of Singapor
 
 ### Sumaiya
 
-<img src="images/maiyasaliha.png" width="200px">
+<img src="images/developers/maiyasaliha.png" width="200px">
 
 [[github](http://github.com/maiyasaliha)]
 
@@ -48,7 +48,7 @@ We are a team based in the [School of Computing, National University of Singapor
 
 ### Yuechen
 
-<img src="images/yuechen2001.png" width="200px">
+<img src="images/developers/yuechen2001.png" width="200px">
 
 [[github](http://github.com/yuechen2001)]
 
