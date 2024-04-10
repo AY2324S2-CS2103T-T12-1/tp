@@ -557,27 +557,27 @@ Furthermore, certain edits can cause the CodeConnect to behave in unexpected way
 2. **ADDRESS**: Can contain any value.
 3. **PHONE NUMBER**: Must contain only numbers and should be at least 3 digits long.
 4. **EMAIL ADDRESS**: Can contain any values. <br>
-<div class="alert alert-info" markdown="1">
-   ℹ️ While the email address field accepts any values, it is important to adhere to the following:
-    * The local-part before the '@' symbol can only contain alphanumeric characters and the special characters +_.-.
-    * The local-part cannot start or end with any special characters.
-    * After the '@' symbol, there should be a domain name composed of domain labels separated by periods.
-    * The domain name must end with a label containing at least 2 characters.
+    <div class="alert alert-info" markdown="1">
+   ℹ️ While the email address field accepts any values, it is important to adhere to the following: <br>
+    * The local-part before the '@' symbol can only contain alphanumeric characters and the special characters +_.-. <br>
+    * The local-part cannot start or end with any special characters. <br>
+    * After the '@' symbol, there should be a domain name composed of domain labels separated by periods. <br>
+    * The domain name must end with a label containing at least 2 characters. <br>
     * Each domain label should start and end with alphanumeric characters, and consist only of alphanumeric characters
       with hyphens allowed as separators, if necessary.
-</div>
-5. **GITHUB USERNAME**: Can contain only alphanumeric characters and hyphens(-). All GitHub usernames must be unique.
-6. **PROFILE PICTURE**: Must be a valid URI to an image. Supports png, jpg, jpeg and gif formats.
-7. **TAGS**: Must contain alphanumeric characters only. They are limited to only 15 characters.
+   </div>
+5. **GITHUB USERNAME**: Can contain only alphanumeric characters and hyphens(-). All GitHub usernames must be unique. <br>
+6. **PROFILE PICTURE**: Must be a valid URI to an image. Supports png, jpg, jpeg and gif formats. <br>
+7. **TAGS**: Must contain alphanumeric characters only. They are limited to only 15 characters. <br>
 8. **TECH STACK**: Can contain alphanumeric characters, underscores(_), hashtags(#), hyphens(-), periods(.) and plus signs(+).
    They are limited to only 15 characters. <br>
-<div class="alert alert-warning" markdown="1">
+    <div class="alert alert-warning" markdown="1">
    ⚠️ If you are entering the tech stack for the `rate` command, please ensure it is the tech stack that the specified index has.
-</div>
+    </div>
 9. **INDEX/CONTACT_INDEX**: Must be a positive integer which is not greater than the number of contacts the user is currenty seeing in the
-   contact list.
-10. **RATING**: Must be an integer between 0 (inclusive) and 10 (inclusive).
-11. **TEAM NAME**: Can only contain alphanumeric characters and spaces. All team names must be unique.
+   contact list. <br>
+10. **RATING**: Must be an integer between 0 (inclusive) and 10 (inclusive). <br>
+11. **TEAM NAME**: Can only contain alphanumeric characters and spaces. All team names must be unique. <br>
 12. **TEAM INDEX**: Must be a positive integer which is not greater than the number of teams in the address book.
 
 [[Jump to Table of Contents]](#table-of-contents)
