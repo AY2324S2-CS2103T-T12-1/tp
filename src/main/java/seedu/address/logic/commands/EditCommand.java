@@ -68,7 +68,7 @@ public class EditCommand extends Command {
     private final EditContactDescriptor editContactDescriptor;
 
     /**
-     * @param index                 of the contact in the filtered contact list to edit
+     * @param index of the contact in the filtered contact list to edit
      * @param editContactDescriptor details to edit the contact with
      */
     public EditCommand(Index index, EditContactDescriptor editContactDescriptor) {
