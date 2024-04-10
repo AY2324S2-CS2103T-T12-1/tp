@@ -13,6 +13,18 @@
   </navbar>
 </header>
 
+<div id="flex-body">
+ <div id="content-wrapper">
+    {{ content }}
+  </div>
+  <nav id="page-nav">
+    <div class="nav-component slim-scroll">
+      <page-nav />
+    </div>
+  </nav>
+  <scroll-top-button></scroll-top-button>
+</div>
+
 <footer>
   <!-- Support MarkBind by including a link to us on your landing page! -->
   <div class="text-center">
