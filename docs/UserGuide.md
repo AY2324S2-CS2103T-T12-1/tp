@@ -65,7 +65,7 @@ Throughout this guide, you'll notice colored blocks of information. These are us
 </div>
 
 <div class="alert alert-danger" markdown="1">
-‼️: The red block highlights information that requires immediate attention due to potential irreversible risks.
+❗️ential irreversible risks.
 </div>
 
 Without further ado, let's dive in and uncover the power of CodeConnect! 🚀
@@ -108,22 +108,22 @@ Below you will find explanations for each key element in the CodeConnect GUI.
 ***Note:*** What you see in the GUI may differ slightly from the images below, as it depends on the data that is stored locally.
 
 This is the text input area. This is the most important part of the program. Here is where you will key in the commands you need.<br>
-![quickstart-input.png](images%2Fquickstart-input.png)
+![quickstart-input.png](images/quick-start/quickstart-input.png)
 
 This is the file button. Here is where you can exit the program.<br>
-![quickstart-file.png](images%2Fquickstart-file.png)
+![quickstart-file.png](images/quick-start/quickstart-file.png)
  
 This is the help button. Here is where you can find any kind of help with CodeConnect.<br>
-![quickstart-help.png](images%2Fquickstart-help.png)
+![quickstart-help.png](images/quick-start/quickstart-help.png)
 
 This is our teams display panel. All the teams added are displayed here.<br>
-![quickstart-teamlist.png](images%2Fquickstart-teamlist.png)
+![quickstart-teamlist.png](images/quick-start/quickstart-teamlist.png)
 
 This is our response panel. Here is where we provide responses to your CLI commands, or offer assistance.<br>
-![quickstart-response.png](images%2Fquickstart-response.png)
+![quickstart-response.png](images/quick-start/quickstart-response.png)
 
 This is our contacts display panel. Here is where results of your searches for contacts will be displayed.<br>
-![quickstart-personlist.png](images%2Fquickstart-personlist.png)
+![quickstart-personlist.png](images/quick-start/quickstart-personlist.png)
 
 ---
 
@@ -158,15 +158,17 @@ This is our contacts display panel. Here is where results of your searches for c
 
 Shows a message explaining how to access the help page.
 
-![help message](images/helpMessageUpdated.png)
-
 Format: `help`
+
+![help message](images/features/features-help.png)
 
 #### Listing all contacts : `list`
 
 Shows a list of all contacts in the address book.
 
 Format: `list`
+
+![list message](images/features/features-list.png)
 
 #### Adding a contact: `add`
 
@@ -189,6 +191,11 @@ Examples:
 - `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 g/johnDoee pp/https://api-prod-minimal-v510.vercel.app/assets/images/avatar/avatar_1.jpg`
 - `add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 g/betBetty t/criminal ts/Flutter pp/https://api-prod-minimal-v510.vercel.app/assets/images/avatar/avatar_1.jpg`
 
+Before: 
+![before add](images/features/features-add-before.png)
+After:
+![after add](images/features/features-add-after.png)
+
 #### Editing a contact : `edit`
 
 Edits an existing contact in the address book.
@@ -209,6 +216,11 @@ Examples:
 - `edit 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st contact to be `91234567` and `johndoe@example.com` respectively.
 - `edit 2 n/Betsy Crower t/` Edits the name of the 2nd contact to be `Betsy Crower` and clears all existing tags.
 
+Before:
+![before edit](images/features/features-edit-before.png)
+After:
+![after edit](images/features/features-edit-after.png)
+
 #### Locating contacts by name: `find`
 
 Find contacts whose names contain any of the given keywords.
@@ -223,8 +235,13 @@ Format: `find KEYWORD [MORE_KEYWORDS]`
   e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`
 
 Examples:
-- `find John` returns `john` and `John Doe`
+- `find John` returns `John Doe`
 - `find alex david` returns `Alex Yeoh`, `David Li`
+
+Before:
+![before find](images/features/features-find-before.png)
+After:
+![after find](images/features/features-find-after.png)
 
 #### Locating contacts by tags: `find-tags`
 
@@ -238,7 +255,12 @@ Format: `find-tags KEYWORD [MORE_KEYWORDS]`
 ℹ️ Contacts matching all keywords will be returned (i.e. `AND` search).
 
 Examples:
-- `find-tags school` returns anyone with the tag `school`
+- `find-tags classmates` returns anyone with the tag `classmates`
+
+Before:
+![before find-tags](images/features/features-find-tags-before.png)
+After:
+![after find-tags](images/features/features-find-tags-after.png)
 
 #### Locating contacts by tech stack: `find-ts`
 
@@ -254,6 +276,11 @@ Format: `find-ts KEYWORD [MORE_KEYWORDS]`
 Examples:
 - `find-ts Python` returns anyone with the tech stack `Python`
 
+Before:
+![before find-ts](images/features/features-find-ts-before.png)
+After:
+![after find-ts](images/features/features-find-ts-after.png)
+
 #### Rate skills of contacts: `rate`
 
 Rates specified skill of specified contact.
@@ -266,7 +293,12 @@ Format: `rate INDEX ts/KEYWORD r/RATING`
 ℹ️ Only full words will be matched e.g. `java` will not match `javascript`
 
 Examples:
-- `rate 1 ts/Java r/8` rates the skill of Java of the first contact as 8.
+- `rate 1 ts/React r/8` rates the skill of React of the first contact as 8.
+
+Before:
+![before rate](images/features/features-rate-before.png)
+After:
+![after rate](images/features/features-rate-after.png)
 
 #### Deleting a contact : `delete`
 
@@ -281,11 +313,18 @@ Examples:
 - `list` followed by `delete 2` deletes the 2nd contact in the address book.
 - `find Betsy` followed by `delete 1` deletes the 1st contact in the results of the `find` command.
 
+Before:
+![before delete](images/features/features-delete-before.png)
+After:
+![after delete](images/features/features-delete-after.png)
+
 #### Clearing all entries : `clear`
 
 Clears all entries from the address book.
 
 Format: `clear`
+
+![clear message](images/features/features-clear.png)
 
 #### Exiting the program : `exit`
 
@@ -310,6 +349,33 @@ Format: `team add n/TEAM_NAME`
 Examples:
 - `team add n/NUS HACK 2024` adds a new team named `NUS HACK 2024` into the teams list.
 
+Before:
+![before team add](images/features/features-team-add-before.png)
+After:
+![after team add](images/features/features-team-add-after.png)
+
+#### Adding a contact to a team: `add-contact`
+
+Adds a contact to a specific team in your team list.
+A user can only add a contact from the list they are currently viewing (after filtering).
+Otherwise, they have to first enter the command `list` to view the contacts and then add a contact to the team.
+
+Format: `team TEAM_INDEX add-contact CONTACT_INDEX`
+
+ℹ️ Adds the contact at the specified `CONTACT_INDEX` to the team at the specified `TEAM_INDEX`. <br>
+ℹ️ The `TEAM_INDEX` refers to the index number shown in the displayed teams list. <br>
+ℹ️ The `CONTACT_INDEX` refers to the index number of the contact shown in the contact list the user sees.
+
+Examples:
+- `team 1 add-contact 1` adds the contact at index 1 of the contact list you are currently viewing to the first team in the team list.
+- Enter `team 1` to view the updated members of the team.
+
+Before:
+![before team add-contact](images/features/features-team-add-contact-before.png)
+After:
+![after team add-contact](images/features/features-team-add-contact-after.png)
+
+
 #### List members belonging to a team:
 
 You can enter `team` followed by a team's index number to list the members that are in it.
@@ -321,6 +387,30 @@ Format: `team TEAM_INDEX`
 
 Examples:
 - `team 1` updates the contact list to show the members of the first team.
+
+Before:
+![before team list](images/features/features-team-list-before.png)
+After:
+![after team list](images/features/features-team-list-after.png)
+
+#### Deleting a contact from a team: `delete-contact`
+
+Deletes a contact from a specific team in your team list.
+
+Format: `team TEAM_INDEX delete-contact CONTACT_INDEX`
+
+ℹ️ Deletes the contact at the specified `CONTACT_INDEX` from the team at the specified `TEAM_INDEX`.
+ℹ️ The `TEAM_INDEX` refers to the index number shown in the displayed teams list.
+ℹ️ The `CONTACT_INDEX` refers to the index number of the contact shown in the contact list the user sees.
+
+Examples:
+- `team 1 delete-contact 1` deletes the contact at index 1 from the first team in the team list.
+- Enter `team 1` to view the updated members of the team.
+
+Before:
+![before team delete-contact](images/features/features-team-delete-contact-before.png)
+After: (replace after bugfix)
+![after team delete-contact](images/features/features-team-delete-contact-after.png)
 
 #### Deleting a team: `delete`
 
@@ -334,35 +424,10 @@ Format: `team TEAM_INDEX delete`
 Examples:
 - `team 1 delete` deletes the first team in the team list.
 
-#### Adding a contact to a team: `add-contact`
-
-Adds a contact to a specific team in your team list. 
-A user can only add a contact from the list they are currently viewing (after filtering). 
-Otherwise, they have to first enter the command `list` to view the contacts and then add a contact to the team.
-
-Format: `team TEAM_INDEX add-contact CONTACT_INDEX`
-
-ℹ️ Adds the contact at the specified `CONTACT_INDEX` to the team at the specified `TEAM_INDEX`. <br>
-ℹ️ The `TEAM_INDEX` refers to the index number shown in the displayed teams list. <br>
-ℹ️ The `CONTACT_INDEX` refers to the index number of the contact shown in the contact list the user sees.
-
-Examples:
-- `team 4 add-contact 1` adds the contact at index 1 of the contact list you are currently viewing to the fourth team in the team list.
-- Enter `team 4` to view the updated members of the team.
-
-#### Deleting a contact from a team: `delete-contact`
-
-Deletes a contact from a specific team in your team list.
-
-Format: `team TEAM_INDEX delete-contact CONTACT_INDEX`
-
-ℹ️ Deletes the contact at the specified `CONTACT_INDEX` from the team at the specified `TEAM_INDEX`.
-ℹ️ The `TEAM_INDEX` refers to the index number shown in the displayed teams list.
-ℹ️ The `CONTACT_INDEX` refers to the index number of the contact shown in the contact list the user sees.
-
-Examples:
-- `team 1 delete-contact 3` deletes the contact at index 3 from the first team in the team list.
-- Enter `team 1` to view the updated members of the team.
+Before:
+![before team delete](images/features/features-team-delete-before.png)
+After:
+![after team delete](images/features/features-team-delete-after.png)
 
 #### Exporting team details: `export`
 
@@ -375,6 +440,21 @@ Format: `team TEAM_INDEX export`
 Examples:
 - `team 1 export` exports the members' details of the 1st team in the teams list.
 
+Before:
+![before team export](images/features/features-team-export-before.png)
+After:
+![after team export](images/features/features-team-export-after.png)
+
+Details exported to clipboard:
+```
+Member 1
+Name: Bernice Yu
+Phone Number: 99272758
+Email: berniceyu@example.com
+Address: Blk 30 Lorong 3 Serangoon Gardens, #07-18
+GitHub Username: Berney-Yu
+```
+
 ### Non-CLI features
 
 #### Sending an email to a specific contact
@@ -383,6 +463,8 @@ Opens the desktop mail application to directly email a specific contact.
 
 **How to use:** Click on the contact's email.
 
+![email](images/features/features-email.png)
+
 #### View your previous commands
 
 Any commands you have run previously are saved in the command history, so that you can easily refer to them if you need to.
@@ -390,6 +472,11 @@ Any edits you make to a command will be saved while navigating through your hist
 to refer to it, and then return back to your edited command to finish typing.
 
 **How to use:** Use the up and down arrow keys to navigate through your history while the command input is in focus.
+
+Before:
+![before command history](images/features/features-command-history-before.png)
+After clicking the up arrow key once:
+![after command history](images/features/features-command-history-after.png)
 
 #### Saving the data
 
