@@ -47,8 +47,9 @@ So, get ready to explore, connect, and create with CodeConnect! 🎉 Let's turn 
 ## Usage of User Guide
 This guide is designed to help you learn how to use CodeConnect effectively and explore its various features. If you are unfamiliar with programming, don't worry - we have intentionally made it beginner-friendly so that even non-developers will be able to use our guide with ease.
 
-If you're already familiar with CodeConnect, you can skip ahead to the [features section](#features), or to the [command summary](#command-summary).
-If you're new to CodeConnect, simply follow along step-by-step to discover how to gather and form your next champion team!
+If you're already familiar with CodeConnect, you can skip ahead to the [features section](#features), or to the [command summary](#command-summary). <br>
+If you're unsure of the constraints of each parameter for a command you want to enter, head over to the [parameter constraints](#parameter-constraints) to learn more! <br>
+But if you're new to CodeConnect, simply follow along step-by-step to discover how to gather and form your next champion team!
 
 Should you encounter any problems along your journey, please take a look at our [FAQ](#faq) for more information.
 
@@ -56,15 +57,15 @@ Should you encounter any problems along your journey, please take a look at our 
 Throughout this guide, you'll notice colored blocks of information. These are used to highlight different types of information for easier understanding.
 
 <div class="alert alert-info" markdown="1">
-:information_source: The blue block highlights additional information that might be useful in clearing some confusion.
+ℹ️: The blue block highlights additional information that might be useful in clearing some confusion.
 </div>
 
 <div class="alert alert-warning" markdown="1">
-:warning: The yellow block draws attention to crucial information that requires careful consideration to mitigate potential risks or challenges.
+⚠️: The yellow block draws attention to crucial information that requires careful consideration to mitigate potential risks or challenges.
 </div>
 
 <div class="alert alert-danger" markdown="1">
-:bangbang: The red block highlights information that requires immediate attention due to potential irreversible risks.
+‼️: The red block highlights information that requires immediate attention due to potential irreversible risks.
 </div>
 
 Without further ado, let's dive in and uncover the power of CodeConnect! 🚀
@@ -172,23 +173,19 @@ Format: `list`
 Adds a contact to the address book.
 
 Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS g/GITHUB_USERNAME [t/TAG] pp/PROFILE_PICTURE [ts/TECH_STACK]…​`
-* `g/GITHUB_USERNAME​` : Github Username of contact.
+* `g/GITHUB_USERNAME​` : GitHub Username of contact.
   * e.g. `g/jonhdoee`
 * `pp/PROFILE_PICTURE​` : Profile picture of contact.
-  * *Note: This is a compulsory field. Any Valid URL is acceptable.
   * e.g. `pp/https://api-prod-minimal-v510.vercel.app/assets/images/avatar/avatar_1.jpg`
 * `[ts/TECH_STACK]…​` : Technical Skills of contact.
   * e.g. `ts/JavaScript` `ts/Python`
 
+ℹ️ There can be a maximum of 3 tags and tech stacks each, per contact.
 
-<box type="tip" seamless>
-
-**Tip:**
-- Note that tags and tech stacks are limited to 15 characters per label and a maximum of 3 each per contact.
-</box>
+⚠️ Contacts will be considered the same if they share the same names or GitHub usernames. 
+   Please ensure that you are not adding duplicate contacts.
 
 Examples:
-
 - `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 g/johnDoee pp/https://api-prod-minimal-v510.vercel.app/assets/images/avatar/avatar_1.jpg`
 - `add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 g/betBetty t/criminal ts/Flutter pp/https://api-prod-minimal-v510.vercel.app/assets/images/avatar/avatar_1.jpg`
 
@@ -198,16 +195,17 @@ Edits an existing contact in the address book.
 
 Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [g/GITHUB_USERNAME] [pp/PROFILE_PICTURE] [t/TAG]…​ [ts/TECH_STACK]…​`
 
-**Tip:**
-- Edits the contact at the specified `INDEX`. The index refers to the index number shown in the displayed contact list. The index **must be a positive integer** 1, 2, 3, …​
-- At least one of the optional fields must be provided.
-- Existing values will be updated to the input values.
-- When editing tags, the existing tags of the contact will be removed i.e. adding of tags is not cumulative.
-- You can remove all the contact’s tags and tech stack by typing `t/` and `ts/` without
-  specifying any tags after it.
+ℹ️ Edits the contact at the specified `INDEX`. <br>
+ℹ️ Existing values will be updated to the input values. <br>
+ℹ️ When editing tags, the existing tags of the contact will be removed i.e. adding of tags is not cumulative. <br>
+ℹ️ You can remove all the contact’s tags and tech stack by typing `t/` and `ts/` without
+   specifying any tags after it.
+
+⚠️ At least one of the optional fields must be provided. <br>
+
+*For the remaining optional parameters, please refer to the same section under the `add` command.*
 
 Examples:
-
 - `edit 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st contact to be `91234567` and `johndoe@example.com` respectively.
 - `edit 2 n/Betsy Crower t/` Edits the name of the 2nd contact to be `Betsy Crower` and clears all existing tags.
 
@@ -217,16 +215,14 @@ Find contacts whose names contain any of the given keywords.
 
 Format: `find KEYWORD [MORE_KEYWORDS]`
 
-**Tip:**
-- The search is case-insensitive. e.g. `hans` will match `Hans`
-- The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`
-- Only the name is searched.
-- Only full words will be matched e.g. `Han` will not match `Hans`
-- contacts matching at least one keyword will be returned (i.e. `OR` search).
+ℹ️ The search is case-insensitive. e.g. `hans` will match `Hans` <br>
+ℹ️ The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans` <br>
+ℹ️ Only the name is searched. <br>
+ℹ️ Only full words will be matched e.g. `Han` will not match `Hans` <br>
+ℹ️ Contacts matching at least one keyword will be returned (i.e. `OR` search).
   e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`
 
 Examples:
-
 - `find John` returns `john` and `John Doe`
 - `find alex david` returns `Alex Yeoh`, `David Li`
 
@@ -236,11 +232,10 @@ Find contacts whose tags contain all the given keywords.
 
 Format: `find-tags KEYWORD [MORE_KEYWORDS]`
 
-**Tip:**
-- The search is case-insensitive. e.g. `school` will match `School`
-- Only the tags are searched.
-- Only full words will be matched e.g. `school` will not match `schools`
-- contacts matching all keywords will be returned (i.e. `AND` search).
+ℹ️ The search is case-insensitive. e.g. `school` will match `School` <br>
+ℹ️ Only the tags are searched. <br>
+ℹ️ Only full words will be matched e.g. `school` will not match `schools` <br>
+ℹ️ Contacts matching all keywords will be returned (i.e. `AND` search).
 
 Examples:
 - `find-tags school` returns anyone with the tag `school`
@@ -251,10 +246,10 @@ Find contacts whose tech stack contain all the given keywords.
 
 Format: `find-ts KEYWORD [MORE_KEYWORDS]`
 
-- The search is case-insensitive. e.g. `java` will match `Java`
-- Only the tech stack are searched.
-- Only full words will be matched e.g. `java` will not match `javascript`
-- contacts matching all keywords will be returned (i.e. `AND` search).
+ℹ️ The search is case-insensitive. e.g. `java` will match `Java` <br>
+ℹ️ Only the tech stack are searched. <br>
+ℹ️ Only full words will be matched e.g. `java` will not match `javascript` <br>
+ℹ️ Contacts matching all keywords will be returned (i.e. `AND` search).
 
 Examples:
 - `find-ts Python` returns anyone with the tech stack `Python`
@@ -265,11 +260,10 @@ Rates specified skill of specified contact.
 
 Format: `rate INDEX ts/KEYWORD r/RATING`
 
-- The rating is case-sensitive. e.g. `java` will not match `Java`
-- Only supports the rating of 1 tech stack per command.
-- Only the tech stack in specified contact are searched.
-- Only full words will be matched e.g. `java` will not match `javascript`
-- Rating can only be between 0 and 10
+ℹ️ The rating is case-sensitive. e.g. `java` will not match `Java` <br>
+ℹ️ Only supports the rating of 1 tech stack per command. <br>
+ℹ️ Only the tech stack in specified contact are searched. <br>
+ℹ️ Only full words will be matched e.g. `java` will not match `javascript`
 
 Examples:
 - `rate 1 ts/Java r/8` rates the skill of Java of the first contact as 8.
@@ -280,9 +274,8 @@ Deletes the specified contact from the address book.
 
 Format: `delete INDEX`
 
-- Deletes the contact at the specified `INDEX`.
-- The index refers to the index number shown in the displayed contact list.
-- The index **must be a positive integer** 1, 2, 3, …​
+ℹ️ Deletes the contact at the specified `INDEX`. <br>
+ℹ️ The index refers to the index number shown in the displayed contact list.
 
 Examples:
 - `list` followed by `delete 2` deletes the 2nd contact in the address book.
@@ -310,10 +303,9 @@ You can use the `add` team command to create teams of contacts, which will help 
 
 Format: `team add n/TEAM_NAME`
 
-**Tip:**
-- `TEAM_NAME` can only contain alphanumeric characters and spaces and cannot be blank.
-- Each team in CodeConnect needs to have a unique name, so you can't add a team if another team with the same name is already present in the team list.
-- Team names are case-sensitive, so it's fine to have two teams named `NUS HACK 2024` and `Nus Hack 2024`.
+ℹ️ Each team in CodeConnect needs to have a unique name, so you can't add a team if another team with the same name is
+   already present in the team list. <br>
+ℹ️ Team names are case-sensitive, so it's fine to have two teams named `NUS HACK 2024` and `Nus Hack 2024`.
 
 Examples:
 - `team add n/NUS HACK 2024` adds a new team named `NUS HACK 2024` into the teams list.
@@ -324,10 +316,8 @@ You can enter `team` followed by a team's index number to list the members that 
 
 Format: `team TEAM_INDEX`
 
-**Tip:**
-- Export the members' details of the team at the specified `TEAM_INDEX`.
-- The index refers to the index number shown in the displayed teams list.
-- The index **must be a positive integer** 1, 2, 3, …​
+ℹ️ Export the members' details of the team at the specified `TEAM_INDEX`. <br>
+ℹ️ The index refers to the index number shown in the displayed teams list.
 
 Examples:
 - `team 1` updates the contact list to show the members of the first team.
@@ -338,10 +328,8 @@ You can use the `delete` team command to delete a team from your team list. Afte
 
 Format: `team TEAM_INDEX delete`
 
-**Tip:**
-- Deletes the team at the specified `TEAM_INDEX`.
-- The index refers to the index number shown in the displayed teams list.
-- The index **must be a positive integer** 1, 2, 3, …​
+ℹ️ Deletes the team at the specified `TEAM_INDEX`. <br>
+ℹ️ The index refers to the index number shown in the displayed teams list. <br>
 
 Examples:
 - `team 1 delete` deletes the first team in the team list.
@@ -354,11 +342,9 @@ Otherwise, they have to first enter the command `list` to view the contacts and 
 
 Format: `team TEAM_INDEX add-contact CONTACT_INDEX`
 
-**Tip:**
-- Adds the contact at the specified `CONTACT_INDEX` to the team at the specified `TEAM_INDEX`.
-- The `TEAM_INDEX` refers to the index number shown in the displayed teams list.
-- The `CONTACT_INDEX` refers to the index number of the contact shown in the contact list the user sees.
-- Both indexes must be positive integers.
+ℹ️ Adds the contact at the specified `CONTACT_INDEX` to the team at the specified `TEAM_INDEX`. <br>
+ℹ️ The `TEAM_INDEX` refers to the index number shown in the displayed teams list. <br>
+ℹ️ The `CONTACT_INDEX` refers to the index number of the contact shown in the contact list the user sees.
 
 Examples:
 - `team 4 add-contact 1` adds the contact at index 1 of the contact list you are currently viewing to the fourth team in the team list.
@@ -370,11 +356,9 @@ Deletes a contact from a specific team in your team list.
 
 Format: `team TEAM_INDEX delete-contact CONTACT_INDEX`
 
-**Tip:**
-- Deletes the contact at the specified `CONTACT_INDEX` from the team at the specified `TEAM_INDEX`.
-- The `TEAM_INDEX` refers to the index number shown in the displayed teams list.
-- The `CONTACT_INDEX` refers to the index number of the contact shown in the contact list the user sees.
-- Both indexes must be positive integers.
+ℹ️ Deletes the contact at the specified `CONTACT_INDEX` from the team at the specified `TEAM_INDEX`.
+ℹ️ The `TEAM_INDEX` refers to the index number shown in the displayed teams list.
+ℹ️ The `CONTACT_INDEX` refers to the index number of the contact shown in the contact list the user sees.
 
 Examples:
 - `team 1 delete-contact 3` deletes the contact at index 3 from the first team in the team list.
@@ -386,10 +370,7 @@ Copies to your clipboard the details of all the members in a particular team, so
 
 Format: `team TEAM_INDEX export`
 
-**Tip:**
-- Export the members' details of the team at the specified `TEAM_INDEX`.
-- The index refers to the index number shown in the displayed teams list.
-- The index **must be a positive integer** 1, 2, 3, …​
+ℹ️ Export the members' details of the team at the specified `TEAM_INDEX`.
 
 Examples:
 - `team 1 export` exports the members' details of the 1st team in the teams list.
@@ -437,6 +418,33 @@ Furthermore, certain edits can cause the CodeConnect to behave in unexpected way
 ## Known Issues
 
 1. **When using multiple screens**, if you move the application to a secondary screen, and later switch to using only the primary screen, the GUI will open off-screen. The remedy is to delete the `preferences.json` file created by the application before running the application again.
+
+---
+
+## Parameter Constraints
+
+1. **NAME**: Must contain alphanumeric characters and may include spaces. All names must be unique.
+2. **ADDRESS**: Can contain any value.
+3. **PHONE NUMBER**: Must contain only numbers and should be at least 3 digits long.
+4. **EMAIL ADDRESS**: Can contain any values. <br>
+   ℹ️ While the email address field accepts any values, it is important to adhere to the following:
+    * The local-part before the '@' symbol can only contain alphanumeric characters and the special characters +_.-.
+    * The local-part cannot start or end with any special characters.
+    * After the '@' symbol, there should be a domain name composed of domain labels separated by periods.
+    * The domain name must end with a label containing at least 2 characters.
+    * Each domain label should start and end with alphanumeric characters, and consist only of alphanumeric characters
+      with hyphens allowed as separators, if necessary.
+5. **GITHUB USERNAME**: Can contain only alphanumeric characters and hyphens(-). All GitHub usernames must be unique.
+6. **PROFILE PICTURE**: Must be a valid URI to an image. Supports png, jpg, jpeg and gif formats.
+7. **TAGS**: Must contain alphanumeric characters only. They are limited to only 15 characters.
+8. **TECH STACK**: Can contain alphanumeric characters, underscores(_), hashtags(#), hyphens(-), periods(.) and plus signs(+).
+   They are limited to only 15 characters. <br>
+   ⚠️ If you are entering the tech stack for the `rate` command, please ensure it is the tech stack that the specified index has.
+9. **INDEX/CONTACT_INDEX**: Must be a positive integer which is not greater than the number of contacts the user is currenty seeing in the
+   contact list.
+10. **RATING**: Must be an integer between 0 (inclusive) and 10 (inclusive).
+11. **TEAM NAME**: Can only contain alphanumeric characters and spaces. All team names must be unique.
+12. **TEAM INDEX**: Must be a positive integer which is not greater than the number of teams in the address book.
 
 ---
 

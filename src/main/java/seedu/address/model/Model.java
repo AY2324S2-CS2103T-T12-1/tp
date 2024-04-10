@@ -110,4 +110,6 @@ public interface Model {
      */
     void setTeam(Team target, Team editedTeam);
 
+    /** Returns an unmodifiable view of the team list */
+    ObservableList<Team> getTeamList();
 }
