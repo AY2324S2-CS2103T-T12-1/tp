@@ -3,6 +3,7 @@ package seedu.address.logic.commands;
 import static java.util.Objects.requireNonNull;
 
 import java.util.List;
+import java.util.logging.Logger;
 
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
@@ -23,8 +24,10 @@ public class FindTagCommand extends Command {
             + "Example: " + COMMAND_WORD + " friends family schoolmates ";
 
     private final List<String> tagKeywords;
+    private final Logger logger = Logger.getLogger("FindTagCommand");
 
     public FindTagCommand(List<String> tagKeywords) {
+        assert(!tagKeywords.isEmpty());
         this.tagKeywords = tagKeywords;
     }
 
@@ -32,7 +35,10 @@ public class FindTagCommand extends Command {
     public CommandResult execute(Model model) {
         requireNonNull(model);
         TagsContainKeywordsPredicate predicate = new TagsContainKeywordsPredicate(tagKeywords);
+
+        logger.info("Matching contacts with tags containing the keywords: " + tagKeywords);
         model.updateFilteredContactList(predicate);
+
         return new CommandResult(
                 String.format(Messages.MESSAGE_CONTACT_LISTED_OVERVIEW, model.getFilteredContactList().size()));
     }

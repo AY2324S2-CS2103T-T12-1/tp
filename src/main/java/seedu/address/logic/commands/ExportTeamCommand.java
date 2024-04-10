@@ -6,6 +6,7 @@ import java.awt.Toolkit;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
 import java.util.List;
+import java.util.logging.Logger;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.index.Index;
@@ -29,9 +30,9 @@ public class ExportTeamCommand extends Command {
             + "Parameters: TEAM_INDEX (must be a positive integer)\n"
             + "Example: " + TeamCommandsParser.COMMAND_WORD + " 1 " + COMMAND_WORD;
 
-
     public static final String MESSAGE_EXPORT_DETAILS_SUCCESS = "Details copied to clipboard.";
 
+    private static Logger logger = Logger.getLogger("ExportTeamCommand");
     private final Index targetIndex;
 
     /**
@@ -57,18 +58,21 @@ public class ExportTeamCommand extends Command {
         }
 
         String teamDetails = getDetails(teamToExport);
+        logger.info("Copying team details to clipboard...");
         copyToClipboard(teamDetails);
 
         return new CommandResult(String.format(MESSAGE_EXPORT_DETAILS_SUCCESS, Messages.format(teamToExport)));
     }
 
     private void copyToClipboard(String details) {
+        assert(details.length() != 0); // details should not be empty
         StringSelection stringSelection = new StringSelection(details);
         Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
         clipboard.setContents(stringSelection, null);
     }
 
     public String getDetails(Team teamToExport) {
+        logger.info("Formatting details of team members to export...");
         StringBuilder details = new StringBuilder();
         List<Contact> teamMembers = teamToExport.getMembers();
 

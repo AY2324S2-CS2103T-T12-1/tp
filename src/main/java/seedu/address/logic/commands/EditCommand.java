@@ -18,6 +18,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
+import java.util.logging.Logger;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.CollectionUtil;
@@ -64,6 +65,7 @@ public class EditCommand extends Command {
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
     public static final String MESSAGE_DUPLICATE_CONTACT = "This contact already exists in CodeConnect.";
 
+    private final Logger logger = Logger.getLogger("EditCommand");
     private final Index index;
     private final EditContactDescriptor editContactDescriptor;
 
@@ -97,6 +99,7 @@ public class EditCommand extends Command {
 
         model.setContact(contactToEdit, editedContact);
 
+        logger.info("Updating teams with edited contact...");
         List<Team> teamsWithContact = getTeamsWithContact(contactToEdit, model.getTeamList());
         updateTeamsWithEditedContact(teamsWithContact, model, contactToEdit, editedContact);
 
@@ -129,6 +132,7 @@ public class EditCommand extends Command {
      * Returns a list of teams that contain the given contact.
      */
     private static List<Team> getTeamsWithContact(Contact contact, List<Team> teamList) {
+        assert(contact != null);
         LinkedList<Team> teamsWithContact = new LinkedList<>();
 
         for (Team team : teamList) {
@@ -140,8 +144,12 @@ public class EditCommand extends Command {
         return teamsWithContact;
     }
 
-    private static void updateTeamsWithEditedContact(List<Team> teamsWithContact, Model model, Contact contactToEdit,
+    private static void updateTeamsWithEditedContact(List<Team> teamsWithContact, Model model,
+                                                     Contact contactToEdit,
                                                      Contact editedContact) {
+        assert(teamsWithContact != null);
+        assert(contactToEdit != null);
+        assert(editedContact != null);
         for (Team team : teamsWithContact) {
             Team updatedTeam = team.withRemovedMember(contactToEdit).withAddedMember(editedContact);
             model.setTeam(team, updatedTeam);
