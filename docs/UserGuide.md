@@ -430,11 +430,11 @@ Furthermore, certain edits can cause the CodeConnect to behave in unexpected way
 ## Parameter Constraints
 
 1. **NAME**: Must contain alphanumeric characters and may include spaces. All names must be unique.
-2. **ADDRESS**: Can contain any values.
-3. **PHONE NUMBER**: Must contain only numbers and should be atleast 3 digits long.
+2. **ADDRESS**: Can contain any value.
+3. **PHONE NUMBER**: Must contain only numbers and should be at least 3 digits long.
 4. **EMAIL ADDRESS**: Can contain any values.
-5. **GITHUB USERNAME**: Can contain only alphanumeric characters and hyphens(-).
-6. **PROFILE PICTURE**: Must be a valid URL to an image. Supports png, jpg, jpeg and gif formats.
+5. **GITHUB USERNAME**: Can contain only alphanumeric characters and hyphens(-). All GitHub usernames must be unique.
+6. **PROFILE PICTURE**: Must be a valid URI to an image. Supports png, jpg, jpeg and gif formats.
 7. **TAGS**: Must contain alphanumeric characters only. They are limited to only 15 characters.
 8. **TECH STACK**: Can contain alphanumeric characters, underscores(_), hashtags(#), hyphens(-), periods(.) and plus signs(+).
    They are limited to only 15 characters. <br>
@@ -442,7 +442,7 @@ Furthermore, certain edits can cause the CodeConnect to behave in unexpected way
 9. **INDEX/CONTACT_INDEX**: Must be a positive integer which is not greater than the number of contacts the user is currenty seeing in the
    contact list.
 10. **RATING**: Must be an integer between 0 (inclusive) and 10 (inclusive).
-11. **TEAM NAME**: Can only contain alphanumeric characters and spaces.
+11. **TEAM NAME**: Can only contain alphanumeric characters and spaces. All team names must be unique.
 12. **TEAM INDEX**: Must be a positive integer which is not greater than the number of teams in the address book.
 
 ---
