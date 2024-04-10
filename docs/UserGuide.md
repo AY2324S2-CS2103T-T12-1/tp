@@ -25,7 +25,6 @@ We are **optimised for use via a Command Line Interface** (CLI) while still havi
 - [Getting Started](#getting-started)
 - [Tutorial (coming soon)](#tutorial)
 - [Features](#features)
-- [Planned Enhancements (coming soon)](#planned-enhancements)
 - [FAQ](#faq)
     - [General Questions](#general-questions)
     - [Contact-Related Questions](#task-related-questions)
@@ -41,6 +40,8 @@ Imagine a place where you can manage the details of like-minded student develope
 Well, look no further! CodeConnect is your developer-first networking application, designed by student developers for student developers. Whether you're a coding wizard in Python, a design maestro in UI/UX, or a tech enthusiast exploring new horizons, CodeConnect is your ultimate ally.
 
 So, get ready to explore, connect, and create with CodeConnect! 🎉 Let's turn those tech dreams into reality, one collaboration at a time! 💻✨
+
+[[Jump to Table of Contents]](#table-of-contents)
 
 ---
 
@@ -69,6 +70,8 @@ Throughout this guide, you'll notice colored blocks of information. These are us
 </div>
 
 Without further ado, let's dive in and uncover the power of CodeConnect! 🚀
+
+[[Jump to Table of Contents]](#table-of-contents)
 
 ---
 ## Installation Guide
@@ -99,6 +102,8 @@ Without further ado, let's dive in and uncover the power of CodeConnect! 🚀
 
 7. Refer to the [Features](#features) below for details of each command.
 
+[[Jump to Table of Contents]](#table-of-contents)
+
 ---
 
 ## Getting Started
@@ -122,6 +127,8 @@ This is our response panel. It is where we provide responses to your CLI command
 
 This is our contacts display panel. This is where results of your searches for contacts will be displayed.<br>
 ![quickstart-personlist.png](images%2Fquickstart-personlist.png)
+
+[[Jump to Table of Contents]](#table-of-contents)
 
 ---
 
@@ -404,6 +411,8 @@ If your changes to the data file makes its format invalid, CodeConnect will disc
 Furthermore, certain edits can cause the CodeConnect to behave in unexpected ways (e.g., if a value entered is outside the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
 </box>
 
+[[Jump to Table of Contents]](#table-of-contents)
+
 ---
 
 ## FAQ
@@ -411,11 +420,15 @@ Furthermore, certain edits can cause the CodeConnect to behave in unexpected way
 **Q**: How do I transfer my data to another Computer?<br>
 **A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous CodeConnect home folder.
 
+[[Jump to Table of Contents]](#table-of-contents)
+
 ---
 
 ## Known Issues
 
 1. **When using multiple screens**, if you move the application to a secondary screen, and later switch to using only the primary screen, the GUI will open off-screen. The remedy is to delete the `preferences.json` file created by the application before running the application again.
+
+[[Jump to Table of Contents]](#table-of-contents)
 
 ---
 
@@ -444,6 +457,8 @@ Furthermore, certain edits can cause the CodeConnect to behave in unexpected way
 11. **TEAM NAME**: Can only contain alphanumeric characters and spaces. All team names must be unique.
 12. **TEAM INDEX**: Must be a positive integer which is not greater than the number of teams in the address book.
 
+[[Jump to Table of Contents]](#table-of-contents)
+
 ---
 
 ## Command Summary
@@ -468,3 +483,4 @@ Furthermore, certain edits can cause the CodeConnect to behave in unexpected way
 | **Help**                  | `help`                                                                                                                                                                                                                                                                                                                                |
 | **Exit**                  | `exit`                                                                                                                                                                                                                                                                                                                                |
 
+[[Jump to Table of Contents]](#table-of-contents)
