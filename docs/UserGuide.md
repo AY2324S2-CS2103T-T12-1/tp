@@ -179,12 +179,12 @@ Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS g/GITHUB_USERNAME [t/TAG] p
   * e.g. `ts/JavaScript` `ts/Python`
 
 <div class="alert alert-info" markdown="1">
-* There can be a maximum of 3 tags and tech stacks each, per contact.
+ℹ️ There can be a maximum of 3 tags and tech stacks each, per contact.
 </div>
 
 <div class="alert alert-warning" markdown="1">
-* Contacts will be considered the same if they share the same names or GitHub usernames. 
-  Please ensure that you are not adding duplicate contacts.
+⚠️ Contacts will be considered the same if they share the same names or GitHub usernames. 
+   Please ensure that you are not adding duplicate contacts.
 </div>
 
 Examples:
@@ -198,15 +198,15 @@ Edits an existing contact in the address book.
 Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [g/GITHUB_USERNAME] [pp/PROFILE_PICTURE] [t/TAG]…​ [ts/TECH_STACK]…​`
 
 <div class="alert alert-info" markdown="1">
-* Edits the contact at the specified `INDEX`. <br>
-* Existing values will be updated to the input values. <br>
-* When editing tags, the existing tags of the contact will be removed i.e. adding of tags is not cumulative. <br>
-* You can remove all the contact’s tags and tech stack by typing `t/` and `ts/` without
+ℹ️ Edits the contact at the specified `INDEX`. <br>
+ℹ️ Existing values will be updated to the input values. <br>
+ℹ️ When editing tags, the existing tags of the contact will be removed i.e. adding of tags is not cumulative. <br>
+ℹ️ You can remove all the contact’s tags and tech stack by typing `t/` and `ts/` without
    specifying any tags after it.
 </div>
 
 <div class="alert alert-warning" markdown="1">
-* At least one of the optional fields must be provided. <br>
+⚠️ At least one of the optional fields must be provided. <br>
 </div>
 
 *For the remaining optional parameters, please refer to the same section under the `add` command.*
@@ -222,11 +222,11 @@ Find contacts whose names contain any of the given keywords.
 Format: `find KEYWORD [MORE_KEYWORDS]`
 
 <div class="alert alert-info" markdown="1">
-* The search is case-insensitive. e.g. `hans` will match `Hans` <br>
-* The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans` <br>
-* Only the name is searched. <br>
-* Only full words will be matched e.g. `Han` will not match `Hans` <br>
-* Contacts matching at least one keyword will be returned (i.e. `OR` search).
+ℹ️ The search is case-insensitive. e.g. `hans` will match `Hans` <br>
+ℹ️ The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans` <br>
+ℹ️ Only the name is searched. <br>
+ℹ️ Only full words will be matched e.g. `Han` will not match `Hans` <br>
+ℹ️ Contacts matching at least one keyword will be returned (i.e. `OR` search).
   e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`
 </div>
 
@@ -241,10 +241,10 @@ Find contacts whose tags contain all the given keywords.
 Format: `find-tags KEYWORD [MORE_KEYWORDS]`
 
 <div class="alert alert-info" markdown="1">
-* The search is case-insensitive. e.g. `school` will match `School` <br>
-* Only the tags are searched. <br>
-* Only full words will be matched e.g. `school` will not match `schools` <br>
-* Contacts matching all keywords will be returned (i.e. `AND` search).
+ℹ️ The search is case-insensitive. e.g. `school` will match `School` <br>
+ℹ️ Only the tags are searched. <br>
+ℹ️ Only full words will be matched e.g. `school` will not match `schools` <br>
+ℹ️ Contacts matching all keywords will be returned (i.e. `AND` search).
 </div>
 
 Examples:
@@ -257,10 +257,10 @@ Find contacts whose tech stack contain all the given keywords.
 Format: `find-ts KEYWORD [MORE_KEYWORDS]`
 
 <div class="alert alert-info" markdown="1">
-* The search is case-insensitive. e.g. `java` will match `Java` <br>
-* Only the tech stack are searched. <br>
-* Only full words will be matched e.g. `java` will not match `javascript` <br>
-* Contacts matching all keywords will be returned (i.e. `AND` search).
+ℹ️ The search is case-insensitive. e.g. `java` will match `Java` <br>
+ℹ️ Only the tech stack are searched. <br>
+ℹ️ Only full words will be matched e.g. `java` will not match `javascript` <br>
+ℹ️ Contacts matching all keywords will be returned (i.e. `AND` search).
 </div>
 
 Examples:
@@ -273,10 +273,10 @@ Rates specified skill of specified contact.
 Format: `rate INDEX ts/KEYWORD r/RATING`
 
 <div class="alert alert-info" markdown="1">
-* The rating is case-sensitive. e.g. `java` will not match `Java` <br>
-* Only supports the rating of 1 tech stack per command. <br>
-* Only the tech stack in specified contact are searched. <br>
-* Only full words will be matched e.g. `java` will not match `javascript`
+ℹ️ The rating is case-sensitive. e.g. `java` will not match `Java` <br>
+ℹ️ Only supports the rating of 1 tech stack per command. <br>
+ℹ️ Only the tech stack in specified contact are searched. <br>
+ℹ️ Only full words will be matched e.g. `java` will not match `javascript`
 </div>
 
 Examples:
@@ -289,8 +289,8 @@ Deletes the specified contact from the address book.
 Format: `delete INDEX`
 
 <div class="alert alert-info" markdown="1">
-* Deletes the contact at the specified `INDEX`. <br>
-* The index refers to the index number shown in the displayed contact list.
+ℹ️ Deletes the contact at the specified `INDEX`. <br>
+ℹ️ The index refers to the index number shown in the displayed contact list.
 </div>
 
 Examples:
@@ -320,9 +320,9 @@ You can use the `add` team command to create teams of contacts, which will help 
 Format: `team add n/TEAM_NAME`
 
 <div class="alert alert-info" markdown="1">
-* Each team in CodeConnect needs to have a unique name, so you can't add a team if another team with the same name is
+ℹ️ Each team in CodeConnect needs to have a unique name, so you can't add a team if another team with the same name is
    already present in the team list. <br>
-* Team names are case-sensitive, so it's fine to have two teams named `NUS HACK 2024` and `Nus Hack 2024`.
+ℹ️ Team names are case-sensitive, so it's fine to have two teams named `NUS HACK 2024` and `Nus Hack 2024`.
 </div>
 
 Examples:
@@ -335,8 +335,8 @@ You can enter `team` followed by a team's index number to list the members that 
 Format: `team TEAM_INDEX`
 
 <div class="alert alert-info" markdown="1">
-* Export the members' details of the team at the specified `TEAM_INDEX`. <br>
-* The index refers to the index number shown in the displayed teams list.
+ℹ️ Export the members' details of the team at the specified `TEAM_INDEX`. <br>
+ℹ️ The index refers to the index number shown in the displayed teams list.
 </div>
 
 Examples:
@@ -349,8 +349,8 @@ You can use the `delete` team command to delete a team from your team list. Afte
 Format: `team TEAM_INDEX delete`
 
 <div class="alert alert-info" markdown="1">
-* Deletes the team at the specified `TEAM_INDEX`. <br>
-* The index refers to the index number shown in the displayed teams list. <br>
+ℹ️ Deletes the team at the specified `TEAM_INDEX`. <br>
+ℹ️ The index refers to the index number shown in the displayed teams list. <br>
 </div>
 
 Examples:
@@ -365,9 +365,9 @@ Otherwise, they have to first enter the command `list` to view the contacts and 
 Format: `team TEAM_INDEX add-contact CONTACT_INDEX`
 
 <div class="alert alert-info" markdown="1">
-* Adds the contact at the specified `CONTACT_INDEX` to the team at the specified `TEAM_INDEX`. <br>
-* The `TEAM_INDEX` refers to the index number shown in the displayed teams list. <br>
-* The `CONTACT_INDEX` refers to the index number of the contact shown in the contact list the user sees.
+ℹ️ Adds the contact at the specified `CONTACT_INDEX` to the team at the specified `TEAM_INDEX`. <br>
+ℹ️ The `TEAM_INDEX` refers to the index number shown in the displayed teams list. <br>
+ℹ️ The `CONTACT_INDEX` refers to the index number of the contact shown in the contact list the user sees.
 </div>
 
 Examples:
@@ -381,9 +381,9 @@ Deletes a contact from a specific team in your team list.
 Format: `team TEAM_INDEX delete-contact CONTACT_INDEX`
 
 <div class="alert alert-info" markdown="1">
-* Deletes the contact at the specified `CONTACT_INDEX` from the team at the specified `TEAM_INDEX`.
-* The `TEAM_INDEX` refers to the index number shown in the displayed teams list.
-* The `CONTACT_INDEX` refers to the index number of the contact shown in the contact list the user sees.
+ℹ️ Deletes the contact at the specified `CONTACT_INDEX` from the team at the specified `TEAM_INDEX`.
+ℹ️ The `TEAM_INDEX` refers to the index number shown in the displayed teams list.
+ℹ️ The `CONTACT_INDEX` refers to the index number of the contact shown in the contact list the user sees.
 </div>
 
 Examples:
@@ -397,7 +397,7 @@ Copies to your clipboard the details of all the members in a particular team, so
 Format: `team TEAM_INDEX export`
 
 <div class="alert alert-info" markdown="1">
-* Export the members' details of the team at the specified `TEAM_INDEX`.
+ℹ️ Export the members' details of the team at the specified `TEAM_INDEX`.
 </div>
 
 Examples:
@@ -456,7 +456,7 @@ Furthermore, certain edits can cause the CodeConnect to behave in unexpected way
 3. **PHONE NUMBER**: Must contain only numbers and should be at least 3 digits long.
 4. **EMAIL ADDRESS**: Can contain any values. <br>
 <div class="alert alert-info" markdown="1">
-   * While the email address field accepts any values, it is important to adhere to the following:
+   ℹ️ While the email address field accepts any values, it is important to adhere to the following:
     - The local-part before the '@' symbol can only contain alphanumeric characters and the special characters +_.-.
     - The local-part cannot start or end with any special characters.
     - After the '@' symbol, there should be a domain name composed of domain labels separated by periods.
@@ -470,7 +470,7 @@ Furthermore, certain edits can cause the CodeConnect to behave in unexpected way
 8. **TECH STACK**: Can contain alphanumeric characters, underscores(_), hashtags(#), hyphens(-), periods(.) and plus signs(+).
    They are limited to only 15 characters. <br>
 <div class="alert alert-warning" markdown="1">
-   * If you are entering the tech stack for the `rate` command, please ensure it is the tech stack that the specified index has.
+   ⚠️ If you are entering the tech stack for the `rate` command, please ensure it is the tech stack that the specified index has.
 </div>
 9. **INDEX/CONTACT_INDEX**: Must be a positive integer which is not greater than the number of contacts the user is currenty seeing in the
    contact list.
