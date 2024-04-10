@@ -26,25 +26,21 @@ public class TeamListPanel extends UiPart<Region> {
     public TeamListPanel(ObservableList<Team> teamList) {
         super(FXML);
         teamListView.setItems(teamList);
-        teamListView.setCellFactory(listView -> new TeamListCell());
-    }
-
-    /**
-     * Creates a {@code TeamListPanel} with the given {@code ObservableList}.
-     */
-    class TeamListCell extends ListCell<Team> {
-        @Override
-        protected void updateItem(Team team, boolean empty) {
-            super.updateItem(team, empty);
-
-            if (empty || team == null) {
-                setGraphic(null);
-                setText(null);
-            } else {
-                setGraphic(new TeamCard(team, getIndex() + 1).getRoot());
+        teamListView.setCellFactory(listView -> new ListCell<Team>() {
+            {
+                setPrefWidth(0);
             }
-        }
-    }
+            @Override
+            protected void updateItem(Team team, boolean empty) {
+                super.updateItem(team, empty);
 
-    ;
+                if (empty || team == null) {
+                    setGraphic(null);
+                    setText(null);
+                } else {
+                    setGraphic(new TeamCard(team, getIndex() + 1).getRoot());
+                }
+            }
+        });
+    }
 }
