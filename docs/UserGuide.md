@@ -65,7 +65,7 @@ Throughout this guide, you'll notice colored blocks of information. These are us
 </div>
 
 <div class="alert alert-danger" markdown="1">
-❗️ential irreversible risks.
+❗: The red block highlights information that requires immediate attention due to potential irreversible risks.
 </div>
 
 Without further ado, let's dive in and uncover the power of CodeConnect! 🚀
