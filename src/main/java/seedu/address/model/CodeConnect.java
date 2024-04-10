@@ -140,8 +140,8 @@ public class CodeConnect implements ReadOnlyCodeConnect {
     }
 
     /**
-     * Replaces the contents of the contact list with {@code contacts}.
-     * {@code contacts} must not contain duplicate contacts.
+     * Replaces the contents of the team list with {@code teams}.
+     * {@code teams} must not contain duplicate teams.
      */
     public void setTeams(List<Team> teams) {
         this.teams.setTeams(teams);

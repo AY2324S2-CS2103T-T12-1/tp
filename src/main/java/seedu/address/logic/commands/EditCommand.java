@@ -6,13 +6,14 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_GITHUB_USERNAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_PROFILE_PICTURE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TECH_STACK;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_PROFILE_PICTURE;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_CONTACTS;
 
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -30,9 +31,10 @@ import seedu.address.model.contact.Email;
 import seedu.address.model.contact.GitHubUsername;
 import seedu.address.model.contact.Name;
 import seedu.address.model.contact.Phone;
-import seedu.address.model.tag.Tag;
-import seedu.address.model.techstack.TechStack;
 import seedu.address.model.contact.ProfilePicture;
+import seedu.address.model.tag.Tag;
+import seedu.address.model.team.Team;
+import seedu.address.model.techstack.TechStack;
 
 /**
  * Edits the details of an existing contact in the address book.
@@ -55,7 +57,7 @@ public class EditCommand extends Command {
             + "[" + PREFIX_TAG + "TAG]...\n"
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_PHONE + "91234567 "
-            + PREFIX_EMAIL + "johndoe@example.com"
+            + PREFIX_EMAIL + "johndoe@example.com "
             + PREFIX_GITHUB_USERNAME + "johndoee123";
 
     public static final String MESSAGE_EDIT_CONTACT_SUCCESS = "Edited Contact: %1$s";
@@ -94,6 +96,10 @@ public class EditCommand extends Command {
         }
 
         model.setContact(contactToEdit, editedContact);
+
+        List<Team> teamsWithContact = getTeamsWithContact(contactToEdit, model.getTeamList());
+        updateTeamsWithEditedContact(teamsWithContact, model, contactToEdit, editedContact);
+
         model.updateFilteredContactList(PREDICATE_SHOW_ALL_CONTACTS);
         return new CommandResult(String.format(MESSAGE_EDIT_CONTACT_SUCCESS, Messages.format(editedContact)));
     }
@@ -118,6 +124,30 @@ public class EditCommand extends Command {
         return new Contact(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedGitHubUsername,
                 updatedTechStack, updatedTags, updatedProfilePicture);
     }
+
+    /**
+     * Returns a list of teams that contain the given contact.
+     */
+    private static List<Team> getTeamsWithContact(Contact contact, List<Team> teamList) {
+        LinkedList<Team> teamsWithContact = new LinkedList<>();
+
+        for (Team team : teamList) {
+            if (team.hasMember(contact)) {
+                teamsWithContact.add(team);
+            }
+        }
+
+        return teamsWithContact;
+    }
+
+    private static void updateTeamsWithEditedContact(List<Team> teamsWithContact, Model model, Contact contactToEdit,
+                                                     Contact editedContact) {
+        for (Team team : teamsWithContact) {
+            Team updatedTeam = team.withRemovedMember(contactToEdit).withAddedMember(editedContact);
+            model.setTeam(team, updatedTeam);
+        }
+    }
+
 
     @Override
     public boolean equals(Object other) {
@@ -174,7 +204,8 @@ public class EditCommand extends Command {
             setProfilePicture(toCopy.profilePicture);
         }
 
-        public EditContactDescriptor() {}
+        public EditContactDescriptor() {
+        }
 
         /**
          * Returns true if at least one field is edited.
@@ -184,59 +215,52 @@ public class EditCommand extends Command {
                     gitHubUsername, techStack, tags, profilePicture);
         }
 
-        public void setName(Name name) {
-            this.name = name;
-        }
-
         public Optional<Name> getName() {
             return Optional.ofNullable(name);
         }
 
-        public void setPhone(Phone phone) {
-            this.phone = phone;
+        public void setName(Name name) {
+            this.name = name;
         }
 
         public Optional<Phone> getPhone() {
             return Optional.ofNullable(phone);
         }
 
-        public void setEmail(Email email) {
-            this.email = email;
+        public void setPhone(Phone phone) {
+            this.phone = phone;
         }
 
         public Optional<Email> getEmail() {
             return Optional.ofNullable(email);
         }
 
-        public void setAddress(Address address) {
-            this.address = address;
+        public void setEmail(Email email) {
+            this.email = email;
         }
 
         public Optional<Address> getAddress() {
             return Optional.ofNullable(address);
         }
 
-        public void setGitHubUsername(GitHubUsername gitHubUsername) {
-            this.gitHubUsername = gitHubUsername;
+        public void setAddress(Address address) {
+            this.address = address;
         }
+
         public Optional<GitHubUsername> getGitHubUsername() {
             return Optional.ofNullable(gitHubUsername);
         }
 
-        public void setProfilePicture(ProfilePicture profilePicture) {
-            this.profilePicture = profilePicture;
+        public void setGitHubUsername(GitHubUsername gitHubUsername) {
+            this.gitHubUsername = gitHubUsername;
         }
 
         public Optional<ProfilePicture> getProfilePicture() {
             return Optional.ofNullable(this.profilePicture);
         }
 
-        /**
-         * Sets {@code techStack} to this object's {@code techStack}.
-         * A defensive copy of {@code techStack} is used internally.
-         */
-        public void setTechStack(Set<TechStack> techStack) {
-            this.techStack = (techStack != null) ? new HashSet<>(techStack) : null;
+        public void setProfilePicture(ProfilePicture profilePicture) {
+            this.profilePicture = profilePicture;
         }
 
         /**
@@ -249,11 +273,11 @@ public class EditCommand extends Command {
         }
 
         /**
-         * Sets {@code tags} to this object's {@code tags}.
-         * A defensive copy of {@code tags} is used internally.
+         * Sets {@code techStack} to this object's {@code techStack}.
+         * A defensive copy of {@code techStack} is used internally.
          */
-        public void setTags(Set<Tag> tags) {
-            this.tags = (tags != null) ? new HashSet<>(tags) : null;
+        public void setTechStack(Set<TechStack> techStack) {
+            this.techStack = (techStack != null) ? new HashSet<>(techStack) : null;
         }
 
         /**
@@ -263,6 +287,14 @@ public class EditCommand extends Command {
          */
         public Optional<Set<Tag>> getTags() {
             return (tags != null) ? Optional.of(Collections.unmodifiableSet(tags)) : Optional.empty();
+        }
+
+        /**
+         * Sets {@code tags} to this object's {@code tags}.
+         * A defensive copy of {@code tags} is used internally.
+         */
+        public void setTags(Set<Tag> tags) {
+            this.tags = (tags != null) ? new HashSet<>(tags) : null;
         }
 
         @Override

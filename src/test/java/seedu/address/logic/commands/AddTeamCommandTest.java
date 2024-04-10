@@ -179,6 +179,11 @@ public class AddTeamCommandTest {
         public boolean hasTeam(Team team) {
             throw new AssertionError("This method should not be called.");
         }
+
+        @Override
+        public ObservableList<Team> getTeamList() {
+            throw new AssertionError("This method should not be called.");
+        }
     }
 
     /**

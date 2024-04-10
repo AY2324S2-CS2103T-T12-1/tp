@@ -23,6 +23,7 @@ public class ModelManager implements Model {
     private final CodeConnect codeConnect;
     private final UserPrefs userPrefs;
     private final FilteredList<Contact> filteredContacts;
+    private final ObservableList<Team> teams;
 
     /**
      * Initializes a ModelManager with the given codeConnect and userPrefs.
@@ -34,7 +35,8 @@ public class ModelManager implements Model {
 
         this.codeConnect = new CodeConnect(codeConnect);
         this.userPrefs = new UserPrefs(userPrefs);
-        filteredContacts = new FilteredList<>(this.codeConnect.getContactList());
+        this.filteredContacts = new FilteredList<>(this.codeConnect.getContactList());
+        this.teams = this.codeConnect.getTeamList();
     }
 
     public ModelManager() {
@@ -108,7 +110,6 @@ public class ModelManager implements Model {
     @Override
     public void setContact(Contact target, Contact editedContact) {
         requireAllNonNull(target, editedContact);
-
         codeConnect.setContact(target, editedContact);
     }
 
@@ -130,6 +131,11 @@ public class ModelManager implements Model {
     @Override
     public void setTeam(Team target, Team editedTeam) {
         codeConnect.setTeam(target, editedTeam);
+    }
+
+    @Override
+    public ObservableList<Team> getTeamList() {
+        return teams;
     }
 
     //=========== Filtered Contact List Accessors =============================================================
