@@ -11,6 +11,8 @@ import seedu.address.model.team.Team;
 
 import static java.util.Objects.requireNonNull;
 
+import java.util.List;
+
 public class DeleteContactFromTeamCommand extends Command {
 
     public static final String COMMAND_WORD = "delete-contact";
@@ -50,14 +52,12 @@ public class DeleteContactFromTeamCommand extends Command {
         }
         Contact contactToDelete = originalTeam.getMembers().get(contactIndex.getZeroBased());
 
-//            if (!team.hasMember(contactToDelete)) {
-//                throw new CommandException(MESSAGE_INEXISTENT_CONTACT_IN_TEAM);
-//            }
-
         Team updatedTeam = originalTeam.withRemovedMember(contactToDelete);
         model.setTeam(originalTeam, updatedTeam);
-        return new CommandResult(String.format(MESSAGE_SUCCESS, contactToDelete.getName()));
 
+        List<Contact> teamMembers = updatedTeam.getMembers();
+        model.updateFilteredContactList(a -> teamMembers.stream().anyMatch(a::isSameContact));
+        return new CommandResult(String.format(MESSAGE_SUCCESS, contactToDelete.getName()));
     }
 
     @Override
