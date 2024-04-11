@@ -8,36 +8,40 @@ Hello fellow student developers! Welcome to your one-stop shop for managing deve
 
 CodeConnect is a **developer-first networking application** for student developers to keep track of and reach out easily to other student developers, so they can easily form teams for hackathons.
 
-We are **optimised for use via a Command Line Interface** (CLI) while still having the benefits of a **Graphical User Interface (GUI)**. If you can type fast, CC can get your contact management tasks done faster than traditional GUI apps.
+We are **optimised for use via a Command Line Interface (CLI)** while still having the benefits of a **Graphical User Interface (GUI)**. If you can type fast, CodeConnect can get your contact management tasks done faster than traditional GUI apps.
 
-### What can CodeConnect do for you?
+---
+
+## What can CodeConnect do for you?
 - **Add, Edit, Update, Delete** a student developer's contact details
-- Record **Tech Stack** and **GitHub Usernames** for each developer
+- Record **Tech Stack** and **GitHub Username** for each developer
 - **Find** developers by their name, tags, or tech stack
-- **Email** developers directly from the app
-- **Manage** your hackathon teams by adding your team members to CodeConnect
-- **Export** your team details for easy signing up for hackathons
+- **Form** and **Manage** your hackathon teams with existing contacts
+- **List** all your contacts in the application or within each team
+- **Export** your team's details for easy signing up for hackathons
+- **Email** your contacts directly from the application
 
-# Table of Contents
+### Table of Contents
 - [Introduction](#introduction)
 - [Usage of User Guide](#usage-of-user-guide)
 - [Installation Guide](#installation-guide)
 - [Getting Started](#getting-started)
-- [Tutorial (coming soon)](#tutorial)
 - [Features](#features)
 - [FAQ](#faq)
     - [General Questions](#general-questions)
     - [Contact-Related Questions](#task-related-questions)
 - [Known Issues](#known-issues)
 - [Command Summary](#command-summary)
+  - [Parameter Constraints](#parameter-constraints)
 ---
 
 ## Introduction
 Hey there, aspiring student innovators! 🚀 Welcome to CodeConnect, your passport to a vibrant world of collaboration and innovation! 🌟
 
-Imagine a place where you can manage the details of like-minded student developers as effortlessly as a tap on your screen. A world where forming dream teams for hackathons is not just a possibility, but a seamless reality.
+Imagine a place where you can manage the details of like-minded student developers effortlessly. A world where forming dream teams for hackathons is not just a possibility, but a seamless reality.
 
-Well, look no further! CodeConnect is your developer-first networking application, designed by student developers for student developers. Whether you're a coding wizard in Python, a design maestro in UI/UX, or a tech enthusiast exploring new horizons, CodeConnect is your ultimate ally.
+Well, look no further! CodeConnect is your developer-first networking application, designed by student developers for student developers. 
+Whether you're a coding wizard in Python, a design maestro in UI/UX, or a tech enthusiast exploring new horizons, CodeConnect is your ultimate ally.
 
 So, get ready to explore, connect, and create with CodeConnect! 🎉 Let's turn those tech dreams into reality, one collaboration at a time! 💻✨
 
@@ -48,14 +52,11 @@ So, get ready to explore, connect, and create with CodeConnect! 🎉 Let's turn 
 ## Usage of User Guide
 This guide is designed to help you learn how to use CodeConnect effectively and explore its various features. If you are unfamiliar with programming, don't worry - we have intentionally made it beginner-friendly so that even non-developers will be able to use our guide with ease.
 
-If you're already familiar with CodeConnect, you can skip ahead to the [features section](#features), or to the [command summary](#command-summary). <br>
-If you're unsure of the constraints of each parameter for a command you want to enter, head over to the [parameter constraints](#parameter-constraints) to learn more! <br>
+If you're already familiar with CodeConnect, you can skip ahead to the [features](#features), [command summary](#command-summary) or [parameter constraints](#parameter-constraints) sections. <br>
 But if you're new to CodeConnect, simply follow along step-by-step to discover how to gather and form your next champion team!
 
-Should you encounter any problems along your journey, please take a look at our [FAQ](#faq) for more information.
-
-### Keynotes:
-Throughout this guide, you'll notice colored blocks of information. These are used to highlight different types of information for easier understanding.
+### Keynotes
+Before we dive into the guide, let's go over a couple of things to make it more fun for you! Throughout the guide, you'll find some blocks of information that are all jazzed up with colors. They're there to highlight different types of info, so keep an eye out! 🌟
 
 <div class="alert alert-info" markdown="1">
 ℹ️: The blue block highlights additional information that might be useful in clearing some confusion.
@@ -69,26 +70,65 @@ Throughout this guide, you'll notice colored blocks of information. These are us
 ❗: The red block highlights information that requires immediate attention due to potential irreversible risks.
 </div>
 
-Without further ado, let's dive in and uncover the power of CodeConnect! 🚀
+Throughout this guide, you'll see some commands highlighted in these cool little boxes:
+
+```
+Text in this box is a command
+```
+
+See those [SQUARE_BRACKETS] words? They're placeholders for your inputs! Don't stress about the exact values right now; we'll get to that later. So, for example:
+
+```
+add t/[TASK_DESCRIPTION]
+```
+
+You can jazz it up like this:
+
+```
+add t/do OP2 slides
+```
+
+<div class="alert alert-info" markdown="1">
+ℹ️ Remember, no need to copy the `[]`! Just type in the actual values you want to use.
+</div>
+
+Also, keep an eye out for [blue](#blue) hyperlinks! They'll whisk you away to other parts of the guide or even other places online.
+
+Alright, now that we've covered the fun stuff, let's dive in and uncover the power of CodeConnect! 🚀💥
 
 [[Jump to Table of Contents]](#table-of-contents)
 
 ---
 ## Installation Guide
 
-1. Ensure you have Java `11` or above installed in your Computer.
-
-2. Download the latest `codeconnect.jar` from [here](https://github.com/se-edu/addressbook-level3/releases).
-
-3. Copy the file to the folder you want to use as the _home folder_ for your CodeConnect.
-
-4. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar codeconnect.jar` command to run the application.<br>
+1. Ensure that you have Java 11 installed on your computer. Click <a href="https://blog.hubspot.com/website/check-java-verison#:~:text=First%2C%20find%20and%20click%20on,get%20your%20current%20version%20details">here</a> to learn how to find out what Java version you have! If you do not have Java 11, you can download Java 11 by following the links below:
+   - [Windows](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html)
    
-5. A GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
+   - [MacOS](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html)
+   
+   - [Linux](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html)
+   
+2. You might also need to install JavaFX 11. You can find the installation guide [here](https://openjfx.io/openjfx-docs/#install-javafx).
+
+3. Download the latest `codeconnect.jar` from [here](https://github.com/AY2324S2-CS2103T-T12-1/tp/releases).
+
+4. Copy the file to the folder you want to use as the _home folder_ for your CodeConnect, using your system's File Explorer.
+
+5. Open up the <a href="https://support.kaspersky.com/common/windows/14637#block0">command prompt</a> (Windows), <a href="https://support.apple.com/en-sg/guide/terminal/apd5265185d-f365-44cb-8b09-71a064a42125/mac">terminal</a> (Mac) or <a href="https://www.redhat.com/sysadmin/linux-terminal-window">terminal emulator</a> (Linux).
+
+6. Type <code>cd</code> followed by the directory path to the folder where you have downloaded CodeConnect to navigate there and press <code>Enter</code>.
+
+7. Use the `java -jar codeconnect.jar` command to run the application.<br>
+   
+8. A GUI similar to the below should appear in a few seconds. <br>
    ![Ui](images/Ui.png)
 
-6. Type the command in the command box and press Enter to execute it. (e.g. typing **`help`** and pressing Enter will open the help window.)<br>
-   Some example commands you can try:
+<div class="alert alert-info" markdown="1">
+ℹ️ The application might contain some sample data that differs slightly from what you see above! Don't panic, It's just there to help you get started.
+</div>
+
+
+8. Type a command into the command box and press Enter to execute it. <br> Some example commands you can try:
 
    - `list` : Lists all contacts.
 
@@ -108,26 +148,28 @@ Without further ado, let's dive in and uncover the power of CodeConnect! 🚀
 
 ## Getting Started
  
-Below you will find explanations for each key element in the CodeConnect GUI.
+Below you will find explanations for each key component in the CodeConnect GUI.
 
-***Note:*** What you see in the GUI may differ slightly from the images below, as it depends on the data that is stored locally.
+<div class="alert alert-warning" markdown="1">
+⚠️ What you see in the GUI may differ slightly from the images below, as it depends on the data that is stored locally!
+</div>
 
-This is the text input area. This is the most important part of the program. Here is where you will key in the commands you need.<br>
+1. This is the text input area. This is the most important part of the program. Here is where you will key in the commands you need.<br>
 ![quickstart-input.png](images/quick-start/quickstart-input.png)
 
-This is the file button. Here is where you can exit the program.<br>
+2. This is the file button. Here is where you can exit the program.<br>
 ![quickstart-file.png](images/quick-start/quickstart-file.png)
  
-This is the help button. Here is where you can find any kind of help with CodeConnect.<br>
+3. This is the help button. Here is where you can find any kind of help with CodeConnect.<br>
 ![quickstart-help.png](images/quick-start/quickstart-help.png)
 
-This is our teams display panel. All the teams added are displayed here.<br>
+4. This is our teams display panel. All the teams added are displayed here.<br>
 ![quickstart-teamlist.png](images/quick-start/quickstart-teamlist.png)
 
-This is our response panel. Here is where we provide responses to your CLI commands, or offer assistance.<br>
+5. This is our response panel. Here is where we provide responses to your CLI commands, or offer assistance for your next command.<br>
 ![quickstart-response.png](images/quick-start/quickstart-response.png)
 
-This is our contacts display panel. Here is where results of your searches for contacts will be displayed.<br>
+6. This is our contacts display panel. Here is where results of your searches for contacts will be displayed.<br>
 ![quickstart-personlist.png](images/quick-start/quickstart-personlist.png)
 
 [[Jump to Table of Contents]](#table-of-contents)
@@ -521,7 +563,31 @@ Furthermore, certain edits can cause the CodeConnect to behave in unexpected way
 
 ---
 
-## Parameter Constraints
+****
+
+## Command Summary
+
+| Action                    | Format, Examples                                                                                                                                                                                                                                                                                                                      |
+|---------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Add**                   | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS g/GITHUB_USERNAME pp/PROFILE_PICTURE [t/TAG] [ts/TECH_STACK]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 g/Jamesho123  pp/https://api-prod-minimal-v510.vercel.app/assets/images/avatar/avatar_1.jpg t/friend t/colleague ts/Java ts/C++` |
+| **Clear**                 | `clear`                                                                                                                                                                                                                                                                                                                               |
+| **Delete**                | `delete INDEX`<br> e.g., `delete 3`                                                                                                                                                                                                                                                                                                   |
+| **Edit**                  | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [g/GITHUB_USERNAME] [pp/PROFILE_PICTURE] [t/TAG]…​ [ts/TECH_STACK]…​ `<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`                                                                                                                                               |
+| **Find**                  | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`                                                                                                                                                                                                                                                                            |
+| **Find by Tags**          | `find-tags KEYWORD [MORE_KEYWORDS]`<br> e.g., `find-tags School Work`                                                                                                                                                                                                                                                                 |
+| **Find by Tech Stack**    | `find-ts KEYWORD [MORE_KEYWORDS]`<br> e.g., `find-ts Java Python`                                                                                                                                                                                                                                                                     |
+| **Rate**                  | `rate INDEX ts/TECH_STACK r/RATING`<br> e.g., `rate 3 ts/Java r/7`                                                                                                                                                                                                                                                                    |
+| **Team - Add**            | `team add n/NAME`<br> e.g., `team add n/NUS HACK 2024`                                                                                                                                                                                                                                                                                |
+| **Team - Delete**         | `team TEAM_INDEX delete`<br> e.g., `team 1 delete`                                                                                                                                                                                                                                                                                    |
+| **Team - List**           | `team TEAM_INDEX`<br> e.g., `team 1`                                                                                                                                                                                                                                                                                                  |
+| **Team - Add Contact**    | `team TEAM_INDEX add-contact CONTACT_INDEX`<br> e.g., `team 2 add-contact 3`                                                                                                                                                                                                                                                          |
+| **Team - Delete Contact** | `team TEAM_INDEX delete-contact CONTACT_INDEX`<br> e.g., `team 1 delete-contact 4`                                                                                                                                                                                                                                                    |
+| **Team - Export Details** | `team TEAM_INDEX export`<br> e.g., `team 1 export`                                                                                                                                                                                                                                                                                    |
+| **List**                  | `list`                                                                                                                                                                                                                                                                                                                                |
+| **Help**                  | `help`                                                                                                                                                                                                                                                                                                                                |
+| **Exit**                  | `exit`                                                                                                                                                                                                                                                                                                                                |
+
+### Parameter Constraints
 
 1. **NAME**: Must contain alphanumeric characters and may include spaces. All names must be unique.
 2. **ADDRESS**: Can contain any value.
@@ -545,31 +611,5 @@ Furthermore, certain edits can cause the CodeConnect to behave in unexpected way
 10. **RATING**: Must be an integer between 0 (inclusive) and 10 (inclusive).
 11. **TEAM NAME**: Can only contain alphanumeric characters and spaces. All team names must be unique.
 12. **TEAM INDEX**: Must be a positive integer which is not greater than the number of teams in the address book.
-
-[[Jump to Table of Contents]](#table-of-contents)
-
----
-
-## Command Summary
-
-| Action                    | Format, Examples                                                                                                                                                                                                                                                                                                                      |
-|---------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Add**                   | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS g/GITHUB_USERNAME pp/PROFILE_PICTURE [t/TAG] [ts/TECH_STACK]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 g/Jamesho123  pp/https://api-prod-minimal-v510.vercel.app/assets/images/avatar/avatar_1.jpg t/friend t/colleague ts/Java ts/C++` |
-| **Clear**                 | `clear`                                                                                                                                                                                                                                                                                                                               |
-| **Delete**                | `delete INDEX`<br> e.g., `delete 3`                                                                                                                                                                                                                                                                                                   |
-| **Edit**                  | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [g/GITHUB_USERNAME] [pp/PROFILE_PICTURE] [t/TAG]…​ [ts/TECH_STACK]…​ `<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`                                                                                                                                               |
-| **Find**                  | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`                                                                                                                                                                                                                                                                            |
-| **Find by Tags**          | `find-tags KEYWORD [MORE_KEYWORDS]`<br> e.g., `find-tags School Work`                                                                                                                                                                                                                                                                 |
-| **Find by Tech Stack**    | `find-ts KEYWORD [MORE_KEYWORDS]`<br> e.g., `find-ts Java Python`                                                                                                                                                                                                                                                                     |
-| **Rate**                  | `rate INDEX ts/TECH_STACK r/RATING`<br> e.g., `rate 3 ts/Java r/7`                                                                                                                                                                                                                                                                    |
-| **Team - Add**            | `team add n/NAME`<br> e.g., `team add n/NUS HACK 2024`                                                                                                                                                                                                                                                                                |
-| **Team - Delete**         | `team TEAM_INDEX delete`<br> e.g., `team 1 delete`                                                                                                                                                                                                                                                                                    |
-| **Team - List**           | `team TEAM_INDEX`<br> e.g., `team 1`                                                                                                                                                                                                                                                                                                  |
-| **Team - Add Contact**    | `team TEAM_INDEX add-contact CONTACT_INDEX`<br> e.g., `team 2 add-contact 3`                                                                                                                                                                                                                                                          |
-| **Team - Delete Contact** | `team TEAM_INDEX delete-contact CONTACT_INDEX`<br> e.g., `team 1 delete-contact 4`                                                                                                                                                                                                                                                    |
-| **Team - Export Details** | `team TEAM_INDEX export`<br> e.g., `team 1 export`                                                                                                                                                                                                                                                                                    |
-| **List**                  | `list`                                                                                                                                                                                                                                                                                                                                |
-| **Help**                  | `help`                                                                                                                                                                                                                                                                                                                                |
-| **Exit**                  | `exit`                                                                                                                                                                                                                                                                                                                                |
 
 [[Jump to Table of Contents]](#table-of-contents)
