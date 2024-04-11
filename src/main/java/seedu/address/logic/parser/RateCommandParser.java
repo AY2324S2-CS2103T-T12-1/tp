@@ -37,6 +37,7 @@ public class RateCommandParser {
             }
             index = ParserUtil.parseIndex(argMultimap.getPreamble());
             String[] techStackParts = argMultimap.getValue(PREFIX_TECH_STACK).get().split("r/");
+            //check for space after each part of command rate INDEX ts/TECHSTACK r/RATING
             if (techStackParts.length != 2 || !techStackParts[0].endsWith(" ")) {
                 throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
                         RateCommand.MESSAGE_USAGE));
