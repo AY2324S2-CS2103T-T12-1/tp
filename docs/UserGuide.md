@@ -114,7 +114,7 @@ Alright, now that we've covered the fun stuff, let's dive in and uncover the pow
 
 5. Open up the <a href="https://support.kaspersky.com/common/windows/14637#block0">command prompt</a> (Windows), <a href="https://support.apple.com/en-sg/guide/terminal/apd5265185d-f365-44cb-8b09-71a064a42125/mac">terminal</a> (Mac) or <a href="https://www.redhat.com/sysadmin/linux-terminal-window">terminal emulator</a> (Linux).
 
-6. Type <code>cd</code> followed by the directory path to the folder where you have downloaded CodeConnect to navigate there and press <code>Enter</code>.
+6. Type <code>cd</code> followed by the directory path to the folder where you have saved CodeConnect to. Navigate there and press <code>Enter</code>.
 
 7. Use the `java -jar codeconnect.jar` command to run the application.<br>
    
@@ -165,7 +165,7 @@ Below you will find explanations for each key component in the CodeConnect GUI.
 <img src="images/quick-start/quickstart-teamlist.png" width="60%">
 
 5. This is our response panel. Here is where we provide responses to your CLI commands, or offer assistance for your next command.<br>
-<img src="mages/quick-start/quickstart-response.png" width="60%">
+<img src="images/quick-start/quickstart-response.png" width="60%">
 
 6. This is our contacts display panel. Here is where results of your searches for contacts will be displayed.<br>
 <img src="images/quick-start/quickstart-personlist.png" width="60%">
@@ -275,8 +275,8 @@ edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [g/GITHUB_USERNAME] [pp/PROF
 </div>
 
 **Examples:**
-- `edit 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st contact to be `91234567` and `johndoe@example.com` respectively.
-- `edit 2 n/Betsy Crower t/` Edits the name of the 2nd contact to be `Betsy Crower` and clears all existing tags.
+- `edit 1 p/91234567 e/johndoe@example.com` edits the phone number and email address of the 1st contact to be `91234567` and `johndoe@example.com` respectively.
+- `edit 2 n/Betsy Crower t/` edits the name of the 2nd contact to be `Betsy Crower` and clears all existing tags.
 
 | Before                                                   | After                                                  |
 |:---------------------------------------------------------|:-------------------------------------------------------|
@@ -510,7 +510,7 @@ team TEAM_INDEX add-contact CONTACT_INDEX`
 [[Jump to Team Commands]](#team-commands) <br/>
 [[Jump to Features]](#features)
 
-### List members belonging to a team:
+### List members belonging to a team: `team`
 
 Show a list of all members of a specific team in your team list.
 
@@ -549,7 +549,8 @@ team TEAM_INDEX delete-contact CONTACT_INDEX
 
 - Deletes the contact at the specified `CONTACT_INDEX` from the team at the specified `TEAM_INDEX`.
 - The `TEAM_INDEX` refers to the index number shown in the displayed teams list.
-- The `CONTACT_INDEX` refers to the index number of the contact shown in the contact list the user sees.
+- The `CONTACT_INDEX` refers to the index number of the contact as seen when listing the members of the team
+  (see <a href="#list-members-belonging-to-a-team">List Team</a>).
 </div>
 <div class="alert alert-warning" markdown="1">
 ⚠️ <b>Current Limitations</b>:
@@ -608,6 +609,7 @@ team TEAM_INDEX export
 ℹ️ <b>Tips:</b>
 
 - Export the members' details of the team at the specified `TEAM_INDEX`.
+- Only the name, phone number, email, address, and GitHub username of the contact will be exported.
 </div>
 
 **Examples:**
@@ -658,7 +660,7 @@ Navigate through your past commands.
 **How to use:**
 - Use the up and down arrow keys to navigate through your history while the command input is in focus.
 
-| Before                                                                         | After                                                                        |
+| Before                                                                         | After Pressing the Up Arrow Key once                                         |
 |:-------------------------------------------------------------------------------|:-----------------------------------------------------------------------------|
 | ![before command history](images/features/features-command-history-before.png) | ![after command history](images/features/features-command-history-after.png) |
 
@@ -717,25 +719,25 @@ CodeConnect data are saved automatically as a JSON file `[JAR file location]/dat
 
 # Command Summary
 
-| Action                    | Format, Examples                                                                                                                                                                                                                                                                                                                      |
-|---------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Add**                   | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS g/GITHUB_USERNAME pp/PROFILE_PICTURE [t/TAG] [ts/TECH_STACK]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 g/Jamesho123  pp/https://api-prod-minimal-v510.vercel.app/assets/images/avatar/avatar_1.jpg t/friend t/colleague ts/Java ts/C++` |
-| **Clear**                 | `clear`                                                                                                                                                                                                                                                                                                                               |
-| **Delete**                | `delete INDEX`<br> e.g., `delete 3`                                                                                                                                                                                                                                                                                                   |
-| **Edit**                  | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [g/GITHUB_USERNAME] [pp/PROFILE_PICTURE] [t/TAG]…​ [ts/TECH_STACK]…​ `<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`                                                                                                                                               |
-| **Find**                  | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`                                                                                                                                                                                                                                                                            |
-| **Find by Tags**          | `find-tags KEYWORD [MORE_KEYWORDS]`<br> e.g., `find-tags School Work`                                                                                                                                                                                                                                                                 |
-| **Find by Tech Stack**    | `find-ts KEYWORD [MORE_KEYWORDS]`<br> e.g., `find-ts Java Python`                                                                                                                                                                                                                                                                     |
-| **Rate**                  | `rate INDEX ts/TECH_STACK r/RATING`<br> e.g., `rate 3 ts/Java r/7`                                                                                                                                                                                                                                                                    |
-| **Team - Add**            | `team add n/NAME`<br> e.g., `team add n/NUS HACK 2024`                                                                                                                                                                                                                                                                                |
-| **Team - Delete**         | `team TEAM_INDEX delete`<br> e.g., `team 1 delete`                                                                                                                                                                                                                                                                                    |
-| **Team - List**           | `team TEAM_INDEX`<br> e.g., `team 1`                                                                                                                                                                                                                                                                                                  |
-| **Team - Add Contact**    | `team TEAM_INDEX add-contact CONTACT_INDEX`<br> e.g., `team 2 add-contact 3`                                                                                                                                                                                                                                                          |
-| **Team - Delete Contact** | `team TEAM_INDEX delete-contact CONTACT_INDEX`<br> e.g., `team 1 delete-contact 4`                                                                                                                                                                                                                                                    |
-| **Team - Export Details** | `team TEAM_INDEX export`<br> e.g., `team 1 export`                                                                                                                                                                                                                                                                                    |
-| **List**                  | `list`                                                                                                                                                                                                                                                                                                                                |
-| **Help**                  | `help`                                                                                                                                                                                                                                                                                                                                |
-| **Exit**                  | `exit`                                                                                                                                                                                                                                                                                                                                |
+| Action                    | Format, Examples                                                                                                                                                                                                                                                                                                                        |
+|---------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Add**                   | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS g/GITHUB_USERNAME pp/PROFILE_PICTURE [t/TAG]…​ [ts/TECH_STACK]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 g/Jamesho123  pp/https://api-prod-minimal-v510.vercel.app/assets/images/avatar/avatar_1.jpg t/friend t/colleague ts/Java ts/C++` |
+| **Clear**                 | `clear`                                                                                                                                                                                                                                                                                                                                 |
+| **Delete**                | `delete INDEX`<br> e.g., `delete 3`                                                                                                                                                                                                                                                                                                     |
+| **Edit**                  | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [g/GITHUB_USERNAME] [pp/PROFILE_PICTURE] [t/TAG]…​ [ts/TECH_STACK]…​ `<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`                                                                                                                                                 |
+| **Find**                  | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`                                                                                                                                                                                                                                                                              |
+| **Find by Tags**          | `find-tags KEYWORD [MORE_KEYWORDS]`<br> e.g., `find-tags School Work`                                                                                                                                                                                                                                                                   |
+| **Find by Tech Stack**    | `find-ts KEYWORD [MORE_KEYWORDS]`<br> e.g., `find-ts Java Python`                                                                                                                                                                                                                                                                       |
+| **Rate**                  | `rate INDEX ts/TECH_STACK r/RATING`<br> e.g., `rate 3 ts/Java r/7`                                                                                                                                                                                                                                                                      |
+| **Team - Add**            | `team add n/NAME`<br> e.g., `team add n/NUS HACK 2024`                                                                                                                                                                                                                                                                                  |
+| **Team - Delete**         | `team TEAM_INDEX delete`<br> e.g., `team 1 delete`                                                                                                                                                                                                                                                                                      |
+| **Team - List**           | `team TEAM_INDEX`<br> e.g., `team 1`                                                                                                                                                                                                                                                                                                    |
+| **Team - Add Contact**    | `team TEAM_INDEX add-contact CONTACT_INDEX`<br> e.g., `team 2 add-contact 3`                                                                                                                                                                                                                                                            |
+| **Team - Delete Contact** | `team TEAM_INDEX delete-contact CONTACT_INDEX`<br> e.g., `team 1 delete-contact 4`                                                                                                                                                                                                                                                      |
+| **Team - Export Details** | `team TEAM_INDEX export`<br> e.g., `team 1 export`                                                                                                                                                                                                                                                                                      |
+| **List**                  | `list`                                                                                                                                                                                                                                                                                                                                  |
+| **Help**                  | `help`                                                                                                                                                                                                                                                                                                                                  |
+| **Exit**                  | `exit`                                                                                                                                                                                                                                                                                                                                  |
 
 [[Jump to Table of Contents]](#table-of-contents)
 
@@ -743,20 +745,20 @@ CodeConnect data are saved automatically as a JSON file `[JAR file location]/dat
 
 # Parameter Constraints
 
-| Parameter               | Prefix | Acceptable Values                                                                                                                                |
-|-------------------------|--------|--------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Name**                | n/     | Must contain only alphanumeric characters and may include spaces. All names must be unique.                                                      |
-| **Address**             | a/     | Can contain any values.                                                                                                                          |
-| **Phone Number**        | p/     | Must contain only numeric characters and should be at least 3 digits long.                                                                       |
-| **Email Address**       | e/     | Can contain any values.                                                                                                                          |
-| **GitHub Username**     | g/     | Must contain only alphanumeric characters and hyphens (-). All usernames must be unique.                                                         |
-| **Profile Picture**     | pp/    | Must be a valid URI to an image. Supports .PNG, .JPG, .JPEG and .GIF formats.                                                                    |
-| **Tags**                | t/     | Must contain only alphanumeric characters. They are limited to only 15 characters.                                                               |
-| **Tech Stack**          | ts/    | Must contain only alphanumeric characters, underscores(_), hashtags(#), hyphens(-), periods(.) and plus signs(+). Limited to only 15 characters. |
-| **Rating**              | r/     | Must be an integer between 0 (inclusive) and 10 (inclusive).                                                                                     |
-| **Index/Contact Index** | NIL    | Must be a positive integer which is not greater than the number of contacts in the currently displayed contact list.                             |
-| **Team Name**           | n/     | Must contain only alphanumeric characters and spaces. All team names must be unique.                                                             |
-| **Team Index**          | NIL    | Must be a positive integer which is not greater than the number of teams in the address book.                                                    |
+| Parameter               | Prefix | Acceptable Values                                                                                                                                | Examples                                                                        |
+|-------------------------|--------|--------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------|
+| **Name**                | n/     | Must contain only alphanumeric characters and may include spaces. All names must be unique.                                                      | `n/John Doe`                                                                    |
+| **Address**             | a/     | Can contain any values.                                                                                                                          | `a/Blk 30 Lorong 3 Serangoon Gardens, #07-18`                                   |
+| **Phone Number**        | p/     | Must contain only numeric characters and should be at least 3 digits long.                                                                       | `p/91234567`                                                                    |
+| **Email Address**       | e/     | Can contain any values.                                                                                                                          | `e/yolo@gmail.com`                                                              |
+| **GitHub Username**     | g/     | Must contain only alphanumeric characters and hyphens (-). All usernames must be unique.                                                         | `g/JohnDoe`                                                                     |
+| **Profile Picture**     | pp/    | Must be a valid URI to an image. Supports .PNG, .JPG, .JPEG and .GIF formats.                                                                    | `pp/https://api-prod-minimal-v510.vercel.app/assets/images/avatar/avatar_1.jpg` |
+| **Tags**                | t/     | Must contain only alphanumeric characters. They are limited to only 15 characters.                                                               | `t/friend`                                                                      |
+| **Tech Stack**          | ts/    | Must contain only alphanumeric characters, underscores(_), hashtags(#), hyphens(-), periods(.) and plus signs(+). Limited to only 15 characters. | `ts/Java`                                                                       | 
+| **Rating**              | r/     | Must be an integer between 0 (inclusive) and 10 (inclusive).                                                                                     | `r/7`                                                                           |
+| **Index/Contact_Index** | NIL    | Must be a positive integer which is not greater than the number of contacts in the currently displayed contact list.                             | `3`                                                                             |
+| **Team Name**           | n/     | Must contain only alphanumeric characters and spaces. All team names must be unique.                                                             | `n/NUS HACK 2024`                                                               |
+| **Team Index**          | NIL    | Must be a positive integer which is not greater than the number of teams in the address book.                                                    | `2`                                                                             |
 
 <div class="alert alert-warning" markdown="1">
    ⚠️ <b> While the email address field accepts any values, it is important to adhere to the following: </b>
