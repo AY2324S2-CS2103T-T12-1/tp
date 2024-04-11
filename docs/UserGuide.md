@@ -433,7 +433,8 @@ Format: `team TEAM_INDEX delete-contact CONTACT_INDEX`
 <div class="alert alert-info" markdown="1">
 ℹ️ Deletes the contact at the specified `CONTACT_INDEX` from the team at the specified `TEAM_INDEX`.
 ℹ️ The `TEAM_INDEX` refers to the index number shown in the displayed teams list.
-ℹ️ The `CONTACT_INDEX` refers to the index number of the contact shown in the contact list the user sees.
+ℹ️ The `CONTACT_INDEX` refers to the index number of the contact as seen when listing the members of the team 
+(see <a href="#list-members-belonging-to-a-team">List Team</a>).
 </div>
 
 Examples:
@@ -471,7 +472,8 @@ Copies to your clipboard the details of all the members in a particular team, so
 Format: `team TEAM_INDEX export`
 
 <div class="alert alert-info" markdown="1">
-ℹ️ Export the members' details of the team at the specified `TEAM_INDEX`.
+ℹ️ Export the members' details of the team at the specified `TEAM_INDEX`. <br>
+ℹ️ Only the name, phone number, email, address, and GitHub username of the contact will be exported.
 </div>
 
 Examples:
