@@ -18,7 +18,9 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
+import java.util.function.Predicate;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.CollectionUtil;
@@ -93,7 +95,7 @@ public class EditCommand extends Command {
         Contact contactToEdit = lastShownList.get(index.getZeroBased());
         Contact editedContact = createEditedContact(contactToEdit, editContactDescriptor);
 
-        if (!contactToEdit.isSameContact(editedContact) && model.hasContact(editedContact)) {
+        if (checkDuplicateContact(editedContact, contactToEdit, model.getCodeConnect().getContactList())) {
             throw new CommandException(MESSAGE_DUPLICATE_CONTACT);
         }
 
@@ -154,6 +156,16 @@ public class EditCommand extends Command {
             Team updatedTeam = team.withRemovedMember(contactToEdit).withAddedMember(editedContact);
             model.setTeam(team, updatedTeam);
         }
+    }
+
+    /**
+     * Checks if the edited contact already exists in CodeConnect. Due to the behavior of Contact::isSameContact,
+     * we need to exclude the currently edited contact from this search.
+     */
+    private static boolean checkDuplicateContact(Contact editedContact, Contact contactToEdit, List<Contact> contactList) {
+        return contactList.stream()
+                .filter(Predicate.not(contactToEdit::isSameContact))
+                .anyMatch(editedContact::isSameContact);
     }
 
 
