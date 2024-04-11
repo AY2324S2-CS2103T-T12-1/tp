@@ -40,7 +40,7 @@ public class AddCommand extends Command {
             + PREFIX_EMAIL + "johnd@example.com "
             + PREFIX_ADDRESS + "311, Clementi Ave 2, #02-25 "
             + PREFIX_GITHUB_USERNAME + "johndoee123 "
-            + PREFIX_PROFILE_PICTURE + ProfilePicture.DEFAULT_URL
+            + PREFIX_PROFILE_PICTURE + ProfilePicture.DEFAULT_URL + " "
             + PREFIX_TECH_STACK + "Java "
             + PREFIX_TECH_STACK + "Python "
             + PREFIX_TAG + "friends "
