@@ -37,7 +37,7 @@ public class RateCommand extends Command {
             + "Parameters: INDEX (must be a positive integer) "
             + "[" + PREFIX_TECH_STACK + "TECH_STACK...\n"
             + "Example: " + COMMAND_WORD + " 1 "
-            + PREFIX_TECH_STACK + "C++" + PREFIX_RATING + "7";
+            + PREFIX_TECH_STACK + "C " + PREFIX_RATING + "7";
 
     public static final String MESSAGE_RATE_CONTACT_SUCCESS = "Rated Contact: %1$s";
     public static final String MESSAGE_INVALID_TECHSTACK_TO_RATE = "This contact does not have stated Tech Stack.";
