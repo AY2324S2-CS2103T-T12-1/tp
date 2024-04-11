@@ -28,11 +28,9 @@ We are **optimised for use via a Command Line Interface (CLI)** while still havi
 - [Getting Started](#getting-started)
 - [Features](#features)
 - [FAQ](#faq)
-    - [General Questions](#general-questions)
-    - [Contact-Related Questions](#task-related-questions)
 - [Known Issues](#known-issues)
 - [Command Summary](#command-summary)
-  - [Parameter Constraints](#parameter-constraints)
+- [Parameter Constraints](#parameter-constraints)
 ---
 
 ## Introduction
@@ -180,9 +178,8 @@ Below you will find explanations for each key component in the CodeConnect GUI.
 
 ### Commands
 
-<box type="info" seamless>
-
-**Notes about the command format:**<br>
+<div class="alert alert-warning" markdown="1">
+⚠️ <b>Notes on command format</b>:
 
 - Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
   e.g. in `add n/NAME`, `NAME` is a parameter which can be used as `add n/John Doe`.
@@ -194,14 +191,14 @@ Below you will find explanations for each key component in the CodeConnect GUI.
   e.g. `[t/TAG]…​` can be used as ` ` (i.e. 0 times), `t/friend`, `t/friend t/family` etc.
 
 - Parameters can be in any order.<br>
-  *Note: Excludes Rate Command.<br>
+  <i>Note: Excluding Rate Command.</i><br>
   e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
 
 - Extraneous parameters for commands that do not take in parameters (such as `help`, `list`, `exit` and `clear`) will be ignored.<br>
   e.g. if the command specifies `help 123`, it will be interpreted as `help`.
 
 - If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
-  </box>
+</div>
 
 #### Viewing help : `help`
 
@@ -240,10 +237,9 @@ Examples:
 - `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 g/johnDoee pp/https://api-prod-minimal-v510.vercel.app/assets/images/avatar/avatar_1.jpg`
 - `add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 g/betBetty t/criminal ts/Flutter pp/https://api-prod-minimal-v510.vercel.app/assets/images/avatar/avatar_1.jpg`
 
-Before: 
-![before add](images/features/features-add-before.png)
-After:
-![after add](images/features/features-add-after.png)
+| Before                                                 | After                                                |
+|--------------------------------------------------------|------------------------------------------------------|
+| ![before add](images/features/features-add-before.png) | ![after add](images/features/features-add-after.png) |
 
 #### Editing a contact : `edit`
 
@@ -535,12 +531,11 @@ CodeConnect data are saved in the hard disk automatically after any command that
 
 CodeConnect data are saved automatically as a JSON file `[JAR file location]/data/addressbook.json`. Advanced users are welcome to update data directly by editing that data file.
 
-<box type="warning" seamless>
-
-**Caution:**
+<div class="alert alert-warning" markdown="1">
+⚠️ **Caution:**
 If your changes to the data file makes its format invalid, CodeConnect will discard all data and start with an empty data file at the next run. Hence, it is recommended to take a backup of the file before editing it.<br>
 Furthermore, certain edits can cause the CodeConnect to behave in unexpected ways (e.g., if a value entered is outside the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
-</box>
+</div>
 
 [[Jump to Table of Contents]](#table-of-contents)
 
@@ -548,7 +543,16 @@ Furthermore, certain edits can cause the CodeConnect to behave in unexpected way
 
 ## FAQ
 
-**Q**: How do I transfer my data to another Computer?<br>
+**Q**: How can I report a bug?<br>
+**A**: Absolutely! Feel free to create an issue for the bug [here](https://github.com/AY2324S2-CS2103T-T12-1/tp/issues). Be sure to include all the details about the bug and how it's popping up. Your input means the world to us!
+
+**Q**: Can I change up the font and colors of the app?<br>
+**A**: For now, we're keeping it sleek and simple. Customisable features aren't on the menu at the moment. But hey, who knows what the future holds? Keep an eye out for updates!
+
+**Q**: Can I use the app offline?<br>
+**A**: This app's got your back even when the Wi-Fi's down. Your tasks and progress will be safe on your local computer. 
+
+**Q**: How do I transfer my data to another computer?<br>
 **A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous CodeConnect home folder.
 
 [[Jump to Table of Contents]](#table-of-contents)
@@ -562,8 +566,6 @@ Furthermore, certain edits can cause the CodeConnect to behave in unexpected way
 [[Jump to Table of Contents]](#table-of-contents)
 
 ---
-
-****
 
 ## Command Summary
 
@@ -587,29 +589,42 @@ Furthermore, certain edits can cause the CodeConnect to behave in unexpected way
 | **Help**                  | `help`                                                                                                                                                                                                                                                                                                                                |
 | **Exit**                  | `exit`                                                                                                                                                                                                                                                                                                                                |
 
-### Parameter Constraints
+[[Jump to Table of Contents]](#table-of-contents)
 
-1. **NAME**: Must contain alphanumeric characters and may include spaces. All names must be unique.
-2. **ADDRESS**: Can contain any value.
-3. **PHONE NUMBER**: Must contain only numbers and should be at least 3 digits long.
-4. **EMAIL ADDRESS**: Can contain any values. <br>
-   ℹ️ While the email address field accepts any values, it is important to adhere to the following:
-    * The local-part before the '@' symbol can only contain alphanumeric characters and the special characters +_.-.
-    * The local-part cannot start or end with any special characters.
-    * After the '@' symbol, there should be a domain name composed of domain labels separated by periods.
-    * The domain name must end with a label containing at least 2 characters.
-    * Each domain label should start and end with alphanumeric characters, and consist only of alphanumeric characters
-      with hyphens allowed as separators, if necessary.
-5. **GITHUB USERNAME**: Can contain only alphanumeric characters and hyphens(-). All GitHub usernames must be unique.
-6. **PROFILE PICTURE**: Must be a valid URI to an image. Supports png, jpg, jpeg and gif formats.
-7. **TAGS**: Must contain alphanumeric characters only. They are limited to only 15 characters.
-8. **TECH STACK**: Can contain alphanumeric characters, underscores(_), hashtags(#), hyphens(-), periods(.) and plus signs(+).
-   They are limited to only 15 characters. <br>
-   ⚠️ If you are entering the tech stack for the `rate` command, please ensure it is the tech stack that the specified index has.
-9. **INDEX/CONTACT_INDEX**: Must be a positive integer which is not greater than the number of contacts the user is currenty seeing in the
-   contact list.
-10. **RATING**: Must be an integer between 0 (inclusive) and 10 (inclusive).
-11. **TEAM NAME**: Can only contain alphanumeric characters and spaces. All team names must be unique.
-12. **TEAM INDEX**: Must be a positive integer which is not greater than the number of teams in the address book.
+---
+
+## Parameter Constraints
+
+| Parameter               | Prefix | Acceptable Values                                                                                                                                |
+|-------------------------|--------|--------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Name**                | n/     | Must contain only alphanumeric characters and may include spaces. All names must be unique.                                                      |
+| **Address**             | a/     | Can contain any values.                                                                                                                          |
+| **Phone Number**        | p/     | Must contain only numeric characters and should be at least 3 digits long.                                                                       |
+| **Email Address**       | e/     | Can contain any values.                                                                                                                          |
+| **GitHub Username**     | g/     | Must contain only alphanumeric characters and hyphens (-). All usernames must be unique.                                                         |
+| **Profile Picture**     | pp/    | Must be a valid URI to an image. Supports .PNG, .JPG, .JPEG and .GIF formats.                                                                    |
+| **Tags**                | t/     | Must contain only alphanumeric characters. They are limited to only 15 characters.                                                               |
+| **Tech Stack**          | ts/    | Must contain only alphanumeric characters, underscores(_), hashtags(#), hyphens(-), periods(.) and plus signs(+). Limited to only 15 characters. |
+| **Rating**              | r/     | Must be an integer between 0 (inclusive) and 10 (inclusive).                                                                                     |
+| **Index/Contact Index** | NIL    | Must be a positive integer which is not greater than the number of contacts in the currently displayed contact list.                             |
+| **Team Name**           | n/     | Must contain only alphanumeric characters and spaces. All team names must be unique.                                                             |
+| **Team Index**          | NIL    | Must be a positive integer which is not greater than the number of teams in the address book.                                                    |
+
+<div class="alert alert-warning" markdown="1">
+   ⚠️ <b> While the email address field accepts any values, it is important to adhere to the following: </b>
+    <ul>
+        <li> The local-part before the '@' symbol can only contain alphanumeric characters and the special characters "+_.-".</li>
+        <li> The local-part cannot start or end with any special characters.</li>
+        <li> After the '@' symbol, there should be a domain name composed of domain labels separated by periods.</li>
+        <li> The domain name must end with a label containing at least 2 characters.</li>
+        <li> Each domain label should start and end with alphanumeric characters, and consist only of alphanumeric characters with hyphens allowed as separators, if necessary. </li>
+    </ul>
+</div>
+<div class="alert alert-warning" markdown="1">
+   ⚠️ <b> When entering the tech stack for the `rate` command: </b>
+<ul>
+        <li> The tech stack must be one of the tech stacks that the contact at the specific index has. </li>
+</ul>
+</div>
 
 [[Jump to Table of Contents]](#table-of-contents)
