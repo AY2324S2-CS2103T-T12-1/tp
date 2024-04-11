@@ -119,7 +119,7 @@ Alright, now that we've covered the fun stuff, let's dive in and uncover the pow
 7. Use the `java -jar codeconnect.jar` command to run the application.<br>
    
 8. A GUI similar to the below should appear in a few seconds. <br>
-   ![Ui](images/Ui.png)
+<img src="images/Ui.png" width="60%">
 
 <div class="alert alert-info" markdown="1">
 ℹ️ The application might contain some sample data that differs slightly from what you see above! Don't panic, It's just there to help you get started.
@@ -153,22 +153,22 @@ Below you will find explanations for each key component in the CodeConnect GUI.
 </div>
 
 1. This is the text input area. This is the most important part of the program. Here is where you will key in the commands you need.<br>
-![quickstart-input.png](images/quick-start/quickstart-input.png)
+<img src="images/quick-start/quickstart-input.png" width="60%">
 
 2. This is the file button. Here is where you can exit the program.<br>
-![quickstart-file.png](images/quick-start/quickstart-file.png)
- 
+<img src="images/quick-start/quickstart-file.png" width="60%">
+
 3. This is the help button. Here is where you can find any kind of help with CodeConnect.<br>
-![quickstart-help.png](images/quick-start/quickstart-help.png)
+<img src="images/quick-start/quickstart-help.png" width="60%">
 
 4. This is our teams display panel. All the teams added are displayed here.<br>
-![quickstart-teamlist.png](images/quick-start/quickstart-teamlist.png)
+<img src="images/quick-start/quickstart-teamlist.png" width="60%">
 
 5. This is our response panel. Here is where we provide responses to your CLI commands, or offer assistance for your next command.<br>
-![quickstart-response.png](images/quick-start/quickstart-response.png)
+<img src="mages/quick-start/quickstart-response.png" width="60%">
 
 6. This is our contacts display panel. Here is where results of your searches for contacts will be displayed.<br>
-![quickstart-personlist.png](images/quick-start/quickstart-personlist.png)
+<img src="images/quick-start/quickstart-personlist.png" width="60%">
 
 [[Jump to Table of Contents]](#table-of-contents)
 
