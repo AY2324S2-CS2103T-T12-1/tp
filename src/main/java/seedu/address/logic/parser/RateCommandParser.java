@@ -6,7 +6,6 @@ import seedu.address.logic.parser.exceptions.ParseException;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.commands.RateCommand.MESSAGE_INVALID_RATING;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TECH_STACK;
 
 
