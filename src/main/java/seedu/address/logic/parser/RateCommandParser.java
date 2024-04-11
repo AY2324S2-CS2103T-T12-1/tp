@@ -45,9 +45,7 @@ public class RateCommandParser {
             techStackName = techStackParts[0].trim();
             rating = Integer.parseInt(techStackParts[1].trim());
 
-        } catch (NumberFormatException e) {
-            throw new ParseException(MESSAGE_INVALID_RATING);
-        } catch (ParseException e) {
+        } catch (ParseException | NumberFormatException e) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, RateCommand.MESSAGE_USAGE), e);
         }
         return new RateCommand(index, techStackName, rating);
