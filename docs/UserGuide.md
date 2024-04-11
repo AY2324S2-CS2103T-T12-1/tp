@@ -430,7 +430,7 @@ Deletes a contact from a specific team in your team list.
 
 Format: `team TEAM_INDEX delete-contact CONTACT_INDEX`
 
-<link class="alert alert-info" markdown="1">
+<div class="alert alert-info" markdown="1">
 ℹ️ Deletes the contact at the specified `CONTACT_INDEX` from the team at the specified `TEAM_INDEX`.
 ℹ️ The `TEAM_INDEX` refers to the index number shown in the displayed teams list.
 ℹ️ The `CONTACT_INDEX` refers to the index number of the contact as seen when listing the members of the team 
