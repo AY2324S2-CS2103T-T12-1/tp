@@ -6,7 +6,7 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
 public class ProfilePicture {
-    public final static String DEFAULT_URL = ProfilePicture.class.getResource("/images/avatar_13.jpg").toExternalForm() + " ";
+    public final static String DEFAULT_URL = ProfilePicture.class.getResource("/images/avatar_13.jpg").toExternalForm();
     String url;
     public ProfilePicture(String url) {
         this.url = url;
