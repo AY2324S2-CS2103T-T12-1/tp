@@ -81,21 +81,17 @@ Throughout this guide, you'll see some commands highlighted in these cool little
 Text in this box is a command
 ```
 
-See those [SQUARE_BRACKETS] words? They're placeholders for your inputs! Don't stress about the exact values right now; we'll get to that later. So, for example:
+See those CAPITALISED words? They're placeholders for your inputs! Don't stress about the exact values right now; we'll get to that later. So, for example:
 
 ```
-add n/[NAME]
+rate INDEX ts/KEYWORD r/RATING
 ```
 
 You can jazz it up like this:
 
 ```
-add n/John Doe
+rate 1 ts/Java r/10
 ```
-
-<div class="alert alert-info" markdown="1">
-ℹ️ Remember, no need to copy the []! Just type in the actual values you want to use.
-</div>
 
 Also, keep an eye out for [blue](#blue) hyperlinks! They'll whisk you away to other parts of the guide or even other places online.
 
@@ -245,7 +241,7 @@ add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS g/GITHUB_USERNAME [pp/PROFILE_PICTUR
 - `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 g/johnDoee pp/https://api-prod-minimal-v510.vercel.app/assets/images/avatar/avatar_1.jpg`
 - `add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 g/betBetty t/criminal ts/Flutter pp/https://api-prod-minimal-v510.vercel.app/assets/images/avatar/avatar_1.jpg`
 
-| Prior                                                 | After                                                |
+| Prior                                                  | After                                                |
 |:-------------------------------------------------------|:-----------------------------------------------------|
 | ![before add](images/features/features-add-before.png) | ![after add](images/features/features-add-after.png) |
 
@@ -278,8 +274,8 @@ edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [g/GITHUB_USERNAME] [pp/PROF
 - `edit 1 p/91234567 e/johndoe@example.com` edits the phone number and email address of the 1st contact to be `91234567` and `johndoe@example.com` respectively.
 - `edit 2 n/Betsy Crower t/` edits the name of the 2nd contact to be `Betsy Crower` and clears all existing tags.
 
-| Prior                                                   | After                                                  |
-| :------------------------------------------------------- | :----------------------------------------------------- |
+| Prior                                                    | After                                                  |
+|:---------------------------------------------------------|:-------------------------------------------------------|
 | ![before edit](images/features/features-edit-before.png) | ![after edit](images/features/features-edit-after.png) |
 
 [[Jump to Features]](#features)
@@ -310,8 +306,8 @@ e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`
 - `find John` returns `John Doe`
 - `find alex david` returns `Alex Yeoh`, `David Li`
 
-| Prior                                                   | After                                                  |
-| :------------------------------------------------------- | :----------------------------------------------------- |
+| Prior                                                    | After                                                  |
+|:---------------------------------------------------------|:-------------------------------------------------------|
 | ![before find](images/features/features-find-before.png) | ![after find](images/features/features-find-after.png) |
 
 [[Jump to Features]](#features)
@@ -339,8 +335,8 @@ find-tags KEYWORD [MORE_KEYWORDS]
 
 - `find-tags classmates` returns anyone with the tag `classmates`
 
-| Prior                                                             | After                                                            |
-| :----------------------------------------------------------------- | :--------------------------------------------------------------- |
+| Prior                                                              | After                                                            |
+|:-------------------------------------------------------------------|:-----------------------------------------------------------------|
 | ![before find-tags](images/features/features-find-tags-before.png) | ![after find-tags](images/features/features-find-tags-after.png) |
 
 [[Jump to Features]](#features)
@@ -368,8 +364,8 @@ find-ts KEYWORD [MORE_KEYWORDS]
 
 - `find-ts Python` returns anyone with the tech stack `Python`
 
-| Prior                                                         | After                                                        |
-| :------------------------------------------------------------- | :----------------------------------------------------------- |
+| Prior                                                          | After                                                        |
+|:---------------------------------------------------------------|:-------------------------------------------------------------|
 | ![before find-ts](images/features/features-find-ts-before.png) | ![after find-ts](images/features/features-find-ts-after.png) |
 
 [[Jump to Features]](#features)
@@ -397,8 +393,8 @@ rate INDEX ts/KEYWORD r/RATING
 
 - `rate 1 ts/React r/8` rates the skill of React of the first contact as 8.
 
-| Prior                                                   | After                                                  |
-| :------------------------------------------------------- | :----------------------------------------------------- |
+| Prior                                                    | After                                                  |
+|:---------------------------------------------------------|:-------------------------------------------------------|
 | ![before rate](images/features/features-rate-before.png) | ![after rate](images/features/features-rate-after.png) |
 
 [[Jump to Features]](#features)
@@ -425,8 +421,8 @@ delete INDEX
 - `list` followed by `delete 2` deletes the 2nd contact in the address book.
 - `find Betsy` followed by `delete 1` deletes the 1st contact in the results of the `find` command.
 
-| Prior                                                       | After                                                      |
-| :----------------------------------------------------------- | :--------------------------------------------------------- |
+| Prior                                                        | After                                                      |
+|:-------------------------------------------------------------|:-----------------------------------------------------------|
 | ![before delete](images/features/features-delete-before.png) | ![after delete](images/features/features-delete-after.png) |
 
 [[Jump to Features]](#features)
@@ -507,8 +503,8 @@ team add n/TEAM_NAME
 
 - `team add n/NUS HACK 2024` adds a new team named `NUS HACK 2024` into the teams list.
 
-| Prior                                                           | After                                                          |
-| :--------------------------------------------------------------- | :------------------------------------------------------------- |
+| Prior                                                            | After                                                          |
+|:-----------------------------------------------------------------|:---------------------------------------------------------------|
 | ![before team add](images/features/features-team-add-before.png) | ![after team add](images/features/features-team-add-after.png) |
 
 [[Jump to Team Commands]](#team-commands) <br/>
@@ -535,8 +531,8 @@ team TEAM_INDEX delete
 
 - `team 1 delete` deletes the first team in the team list.
 
-| Prior                                                                 | After                                                                |
-| :--------------------------------------------------------------------- | :------------------------------------------------------------------- |
+| Prior                                                                  | After                                                                |
+|:-----------------------------------------------------------------------|:---------------------------------------------------------------------|
 | ![before team delete](images/features/features-team-delete-before.png) | ![after team delete](images/features/features-team-delete-after.png) |
 
 [[Jump to Team Commands]](#team-commands) <br/>
@@ -563,8 +559,8 @@ team TEAM_INDEX
 
 - `team 1` shows a list of all the members of the first team.
 
-| Prior                                                             | After                                                            |
-| :----------------------------------------------------------------- | :--------------------------------------------------------------- |
+| Prior                                                              | After                                                            |
+|:-------------------------------------------------------------------|:-----------------------------------------------------------------|
 | ![before team list](images/features/features-team-list-before.png) | ![after team list](images/features/features-team-list-after.png) |
 
 [[Jump to Team Commands]](#team-commands) <br/>
@@ -774,7 +770,7 @@ CodeConnect data is saved automatically as a JSON file `[JAR file location]/data
 # Command Summary
 
 | Action                    | Format, Examples                                                                                                                                                                                                                                                                                                                        |
-| ------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|---------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **List**                  | `list`                                                                                                                                                                                                                                                                                                                                  |
 | **Add**                   | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS g/GITHUB_USERNAME [pp/PROFILE_PICTURE] [t/TAG] [ts/TECH_STACK]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 g/Jamesho123  pp/https://api-prod-minimal-v510.vercel.app/assets/images/avatar/avatar_1.jpg t/friend t/colleague ts/Java ts/C++` |
 | **Edit**                  | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [g/GITHUB_USERNAME] [pp/PROFILE_PICTURE] [t/TAG]…​ [ts/TECH_STACK]…​ `<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`                                                                                                                                                 |
@@ -800,7 +796,7 @@ CodeConnect data is saved automatically as a JSON file `[JAR file location]/data
 # Parameter Constraints
 
 | Parameter               | Prefix | Acceptable Values                                                                                                                                 | Examples                                                                        |
-| ----------------------- | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+|-------------------------|--------|---------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------|
 | **Name**                | n/     | Must contain only alphanumeric characters and may include spaces. All names must be unique.                                                       | `n/John Doe`                                                                    |
 | **Address**             | a/     | Can contain any values.                                                                                                                           | `a/Blk 30 Lorong 3 Serangoon Gardens, #07-18`                                   |
 | **Phone Number**        | p/     | Must contain only numeric characters and should be at least 3 digits long.                                                                        | `p/91234567`                                                                    |
