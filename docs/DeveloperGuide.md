@@ -411,6 +411,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* *`    | Student                                 | categorise the contacts I have saved into the projects I am working on                                            | have an organised address book                                          |
 | `* *`    | Forgetful Student                       | add profile pictures for each contact                                                                             | know who I am contacting                                                |
 | `* * *`  | Student                                 | search for contacts based on their technical skills                                                               | form teams for hackathons more easily                                   |
+| `* *`    | Student                                 | rate technical skills of my contacts                                                                              | get apt members for my hackathon team                                   |
 | `*`      | Student                                 | view my most used commands while typing                                                                           | save time typing out the full command                                   |
 | `* * *`  | Student                                 | create teams of contacts                                                                                          | keep track of my teammates when participating in hackathons             |
 | `* * *`  | Student                                 | add contacts to a team                                                                                            | can update my team as it changes                                        |
@@ -562,7 +563,35 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 1b1. CodeConnect shows an empty list.
       Use case ends.
 
-**Use case: UC08 - Sending an email to a specific contact**
+**Use case: UC08 - Rate a tech stack of a contact**
+
+**MSS**
+
+1. User requests to rate specific tech stack of specific contact.
+2. CodeConnect checks specified tech stack in specified contact’s tech stack.
+3. CodeConnect rates specified tech stack of specified contact with rating.
+
+   Use case ends.
+
+**Extensions**
+
+* 1a. No tech stack is given.
+    * 1a1. CodeConnect shows an error message.
+      Use case ends.
+
+* 1b. No rating is given.
+    * 1b1. CodeConnect shows an error message.
+      Use case ends.
+
+* 1c. No index is given.
+    * 1c1. CodeConnect shows an error message.
+      Use case ends.
+
+* 1d. The specified contact does not have specified tech stack.
+    * 1d1. CodeConnect shows an error message.
+      Use case ends.
+
+**Use case: UC09 - Sending an email to a specific contact**
 
 **MSS**
 
@@ -579,7 +608,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 1a1. CodeConnect displays an error message indicating that the desktop mail application is not supported.
       Use case ends.
 
-**Use case: UC09 - Viewing command history**
+**Use case: UC10 - Viewing command history**
 
 **MSS**
 
@@ -595,7 +624,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 * 3a. CodeConnect does not find any previous/next command in the command history.
       Use case ends.
 
-**Use case: UC10 - Export team members' details**
+**Use case: UC11 - Export team members' details**
 
 **MSS**
 
@@ -616,7 +645,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 *{More to be added}*
 
-**Use case: UC10 - Adding a team**
+**Use case: UC12 - Adding a team**
 
 **MSS**
 
@@ -633,7 +662,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 2a1. CodeConnect shows an error message.
     Use case ends.
 
-**Use case: UC11 - Delete a team**
+**Use case: UC13 - Delete a team**
 
 **MSS**
 
@@ -647,7 +676,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 1a1. CodeConnect shows an error message.
       Use case ends.
 
-**Use case: UC12 - List a team's members**
+**Use case: UC14 - List a team's members**
 
 **MSS**
 
@@ -690,7 +719,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
   * Address: The physical or mailing address of the contact (String).
   * Email: The email address of the contact (String).
   * Tech stack: The technologies or programming languages known or used by the contact (List<String>).
-
+  * Rating: The rating given to the contact's specific tech stack (Integer).
 --------------------------------------------------------------------------------------------------------------------
 
 ## **Appendix: Instructions for manual testing**
