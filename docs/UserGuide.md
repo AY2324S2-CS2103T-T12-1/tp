@@ -87,7 +87,7 @@ add t/do OP2 slides
 ```
 
 <div class="alert alert-info" markdown="1">
-ℹ️ Remember, no need to copy the `[]`! Just type in the actual values you want to use.
+ℹ️ Remember, no need to copy the []! Just type in the actual values you want to use.
 </div>
 
 Also, keep an eye out for [blue](#blue) hyperlinks! They'll whisk you away to other parts of the guide or even other places online.
@@ -130,7 +130,7 @@ Alright, now that we've covered the fun stuff, let's dive in and uncover the pow
 
    - `list` : Lists all contacts.
 
-   - `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 g/johnDoee ts/Java` : Adds a contact named `John Doe` to the Address Book.
+   - `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 g/johnDoee ts/Java` : Adds a contact named `John Doe` to CodeConnect.
 
    - `delete 3` : Deletes the 3rd contact shown in the current list.
 
