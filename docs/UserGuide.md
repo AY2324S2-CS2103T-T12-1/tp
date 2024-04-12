@@ -4,7 +4,7 @@
 ---
 
 # CodeConnect User Guide
-Hello fellow student developers! Welcome to your one-stop shop for managing developers' contacts!
+Hello fellow student developers! Welcome to your one-stop destination for managing developers' contacts!
 
 CodeConnect is a **developer-first networking application** for student developers to keep track of and reach out easily to other student developers, so they can easily form teams for hackathons.
 
@@ -77,13 +77,13 @@ Text in this box is a command
 See those [SQUARE_BRACKETS] words? They're placeholders for your inputs! Don't stress about the exact values right now; we'll get to that later. So, for example:
 
 ```
-add t/[TASK_DESCRIPTION]
+add n/[NAME]
 ```
 
 You can jazz it up like this:
 
 ```
-add t/do OP2 slides
+add n/John Doe
 ```
 
 <div class="alert alert-info" markdown="1">
@@ -100,11 +100,11 @@ Alright, now that we've covered the fun stuff, let's dive in and uncover the pow
 # Installation Guide
 
 1. Ensure that you have Java 11 installed on your computer. Click <a href="https://blog.hubspot.com/website/check-java-verison#:~:text=First%2C%20find%20and%20click%20on,get%20your%20current%20version%20details">here</a> to learn how to find out what Java version you have! If you do not have Java 11, you can download Java 11 by following the links below:
-   - [Windows](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html)
+   - [Windows](https://www.oracle.com/java/technologies/downloads/#java11-windows)
    
-   - [MacOS](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html)
+   - [MacOS](https://www.oracle.com/java/technologies/downloads/#java11-mac)
    
-   - [Linux](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html)
+   - [Linux](https://www.oracle.com/java/technologies/downloads/#java11-linux)
    
 2. You might also need to install JavaFX 11. You can find the installation guide [here](https://openjfx.io/openjfx-docs/#install-javafx).
 
@@ -165,7 +165,7 @@ Below you will find explanations for each key component in the CodeConnect GUI.
 <img src="images/quick-start/quickstart-teamlist.png" width="60%">
 
 5. This is our response panel. Here is where we provide responses to your CLI commands, or offer assistance for your next command.<br>
-<img src="mages/quick-start/quickstart-response.png" width="60%">
+<img src="images/quick-start/quickstart-response.png" width="60%">
 
 6. This is our contacts display panel. Here is where results of your searches for contacts will be displayed.<br>
 <img src="images/quick-start/quickstart-personlist.png" width="60%">
@@ -200,19 +200,6 @@ Below you will find explanations for each key component in the CodeConnect GUI.
 - If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
 </div>
 
-### Viewing help : `help`
-
-Shows a message explaining how to access the help page.
-
-**Format:**
-```
-help
-```
-
-<img src="images/features/features-help.png" width="60%">
-
-[[Jump to Features]](#features)
-
 ### Listing all contacts : `list`
 
 Shows a list of all contacts in the address book.
@@ -232,7 +219,7 @@ Adds a contact to the address book.
 
 **Format:**
 ```
-add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS g/GITHUB_USERNAME pp/PROFILE_PICTURE [t/TAG]…​ [ts/TECH_STACK]…​
+add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS g/GITHUB_USERNAME [pp/PROFILE_PICTURE] [t/TAG]…​ [ts/TECH_STACK]…​
 ```
 
 <div class="alert alert-info" markdown="1">
@@ -267,7 +254,8 @@ edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [g/GITHUB_USERNAME] [pp/PROF
 <b>ℹ️ Tips: </b>
 
 - Existing values will be updated to the input values. <br>
-- When editing tags, the existing tags of the contact will be removed i.e. adding of tags is not cumulative. <br>
+- When editing tags or tech stack, the existing tags or tech stack of the contact will be removed i.e. adding is not cumulative. <br>
+- Existing tech stack, together with ratings, will be removed and replaced by input tech stack.
 - You can remove all the contact’s tags and tech stack by typing `t/` and `ts/` without specifying any tags after it.
 </div>
 <div class="alert alert-warning" markdown="1">
@@ -429,8 +417,27 @@ Clears all entries from the address book.
 ```
 clear
 ```
+<div class="alert alert-danger" markdown="1">
+❗<b>Warning:</b>
+
+- This action is irreversible. 
+- We caution against doing this until you have fully experimented with the sample contacts provided.
+</div>
 
 <img src="images/features/features-clear.png" width="60%">
+
+[[Jump to Features]](#features)
+
+### Viewing help : `help`
+
+Shows a message explaining how to access the help page.
+
+**Format:**
+```
+help
+```
+
+<img src="images/features/features-help.png" width="60%">
 
 [[Jump to Features]](#features)
 
@@ -475,101 +482,6 @@ team add n/TEAM_NAME
 [[Jump to Team Commands]](#team-commands) <br/>
 [[Jump to Features]](#features)
 
-### Adding a contact to a team: `add-contact`
-
-Adds a contact to a specific team in your team list.
-
-**Format:**
-```
-team TEAM_INDEX add-contact CONTACT_INDEX`
-```
-
-<div class="alert alert-info" markdown="1">
-ℹ️ <b>Tips:</b>
-
-- Adds the contact at the specified `CONTACT_INDEX` to the team at the specified `TEAM_INDEX`. <br>
-- The `TEAM_INDEX` refers to the index number shown in the displayed teams list. <br>
-- The `CONTACT_INDEX` refers to the index number of the contact shown in the contact list the user sees.
-</div>
-
-<div class="alert alert-warning" markdown="1">
-⚠️ <b>Current Limitations</b>:
-
-- You can only add a contact from the current displayed list of contacts.
-- To choose from all your contacts, first enter the command `list` to view all contacts and then add a contact to the team.
-</div>
-
-**Examples:**
-- `team 1 add-contact 1` adds the contact at index 1 of the contact list you are currently viewing to the first team in the team list.
-- Enter `team 1` to view the updated members of the team.
-
-| Before                                                                           | After                                                                          |
-|:---------------------------------------------------------------------------------|:-------------------------------------------------------------------------------|
-| ![before team add-contact](images/features/features-team-add-contact-before.png) | ![after team add-contact](images/features/features-team-add-contact-after.png) |
-
-[[Jump to Team Commands]](#team-commands) <br/>
-[[Jump to Features]](#features)
-
-### List members belonging to a team:
-
-Show a list of all members of a specific team in your team list.
-
-**Format:**
-```
-team TEAM_INDEX
-```
-
-<div class="alert alert-info" markdown="1">
-ℹ️ <b>Tips:</b>
-
-- Export the members' details of the team at the specified `TEAM_INDEX`. <br>
-- The index refers to the index number shown in the displayed teams list.
-</div>
-
-**Examples:**
-- `team 1` updates the contact list to show the members of the first team.
-
-| Before                                                             | After                                                            |
-|:-------------------------------------------------------------------|:-----------------------------------------------------------------|
-| ![before team list](images/features/features-team-list-before.png)| ![after team list](images/features/features-team-list-after.png)|
-
-[[Jump to Team Commands]](#team-commands) <br/>
-[[Jump to Features]](#features)
-
-### Deleting a contact from a team: `delete-contact`
-
-Deletes a contact from a specific team in your team list.
-
-**Format:**
-```
-team TEAM_INDEX delete-contact CONTACT_INDEX
-```
-<div class="alert alert-info" markdown="1">
-ℹ️ <b>Tips:</b>
-
-- Deletes the contact at the specified `CONTACT_INDEX` from the team at the specified `TEAM_INDEX`.
-- The `TEAM_INDEX` refers to the index number shown in the displayed teams list.
-- The `CONTACT_INDEX` refers to the index number of the contact shown in the contact list the user sees.
-</div>
-<div class="alert alert-warning" markdown="1">
-⚠️ <b>Current Limitations</b>:
-
-- You can only delete a contact from the current displayed list of contacts.
-- To delete a contact from a team, first enter the command `team TEAM_INDEX` to view all contacts in the team and then delete a contact from the team.
-- The UI will not show the updated team members list after deleting a contact from a team. To view the updated team members list, enter the command `team TEAM_INDEX` again.
-</div>
-
-**Examples:**
-- `team 1 delete-contact 1` deletes the contact at index 1 from the first team in the team list.
-- Enter `team 1` to view the updated members of the team.
-
-| Before                                                                                 | After                                                                                |
-|:---------------------------------------------------------------------------------------|:-------------------------------------------------------------------------------------|
-| ![before team delete-contact](images/features/features-team-delete-contact-before.png) | ![after team delete-contact](images/features/features-team-delete-contact-after.png) |
-
-[[Jump to Team Commands]](#team-commands) <br/>
-[[Jump to Features]](#features)
-
 ### Deleting a team: `delete`
 
 Deletes a team from your team list.
@@ -596,9 +508,104 @@ team TEAM_INDEX delete
 [[Jump to Team Commands]](#team-commands) <br/>
 [[Jump to Features]](#features)
 
+### List members belonging to a team:
+
+Show a list of all members of a specific team in your team list.
+
+**Format:**
+```
+team TEAM_INDEX
+```
+
+<div class="alert alert-info" markdown="1">
+ℹ️ <b>Tips:</b>
+
+- Lists the members' details of the team at the specified `TEAM_INDEX`. <br>
+- The index refers to the index number shown in the displayed teams list.
+</div>
+
+**Examples:**
+- `team 1` shows a list of all the members of the first team.
+
+| Before                                                             | After                                                            |
+|:-------------------------------------------------------------------|:-----------------------------------------------------------------|
+| ![before team list](images/features/features-team-list-before.png)| ![after team list](images/features/features-team-list-after.png)|
+
+[[Jump to Team Commands]](#team-commands) <br/>
+[[Jump to Features]](#features)
+
+### Adding a contact to a team: `add-contact`
+
+Adds a contact to a specific team in your team list.
+
+**Format:**
+```
+team TEAM_INDEX add-contact CONTACT_INDEX
+```
+
+<div class="alert alert-info" markdown="1">
+ℹ️ <b>Tips:</b>
+
+- Adds the contact at the specified `CONTACT_INDEX` to the team at the specified `TEAM_INDEX`. <br>
+- The `TEAM_INDEX` refers to the index number of the team shown in the displayed teams list. <br>
+- The `CONTACT_INDEX` refers to the index number of the contact shown in the contact list the user sees.
+</div>
+
+<div class="alert alert-warning" markdown="1">
+⚠️ <b>Current Limitations</b>:
+
+- You can only add a contact from the current displayed list of contacts.
+- To choose from all your contacts, first enter the command `list` to view all contacts and then add a contact to the team.
+</div>
+
+**Examples:**
+- `team 1 add-contact 1` adds the contact at index 1 of the contact list you are currently viewing to the first team in the team list.
+- Enter `team 1` to view the updated members of the team.
+
+| Before                                                                           | After                                                                          |
+|:---------------------------------------------------------------------------------|:-------------------------------------------------------------------------------|
+| ![before team add-contact](images/features/features-team-add-contact-before.png) | ![after team add-contact](images/features/features-team-add-contact-after.png) |
+
+[[Jump to Team Commands]](#team-commands) <br/>
+[[Jump to Features]](#features)
+
+### Deleting a contact from a team: `delete-contact`
+
+Deletes a contact from a specific team in your team list.
+
+**Format:**
+```
+team TEAM_INDEX delete-contact CONTACT_INDEX
+```
+<div class="alert alert-info" markdown="1">
+ℹ️ <b>Tips:</b>
+
+- Deletes the contact at the specified `CONTACT_INDEX` from the team at the specified `TEAM_INDEX`.
+- The `TEAM_INDEX` refers to the index number of the team shown in the displayed teams list.
+- The `CONTACT_INDEX` refers to the index number of the contact shown in the contact list the user sees.
+</div>
+<div class="alert alert-warning" markdown="1">
+⚠️ <b>Current Limitations</b>:
+
+- You can only delete a contact from the current displayed list of contacts.
+- To delete a contact from a team, first enter the command `team TEAM_INDEX` to view all contacts in the team and then delete a contact from the team.
+- The UI will not show the updated team members list after deleting a contact from a team. To view the updated team members list, enter the command `team TEAM_INDEX` again.
+</div>
+
+**Examples:**
+- `team 1 delete-contact 1` deletes the contact at index 1 from the first team in the team list.
+- Enter `team 1` to view the updated members of the team.
+
+| Before                                                                                 | After                                                                                |
+|:---------------------------------------------------------------------------------------|:-------------------------------------------------------------------------------------|
+| ![before team delete-contact](images/features/features-team-delete-contact-before.png) | ![after team delete-contact](images/features/features-team-delete-contact-after.png) |
+
+[[Jump to Team Commands]](#team-commands) <br/>
+[[Jump to Features]](#features)
+
 ### Exporting team details: `export`
 
-Export the members' details of a specific team in your team list.
+Exports the members' details of a specific team in your team list.
 
 **Format:**
 ```
@@ -667,14 +674,14 @@ Navigate through your past commands.
 
 ### Saving the data
 
-CodeConnect data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
+CodeConnect data is saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
 
 [[Jump to Non-CLI Features]](#non-cli-features) <br/>
 [[Jump to Features]](#features)
 
 ### Editing the data file
 
-CodeConnect data are saved automatically as a JSON file `[JAR file location]/data/addressbook.json`. Advanced users are welcome to update data directly by editing that data file.
+CodeConnect data is saved automatically as a JSON file `[JAR file location]/data/addressbook.json`. Advanced users are welcome to update data directly by editing that data file.
 
 <div class="alert alert-danger" markdown="1">
 ❗<b>Warning:</b>
@@ -717,25 +724,25 @@ CodeConnect data are saved automatically as a JSON file `[JAR file location]/dat
 
 # Command Summary
 
-| Action                    | Format, Examples                                                                                                                                                                                                                                                                                                                      |
-|---------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Add**                   | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS g/GITHUB_USERNAME pp/PROFILE_PICTURE [t/TAG] [ts/TECH_STACK]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 g/Jamesho123  pp/https://api-prod-minimal-v510.vercel.app/assets/images/avatar/avatar_1.jpg t/friend t/colleague ts/Java ts/C++` |
-| **Clear**                 | `clear`                                                                                                                                                                                                                                                                                                                               |
-| **Delete**                | `delete INDEX`<br> e.g., `delete 3`                                                                                                                                                                                                                                                                                                   |
-| **Edit**                  | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [g/GITHUB_USERNAME] [pp/PROFILE_PICTURE] [t/TAG]…​ [ts/TECH_STACK]…​ `<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`                                                                                                                                               |
-| **Find**                  | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`                                                                                                                                                                                                                                                                            |
-| **Find by Tags**          | `find-tags KEYWORD [MORE_KEYWORDS]`<br> e.g., `find-tags School Work`                                                                                                                                                                                                                                                                 |
-| **Find by Tech Stack**    | `find-ts KEYWORD [MORE_KEYWORDS]`<br> e.g., `find-ts Java Python`                                                                                                                                                                                                                                                                     |
-| **Rate**                  | `rate INDEX ts/TECH_STACK r/RATING`<br> e.g., `rate 3 ts/Java r/7`                                                                                                                                                                                                                                                                    |
-| **Team - Add**            | `team add n/NAME`<br> e.g., `team add n/NUS HACK 2024`                                                                                                                                                                                                                                                                                |
-| **Team - Delete**         | `team TEAM_INDEX delete`<br> e.g., `team 1 delete`                                                                                                                                                                                                                                                                                    |
-| **Team - List**           | `team TEAM_INDEX`<br> e.g., `team 1`                                                                                                                                                                                                                                                                                                  |
-| **Team - Add Contact**    | `team TEAM_INDEX add-contact CONTACT_INDEX`<br> e.g., `team 2 add-contact 3`                                                                                                                                                                                                                                                          |
-| **Team - Delete Contact** | `team TEAM_INDEX delete-contact CONTACT_INDEX`<br> e.g., `team 1 delete-contact 4`                                                                                                                                                                                                                                                    |
-| **Team - Export Details** | `team TEAM_INDEX export`<br> e.g., `team 1 export`                                                                                                                                                                                                                                                                                    |
-| **List**                  | `list`                                                                                                                                                                                                                                                                                                                                |
-| **Help**                  | `help`                                                                                                                                                                                                                                                                                                                                |
-| **Exit**                  | `exit`                                                                                                                                                                                                                                                                                                                                |
+| Action                    | Format, Examples                                                                                                                                                                                                                                                                                                                        |
+|---------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **List**                  | `list`                                                                                                                                                                                                                                                                                                                                  |
+| **Add**                   | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS g/GITHUB_USERNAME [pp/PROFILE_PICTURE] [t/TAG] [ts/TECH_STACK]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 g/Jamesho123  pp/https://api-prod-minimal-v510.vercel.app/assets/images/avatar/avatar_1.jpg t/friend t/colleague ts/Java ts/C++` |
+| **Edit**                  | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [g/GITHUB_USERNAME] [pp/PROFILE_PICTURE] [t/TAG]…​ [ts/TECH_STACK]…​ `<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`                                                                                                                                                 |
+| **Find**                  | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`                                                                                                                                                                                                                                                                              |
+| **Find by Tags**          | `find-tags KEYWORD [MORE_KEYWORDS]`<br> e.g., `find-tags School Work`                                                                                                                                                                                                                                                                   |
+| **Find by Tech Stack**    | `find-ts KEYWORD [MORE_KEYWORDS]`<br> e.g., `find-ts Java Python`                                                                                                                                                                                                                                                                       |
+| **Rate**                  | `rate INDEX ts/TECH_STACK r/RATING`<br> e.g., `rate 3 ts/Java r/7`                                                                                                                                                                                                                                                                      |
+| **Delete**                | `delete INDEX`<br> e.g., `delete 3`                                                                                                                                                                                                                                                                                                     |
+| **Clear**                 | `clear`                                                                                                                                                                                                                                                                                                                                 |
+| **Help**                  | `help`                                                                                                                                                                                                                                                                                                                                  |
+| **Exit**                  | `exit`                                                                                                                                                                                                                                                                                                                                  |
+| **Team - Add**            | `team add n/NAME`<br> e.g., `team add n/NUS HACK 2024`                                                                                                                                                                                                                                                                                  |
+| **Team - Delete**         | `team TEAM_INDEX delete`<br> e.g., `team 1 delete`                                                                                                                                                                                                                                                                                      |
+| **Team - List**           | `team TEAM_INDEX`<br> e.g., `team 1`                                                                                                                                                                                                                                                                                                    |
+| **Team - Add Contact**    | `team TEAM_INDEX add-contact CONTACT_INDEX`<br> e.g., `team 2 add-contact 3`                                                                                                                                                                                                                                                            |
+| **Team - Delete Contact** | `team TEAM_INDEX delete-contact CONTACT_INDEX`<br> e.g., `team 1 delete-contact 4`                                                                                                                                                                                                                                                      |
+| **Team - Export Details** | `team TEAM_INDEX export`<br> e.g., `team 1 export`                                                                                                                                                                                                                                                                                      |
 
 [[Jump to Table of Contents]](#table-of-contents)
 
