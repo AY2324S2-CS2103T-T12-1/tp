@@ -10,6 +10,7 @@ public class TagsContainKeywordsPredicate implements Predicate<Contact> {
     private final List<String> tagKeywords;
 
     public TagsContainKeywordsPredicate(List<String> tagKeywords) {
+        assert(!tagKeywords.isEmpty());
         this.tagKeywords = tagKeywords;
     }
 
