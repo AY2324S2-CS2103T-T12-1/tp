@@ -232,7 +232,7 @@ The following sequence diagram shows what happens as the user requests to view t
 the command is executed:
 <puml src="diagrams/CommandHistorySequenceDiagram.puml" alt="Sequence Diagram for Command History" />
 
-#### Possible enhancements
+#### Possible improvements
 * The history size could be made to be configurable by the user.
 * The history could be saved to disk so that it persists between app launches.
 
@@ -241,7 +241,7 @@ the command is executed:
 The following sequence diagram shows what happens as the user double clicks on the email address
 <puml src="diagrams/SendEmailSequenceDiagram.puml" alt="Sequence Diagram for sending an email" />
 
-#### Possible enhancements
+#### Possible improvements
 * There can be a feature where multiple emails can be selected to send a mass email to them.
 
 ### \[Proposed\] Undo/redo feature
@@ -722,6 +722,72 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
   * Rating: The rating given to the contact's specific tech stack (Integer).
 --------------------------------------------------------------------------------------------------------------------
 
+## **Appendix: Planned Enhancements**
+Team size: 5
+
+<!--Comments for tracking issues, will remove before merging-->
+<!--https://github.com/AY2324S2-CS2103T-T12-1/tp/issues/133-->
+### 1. Automatically update team in contacts list when `delete-contact` is run
+When the members of a team are [shown](UserGuide.md#list-members-belonging-to-a-team) in the contacts list, 
+[deleting](UserGuide.md#deleting-a-contact-from-a-team-delete-contact) a member of that team does not update the contact list.
+
+A known workaround is to run the command to list the members of the team again, which will show the updated members of the team.
+
+In the future, the `delete-contact` command should be enhanced to detect if the contact list is showing the current members of the
+team, and automatically update the contact list to show the updated team if necessary.
+
+<!--https://github.com/AY2324S2-CS2103T-T12-1/tp/issues/154-->
+### 2. Support special characters in names for contacts and teams
+Currently, CodeConnect does not allow for special characters to be used in names. For example, `s/o` cannot be used in
+names even though it would be a valid name because it contains the special character `/`. Other examples include `.` in `Harry S. Truman`,
+or `-` in `T-Pain`.
+
+In the future, we plan to expand the restrictions on names to also include special characters such as `/`, `.` and `-`.
+
+The parser in CodeConnect already should be able to parse most special characters without issue, except for `/`,
+since it is used to separate prefixes from their values. To solve this problem, we could either use another character instead of `/`
+for the prefixes, or use a delimiter to mark the start and end of names so that the parser can ignore any occurrences of special characters in them.
+
+<!--https://github.com/AY2324S2-CS2103T-T12-1/tp/issues/151-->
+### 3. Allow different contacts to have the same name
+Currently, CodeConnect does not allow for contacts to share the same names. However, different people can have the same
+names. Since GitHub usernames already need to be unique, we can use them to prevent duplicate contacts from being added into
+CodeConnect, instead of requiring both names and GitHub usernames to unique.
+
+<!--https://github.com/AY2324S2-CS2103T-T12-1/tp/issues/152-->
+### 4. Detect when tags with same name but in different case are entered
+Currently, CodeConnect does not check if tags with the same name but with different capitalisation exist.
+For example, `t/friend` and `t/Friend` can both be added to a contact, which should not be allowed. 
+
+In these situations, CodeConnect should treat these two tags as identical. For example, adding `t/friend` and `t/Friend`
+to a contact should display an error saying that identical tags cannot be added to a contact.
+
+To achieve this, the `Tag::equals` method can be modified to use `String::equalsIgnoreCase` instead of `String::equals` to compare tags.
+When displaying tags, they should all be displayed either in upper or lower case, to show to the user that CodeConnect that
+tags are treated with case-insensitivity.
+
+<!--https://github.com/AY2324S2-CS2103T-T12-1/tp/issues/152-->
+### 5. Detect when tech stacks with same name but in different case are entered
+Currently, CodeConnect does not check if tech stacks with the same name but with different capitalisation exist.
+For example, `ts/C` and `ts/c` can both be added to a contact, which should not be allowed.
+
+In these situations, CodeConnect should treat these two tech stacks as identical. For example, adding `ts/C` and `ts/c`
+to a contact should display an error saying that identical tech stacks cannot be added to a contact.
+
+To achieve this, the `TechStack::equals` method can be modified to use `String::equalsIgnoreCase` instead of `String::equals` to compare tech stacks.
+We can also consider saving tech stacks in upper case, which shows a consistent style and prevents the problem of one contact having 
+`ts/Javascript` but another contact having `ts/JaVaScRipT`. Instead, both contacts would show that they have `ts/JAVASCRIPT`.
+
+<!--https://github.com/AY2324S2-CS2103T-T12-1/tp/issues/147-->
+### 6. More specific error messages when parsing `INDEX`
+For commands such as `edit`, `delete`, and `rate`, inputting an invalid `INDEX` gives a generic error message, which is 
+unhelpful for the user. For example, `delete 0` returns `Invalid command format!`.
+
+The command parsers for all commands that take in `INDEX` as an argument should be enhanced to detect when an invalid 
+input has been given, and output a more specific error message such as 
+`INDEX should be a positive non-zero integer and not greater than the index of the last contact in the list`.
+
+--------------------------------------------------------------------------------------------------------------------
 ## **Appendix: Instructions for manual testing**
 
 Given below are instructions to test the app manually.
