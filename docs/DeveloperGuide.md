@@ -690,6 +690,42 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 1a1. CodeConnect shows an error message.
       Use case ends.
 
+**Use case: UC15 - Add a contact to a team**
+
+**MSS**
+
+1. User requests to add a contact from the contact list to a team.
+2. CodeConnect saves the new contact and displays it in the team list.
+   Use case ends.
+
+**Extensions**
+
+* 1a. The given contact index does not exist in CodeConnect.
+    * 1a1. CodeConnect shows an error message.
+      Use case ends.
+
+* 1b. The given team index does not exist in CodeConnect.
+    * 1b1. CodeConnect shows an error message.
+      Use case ends.
+
+**Use case: UC16 - Delete a contact from a team**
+
+**MSS**
+
+1. User requests to delete a contact from a team.
+2. CodeConnect removes the contact from the team.
+   Use case ends.
+
+**Extensions**
+
+* 1a. The given contact index does not exist in CodeConnect.
+    * 1a1. CodeConnect shows an error message.
+      Use case ends.
+
+* 1b. The given team index does not exist in CodeConnect.
+    * 1b1. CodeConnect shows an error message.
+      Use case ends.
+
 *{More to be added}*
 
 ### Non-Functional Requirements
@@ -786,6 +822,32 @@ unhelpful for the user. For example, `delete 0` returns `Invalid command format!
 The command parsers for all commands that take in `INDEX` as an argument should be enhanced to detect when an invalid 
 input has been given, and output a more specific error message such as 
 `INDEX should be a positive non-zero integer and not greater than the index of the last contact in the list`.
+
+<!--https://github.com/AY2324S2-CS2103T-T12-1/tp/issues/142-->
+### 7. Phone number validation
+The current implementation allows a user to add/edit phone numbers with lengths greater than 15 digits. Additionally,
+there's ambiguity regarding the format of phone numbers, especially for Singaporean and International contexts.
+
+Since CodeConnect is an application that can be used by anyone around the world, we will ensure that the number of digits
+a phone number can contain is between 3 and 15. This gives the user the flexibility to add contacts from anywhere across
+the world, which presents especially useful when he/she would like to invite the recipient to join an online hackathon.
+
+<!--https://github.com/AY2324S2-CS2103T-T12-1/tp/issues/122-->
+### 8. Inconsistent `rate` command errors
+When the user inputs large numbers, such as `100000000` and `10000000000`, error messages, `Rating should be between 0 and 10.`
+and `Invalid command format!` are displayed respectively.
+
+<!--solution goes here-->
+
+<!--https://github.com/AY2324S2-CS2103T-T12-1/tp/issues/119-->
+<!--https://github.com/AY2324S2-CS2103T-T12-1/tp/issues/117-->
+### 9. Prevent adding and editing contacts with duplicate email addresses and phone numbers
+Our current implementation supports users to add and edit contacts with email addresses and phone numbers that already 
+exist in the contact list. However, we understand that this is not applicable in the real life scenario, as every email 
+address and phone number has to be unique.
+
+We intend to enhance the `add` and `edit` features by implementing a check within the contact list. This check will verify 
+whether the email address and phone number intended for addition or modification already exists within the contact list.
 
 --------------------------------------------------------------------------------------------------------------------
 ## **Appendix: Instructions for manual testing**
