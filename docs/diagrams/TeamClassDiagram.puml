@@ -5,9 +5,11 @@
     class Name
     class UniqueContactList
     class Contact
+    class TeamStats
 
     Team *-- Name
     Team *--> "1" UniqueContactList
-    UniqueContactList "1" --> "*" Contact
+    Team *-- TeamStats
+    UniqueContactList --> "*" Contact
 
 @enduml
