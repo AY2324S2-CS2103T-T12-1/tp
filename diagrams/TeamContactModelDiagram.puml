@@ -1,0 +1,11 @@
+@startuml
+
+class Contact
+class Team
+class ModelManager
+
+Contact "0.*" --* Team: "0.*" Contacts can be in multiple teams
+ModelManager o-- "1" Contact: Contains multiple contacts
+ModelManager o-- "1" Team: Contains multiple teams
+
+@enduml

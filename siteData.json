@@ -52,6 +52,7 @@
         "common-classes": "Common classes",
         "contact-class": "Contact Class",
         "team-class": "Team Class",
+        "how-the-contact-team-and-modelmanager-are-related": "How the Contact, Team and ModelManager are related",
         "implementation": "Implementation",
         "command-history-feature": "Command history feature",
         "send-email-directly-feature": "Send email directly feature",
