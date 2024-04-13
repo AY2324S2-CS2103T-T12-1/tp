@@ -834,6 +834,8 @@ the world, which presents especially useful when he/she would like to invite the
 
 <!--https://github.com/AY2324S2-CS2103T-T12-1/tp/issues/122-->
 ### 8. Inconsistent `rate` command errors
+The current implementation allows a user to input an Integer rating only, not a Double or a Long etc. Hence, the error 
+messages for the different numbers vary.
 When the user inputs large numbers, such as `100000000` and `10000000000`, error messages, `Rating should be between 0 and 10.`
 and `Invalid command format!` are displayed respectively.
 
