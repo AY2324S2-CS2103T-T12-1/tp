@@ -191,7 +191,7 @@ The `Storage` component,
 * depends on some classes in the `Model` component (because the `Storage` component's job is to save/retrieve objects
   that belong to the `Model`)
 
-### Common classes
+## Common classes
 
 Classes used by multiple components are in the `seedu.address.commons` package.
 
@@ -208,11 +208,25 @@ null cases should be handled seperately within the ProfilePicture class. A conta
 be left null. This ensures that such invalid cases are always handled in that seperate class, keeping contact lean.
 
 ### Team Class
-The Team class represents a group of contacts in the application.
+The Team class is another fundamental component of the contact management system. Teams are created to keep track of
+groups of contacts, and hold aggregate data about these contacts. These teams are used by the user to keep track of 
+hackathon teams. Multiple teams are kept track by ModelManager.
+
 <puml src="diagrams/TeamClassDiagram.puml" width="550" />
 
 Note that with the use of `UniqueTeamList`, each contact in a team is guaranteed to be unique. However, each contact
 may belong in more than one team.
+
+Everytime a new contact is added to a team, team aggregate statistics is recalculated and TeamStats is replaced.
+
+
+### How the Contact, Team and ModelManager are related
+
+ModelManager keeps track of all Contacts and Teams. Only existing contacts can be added to a Team. They are added
+to a team by passing the reference of an existing contact.
+
+<puml src="diagrams/TeamContactModelDiagram.puml" width="550" />
+
 
 ## **Implementation**
 
