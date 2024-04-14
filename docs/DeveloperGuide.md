@@ -839,7 +839,8 @@ messages for the different numbers vary.
 When the user inputs large numbers, such as `100000000` and `10000000000`, error messages, `Rating should be between 0 and 10.`
 and `Invalid command format!` are displayed respectively.
 
-<!--![img.png](img.png)-->
+We intend to enhance the `rate` feature by separating the error handling for ParseException and NumberException into two
+with respective error messages.
 
 <!--https://github.com/AY2324S2-CS2103T-T12-1/tp/issues/119-->
 <!--https://github.com/AY2324S2-CS2103T-T12-1/tp/issues/117-->
