@@ -806,6 +806,30 @@ testers are expected to do more *exploratory* testing.
     1. Test case: `delete 1`<br>
        Expected: No contact is deleted. Error details shown in the status message. Contact list remains the same.
 
+### Editing a contact
+
+### Finding a contact by name
+
+### Finding a contact by tag
+
+### Finding a contact by tech stack
+
+### Rating a contact's tech stack
+
+### Adding a team
+
+### Adding members to a team
+
+### Listing members of a team
+
+### Removing members from a team
+
+### Exporting team details
+
+### Deleting a team
+
+
+
 ### Saving data
 
 1. Dealing with missing/corrupted data files
