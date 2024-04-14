@@ -36,7 +36,7 @@ public class RateCommand extends Command {
             + "Existing tech stack matching the input will be rated with the input values.\n"
             + "Parameters: INDEX (must be a positive integer) "
             + PREFIX_TECH_STACK + "TECH_STACK "
-            + PREFIX_RATING + "RATING (must be a possitive integer from 0 to 10)\n"
+            + PREFIX_RATING + "RATING (must be a positive integer from 0 to 10)\n"
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_TECH_STACK + "C " + PREFIX_RATING + "7";
 
