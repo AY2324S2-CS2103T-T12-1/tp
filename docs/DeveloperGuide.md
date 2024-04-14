@@ -408,7 +408,7 @@ _{Explain here how the data archiving feature will be implemented}_
 **Value proposition**:
 
 * keep track of other student developers
-* reach out easily to those with relevant skills for collaboration opportunities.
+* reach out easily to those with relevant skills for collaboration opportunities when forming hackathon teams.
 
 ### User stories
 
