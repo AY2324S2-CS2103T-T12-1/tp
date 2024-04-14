@@ -763,7 +763,26 @@ testers are expected to do more *exploratory* testing.
     1. Re-launch the app by double-clicking the jar file.<br>
        Expected: The most recent window size and location is retained.
 
-1. _{ more test cases …​ }_
+### Adding a contact
+
+1. Adding a contact to empty list
+
+    1. Prerequisites: Clear the contact list using the `clear` command.
+
+    1. Test case: `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 g/johnDoee ts/Java`<br>
+       Expected: Contact is added to the contact list with correct details. Details of added contact shown in status message.
+
+1. Adding contact to non-empty list
+
+    1. Prerequisites: List all contacts using the `list` command. Contact list must be non-empty.
+
+       1. Test case: `add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 g/betBetty t/criminal ts/Flutter`<br>
+          Expected: Contact is added to the end of the contact list with correct details. Details of added contact shown in status message.
+
+1. Adding invalid contact
+1. Adding invalid contact
+
+    1. TBD
 
 ### Deleting a contact
 
@@ -773,15 +792,19 @@ testers are expected to do more *exploratory* testing.
 
     1. Test case: `delete 1`<br>
        Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message.
-       Timestamp in the status bar is updated.
 
     1. Test case: `delete 0`<br>
-       Expected: No contact is deleted. Error details shown in the status message. Status bar remains the same.
+       Expected: No contact is deleted. Error details shown in the status message. Contact list remains the same.
 
-    1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
+    1. Other incorrect delete commands to try: `delete`, `delete -1`, `delete x`, (where x is larger than the list size)<br>
        Expected: Similar to previous.
 
-1. _{ more test cases …​ }_
+1. Deleting a contact when list is empty
+
+    1. Prerequisites: No contacts shown in filtered list. Use find command e.g. `find someonethatdoesntexist` to get empty list showing.
+
+    1. Test case: `delete 1`<br>
+       Expected: No contact is deleted. Error details shown in the status message. Contact list remains the same.
 
 ### Saving data
 
@@ -789,4 +812,3 @@ testers are expected to do more *exploratory* testing.
 
     1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
 
-1. _{ more test cases …​ }_
