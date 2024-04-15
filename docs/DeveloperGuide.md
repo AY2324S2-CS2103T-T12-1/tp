@@ -776,8 +776,8 @@ testers are expected to do more *exploratory* testing.
 
     1. Prerequisites: List all contacts using the `list` command. Contact list must be non-empty.
 
-       1. Test case: `add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 g/betBetty t/criminal ts/Flutter`<br>
-          Expected: Contact is added to the end of the contact list with correct details. Details of added contact shown in status message.
+    1. Test case: `add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 g/betBetty t/criminal ts/Flutter`<br>
+       Expected: Contact is added to the end of the contact list with correct details. Details of added contact shown in status message.
 
 1. Adding invalid contact
 1. Adding invalid contact
@@ -801,12 +801,32 @@ testers are expected to do more *exploratory* testing.
 
 1. Deleting a contact when list is empty
 
-    1. Prerequisites: No contacts shown in filtered list. Use find command e.g. `find someonethatdoesntexist` to get empty list showing.
+    1. Prerequisites: No contacts shown in filtered list. Use find command e.g. `find someonethatdoesntexist` to show empty contact list.
 
     1. Test case: `delete 1`<br>
        Expected: No contact is deleted. Error details shown in the status message. Contact list remains the same.
 
 ### Editing a contact
+
+1. Editing a contact while all contacts are being shown
+
+    1. Prerequisites: List all contacts using the `list` command. Multiple contacts in the list.
+
+    1. Test case: `edit 1 ts/C ts/Java`<br>
+       Expected: First contact's tech stacks are updated to contain `C` and `Java`. Details of edited contact shown in status message.
+
+    1. Test case: `edit 0 ts/C ts/Java`<br>
+       Expected: No contact is edited. Error details shown in the status message. Contact list remains the same.
+
+    1. Other incorrect edit commands to try: `edit`, `edit 0`, `edit 1 invalid/field`<br>
+       Expected: Similar to previous.
+
+1. Edited contact matches another existing contact in CodeConnect.
+
+    1. Prerequisites: List all contacts using the `list` command. Multiple contacts in the list.
+
+    1. Test case: `edit 2 n/SAME_NAME` (where SAME_NAME is the name of the first contact)<br>
+       Expected: No contact is edited. Error details shown in the status message. Contact list remains the same.
 
 ### Finding a contact by name
 
@@ -818,9 +838,39 @@ testers are expected to do more *exploratory* testing.
 
 ### Adding a team
 
+1. Adding a team
+
+    1. Prerequisites: Added team should not already exist in CodeConnect.    
+
+    1. Test case: `team add n/NUS HACK 2024`<br>
+      Expected: Team is added to the team list. Details of team shown in status message.
+
+1. Adding an invalid team
+
+    1. Prerequisites: Should be run after test case `Adding a team`. Team `NUS HACK 2024` should exist in the team list.
+
+    1. Test case: `team add n/NUS HACK 2024`<br>
+       Expected: No team is added. Error details shown in the status message. Team list remains the same.
+
+    1. Other incorrect delete commands to try: `team add`, `team add NUS`<br>
+       Expected: Similar to previous.
+
 ### Adding members to a team
 
 ### Listing members of a team
+
+1. List members of a team
+
+    1. Prerequisites: Team list contains one or more teams. First team in list should have > 0 members.
+
+    1. Test case: `team 1`<br>
+       Expected: Contact list shows the members of the team. Team name correctly shown in status message.
+
+    1. Test case: `team 0`<br>
+       Expected: Contact list does not change. Error details shown in the status message.
+
+    1. Test case: `team X` (where X is greater than the last team's index)<br>
+       Expected: Similar to previous.
 
 ### Removing members from a team
 
@@ -834,7 +884,18 @@ Expected Outcome: All team details are exported successfully to clipboard
 
 ### Deleting a team
 
+1. Deleting a team
 
+    1. Prerequisites: Team list contains one or more teams.
+
+    1. Test case: `team 1 delete`<br>
+       Expected: Team is deleted from the team list. Contact list does not change. Status message shows team name and its members.
+
+    1. Test case: `team 0 delete`<br>
+       Expected: Team list does not change. Contact list does not change. Error details shown in the status message.
+
+    1. Test case: `team X delete` (where X is greater than the last team's index)<br>
+       Expected: Similar to previous.
 
 ### Corrupted or Missing Data files
 
