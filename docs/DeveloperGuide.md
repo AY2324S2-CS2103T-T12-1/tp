@@ -1101,14 +1101,10 @@ testers are expected to do more *exploratory* testing.
      Expected: This command will return an error message indicating that the index is not a non-zero unsigned
      integer. The contact will not be added to the team.
 
-   - Other incorrect commands to try: `team 1 add-contact 0`.
-
    - Test case: `team add-contact 1`<br>
      Expected: This command will return an error message indicating that the team index provided is invalid as it does
      not exist.
 
-   - Other incorrect commands to try: `team 1 add-contact X`,
-     `team X add-contact X`.
 
 2. Adding a contact that is already in the team
 
