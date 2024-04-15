@@ -30,7 +30,7 @@ Code Reused:
 
 ## **Getting Started**
 
-Before you begin your development journey in Codeconnect, make sure that you meet the minimum requirements needed to run CodeConnect on your development device!
+Before you begin your development journey in CodeConnect, make sure that you meet the minimum requirements needed to run CodeConnect on your development device!
 
 ### Minimum Requirements
 
@@ -154,7 +154,7 @@ PlantUML, the lifeline continues till the end of diagram.
 
 How the `Logic` component works:
 
-1. When `Logic` is called upon to execute a command, it is passed to an `CodeConnectParser` object which in turn creates
+1. When `Logic` is called upon to execute a command, it is passed to a `CodeConnectParser` object which in turn creates
    a parser that matches the command (e.g., `DeleteCommandParser`) and uses it to parse the command.
 1. This results in a `Command` object (more precisely, an object of one of its subclasses e.g., `DeleteCommand`) which
    is executed by the `LogicManager`.
@@ -326,7 +326,7 @@ The following sequence diagram models the interactions between the different com
 
 <div class="alert alert-info" markdown="1">
 ℹ️ <b>Commands Included:</b> <br/> 
- Team - List, Team - Delete, Team - Export
+Team - List, Team - Delete, Team - Export
 </div>
 
 **In this section, we will focus on the `ExportTeamCommand` as an example.**
