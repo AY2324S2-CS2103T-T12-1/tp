@@ -3,6 +3,7 @@ package seedu.address.logic.commands;
 import static java.util.Objects.requireNonNull;
 
 import java.util.List;
+import java.util.logging.Logger;
 
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
@@ -11,7 +12,7 @@ import seedu.address.model.contact.TsContainsKeywordsPredicate;
 
 /**
  * Finds and lists all contacts in address book whose tech stack contains any of the argument keywords.
- * Keyword matching is case insensitive.
+ * Keyword matching is case-insensitive.
  */
 public class FindTechStackCommand extends Command {
 
@@ -23,6 +24,7 @@ public class FindTechStackCommand extends Command {
             + "Example: " + COMMAND_WORD + " java python ";
 
     private final List<String> techKeywords;
+    private final Logger logger = Logger.getLogger("FindTechStackCommand");
 
     public FindTechStackCommand(List<String> techKeywords) {
         this.techKeywords = techKeywords;
@@ -32,7 +34,10 @@ public class FindTechStackCommand extends Command {
     public CommandResult execute(Model model) {
         requireNonNull(model);
         TsContainsKeywordsPredicate predicate = new TsContainsKeywordsPredicate(techKeywords);
+
+        logger.info("Matching contacts with techstack containing the keywords: " + techKeywords);
         model.updateFilteredContactList(predicate);
+
         return new CommandResult(
                 String.format(Messages.MESSAGE_CONTACT_LISTED_OVERVIEW, model.getFilteredContactList().size()));
     }
