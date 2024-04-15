@@ -790,3 +790,42 @@ testers are expected to do more *exploratory* testing.
     1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
 
 1. _{ more test cases …​ }_
+
+--------------------------------------------------------------------------------------------------------------------
+
+## **Appendix: Effort**
+
+### Difficulty Level and Challenges Faced
+
+Throughout the development of our project, we encountered several significant challenges that tested our problem-solving skills and collaboration abilities.
+
+One of the foremost hurdles we faced was gaining a comprehensive understanding of the underlying implementation of AddressBook Level 3. As we inherited the codebase from a previous developer, we needed considerable time to unravel the complexities within AddressBook. We meticulously dissected each component, deciphering its role in the application, and strategised on how to extend, modify, or replace existing features to tailor it for our CodeConnect application.
+
+Another major challenge arose during the refactoring process of the pre-existing codebase. The codebase exhibited multiple layers of nesting, making it extremely difficult to refactor classes and methods. This extended into the test cases as well - making changes to one class meant that many of the original tests would have to be refactored to accommodate to modifications. Despite leveraging IntelliJ IDE’s intelligent refactoring features, we encountered difficulties in properly detecting and renaming some classes and methods. This led to instances of broken code, necessitating extensive debugging and testing efforts to rectify.
+
+Additionally, we encountered learning curves as we navigated working together as a cohesive team utilising a Version Control System (GitHub). Merge conflicts were a recurring obstacle, resulting in inadvertent overwrites of previously implemented code. The culmination of these challenges peaked during the integration phase for V1.3, where merging our individually assigned features into the team repository's master branch demanded meticulous coordination and communication.
+
+Despite these formidable challenges, our team persevered with determination and resourcefulness. Each hurdle became an opportunity for growth, reinforcing our collaboration skills, technical acumen, and adaptability in the face of complexity. Through tenacity and a shared commitment to excellence, we successfully navigated these challenges, emerging stronger and more capable as a unified team.
+
+### Effort Required
+Developing CodeConnect demanded a significant allocation of effort from each team member. In addition to our regular weekly meetings, every developer was tasked with traversing through the meticulous stages of analysis, design, development, testing, and documentation for every new feature integrated into the application.
+
+Given that we inherited a brownfield project, a considerable amount of time and resources were dedicated to understanding the intricate architecture of AB3. Ensuring compatibility and stability remained at the forefront of our efforts, prompting numerous brainstorming sessions and thorough evaluations of how each new feature would seamlessly integrate.
+
+Furthermore, as not all team members were well-versed in utilising a Version Control System (VCS) within a collaborative setting, considerable effort was expended. Guided by the more experienced members of our team, these individuals diligently worked towards acquiring the necessary proficiency with the VCS. This learning curve should be acknowledged, as mastering a VCS is a substantial step for future software professionals and bears significant importance.
+
+### Achievements of Project
+1. Redesigning existing commands for better intuitiveness and fit for our target audience - student developers.
+2. Expanded existing search functionalities, empowering users to more efficiently navigate through their contacts.
+3. Seamless integration of contacts and teams, enabling users to manage both contacts and hackathon teams.
+4. Improved GUI of existing application to accommodate the new teams feature, enabling users to flawlessly transition between team members and contacts in the address book.
+
+### Effort Saved Through Reuse
+Approximately 10% of our project's effort was conserved through the judicious reuse of existing components and libraries, particularly in the realm of commands and parsers. Leveraging the established practices of previous developers when modifying the application provided us with a valuable foundation, expediting the implementation of new functionalities. 
+
+
+
+
+
+
+
