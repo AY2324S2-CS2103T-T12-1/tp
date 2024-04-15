@@ -95,6 +95,7 @@ public class RateCommand extends Command {
      */
     private Contact rateTechStack(Contact contactToRate, TechStack techStack, int rating) {
         assert contactToRate != null;
+        assert (rating >= 0 && rating <= 10);
         Name contactName = contactToRate.getName();
         Phone contactPhone = contactToRate.getPhone();
         Email contactEmail = contactToRate.getEmail();
