@@ -8,6 +8,7 @@ import static seedu.address.model.Model.PREDICATE_SHOW_ALL_CONTACTS;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.logging.Logger;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.ToStringBuilder;
@@ -43,6 +44,7 @@ public class RateCommand extends Command {
     public static final String MESSAGE_RATE_CONTACT_SUCCESS = "Rated Contact: %1$s";
     public static final String MESSAGE_INVALID_TECHSTACK_TO_RATE = "This contact does not have stated Tech Stack.";
     public static final String MESSAGE_INVALID_RATING = "Rating should be between 0 and 10.";
+    private final Logger logger = Logger.getLogger("RateCommand");
 
     private final Index index;
     private final int rating;
@@ -96,6 +98,7 @@ public class RateCommand extends Command {
     private Contact rateTechStack(Contact contactToRate, TechStack techStack, int rating) {
         assert contactToRate != null;
         assert (rating >= 0 && rating <= 10);
+        logger.info("Rating contact: " + contactToRate);
         Name contactName = contactToRate.getName();
         Phone contactPhone = contactToRate.getPhone();
         Email contactEmail = contactToRate.getEmail();
