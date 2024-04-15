@@ -439,7 +439,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **Extensions**
 
 - 1a. The list is empty.
-
   - 1a1. CodeConnect shows an error message. <br/>
     Use case ends.
 
@@ -458,7 +457,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **Extensions**
 
 - 1a. The contact already exists in the system.
-
   - 1a1. CodeConnect shows an error message. <br/>
     Use case ends.
 
@@ -477,12 +475,10 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **Extensions**
 
 - 1a. The given index to identify contact is invalid.
-
   - 1a1. CodeConnect shows an error message. <br/>
     Use case ends.
 
 - 1b. No fields are entered.
-
   - 1b1. CodeConnect shows an error message. <br/>
     Use case ends.
 
