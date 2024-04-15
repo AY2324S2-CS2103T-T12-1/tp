@@ -246,7 +246,7 @@ The following sequence diagram shows what happens as the user requests to view t
 the command is executed:
 <puml src="diagrams/CommandHistorySequenceDiagram.puml" alt="Sequence Diagram for Command History" />
 
-#### Possible enhancements
+#### Possible improvements
 * The history size could be made to be configurable by the user.
 * The history could be saved to disk so that it persists between app launches.
 
@@ -255,7 +255,7 @@ the command is executed:
 The following sequence diagram shows what happens as the user double clicks on the email address
 <puml src="diagrams/SendEmailSequenceDiagram.puml" alt="Sequence Diagram for sending an email" />
 
-#### Possible enhancements
+#### Possible improvements
 * There can be a feature where multiple emails can be selected to send a mass email to them.
 
 ### \[Proposed\] Undo/redo feature
@@ -704,6 +704,42 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 1a1. CodeConnect shows an error message.
       Use case ends.
 
+**Use case: UC15 - Add a contact to a team**
+
+**MSS**
+
+1. User requests to add a contact from the contact list to a team.
+2. CodeConnect saves the new contact and displays it in the team list.
+   Use case ends.
+
+**Extensions**
+
+* 1a. The given contact index does not exist in CodeConnect.
+    * 1a1. CodeConnect shows an error message.
+      Use case ends.
+
+* 1b. The given team index does not exist in CodeConnect.
+    * 1b1. CodeConnect shows an error message.
+      Use case ends.
+
+**Use case: UC16 - Delete a contact from a team**
+
+**MSS**
+
+1. User requests to delete a contact from a team.
+2. CodeConnect removes the contact from the team.
+   Use case ends.
+
+**Extensions**
+
+* 1a. The given contact index does not exist in CodeConnect.
+    * 1a1. CodeConnect shows an error message.
+      Use case ends.
+
+* 1b. The given team index does not exist in CodeConnect.
+    * 1b1. CodeConnect shows an error message.
+      Use case ends.
+
 *{More to be added}*
 
 ### Non-Functional Requirements
@@ -736,6 +772,101 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
   * Rating: The rating given to the contact's specific tech stack (Integer).
 --------------------------------------------------------------------------------------------------------------------
 
+## **Appendix: Planned Enhancements**
+Team size: 5
+
+<!--Comments for tracking issues, will remove before merging-->
+<!--https://github.com/AY2324S2-CS2103T-T12-1/tp/issues/133-->
+### 1. Automatically update team in contacts list when `delete-contact` is run
+When the members of a team are [shown](UserGuide.md#list-members-belonging-to-a-team) in the contacts list, 
+[deleting](UserGuide.md#deleting-a-contact-from-a-team-delete-contact) a member of that team does not update the contact list.
+
+A known workaround is to run the command to list the members of the team again, which will show the updated members of the team.
+
+In the future, the `delete-contact` command should be enhanced to detect if the contact list is showing the current members of the
+team, and automatically update the contact list to show the updated team if necessary.
+
+<!--https://github.com/AY2324S2-CS2103T-T12-1/tp/issues/154-->
+### 2. Support special characters in names for contacts and teams
+Currently, CodeConnect does not allow for special characters to be used in names. For example, `s/o` cannot be used in
+names even though it would be a valid name because it contains the special character `/`. Other examples include `.` in `Harry S. Truman`,
+or `-` in `T-Pain`.
+
+In the future, we plan to expand the restrictions on names to also include special characters such as `/`, `.` and `-`.
+
+The parser in CodeConnect already should be able to parse most special characters without issue, except for `/`,
+since it is used to separate prefixes from their values. To solve this problem, we could either use another character instead of `/`
+for the prefixes, or use a delimiter to mark the start and end of names so that the parser can ignore any occurrences of special characters in them.
+
+<!--https://github.com/AY2324S2-CS2103T-T12-1/tp/issues/151-->
+### 3. Allow different contacts to have the same name
+Currently, CodeConnect does not allow for contacts to share the same names. However, different people can have the same
+names. Since GitHub usernames already need to be unique, we can use them to prevent duplicate contacts from being added into
+CodeConnect, instead of requiring both names and GitHub usernames to unique.
+
+<!--https://github.com/AY2324S2-CS2103T-T12-1/tp/issues/152-->
+### 4. Detect when tags with same name but in different case are entered
+Currently, CodeConnect does not check if tags with the same name but with different capitalisation exist.
+For example, `t/friend` and `t/Friend` can both be added to a contact, which should not be allowed. 
+
+In these situations, CodeConnect should treat these two tags as identical. For example, adding `t/friend` and `t/Friend`
+to a contact should display an error saying that identical tags cannot be added to a contact.
+
+To achieve this, the `Tag::equals` method can be modified to use `String::equalsIgnoreCase` instead of `String::equals` to compare tags.
+When displaying tags, they should all be displayed either in upper or lower case, to show to the user that
+tags are treated with case-insensitivity.
+
+<!--https://github.com/AY2324S2-CS2103T-T12-1/tp/issues/152-->
+### 5. Detect when tech stacks with same name but in different case are entered
+Currently, CodeConnect does not check if tech stacks with the same name but with different capitalisation exist.
+For example, `ts/C` and `ts/c` can both be added to a contact, which should not be allowed.
+
+In these situations, CodeConnect should treat these two tech stacks as identical. For example, adding `ts/C` and `ts/c`
+to a contact should display an error saying that identical tech stacks cannot be added to a contact.
+
+To achieve this, the `TechStack::equals` method can be modified to use `String::equalsIgnoreCase` instead of `String::equals` to compare tech stacks.
+We can also consider saving tech stacks in upper case, which shows a consistent style and prevents the problem of one contact having 
+`ts/Javascript` but another contact having `ts/JaVaScRipT`. Instead, both contacts would show that they have `ts/JAVASCRIPT`.
+
+<!--https://github.com/AY2324S2-CS2103T-T12-1/tp/issues/147-->
+### 6. More specific error messages when parsing `INDEX`
+For commands such as `edit`, `delete`, and `rate`, inputting an invalid `INDEX` gives a generic error message, which is 
+unhelpful for the user. For example, `delete 0` returns `Invalid command format!`.
+
+The command parsers for all commands that take in `INDEX` as an argument should be enhanced to detect when an invalid 
+input has been given, and output a more specific error message such as 
+`INDEX should be a positive non-zero integer and not greater than the index of the last contact in the list`.
+
+<!--https://github.com/AY2324S2-CS2103T-T12-1/tp/issues/142-->
+### 7. Phone number validation
+The current implementation allows a user to add/edit phone numbers with lengths greater than 15 digits. Additionally,
+there's ambiguity regarding the format of phone numbers, especially for Singaporean and International contexts.
+
+Since CodeConnect is an application that can be used by anyone around the world, we will ensure that the number of digits
+a phone number can contain is between 3 and 15. This gives the user the flexibility to add contacts from anywhere across
+the world, which presents especially useful when he/she would like to invite the recipient to join an online hackathon.
+
+<!--https://github.com/AY2324S2-CS2103T-T12-1/tp/issues/122-->
+### 8. Inconsistent `rate` command errors
+The current implementation allows a user to input an Integer rating only, not a Double or a Long etc. Hence, the error 
+messages for the different numbers vary.
+When the user inputs large numbers, such as `100000000` (an Integer) and `10000000000` (a Long), error messages, `Rating should be between 0 and 10.`
+and `Invalid command format!` are displayed respectively.
+
+We intend to enhance the `rate` feature by separating the error handling for ParseException and NumberException into two
+with respective error messages.
+
+<!--https://github.com/AY2324S2-CS2103T-T12-1/tp/issues/119-->
+<!--https://github.com/AY2324S2-CS2103T-T12-1/tp/issues/117-->
+### 9. Prevent adding and editing contacts with duplicate email addresses and phone numbers
+Our current implementation supports users to add and edit contacts with email addresses and phone numbers that already 
+exist in the contact list. However, we understand that this is not applicable in the real life scenario, as every email 
+address and phone number has to be unique.
+
+We intend to enhance the `add` and `edit` features by implementing a check within the contact list. This check will verify 
+whether the email address and phone number intended for addition or modification already exists within the contact list.
+
+--------------------------------------------------------------------------------------------------------------------
 ## **Appendix: Instructions for manual testing**
 
 Given below are instructions to test the app manually.
