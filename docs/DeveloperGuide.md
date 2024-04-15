@@ -30,7 +30,7 @@ Code Reused:
 
 ## **Getting Started**
 
-Before you begin your development journey in Codeconnect, make sure that you meet the minimum requirements needed to run CodeConnect on your development device!
+Before you begin your development journey in CodeConnect, make sure that you meet the minimum requirements needed to run CodeConnect on your development device!
 
 ### Minimum Requirements
 
@@ -325,7 +325,7 @@ The following sequence diagram models the interactions between the different com
 
 <div class="alert alert-info" markdown="1">
 ℹ️ <b>Commands Included:</b> <br/> 
- Team - List, Team - Delete, Team - Export
+Team - List, Team - Delete, Team - Export
 </div>
 
 **In this section, we will focus on the `ExportTeamCommand` as an example.**

@@ -824,7 +824,7 @@ CodeConnect data is saved automatically as a JSON file `[JAR file location]/data
     </ul>
 </div>
 <div class="alert alert-warning" markdown="1">
-   ⚠️ <b> When entering the tech stack for the `rate` command: </b>
+   ⚠️ <b> When entering the tech stack for the <code>rate</code> command: </b>
 <ul>
         <li> The tech stack must be one of the tech stacks that the contact at the specific index has. </li>
 </ul>
