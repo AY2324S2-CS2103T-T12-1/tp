@@ -830,6 +830,35 @@ testers are expected to do more *exploratory* testing.
 
 ### Finding a contact by name
 
+1. Searching for a contact with a single keyword
+
+    1. Prerequisites: List all contacts using the `list` command. Multiple contacts in the list. In the following test
+       cases, we assume we have contacts named `Alex`, `Bernice`, `David`, and `John`.
+
+    2. Test case: `find John`<br>
+       Expected: The search should return contacts matching the keyword `John`. The search is case-insenstive and matches
+       only the name.
+
+    3. Test case: `find XYZ`<br>
+       Expected: The search should return no contacts since there are no matches for
+       the keyword `XYZ`.
+   
+    4. Test case: `find BERNICE`<br>
+       Expected: The search should return contacts matching the keyword `BERNICE` in a case-insensitive manner. It should
+       match contacts with names like `Bernice`, `bernice`, `BERNICE`, etc.
+   
+    5. Test case: `find Dav`
+       Expected: The search should return no contacts because the search only matches full keywords. Partial matches 
+       like `Dav` won't match `David`.
+
+2. Searching for contacts with multiple keywords
+
+    1. Prerequisites: List all contacts using the `list` command. Multiple contacts in the list.
+   
+    2. Test case: `find alex david`<br>
+       Expected: The search should return contacts matching either of the keywords `alex` or `david`. The order of the 
+       keywords do not matter, and partial matches will not be considered.
+
 ### Finding a contact by tag
 
 ### Finding a contact by tech stack
@@ -857,6 +886,36 @@ testers are expected to do more *exploratory* testing.
 
 ### Adding members to a team
 
+1. Adding a contact to a team
+
+    1. Prerequisites: Ensure there are several contacts and teams in the list. A contact that needs to be added to a
+       team should not already be a member of that team. 
+   
+    2. Test case: `team 1 add-contact 1`<br>
+       Expected: The contact at index 1 of the contact list should be added to the first team in the team list. After
+       executing the command, verify that the contact is added to the team by entering `team 1`. 
+   
+    3. Test case: `team 0 add-contact 1`<br>
+       Expected: This command will return an error message indicating that the index is not a non-zero unsigned
+       integer. The contact will not be added to the team.
+   
+       Similar incorrect commands to try: `team 1 add-contact 0`.
+   
+    4. Test case: `team 100000 add-contact 1`<br>
+       Expected: This command will return an error message indicating that the team index provided is invalid as it does
+       not exist.  
+
+       Similar incorrect commands to try: `team 1 add-contact (inexistent contact index number)`, 
+       `team INEXISTENT_TEAM_INDEX add-contact INEXISTENT_CONTACT_INDEX`.
+   
+2. Adding a contact that is already in the team
+    
+    1. Prerequisites: View the members of the team with the `team INDEX` command. Ensure that the contact already exists
+       in the team. We assume contact 2 already exists in team 2 for the test case below. 
+   
+    2. Test case: `team 2 add-contact 2`
+       Expected: A message indicating that the contact already exists in the team is displayed. 
+
 ### Listing members of a team
 
 1. List members of a team
@@ -873,6 +932,28 @@ testers are expected to do more *exploratory* testing.
        Expected: Similar to previous.
 
 ### Removing members from a team
+
+1. Deleting a contact from a team
+
+    1. Prerequisites: Enter the command `team INDEX` to ensure that there are serveral contacts in a team. A contact that
+       needs to be deleted should already be a member of that team.
+   
+    2. Test Case: `team 1 delete-contact 1`<br>
+       Expected: The contact at index 1 of the team's member list should be deleted from the first team in the team list.
+       After executing the command, enter `team 1` to ensure that the contact has been removed from the team.
+
+    3. Test case: `team 0 delete-contact 1`<br>
+       Expected: This command will return an error message indicating that the index is not a non-zero unsigned
+       integer. The contact will not be deleted from the team.
+
+       Similar incorrect commands to try: `team 1 delete-contact 0`.
+
+    4. Test case: `team 100000 delete-contact 1`<br>
+       Expected: This command will return an error message indicating that the team index provided is invalid as it does
+       not exist.
+
+       Similar incorrect commands to try: `team 1 delete-contact (inexistent contact index number)`,
+       `team INEXISTENT_TEAM_INDEX delete-contact INEXISTENT_CONTACT_INDEX`.
 
 ### Exporting team details
 
