@@ -30,7 +30,7 @@ Code Reused:
 
 ## **Getting Started**
 
-Before you begin your development journey in TaskWise, make sure that you meet the minimum requirements needed to run CodeConnect on your development device!
+Before you begin your development journey in Codeconnect, make sure that you meet the minimum requirements needed to run CodeConnect on your development device!
 
 ### Minimum Requirements
 
@@ -301,7 +301,12 @@ The following sequence diagram models the interactions between the different com
 
 Team commands follow either one of the two sequences stated below, depending on the command type. Within each flow, the only differences lie in the `execute` method of each command.
 
-#### Sequence 1: Team - Add, Team - Add Contact, Team - Delete Contact
+#### Sequence 1 
+
+<div class="alert alert-info" markdown="1">
+ℹ️ <b>Commands Included:</b> <br/> 
+Team - Add, Team - Add Contact, Team - Delete Contact
+</div>
 
 **In this section, we will focus on the `AddTeamCommand` as an example.**
 
@@ -317,7 +322,12 @@ The following sequence diagram models the interactions between the different com
 4. The `TeamCommandParser` and `AddTeamCommandCommandParser` return the `AddTeamCommand` object.
 5. The `LogicManager` invokes the `execute` method of `AddTeamCommand`, which creates a new team called "NUS HACKERS".
 
-#### Sequence 2: Team - List, Team - Delete, Team - Export
+#### Sequence 2
+
+<div class="alert alert-info" markdown="1">
+ℹ️ <b>Commands Included:</b> <br/> 
+ Team - List, Team - Delete, Team - Export
+</div>
 
 **In this section, we will focus on the `ExportTeamCommand` as an example.**
 
@@ -753,7 +763,7 @@ _{More to be added}_
 - **Command**: A sequence of words that represents an action that CodeConnect can understand and execute.
 - **Field/Parameter**: Refers to the `Status`, `Deadline`, `Priority`, `Description`, `Member` of a Task.
 - **GUI**: A Graphical User Interface is a visual interface where users can interact with the software through on-screen elements like buttons and windows.
-- **JAR**: A file that contains all the resources needed for TaskWise to run.
+- **JAR**: A file that contains all the resources needed for CodeConnect to run.
 - **Java**: A general-purpose programming language on which TextWise is built.
 - **Contact**: An entry that holds information about someone that the user wants to save.
 - **Private contact detail**: A contact detail that is not meant to be shared with others
