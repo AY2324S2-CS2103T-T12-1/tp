@@ -1137,13 +1137,14 @@ testers are expected to do more *exploratory* testing.
 
    - Other incorrect commands to try: `team 1 delete-contact 0`.
 
-   - Test case: `team X delete-contact 1`<br>
+   - Test case: `team X delete-contact 1` (where X is greater than the last team's index)<br>
      Expected: This command will return an error message indicating that the team index provided is invalid as it does
      not exist.
 
-   - Similar incorrect commands to try: `team 1 delete-contact (inexistent contact index number)`,
-     `team INEXISTENT_TEAM_INDEX delete-contact INEXISTENT_CONTACT_INDEX`.
-
+   - Similar incorrect commands to try: `team 1 delete-contact 0`, `team 1 delete-contact X`, 
+         (where X is greater than the last team's index)<br>
+     Expected: Similar to previous.
+   
 ### Exporting team details
 
 1. Exporting team details
