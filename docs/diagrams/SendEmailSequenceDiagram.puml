@@ -1,10 +1,21 @@
 @startuml
-actor User
-participant "ContactList View" as ContactListView
-participant "MailApp" as MailApp
-participant "Mail Application" as MailApplication
+!include style.puml
+skinparam ArrowFontStyle plain
+skinparam participant {
+    TextColor black
+}
 
-User -> ContactListView : Clicks on email address
+box UI UI_COLOR_T1
+    participant "ContactListView" as ContactListView UI_COLOR
+end box
+
+box Logic LOGIC_COLOR_T1
+    participant "MailApp" as MailApp LOGIC_COLOR
+    participant "Mail Application" as MailApplication LOGIC_COLOR
+end box
+
+actor User
+[-> ContactListView : Clicks on email address
 activate ContactListView
 ContactListView -> MailApp : handleEmailClicked()
 activate MailApp
