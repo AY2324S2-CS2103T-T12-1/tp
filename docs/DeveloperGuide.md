@@ -775,10 +775,9 @@ _{More to be added}_
 - **Argument**: A word or number or a sequence of words or numbers that represent.
 - **CLI**: A Command Line Interface is a text-based interface where users can interact with the software by typing commands.
 - **Command**: A sequence of words that represents an action that CodeConnect can understand and execute.
-- **Field/Parameter**: Refers to the `Status`, `Deadline`, `Priority`, `Description`, `Member` of a Task.
 - **GUI**: A Graphical User Interface is a visual interface where users can interact with the software through on-screen elements like buttons and windows.
 - **JAR**: A file that contains all the resources needed for CodeConnect to run.
-- **Java**: A general-purpose programming language on which TextWise is built.
+- **Java**: A general-purpose programming language on which CodeConnect is built on.
 - **Contact**: An entry that holds information about someone that the user wants to save.
 - **Private contact detail**: A contact detail that is not meant to be shared with others
 - **Details of contact**:
