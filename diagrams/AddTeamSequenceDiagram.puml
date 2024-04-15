@@ -1,0 +1,65 @@
+@startuml
+!include style.puml
+skinparam ArrowFontStyle plain
+
+box Logic LOGIC_COLOR_T1
+participant ":LogicManager" as LogicManager LOGIC_COLOR
+participant ":CodeConnectParser" as CodeConnectParser LOGIC_COLOR
+participant ":TeamCommandsParser" as TeamCommandsParser LOGIC_COLOR
+participant ":AddTeamCommandsParser" as AddTeamCommandsParser LOGIC_COLOR
+participant "f:AddTeamCommand" as AddTeamCommand LOGIC_COLOR
+end box
+
+[-> LogicManager : execute("team add n/NUS HACKERS")
+activate LogicManager
+
+LogicManager -> CodeConnectParser : parseCommand("team add n/NUS HACKERS")
+activate CodeConnectParser
+
+create TeamCommandsParser
+CodeConnectParser -> TeamCommandsParser: parse("add n/NUS HACKERS")
+activate TeamCommandsParser
+
+create AddTeamCommandsParser
+TeamCommandsParser -> AddTeamCommandsParser:
+activate AddTeamCommandsParser
+
+AddTeamCommandsParser --> TeamCommandsParser
+deactivate AddTeamCommandsParser
+
+TeamCommandsParser -> AddTeamCommandsParser: parse("n/NUS HACKERS")
+activate AddTeamCommandsParser
+
+create AddTeamCommand
+AddTeamCommandsParser -> AddTeamCommand:
+activate AddTeamCommand
+
+AddTeamCommand -> AddTeamCommandsParser
+deactivate AddTeamCommand
+
+AddTeamCommandsParser --> TeamCommandsParser: f
+deactivate AddTeamCommandsParser
+'Hidden arrow to position the destroy marker below the end of the activation bar.
+AddTeamCommandsParser -[hidden]-> CodeConnectParser
+destroy AddTeamCommandsParser
+
+TeamCommandsParser --> CodeConnectParser : f
+deactivate TeamCommandsParser
+'Hidden arrow to position the destroy marker below the end of the activation bar.
+TeamCommandsParser -[hidden]-> CodeConnectParser
+destroy TeamCommandsParser
+
+CodeConnectParser --> LogicManager : f
+deactivate CodeConnectParser
+
+LogicManager -> AddTeamCommand : execute(m:Model)
+activate AddTeamCommand
+
+AddTeamCommand -> AddTeamCommand: Create team named NUS HACKERS
+
+AddTeamCommand --> LogicManager : f
+deactivate AddTeamCommand
+
+[<--LogicManager
+deactivate LogicManager
+@enduml
