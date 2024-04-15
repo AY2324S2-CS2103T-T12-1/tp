@@ -20,6 +20,7 @@ Class Phone
 Class Address
 Class Email
 Class GitHubUsername
+Class ProfilePicture
 Class Tag
 Class TechStack
 Class Team
@@ -51,6 +52,7 @@ Contact *--> Phone
 Contact *--> Email
 Contact *--> Address
 Contact *--> GitHubUsername
+Contact *--> "0..1" ProfilePicture
 Contact *--> "*" Tag
 Contact *--> "*" TechStack
 
