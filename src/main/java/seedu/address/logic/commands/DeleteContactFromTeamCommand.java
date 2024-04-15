@@ -1,5 +1,7 @@
 package seedu.address.logic.commands;
 
+import static java.util.Objects.requireNonNull;
+
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
@@ -9,8 +11,9 @@ import seedu.address.model.Model;
 import seedu.address.model.contact.Contact;
 import seedu.address.model.team.Team;
 
-import static java.util.Objects.requireNonNull;
-
+/**
+ * Deletes the {@code Contact} from the specified team {@code Team}.
+ */
 public class DeleteContactFromTeamCommand extends Command {
 
     public static final String COMMAND_WORD = "delete-contact";
@@ -21,8 +24,8 @@ public class DeleteContactFromTeamCommand extends Command {
             + "Example: " + TeamCommandsParser.COMMAND_WORD + " 1 " + COMMAND_WORD + " 2 ";
 
     public static final String MESSAGE_SUCCESS = "Contact removed from team: %1$s";
-    public static final String MESSAGE_INEXISTENT_CONTACT_IN_TEAM = "A contact with this index does not exist in " +
-            "the team";
+    public static final String MESSAGE_INEXISTENT_CONTACT_IN_TEAM = "A contact with this index does not exist in "
+            + "the team";
 
     private final Index teamIndex;
     private final Index contactIndex;
@@ -49,10 +52,6 @@ public class DeleteContactFromTeamCommand extends Command {
             throw new CommandException(Messages.MESSAGE_INVALID_CONTACT_DISPLAYED_INDEX);
         }
         Contact contactToDelete = originalTeam.getMembers().get(contactIndex.getZeroBased());
-
-//            if (!team.hasMember(contactToDelete)) {
-//                throw new CommandException(MESSAGE_INEXISTENT_CONTACT_IN_TEAM);
-//            }
 
         Team updatedTeam = originalTeam.withRemovedMember(contactToDelete);
         model.setTeam(originalTeam, updatedTeam);

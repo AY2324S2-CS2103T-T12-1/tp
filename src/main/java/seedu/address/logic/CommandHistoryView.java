@@ -29,7 +29,7 @@ public class CommandHistoryView {
      * Request for the next entry in the history.
      *
      * @return an {@code Optional<String>} containing next entry if it exists,
-     * {@link Optional#empty()} otherwise.
+     *      {@link Optional#empty()} otherwise.
      */
     public Optional<String> next() {
         if (index + 1 == commandBuffer.size()) {
@@ -43,7 +43,7 @@ public class CommandHistoryView {
      * Request for the previous entry in the history.
      *
      * @return an {@code Optional<String>} containing the previous entry if it exists,
-     * {@link Optional#empty()} otherwise.
+     *      {@link Optional#empty()} otherwise.
      */
     public Optional<String> previous() {
         if (index == 0) {

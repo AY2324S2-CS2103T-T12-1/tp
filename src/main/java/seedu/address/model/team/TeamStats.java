@@ -1,13 +1,13 @@
 package seedu.address.model.team;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import seedu.address.model.contact.Contact;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.techstack.TechStack;
-
-import java.util.Map;
-import java.util.HashMap;
-import java.util.List;
-import java.util.ArrayList;
 
 
 

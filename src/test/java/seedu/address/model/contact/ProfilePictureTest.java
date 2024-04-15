@@ -10,7 +10,7 @@ public class ProfilePictureTest {
     public void constructor_validUrl_success() {
         String validUrl = "https://example.com/image.jpg";
         ProfilePicture profilePicture = new ProfilePicture(validUrl);
-        assertEquals(validUrl, profilePicture.get());
+        assertEquals(validUrl, profilePicture.getUrl());
     }
 
 

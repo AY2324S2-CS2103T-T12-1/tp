@@ -32,7 +32,7 @@ public class JsonAdaptedContactTest {
     private static final String VALID_EMAIL = BENSON.getEmail().toString();
     private static final String VALID_ADDRESS = BENSON.getAddress().toString();
     private static final String VALID_GITHUB_USERNAME = BENSON.getGitHubUsername().toString();
-    private static final String VALID_PROFILE_PICTURE = BENSON.getProfilePicture().get();
+    private static final String VALID_PROFILE_PICTURE = BENSON.getProfilePicture().getUrl();
     private static final List<JsonAdaptedTechStack> VALID_TECH_STACK = BENSON.getTechStack().stream()
             .map(JsonAdaptedTechStack::new)
             .collect(Collectors.toList());

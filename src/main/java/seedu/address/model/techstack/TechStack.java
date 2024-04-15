@@ -9,13 +9,14 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
  */
 public class TechStack {
 
-    public static final String MESSAGE_CONSTRAINTS = "Tech stack names should contain only alphanumeric characters," +
-            " underscores (_), number signs (#), hyphens (-), periods (.), and plus signs (+).";
-    public static final String MESSAGE_CONSTRAINTS_LENGTH = "Tech stack names should not exceed 15 characters, and no more than 3 tech stacks should be added.";
+    public static final String MESSAGE_CONSTRAINTS = "Tech stack names should contain only alphanumeric characters,"
+            + " underscores (_), number signs (#), hyphens (-), periods (.), and plus signs (+).";
+    public static final String MESSAGE_CONSTRAINTS_LENGTH =
+            "Tech stack names should not exceed 15 characters, and no more than 3 tech stacks should be added.";
 
     public static final String VALIDATION_REGEX = "[a-zA-Z0-9_+.#-]+";
     public final String techStackName;
-    public Integer rating = null;
+    public final Integer rating;
 
     /**
      * Constructs a {@code TechStack}.
@@ -26,8 +27,15 @@ public class TechStack {
         requireNonNull(techStackName);
         checkArgument(isValidTechStackName(techStackName), MESSAGE_CONSTRAINTS);
         this.techStackName = techStackName;
+        this.rating = null;
     }
 
+    /**
+     * Constructs a {@code TechStack} with the given rating.
+     *
+     * @param techStackName A valid tech stack name.
+     * @param rating the rating to give
+     */
     public TechStack(String techStackName, Integer rating) {
         requireNonNull(techStackName);
         checkArgument(isValidTechStackName(techStackName), MESSAGE_CONSTRAINTS);
@@ -81,7 +89,7 @@ public class TechStack {
      * Format state as text for GUI.
      */
     public String toStringGui() {
-        if (rating !=  null) {
+        if (rating != null) {
             return techStackName + " | " + rating;
         } else {
             return techStackName;
@@ -92,7 +100,7 @@ public class TechStack {
      * Format state as text for viewing.
      */
     public String toString() {
-        if (rating !=  null) {
+        if (rating != null) {
             return '[' + techStackName + '|' + rating + ']';
         } else {
             return '[' + techStackName + ']';

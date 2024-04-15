@@ -8,7 +8,6 @@ import java.awt.datatransfer.StringSelection;
 import java.util.List;
 import java.util.logging.Logger;
 
-import javafx.collections.ObservableList;
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
