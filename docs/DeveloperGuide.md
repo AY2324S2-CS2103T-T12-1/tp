@@ -799,7 +799,7 @@ In these situations, CodeConnect should treat these two tags as identical. For e
 to a contact should display an error saying that identical tags cannot be added to a contact.
 
 To achieve this, the `Tag::equals` method can be modified to use `String::equalsIgnoreCase` instead of `String::equals` to compare tags.
-When displaying tags, they should all be displayed either in upper or lower case, to show to the user that CodeConnect that
+When displaying tags, they should all be displayed either in upper or lower case, to show to the user that
 tags are treated with case-insensitivity.
 
 <!--https://github.com/AY2324S2-CS2103T-T12-1/tp/issues/152-->
@@ -836,7 +836,7 @@ the world, which presents especially useful when he/she would like to invite the
 ### 8. Inconsistent `rate` command errors
 The current implementation allows a user to input an Integer rating only, not a Double or a Long etc. Hence, the error 
 messages for the different numbers vary.
-When the user inputs large numbers, such as `100000000` and `10000000000`, error messages, `Rating should be between 0 and 10.`
+When the user inputs large numbers, such as `100000000` (an Integer) and `10000000000` (a Long), error messages, `Rating should be between 0 and 10.`
 and `Invalid command format!` are displayed respectively.
 
 We intend to enhance the `rate` feature by separating the error handling for ParseException and NumberException into two
