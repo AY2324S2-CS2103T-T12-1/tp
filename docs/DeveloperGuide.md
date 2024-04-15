@@ -354,14 +354,27 @@ the command is executed:
 - The history size could be made to be configurable by the user.
 - The history could be saved to disk so that it persists between app launches.
 
-### Send Direct Email
+### Send Email Directly
+
+This feature enables the user to simply click on a contact's email address to send him/her an email.
 
 The following sequence diagram shows what happens as the user double-clicks on the email address:
 <puml src="diagrams/SendEmailSequenceDiagram.puml" alt="Sequence Diagram for sending an email" />
 
+**Details:**
+
+1. The user clicks on the email address of a contact in the contact list.
+2. The `handleEmailClicked()` method of the MailApp class is invoked.
+3. The MailApp class checks if the associated contact object and its email address are not null.
+4. If the email address is valid, the `openDefaultMailApp()` method is called with the email address as a parameter.
+5. The `openDefaultMailApp()` method attempts to open the default mail application with a new email composition window 
+   addressed to the recipient's email address.
+
 #### Possible Improvements
 
 - There can be a feature where multiple emails can be selected to send a mass email to them.
+- There can be a check that ensures a valid email address has been input, following the correct format of what is expected
+  of an email address.  
 
 ---
 
@@ -1090,12 +1103,12 @@ testers are expected to do more *exploratory* testing.
 
    - Other incorrect commands to try: `team 1 add-contact 0`.
 
-   - Test case: `team  add-contact 1`<br>
+   - Test case: `team X add-contact 1` (where X is greater than the last team's index)<br>
      Expected: This command will return an error message indicating that the team index provided is invalid as it does
      not exist.
 
-   - Other incorrect commands to try: `team 1 add-contact (inexistent contact index number)`,
-     `team INEXISTENT_TEAM_INDEX add-contact INEXISTENT_CONTACT_INDEX`.
+   - Other incorrect commands to try: `team 1 add-contact X`,
+     `team X add-contact X`.
 
 2. Adding a contact that is already in the team
 
@@ -1137,12 +1150,12 @@ testers are expected to do more *exploratory* testing.
 
    - Other incorrect commands to try: `team 1 delete-contact 0`.
 
-   - Test case: `team X delete-contact 1`<br>
+   - Test case: `team X delete-contact 1` (where X is greater than the last team's index)<br>
      Expected: This command will return an error message indicating that the team index provided is invalid as it does
      not exist.
 
-   - Similar incorrect commands to try: `team 1 delete-contact (inexistent contact index number)`,
-     `team INEXISTENT_TEAM_INDEX delete-contact INEXISTENT_CONTACT_INDEX`.
+   - Similar incorrect commands to try: `team 1 delete-contact X`,
+     `team X delete-contact X`.
 
 ### Exporting team details
 
