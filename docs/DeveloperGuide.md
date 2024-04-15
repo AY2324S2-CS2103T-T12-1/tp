@@ -9,20 +9,20 @@ pageNav: 3
 <!-- * Table of Contents -->
 <page-nav-print />
 
---------------------------------------------------------------------------------------------------------------------
+---
 
 ## **Acknowledgements**
 
 _{ list here sources of all reused/adapted ideas, code, documentation, and third-party libraries -- include links to the
 original source as well }_
 
---------------------------------------------------------------------------------------------------------------------
+---
 
 ## **Setting up, getting started**
 
 Refer to the guide [_Setting up and getting started_](SettingUp.md).
 
---------------------------------------------------------------------------------------------------------------------
+---
 
 ## **Design**
 
@@ -30,7 +30,7 @@ Refer to the guide [_Setting up and getting started_](SettingUp.md).
 
 <puml src="diagrams/ArchitectureDiagram.puml" width="280" />
 
-The ***Architecture Diagram*** given above explains the high-level design of the App.
+The **_Architecture Diagram_** given above explains the high-level design of the App.
 
 Given below is a quick overview of main components and how they interact with each other.
 
@@ -41,29 +41,29 @@ classes [`Main`](https://github.com/se-edu/addressbook-level3/tree/master/src/ma
 and [`MainApp`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/MainApp.java)) is
 in charge of the app launch and shut down.
 
-* At app launch, it initializes the other components in the correct sequence, and connects them up with each other.
-* At shut down, it shuts down the other components and invokes cleanup methods where necessary.
+- At app launch, it initializes the other components in the correct sequence, and connects them up with each other.
+- At shut down, it shuts down the other components and invokes cleanup methods where necessary.
 
 The bulk of the app's work is done by the following four components:
 
-* [**`UI`**](#ui-component): The UI of the App.
-* [**`Logic`**](#logic-component): The command executor.
-* [**`Model`**](#model-component): Holds the data of the App in memory.
-* [**`Storage`**](#storage-component): Reads data from, and writes data to, the hard disk.
+- [**`UI`**](#ui-component): The UI of the App.
+- [**`Logic`**](#logic-component): The command executor.
+- [**`Model`**](#model-component): Holds the data of the App in memory.
+- [**`Storage`**](#storage-component): Reads data from, and writes data to, the hard disk.
 
 [**`Commons`**](#common-classes) represents a collection of classes used by multiple other components.
 
 **How the architecture components interact with each other**
 
-The *Sequence Diagram* below shows how the components interact with each other for the scenario where the user issues
+The _Sequence Diagram_ below shows how the components interact with each other for the scenario where the user issues
 the command `delete 1`.
 
 <puml src="diagrams/ArchitectureSequenceDiagram.puml" width="574" />
 
 Each of the four main components (also shown in the diagram above),
 
-* defines its *API* in an `interface` with the same name as the Component.
-* implements its functionality using a concrete `{Component Name}Manager` class (which follows the corresponding
+- defines its _API_ in an `interface` with the same name as the Component.
+- implements its functionality using a concrete `{Component Name}Manager` class (which follows the corresponding
   API `interface` mentioned in the previous point.
 
 For example, the `Logic` component defines its API in the `Logic.java` interface and implements its functionality using
@@ -95,10 +95,10 @@ in [`MainWindow.fxml`](https://github.com/se-edu/addressbook-level3/tree/master/
 
 The `UI` component,
 
-* executes user commands using the `Logic` component.
-* listens for changes to `Model` data so that the UI can be updated with the modified data.
-* keeps a reference to the `Logic` component, because the `UI` relies on the `Logic` to execute commands.
-* depends on some classes in the `Model` component, as it displays `Contact` object residing in the `Model`.
+- executes user commands using the `Logic` component.
+- listens for changes to `Model` data so that the UI can be updated with the modified data.
+- keeps a reference to the `Logic` component, because the `UI` relies on the `Logic` to execute commands.
+- depends on some classes in the `Model` component, as it displays `Contact` object residing in the `Model`.
 
 ### Logic component
 
@@ -137,11 +137,11 @@ Here are the other classes in `Logic` (omitted from the class diagram above) tha
 
 How the parsing works:
 
-* When called upon to parse a user command, the `CodeConnectParser` class creates an `XYZCommandParser` (`XYZ` is a
+- When called upon to parse a user command, the `CodeConnectParser` class creates an `XYZCommandParser` (`XYZ` is a
   placeholder for the specific command name e.g., `AddCommandParser`) which uses the other classes shown above to parse
   the user command and create a `XYZCommand` object (e.g., `AddCommand`) which the `CodeConnectParser` returns back as
   a `Command` object.
-* All `XYZCommandParser` classes (e.g., `AddCommandParser`, `DeleteCommandParser`, ...) inherit from the `Parser`
+- All `XYZCommandParser` classes (e.g., `AddCommandParser`, `DeleteCommandParser`, ...) inherit from the `Parser`
   interface so that they can be treated similarly where possible e.g, during testing.
 
 ### Model component
@@ -151,16 +151,15 @@ in [`Model.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/m
 
 <puml src="diagrams/ModelClassDiagram.puml" width="450" />
 
-
 The `Model` component,
 
-* stores the address book data i.e., all `Contact` objects (which are contained in a `UniqueContactList` object).
-* stores the currently 'selected' `Contact` objects (e.g., results of a search query) as a separate _filtered_ list which
+- stores the address book data i.e., all `Contact` objects (which are contained in a `UniqueContactList` object).
+- stores the currently 'selected' `Contact` objects (e.g., results of a search query) as a separate _filtered_ list which
   is exposed to outsiders as an unmodifiable `ObservableList<Contact>` that can be 'observed' e.g. the UI can be bound to
   this list so that the UI automatically updates when the data in the list change.
-* stores a `UserPref` object that represents the user’s preferences. This is exposed to the outside as
+- stores a `UserPref` object that represents the user’s preferences. This is exposed to the outside as
   a `ReadOnlyUserPref` objects.
-* does not depend on any of the other three components (as the `Model` represents data entities of the domain, they
+- does not depend on any of the other three components (as the `Model` represents data entities of the domain, they
   should make sense on their own without depending on other components)
 
 <box type="info" seamless>
@@ -168,8 +167,8 @@ The `Model` component,
 **Note:** An alternative (arguably, a more OOP) model is given below. It has a `Tag` list in the `CodeConnect`,
 which `Contact` references. This allows `CodeConnect
 
-` to only require one `Tag` object per unique tag, instead of
-each `Contact` needing their own `Tag` objects.<br>
+`to only require one`Tag`object per unique tag, instead of
+each`Contact`needing their own`Tag` objects.<br>
 
 <puml src="diagrams/BetterModelClassDiagram.puml" width="450" />
 
@@ -184,20 +183,21 @@ in [`Storage.java`](https://github.com/se-edu/addressbook-level3/tree/master/src
 
 The `Storage` component,
 
-* can save both address book data and user preference data in JSON format, and read them back into corresponding
+- can save both address book data and user preference data in JSON format, and read them back into corresponding
   objects.
-* inherits from both `CodeConnectStorage` and `UserPrefStorage`, which means it can be treated as either one (if only
+- inherits from both `CodeConnectStorage` and `UserPrefStorage`, which means it can be treated as either one (if only
   the functionality of only one is needed).
-* depends on some classes in the `Model` component (because the `Storage` component's job is to save/retrieve objects
+- depends on some classes in the `Model` component (because the `Storage` component's job is to save/retrieve objects
   that belong to the `Model`)
 
 ## Common classes
 
 Classes used by multiple components are in the `seedu.address.commons` package.
 
---------------------------------------------------------------------------------------------------------------------
+---
 
 ### Contact Class
+
 The Contact class is a fundamental component of the contact management system within the application.
 It represents an individual contact entry, encapsulating various details such as name, contact information, address, GitHub username, associated tech stack, tags, and a profile picture.
 
@@ -208,8 +208,9 @@ null cases should be handled seperately within the ProfilePicture class. A conta
 be left null. This ensures that such invalid cases are always handled in that seperate class, keeping contact lean.
 
 ### Team Class
+
 The Team class is another fundamental component of the contact management system. Teams are created to keep track of
-groups of contacts, and hold aggregate data about these contacts. These teams are used by the user to keep track of 
+groups of contacts, and hold aggregate data about these contacts. These teams are used by the user to keep track of
 hackathon teams. Multiple teams are kept track by ModelManager.
 
 <puml src="diagrams/TeamClassDiagram.puml" width="550" />
@@ -219,14 +220,12 @@ may belong in more than one team.
 
 Everytime a new contact is added to a team, team aggregate statistics is recalculated and TeamStats is replaced.
 
-
 ### How the Contact, Team and ModelManager are related
 
 ModelManager keeps track of all Contacts and Teams. Only existing contacts can be added to a Team. They are added
 to a team by passing the reference of an existing contact.
 
 <puml src="diagrams/TeamContactModelDiagram.puml" width="550" />
-
 
 ## **Implementation**
 
@@ -237,6 +236,7 @@ This section describes some noteworthy details on how certain features are imple
 This feature saves previously entered commands so that the user can easily view them again.
 
 #### Steps to trigger
+
 1. User focuses the command input.
 2. User presses the Up arrow key to view the previous command in history, or Down arrow key to view the next.
 3. `updateCommandInput()` saves the currently edited command to the command buffer.
@@ -247,8 +247,9 @@ the command is executed:
 <puml src="diagrams/CommandHistorySequenceDiagram.puml" alt="Sequence Diagram for Command History" />
 
 #### Possible enhancements
-* The history size could be made to be configurable by the user.
-* The history could be saved to disk so that it persists between app launches.
+
+- The history size could be made to be configurable by the user.
+- The history could be saved to disk so that it persists between app launches.
 
 ### Send email directly feature
 
@@ -256,7 +257,8 @@ The following sequence diagram shows what happens as the user double clicks on t
 <puml src="diagrams/SendEmailSequenceDiagram.puml" alt="Sequence Diagram for sending an email" />
 
 #### Possible enhancements
-* There can be a feature where multiple emails can be selected to send a mass email to them.
+
+- There can be a feature where multiple emails can be selected to send a mass email to them.
 
 ### \[Proposed\] Undo/redo feature
 
@@ -266,9 +268,9 @@ The proposed undo/redo mechanism is facilitated by `VersionedCodeConnect`. It ex
 history, stored internally as `codeConnectStateList` and `currentStatePointer`. Additionally, it implements the
 following operations:
 
-* `VersionedCodeConnect#commit()` — Saves the current address book state in its history.
-* `VersionedCodeConnect#undo()` — Restores the previous address book state from its history.
-* `VersionedCodeConnect#redo()` — Restores a previously undone address book state from its history.
+- `VersionedCodeConnect#commit()` — Saves the current address book state in its history.
+- `VersionedCodeConnect#undo()` — Restores the previous address book state from its history.
+- `VersionedCodeConnect#redo()` — Restores a previously undone address book state from its history.
 
 These operations are exposed in the `Model` interface as `Model#commitCodeConnect()`, `Model#undoCodeConnect()`
 and `Model#redoCodeConnect()` respectively.
@@ -305,7 +307,6 @@ the `undo` command. The `undo` command will call `Model#undoCodeConnect()`, whic
 once to the left, pointing it to the previous address book state, and restores the address book to that state.
 
 <puml src="diagrams/UndoRedoState3.puml" alt="UndoRedoState3" />
-
 
 <box type="info" seamless>
 
@@ -362,34 +363,33 @@ The following activity diagram summarizes what happens when a user executes a ne
 
 **Aspect: How undo & redo executes:**
 
-* **Alternative 1 (current choice):** Saves the entire address book.
-    * Pros: Easy to implement.
-    * Cons: May have performance issues in terms of memory usage.
+- **Alternative 1 (current choice):** Saves the entire address book.
 
-* **Alternative 2:** Individual command knows how to undo/redo by
+  - Pros: Easy to implement.
+  - Cons: May have performance issues in terms of memory usage.
+
+- **Alternative 2:** Individual command knows how to undo/redo by
   itself.
-    * Pros: Will use less memory (e.g. for `delete`, just save the contact being deleted).
-    * Cons: We must ensure that the implementation of each individual command are correct.
+  - Pros: Will use less memory (e.g. for `delete`, just save the contact being deleted).
+  - Cons: We must ensure that the implementation of each individual command are correct.
 
 _{more aspects and alternatives to be added}_
-
 
 ### \[Proposed\] Data archiving
 
 _{Explain here how the data archiving feature will be implemented}_
 
-
---------------------------------------------------------------------------------------------------------------------
+---
 
 ## **Documentation, logging, testing, configuration, dev-ops**
 
-* [Documentation guide](Documentation.md)
-* [Testing guide](Testing.md)
-* [Logging guide](Logging.md)
-* [Configuration guide](Configuration.md)
-* [DevOps guide](DevOps.md)
+- [Documentation guide](Documentation.md)
+- [Testing guide](Testing.md)
+- [Logging guide](Logging.md)
+- [Configuration guide](Configuration.md)
+- [DevOps guide](DevOps.md)
 
---------------------------------------------------------------------------------------------------------------------
+---
 
 ## **Appendix: Requirements**
 
@@ -397,25 +397,25 @@ _{Explain here how the data archiving feature will be implemented}_
 
 **Target user profile**:
 
-* Student developers
-* hopes to connect and collaborate with other student developers
-* has a need to manage a significant number of contacts
-* prefer desktop apps over other types
-* can type fast
-* prefers typing to mouse interactions
-* is reasonably comfortable using CLI apps
+- Student developers
+- hopes to connect and collaborate with other student developers
+- has a need to manage a significant number of contacts
+- prefer desktop apps over other types
+- can type fast
+- prefers typing to mouse interactions
+- is reasonably comfortable using CLI apps
 
 **Value proposition**:
 
-* keep track of other student developers
-* reach out easily to those with relevant skills for collaboration opportunities.
+- keep track of other student developers
+- reach out easily to those with relevant skills for collaboration opportunities.
 
 ### User stories
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
 | Priority | As a …​                                 | I want to …​                                                                                                      | So that I can…​                                                         |
-|----------|-----------------------------------------|-------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------|
+| -------- | --------------------------------------- | ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------- |
 | `* * *`  | Student                                 | save the contacts of student developers                                                                           | remember them                                                           |
 | `* * *`  | Student                                 | see the contacts of student developers                                                                            | reach out to them                                                       |
 | `* * *`  | Student                                 | delete the contacts of student developers                                                                         | remove entries that I no longer need                                    |
@@ -457,13 +457,14 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **Extensions**
 
-* 1a. The list is empty.
-    * 1a1. CodeConnect shows an error message.
-      Use case ends.
+- 1a. The list is empty.
 
-* 1b. The given index does not exist in CodeConnect.
-    * 1b1. CodeConnect shows an error message.
-      Use case ends.
+  - 1a1. CodeConnect shows an error message.
+    Use case ends.
+
+- 1b. The given index does not exist in CodeConnect.
+  - 1b1. CodeConnect shows an error message.
+    Use case ends.
 
 **Use case: UC02 - Add a contact**
 
@@ -475,13 +476,14 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **Extensions**
 
-* 1a. The contact already exists in the system.
-    * 1a1. CodeConnect shows an error message.
-      Use case ends.
+- 1a. The contact already exists in the system.
 
-* 1b. No fields are entered.
-    * 1b1. CodeConnect shows an error message.
-      Use case ends.
+  - 1a1. CodeConnect shows an error message.
+    Use case ends.
+
+- 1b. No fields are entered.
+  - 1b1. CodeConnect shows an error message.
+    Use case ends.
 
 **Use case: UC03 - Update a contact**
 
@@ -493,21 +495,24 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **Extensions**
 
-* 1a. The given index to identify contact is invalid.
-    * 1a1. CodeConnect shows an error message.
-      Use case ends.
+- 1a. The given index to identify contact is invalid.
 
-* 1b. No fields are entered.
-    * 1b1. CodeConnect shows an error message.
-      Use case ends.
+  - 1a1. CodeConnect shows an error message.
+    Use case ends.
 
-* 1c. Updated value does not follow format of the specific field.
-    * 1b1. CodeConnect shows an error message.
-      Use case ends.
+- 1b. No fields are entered.
 
-* 1d. Updated contact matches another existing contact
-    * 1b1. CodeConnect shows an error message.
-      Use case ends.
+  - 1b1. CodeConnect shows an error message.
+    Use case ends.
+
+- 1c. Updated value does not follow format of the specific field.
+
+  - 1b1. CodeConnect shows an error message.
+    Use case ends.
+
+- 1d. Updated contact matches another existing contact
+  - 1b1. CodeConnect shows an error message.
+    Use case ends.
 
 **Use case: UC04 - View all contacts**
 
@@ -529,13 +534,14 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **Extensions**
 
-* 1a. No substring is given.
-    * 1a1. CodeConnect shows an error message.
-      Use case ends.
+- 1a. No substring is given.
 
-* 1b. There are no contacts in the list that match the criteria.
-  * 1b1. CodeConnect shows an empty list.
-  Use case ends.
+  - 1a1. CodeConnect shows an error message.
+    Use case ends.
+
+- 1b. There are no contacts in the list that match the criteria.
+  - 1b1. CodeConnect shows an empty list.
+    Use case ends.
 
 **Use case: UC06 - Search a contact by tags**
 
@@ -549,13 +555,14 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **Extensions**
 
-* 1a. No tag is given.
-    * 1a1. CodeConnect shows an error message.
-      Use case ends.
+- 1a. No tag is given.
 
-* 1b. There are no contacts in the list that match the criteria.
-    * 1b1. CodeConnect shows an empty list.
-      Use case ends.
+  - 1a1. CodeConnect shows an error message.
+    Use case ends.
+
+- 1b. There are no contacts in the list that match the criteria.
+  - 1b1. CodeConnect shows an empty list.
+    Use case ends.
 
 **Use case: UC07 - Search a contact by tech stack**
 
@@ -569,13 +576,14 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **Extensions**
 
-* 1a. No tech stack is given.
-    * 1a1. CodeConnect shows an error message.
-      Use case ends.
+- 1a. No tech stack is given.
 
-* 1b. There are no contacts in the list that match the criteria.
-    * 1b1. CodeConnect shows an empty list.
-      Use case ends.
+  - 1a1. CodeConnect shows an error message.
+    Use case ends.
+
+- 1b. There are no contacts in the list that match the criteria.
+  - 1b1. CodeConnect shows an empty list.
+    Use case ends.
 
 **Use case: UC08 - Rate a tech stack of a contact**
 
@@ -589,21 +597,24 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **Extensions**
 
-* 1a. No tech stack is given.
-    * 1a1. CodeConnect shows an error message.
-      Use case ends.
+- 1a. No tech stack is given.
 
-* 1b. No rating is given.
-    * 1b1. CodeConnect shows an error message.
-      Use case ends.
+  - 1a1. CodeConnect shows an error message.
+    Use case ends.
 
-* 1c. No index is given.
-    * 1c1. CodeConnect shows an error message.
-      Use case ends.
+- 1b. No rating is given.
 
-* 1d. The specified contact does not have specified tech stack.
-    * 1d1. CodeConnect shows an error message.
-      Use case ends.
+  - 1b1. CodeConnect shows an error message.
+    Use case ends.
+
+- 1c. No index is given.
+
+  - 1c1. CodeConnect shows an error message.
+    Use case ends.
+
+- 1d. The specified contact does not have specified tech stack.
+  - 1d1. CodeConnect shows an error message.
+    Use case ends.
 
 **Use case: UC09 - Sending an email to a specific contact**
 
@@ -618,9 +629,9 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **Extensions**
 
-* 1a. The default desktop mail application is not available on the system.
-    * 1a1. CodeConnect displays an error message indicating that the desktop mail application is not supported.
-      Use case ends.
+- 1a. The default desktop mail application is not available on the system.
+  - 1a1. CodeConnect displays an error message indicating that the desktop mail application is not supported.
+    Use case ends.
 
 **Use case: UC10 - Viewing command history**
 
@@ -635,8 +646,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **Extensions**
 
-* 3a. CodeConnect does not find any previous/next command in the command history.
-      Use case ends.
+- 3a. CodeConnect does not find any previous/next command in the command history.
+  Use case ends.
 
 **Use case: UC11 - Export team members' details**
 
@@ -650,14 +661,14 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **Extensions**
 
-* 2a. An invalid index is passed into the command.
-  * 2a1. CodeConnect shows an error message.
+- 2a. An invalid index is passed into the command.
+  - 2a1. CodeConnect shows an error message.
     Use case ends.
-* 2b. CodeConnect does not find any team members in the team.
-  * 2b1. CodeConnect shows an error message.
+- 2b. CodeConnect does not find any team members in the team.
+  - 2b1. CodeConnect shows an error message.
     Use case ends.
 
-*{More to be added}*
+_{More to be added}_
 
 **Use case: UC12 - Adding a team**
 
@@ -669,11 +680,11 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **Extensions**
 
-* 1a. No name is provided.
-    * 1a1. CodeConnect shows an error message.
+- 1a. No name is provided.
+  - 1a1. CodeConnect shows an error message.
     Use case ends.
-* 2a. Another team with the same name already exists in CodeConnect.
-    * 2a1. CodeConnect shows an error message.
+- 2a. Another team with the same name already exists in CodeConnect.
+  - 2a1. CodeConnect shows an error message.
     Use case ends.
 
 **Use case: UC13 - Delete a team**
@@ -686,9 +697,9 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **Extensions**
 
-* 1a. The given index does not exist in CodeConnect.
-    * 1a1. CodeConnect shows an error message.
-      Use case ends.
+- 1a. The given index does not exist in CodeConnect.
+  - 1a1. CodeConnect shows an error message.
+    Use case ends.
 
 **Use case: UC14 - List a team's members**
 
@@ -700,11 +711,11 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **Extensions**
 
-* 1a. The given index does not exist in CodeConnect.
-    * 1a1. CodeConnect shows an error message.
-      Use case ends.
+- 1a. The given index does not exist in CodeConnect.
+  - 1a1. CodeConnect shows an error message.
+    Use case ends.
 
-*{More to be added}*
+_{More to be added}_
 
 ### Non-Functional Requirements
 
@@ -719,22 +730,22 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 9.  Any stored data should be in a human-readable format.
 10. Must support a minimum window size of 800x600.
 
-
 ### Glossary
 
-* **Mainstream OS**: Windows, Linux, MacOS
-* **Contact**: An entry that holds information about someone that the user wants to save.
-* **Private contact detail**: A contact detail that is not meant to be shared with others
-* **Details of contact**:
-  * Name: The name of the contact (String).
-  * GitHub username: The username associated with the contact's GitHub account (String).
-  * Tags: Descriptive keywords or labels associated with the contact (List<String>).
-  * Phone number: The phone number of the contact (String).
-  * Address: The physical or mailing address of the contact (String).
-  * Email: The email address of the contact (String).
-  * Tech stack: The technologies or programming languages known or used by the contact (List<String>).
-  * Rating: The rating given to the contact's specific tech stack (Integer).
---------------------------------------------------------------------------------------------------------------------
+- **Mainstream OS**: Windows, Linux, MacOS
+- **Contact**: An entry that holds information about someone that the user wants to save.
+- **Private contact detail**: A contact detail that is not meant to be shared with others
+- **Details of contact**:
+  - Name: The name of the contact (String).
+  - GitHub username: The username associated with the contact's GitHub account (String).
+  - Tags: Descriptive keywords or labels associated with the contact (List<String>).
+  - Phone number: The phone number of the contact (String).
+  - Address: The physical or mailing address of the contact (String).
+  - Email: The email address of the contact (String).
+  - Tech stack: The technologies or programming languages known or used by the contact (List<String>).
+  - Rating: The rating given to the contact's specific tech stack (Integer).
+
+---
 
 ## **Appendix: Instructions for manual testing**
 
@@ -743,7 +754,7 @@ Given below are instructions to test the app manually.
 <box type="info" seamless>
 
 **Note:** These instructions only provide a starting point for testers to work on;
-testers are expected to do more *exploratory* testing.
+testers are expected to do more _exploratory_ testing.
 
 </box>
 
@@ -751,285 +762,294 @@ testers are expected to do more *exploratory* testing.
 
 1. Initial launch
 
-    1. Download the jar file and copy into an empty folder
+   1. Download the jar file and copy into an empty folder
 
-    1. Double-click the jar file Expected: Shows the GUI with a set of sample contacts. The window size may not be
-       optimum.
+   1. Double-click the jar file Expected: Shows the GUI with a set of sample contacts. The window size may not be
+      optimum.
 
 1. Saving window preferences
 
-    1. Resize the window to an optimum size. Move the window to a different location. Close the window.
+   1. Resize the window to an optimum size. Move the window to a different location. Close the window.
 
-    1. Re-launch the app by double-clicking the jar file.<br>
-       Expected: The most recent window size and location is retained.
+   1. Re-launch the app by double-clicking the jar file.<br>
+      Expected: The most recent window size and location is retained.
 
 ### Adding a contact
 
 1. Adding a contact to empty list
 
-    1. Prerequisites: Clear the contact list using the `clear` command.
+   1. Prerequisites: Clear the contact list using the `clear` command.
 
-    1. Test case: `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 g/johnDoee ts/Java`<br>
-       Expected: Contact is added to the contact list with correct details. Details of added contact shown in status message.
+   1. Test case: `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 g/johnDoee ts/Java`<br>
+      Expected: Contact is added to the contact list with correct details. Details of added contact shown in status message.
 
 1. Adding contact to non-empty list
 
-    1. Prerequisites: List all contacts using the `list` command. Contact list must be non-empty.
+   1. Prerequisites: List all contacts using the `list` command. Contact list must be non-empty.
 
-    1. Test case: `add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 g/betBetty t/criminal ts/Flutter`<br>
-       Expected: Contact is added to the end of the contact list with correct details. Details of added contact shown in status message.
+   1. Test case: `add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 g/betBetty t/criminal ts/Flutter`<br>
+      Expected: Contact is added to the end of the contact list with correct details. Details of added contact shown in status message.
 
-1. Adding invalid contact
-1. Adding invalid contact
+1. Adding invalid contact to empty list
 
-    1. TBD
+   1. Prerequisites: Clear the contact list using the `clear` command.
+
+   1. Test case: `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01`<br>
+      Expected: Contact is not added to the contact list. Error message shown in status message.
+
+1. Adding contact to non-empty list
+
+   1. Prerequisites: List all contacts using the `list` command. Contact list must be non-empty.
+
+   1. Test case: `add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 g/betBetty t/criminal ts/Flutter`<br>
+      Expected: Contact is not added to the contact list. Error message shown in status message.
 
 ### Deleting a contact
 
 1. Deleting a contact while all contacts are being shown
 
-    1. Prerequisites: List all contacts using the `list` command. Multiple contacts in the list.
+   1. Prerequisites: List all contacts using the `list` command. Multiple contacts in the list.
 
-    1. Test case: `delete 1`<br>
-       Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message.
+   1. Test case: `delete 1`<br>
+      Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message.
 
-    1. Test case: `delete 0`<br>
-       Expected: No contact is deleted. Error details shown in the status message. Contact list remains the same.
+   1. Test case: `delete 0`<br>
+      Expected: No contact is deleted. Error details shown in the status message. Contact list remains the same.
 
-    1. Other incorrect delete commands to try: `delete`, `delete -1`, `delete x`, (where x is larger than the list size)<br>
-       Expected: Similar to previous.
+   1. Other incorrect delete commands to try: `delete`, `delete -1`, `delete x`, (where x is larger than the list size)<br>
+      Expected: Similar to previous.
 
 1. Deleting a contact when list is empty
 
-    1. Prerequisites: No contacts shown in filtered list. Use find command e.g. `find someonethatdoesntexist` to show empty contact list.
+   1. Prerequisites: No contacts shown in filtered list. Use find command e.g. `find someonethatdoesntexist` to show empty contact list.
 
-    1. Test case: `delete 1`<br>
-       Expected: No contact is deleted. Error details shown in the status message. Contact list remains the same.
+   1. Test case: `delete 1`<br>
+      Expected: No contact is deleted. Error details shown in the status message. Contact list remains the same.
 
 ### Editing a contact
 
 1. Editing a contact while all contacts are being shown
 
-    1. Prerequisites: List all contacts using the `list` command. Multiple contacts in the list.
+   1. Prerequisites: List all contacts using the `list` command. Multiple contacts in the list.
 
-    1. Test case: `edit 1 ts/C ts/Java`<br>
-       Expected: First contact's tech stacks are updated to contain `C` and `Java`. Details of edited contact shown in status message.
+   1. Test case: `edit 1 ts/C ts/Java`<br>
+      Expected: First contact's tech stacks are updated to contain `C` and `Java`. Details of edited contact shown in status message.
 
-    1. Test case: `edit 0 ts/C ts/Java`<br>
-       Expected: No contact is edited. Error details shown in the status message. Contact list remains the same.
+   1. Test case: `edit 0 ts/C ts/Java`<br>
+      Expected: No contact is edited. Error details shown in the status message. Contact list remains the same.
 
-    1. Other incorrect edit commands to try: `edit`, `edit 0`, `edit 1 invalid/field`<br>
-       Expected: Similar to previous.
+   1. Other incorrect edit commands to try: `edit`, `edit 0`, `edit 1 invalid/field`<br>
+      Expected: Similar to previous.
 
 1. Edited contact matches another existing contact in CodeConnect.
 
-    1. Prerequisites: List all contacts using the `list` command. Multiple contacts in the list.
+   1. Prerequisites: List all contacts using the `list` command. Multiple contacts in the list.
 
-    1. Test case: `edit 2 n/SAME_NAME` (where SAME_NAME is the name of the first contact)<br>
-       Expected: No contact is edited. Error details shown in the status message. Contact list remains the same.
+   1. Test case: `edit 2 n/SAME_NAME` (where SAME_NAME is the name of the first contact)<br>
+      Expected: No contact is edited. Error details shown in the status message. Contact list remains the same.
 
 ### Finding a contact by name
 
 1. Searching for a contact with a single keyword
 
-    1. Prerequisites: List all contacts using the `list` command. Multiple contacts in the list. In the following test
-       cases, we assume we have contacts named `Alex`, `Bernice`, `David`, and `John`.
+   1. Prerequisites: List all contacts using the `list` command. Multiple contacts in the list. In the following test
+      cases, we assume we have contacts named `Alex`, `Bernice`, `David`, and `John`.
 
-    2. Test case: `find John`<br>
-       Expected: The search should return contacts matching the keyword `John`. The search is case-insenstive and matches
-       only the name.
+   2. Test case: `find John`<br>
+      Expected: The search should return contacts matching the keyword `John`. The search is case-insenstive and matches
+      only the name.
 
-    3. Test case: `find XYZ`<br>
-       Expected: The search should return no contacts since there are no matches for
-       the keyword `XYZ`.
-   
-    4. Test case: `find BERNICE`<br>
-       Expected: The search should return contacts matching the keyword `BERNICE` in a case-insensitive manner. It should
-       match contacts with names like `Bernice`, `bernice`, `BERNICE`, etc.
-   
-    5. Test case: `find Dav`
-       Expected: The search should return no contacts because the search only matches full keywords. Partial matches 
-       like `Dav` won't match `David`.
+   3. Test case: `find XYZ`<br>
+      Expected: The search should return no contacts since there are no matches for
+      the keyword `XYZ`.
+
+   4. Test case: `find BERNICE`<br>
+      Expected: The search should return contacts matching the keyword `BERNICE` in a case-insensitive manner. It should
+      match contacts with names like `Bernice`, `bernice`, `BERNICE`, etc.
+
+   5. Test case: `find Dav`
+      Expected: The search should return no contacts because the search only matches full keywords. Partial matches
+      like `Dav` won't match `David`.
 
 2. Searching for contacts with multiple keywords
 
-    1. Prerequisites: List all contacts using the `list` command. Multiple contacts in the list.
-   
-    2. Test case: `find alex david`<br>
-       Expected: The search should return contacts matching either of the keywords `alex` or `david`. The order of the 
-       keywords do not matter, and partial matches will not be considered.
+   1. Prerequisites: List all contacts using the `list` command. Multiple contacts in the list.
+
+   2. Test case: `find alex david`<br>
+      Expected: The search should return contacts matching either of the keywords `alex` or `david`. The order of the
+      keywords do not matter, and partial matches will not be considered.
 
 ### Finding a contact by tag
 
 1. Finding a contact by tag while all contacts are shown
 
-    1. Test case: `find-tags friend`<br>
-       Expected: All contacts with tag `friend` are shown in list.
-       Message: NUMBER contacts listed! (where NUMBER is the number of contacts that match)
+   1. Test case: `find-tags friend`<br>
+      Expected: All contacts with tag `friend` are shown in list.
+      Message: NUMBER contacts listed! (where NUMBER is the number of contacts that match)
 
-    2. Test case: `find-tags doesnotexist`<br>
-       Expected: Given that the tag `doesnotexist` does not exist, no contacts are shown in list.
-       Message: 0 contacts listed!
+   2. Test case: `find-tags doesnotexist`<br>
+      Expected: Given that the tag `doesnotexist` does not exist, no contacts are shown in list.
+      Message: 0 contacts listed!
 
-    3. Other incorrect find tags command to try: `find-tags`, `find-tags `<br>
-       Expected: No contact is found. Error details shown in the status message.
+   3. Other incorrect find tags command to try: `find-tags`, `find-tags `<br>
+      Expected: No contact is found. Error details shown in the status message.
 
 ### Finding a contact by tech stack
 
 1. Finding a contact by tech stack while all contacts are shown
 
-    1. Test case: `find-ts Java`<br>
-       Expected: All contacts with tech stack `Java` are shown in list.
-       Message: NUMBER contacts listed! (where NUMBER is the number of contacts that match)
+   1. Test case: `find-ts Java`<br>
+      Expected: All contacts with tech stack `Java` are shown in list.
+      Message: NUMBER contacts listed! (where NUMBER is the number of contacts that match)
 
-    2. Test case: `find-ts doesnotexist`<br>
-       Expected: Given that the tech stack `doesnotexist` does not exist, no contacts are shown in list.
-       Message: 0 contacts listed!
+   2. Test case: `find-ts doesnotexist`<br>
+      Expected: Given that the tech stack `doesnotexist` does not exist, no contacts are shown in list.
+      Message: 0 contacts listed!
 
-    3. Other incorrect find tech stack command to try: `find-ts`, `find-ts `<br>
-       Expected: No contact is found. Error details shown in the status message.
+   3. Other incorrect find tech stack command to try: `find-ts`, `find-ts `<br>
+      Expected: No contact is found. Error details shown in the status message.
 
 ### Rating a contact's tech stack
 
 1. Rating a contact's tech stack while all contacts are shown
 
-    1. Prerequisites: List all contacts using the `list` command. Multiple contacts in the list.
+   1. Prerequisites: List all contacts using the `list` command. Multiple contacts in the list.
 
-    2. Test case: `rate 1 ts/Java r/8`<br>
-       Expected: Tech stack `Java` of contact at index `1` is rated with a rating `8`.
+   2. Test case: `rate 1 ts/Java r/8`<br>
+      Expected: Tech stack `Java` of contact at index `1` is rated with a rating `8`.
 
-    3. Test case: `rate 0 ts/Java r/8`<br>
-       Expected: Given tech stack of given contact is not rated. Error details shown in the status message.
+   3. Test case: `rate 0 ts/Java r/8`<br>
+      Expected: Given tech stack of given contact is not rated. Error details shown in the status message.
 
-    4. Other incorrect find tech stack command to try: `rate -1 ts/Java r/8`, `rate 1 ts/Java r/18`, `rate 1 ts/Java r/-8`<br>
-       Expected: Given tech stack of given contact is not rated. Error details shown in the status message.
+   4. Other incorrect find tech stack command to try: `rate -1 ts/Java r/8`, `rate 1 ts/Java r/18`, `rate 1 ts/Java r/-8`<br>
+      Expected: Given tech stack of given contact is not rated. Error details shown in the status message.
 
 2. Rating a contact's tech stack when contact list is empty
 
-    1. Prerequisites: No contacts shown in filtered list. Use find command e.g. `find someonethatdoesntexist` to get empty list showing.
+   1. Prerequisites: No contacts shown in filtered list. Use find command e.g. `find someonethatdoesntexist` to get empty list showing.
 
-    2. Test case: `rate 1 ts/Java r/8`<br>
-       Expected: Given tech stack of given contact is not rated. Error details shown in the status message.
+   2. Test case: `rate 1 ts/Java r/8`<br>
+      Expected: Given tech stack of given contact is not rated. Error details shown in the status message.
 
 ### Adding a team
 
 1. Adding a team
 
-    1. Prerequisites: Added team should not already exist in CodeConnect.    
+   1. Prerequisites: Added team should not already exist in CodeConnect.
 
-    1. Test case: `team add n/NUS HACK 2024`<br>
+   1. Test case: `team add n/NUS HACK 2024`<br>
       Expected: Team is added to the team list. Details of team shown in status message.
 
 1. Adding an invalid team
 
-    1. Prerequisites: Should be run after test case `Adding a team`. Team `NUS HACK 2024` should exist in the team list.
+   1. Prerequisites: Should be run after test case `Adding a team`. Team `NUS HACK 2024` should exist in the team list.
 
-    1. Test case: `team add n/NUS HACK 2024`<br>
-       Expected: No team is added. Error details shown in the status message. Team list remains the same.
+   1. Test case: `team add n/NUS HACK 2024`<br>
+      Expected: No team is added. Error details shown in the status message. Team list remains the same.
 
-    1. Other incorrect delete commands to try: `team add`, `team add NUS`<br>
-       Expected: Similar to previous.
+   1. Other incorrect delete commands to try: `team add`, `team add NUS`<br>
+      Expected: Similar to previous.
 
 ### Adding members to a team
 
 1. Adding a contact to a team
 
-    1. Prerequisites: Ensure there are several contacts and teams in the list. A contact that needs to be added to a
-       team should not already be a member of that team. 
-   
-    2. Test case: `team 1 add-contact 1`<br>
-       Expected: The contact at index 1 of the contact list should be added to the first team in the team list. After
-       executing the command, verify that the contact is added to the team by entering `team 1`. 
-   
-    3. Test case: `team 0 add-contact 1`<br>
-       Expected: This command will return an error message indicating that the index is not a non-zero unsigned
-       integer. The contact will not be added to the team.
-   
-       Similar incorrect commands to try: `team 1 add-contact 0`.
-   
-    4. Test case: `team 100000 add-contact 1`<br>
-       Expected: This command will return an error message indicating that the team index provided is invalid as it does
-       not exist.  
+   1. Prerequisites: Ensure there are several contacts and teams in the list. A contact that needs to be added to a
+      team should not already be a member of that team.
 
-       Similar incorrect commands to try: `team 1 add-contact (inexistent contact index number)`, 
-       `team INEXISTENT_TEAM_INDEX add-contact INEXISTENT_CONTACT_INDEX`.
-   
+   2. Test case: `team 1 add-contact 1`<br>
+      Expected: The contact at index 1 of the contact list should be added to the first team in the team list. After
+      executing the command, verify that the contact is added to the team by entering `team 1`.
+
+   3. Test case: `team 0 add-contact 1`<br>
+      Expected: This command will return an error message indicating that the index is not a non-zero unsigned
+      integer. The contact will not be added to the team.
+
+      Similar incorrect commands to try: `team 1 add-contact 0`.
+
+   4. Test case: `team 100000 add-contact 1`<br>
+      Expected: This command will return an error message indicating that the team index provided is invalid as it does
+      not exist.
+
+      Similar incorrect commands to try: `team 1 add-contact (inexistent contact index number)`,
+      `team INEXISTENT_TEAM_INDEX add-contact INEXISTENT_CONTACT_INDEX`.
+
 2. Adding a contact that is already in the team
-    
-    1. Prerequisites: View the members of the team with the `team INDEX` command. Ensure that the contact already exists
-       in the team. We assume contact 2 already exists in team 2 for the test case below. 
-   
-    2. Test case: `team 2 add-contact 2`
-       Expected: A message indicating that the contact already exists in the team is displayed. 
+
+   1. Prerequisites: View the members of the team with the `team INDEX` command. Ensure that the contact already exists
+      in the team. We assume contact 2 already exists in team 2 for the test case below.
+
+   2. Test case: `team 2 add-contact 2`
+      Expected: A message indicating that the contact already exists in the team is displayed.
 
 ### Listing members of a team
 
 1. List members of a team
 
-    1. Prerequisites: Team list contains one or more teams. First team in list should have > 0 members.
+   1. Prerequisites: Team list contains one or more teams. First team in list should have > 0 members.
 
-    1. Test case: `team 1`<br>
-       Expected: Contact list shows the members of the team. Team name correctly shown in status message.
+   1. Test case: `team 1`<br>
+      Expected: Contact list shows the members of the team. Team name correctly shown in status message.
 
-    1. Test case: `team 0`<br>
-       Expected: Contact list does not change. Error details shown in the status message.
+   1. Test case: `team 0`<br>
+      Expected: Contact list does not change. Error details shown in the status message.
 
-    1. Test case: `team X` (where X is greater than the last team's index)<br>
-       Expected: Similar to previous.
+   1. Test case: `team X` (where X is greater than the last team's index)<br>
+      Expected: Similar to previous.
 
 ### Removing members from a team
 
 1. Deleting a contact from a team
 
-    1. Prerequisites: Enter the command `team INDEX` to ensure that there are serveral contacts in a team. A contact that
-       needs to be deleted should already be a member of that team.
-   
-    2. Test Case: `team 1 delete-contact 1`<br>
-       Expected: The contact at index 1 of the team's member list should be deleted from the first team in the team list.
-       After executing the command, enter `team 1` to ensure that the contact has been removed from the team.
+   1. Prerequisites: Enter the command `team INDEX` to ensure that there are serveral contacts in a team. A contact that
+      needs to be deleted should already be a member of that team.
 
-    3. Test case: `team 0 delete-contact 1`<br>
-       Expected: This command will return an error message indicating that the index is not a non-zero unsigned
-       integer. The contact will not be deleted from the team.
+   2. Test Case: `team 1 delete-contact 1`<br>
+      Expected: The contact at index 1 of the team's member list should be deleted from the first team in the team list.
+      After executing the command, enter `team 1` to ensure that the contact has been removed from the team.
 
-       Similar incorrect commands to try: `team 1 delete-contact 0`.
+   3. Test case: `team 0 delete-contact 1`<br>
+      Expected: This command will return an error message indicating that the index is not a non-zero unsigned
+      integer. The contact will not be deleted from the team.
 
-    4. Test case: `team 100000 delete-contact 1`<br>
-       Expected: This command will return an error message indicating that the team index provided is invalid as it does
-       not exist.
+      Similar incorrect commands to try: `team 1 delete-contact 0`.
 
-       Similar incorrect commands to try: `team 1 delete-contact (inexistent contact index number)`,
-       `team INEXISTENT_TEAM_INDEX delete-contact INEXISTENT_CONTACT_INDEX`.
+   4. Test case: `team 100000 delete-contact 1`<br>
+      Expected: This command will return an error message indicating that the team index provided is invalid as it does
+      not exist.
+
+      Similar incorrect commands to try: `team 1 delete-contact (inexistent contact index number)`,
+      `team INEXISTENT_TEAM_INDEX delete-contact INEXISTENT_CONTACT_INDEX`.
 
 ### Exporting team details
 
-Prerequisites: List all teams using the list teams command. Ensure there is at least one team present.
+1. Exporting team details
 
-Test Case: `team 0 export`<br>
-Expected Outcome: All team details are exported successfully to clipboard
+   1. Prerequisites: List all teams using the list teams command. Ensure there is at least one team present.
 
+   1. Test Case: `team 0 export`<br>
+      Expected Outcome: All team details are exported successfully to clipboard
 
 ### Deleting a team
 
 1. Deleting a team
 
-    1. Prerequisites: Team list contains one or more teams.
+   1. Prerequisites: Team list contains one or more teams.
 
-    1. Test case: `team 1 delete`<br>
-       Expected: Team is deleted from the team list. Contact list does not change. Status message shows team name and its members.
+   1. Test case: `team 1 delete`<br>
+      Expected: Team is deleted from the team list. Contact list does not change. Status message shows team name and its members.
 
-    1. Test case: `team 0 delete`<br>
-       Expected: Team list does not change. Contact list does not change. Error details shown in the status message.
+   1. Test case: `team 0 delete`<br>
+      Expected: Team list does not change. Contact list does not change. Error details shown in the status message.
 
-    1. Test case: `team X delete` (where X is greater than the last team's index)<br>
-       Expected: Similar to previous.
+   1. Test case: `team X delete` (where X is greater than the last team's index)<br>
+      Expected: Similar to previous.
 
 ### Corrupted or Missing Data files
 
 1. Dealing with missing/corrupted data files
 
-Prerequisites: Add a contact. Access addressbook.json and remove a field to simulate corruption.
+   1. Prerequisites: Add a contact. Access addressbook.json and remove the name field from a address book. This simulates corrupt data. Restart the program to run into error.
 
-Test Case: Delete addressbook.json and restart the app.
-Expected Outcome: A new addressbook.json is created.
-
+   1. Test Case: Delete addressbook.json and restart the app.
+      Expected Outcome: A new addressbook.json is created.
