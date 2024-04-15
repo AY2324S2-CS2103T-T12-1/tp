@@ -1,6 +1,5 @@
 package seedu.address.model.contact;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_BOB;
@@ -44,7 +43,8 @@ public class ContactTest {
         assertTrue(ALICE.isSameContact(editedAlice));
 
         // different name, different GitHub username, all other attributes same -> return false
-        editedAlice = new ContactBuilder(ALICE).withName(VALID_NAME_BOB).withGitHubUsername(VALID_GITHUB_USERNAME_BOB).build();
+        editedAlice = new ContactBuilder(ALICE).withName(VALID_NAME_BOB)
+                .withGitHubUsername(VALID_GITHUB_USERNAME_BOB).build();
         assertFalse(ALICE.isSameContact(editedAlice));
 
         // name differs in case, all other attributes same -> returns true
@@ -52,7 +52,8 @@ public class ContactTest {
         assertTrue(BOB.isSameContact(editedBob));
 
         // name differs in case, different GitHub username, all other attributes same -> returns false
-        editedBob = new ContactBuilder(BOB).withName(VALID_NAME_BOB.toLowerCase()).withGitHubUsername(VALID_GITHUB_USERNAME_AMY).build();
+        editedBob = new ContactBuilder(BOB).withName(VALID_NAME_BOB.toLowerCase())
+                .withGitHubUsername(VALID_GITHUB_USERNAME_AMY).build();
         assertFalse(BOB.isSameContact(editedBob));
 
         // name has trailing spaces, all other attributes same -> returns true
@@ -62,7 +63,8 @@ public class ContactTest {
 
         // name has trailing spaces, different GitHub username, all other attributes same -> returns false
         nameWithTrailingSpaces = VALID_NAME_BOB + " ";
-        editedBob = new ContactBuilder(BOB).withName(nameWithTrailingSpaces).withGitHubUsername(VALID_GITHUB_USERNAME_AMY).build();
+        editedBob = new ContactBuilder(BOB).withName(nameWithTrailingSpaces)
+                .withGitHubUsername(VALID_GITHUB_USERNAME_AMY).build();
         assertFalse(BOB.isSameContact(editedBob));
     }
 
@@ -107,8 +109,13 @@ public class ContactTest {
 
     @Test
     public void toStringMethod() {
-        String expected = Contact.class.getCanonicalName() + "{name=" + ALICE.getName() + ", phone=" + ALICE.getPhone()
-                + ", email=" + ALICE.getEmail() + ", address=" + ALICE.getAddress() + ", github_username=" + ALICE.getGitHubUsername()
-                + ", tech_stack=" + ALICE.getTechStack() + ", tags=" + ALICE.getTags() + "}";
+        String expected = Contact.class.getCanonicalName()
+                + "{name=" + ALICE.getName()
+                + ", phone=" + ALICE.getPhone()
+                + ", email=" + ALICE.getEmail()
+                + ", address=" + ALICE.getAddress()
+                + ", github_username=" + ALICE.getGitHubUsername()
+                + ", tech_stack=" + ALICE.getTechStack()
+                + ", tags=" + ALICE.getTags() + "}";
     }
 }

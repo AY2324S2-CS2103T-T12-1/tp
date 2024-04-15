@@ -77,9 +77,9 @@ public class FindTagCommandTest {
 
     @Test
     public void toStringMethod() {
-        List<String> tagKeywords= List.of("School", "Work");
-        FindTagCommand FindTagCommand = new FindTagCommand(tagKeywords);
+        List<String> tagKeywords = List.of("School", "Work");
+        FindTagCommand findTagCommand = new FindTagCommand(tagKeywords);
         String expected = FindTagCommand.class.getCanonicalName() + "{predicate=" + tagKeywords + "}";
-        assertEquals(expected, FindTagCommand.toString());
+        assertEquals(expected, findTagCommand.toString());
     }
 }

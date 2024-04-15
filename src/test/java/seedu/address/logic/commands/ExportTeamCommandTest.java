@@ -10,7 +10,6 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.Messages;
-import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
@@ -43,11 +42,11 @@ public class ExportTeamCommandTest {
         ExportTeamCommand exportTeamCommand = new ExportTeamCommand(validIndex);
 
         String expected = ("Member 1\n")
-        + ("Name: Elle Meyer\n")
-        + ("Phone Number: 9482224\n")
-        + ("Email: werner@example.com\n")
-        + ("Address: michegan ave\n")
-        + ("GitHub Username: Ellieellie\n");
+                + ("Name: Elle Meyer\n")
+                + ("Phone Number: 9482224\n")
+                + ("Email: werner@example.com\n")
+                + ("Address: michegan ave\n")
+                + ("GitHub Username: Ellieellie\n");
 
         String actual = exportTeamCommand.getDetails(model.getCodeConnect().getTeamList().get(0));
         assertTrue(actual.contains(expected));

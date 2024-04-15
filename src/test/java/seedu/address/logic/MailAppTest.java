@@ -1,25 +1,18 @@
 package seedu.address.logic;
 
-import org.junit.jupiter.api.Test;
-
-import org.mockito.MockedStatic;
-
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.mockStatic;
-import static seedu.address.testutil.TypicalContacts.GEORGE;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.when;
+import static seedu.address.testutil.TypicalContacts.GEORGE;
 
 import java.awt.Desktop;
 
+import org.junit.jupiter.api.Test;
+import org.mockito.MockedStatic;
+
 
 public class MailAppTest {
-
-//    @Test
-//    public void handleEmailClicked_validEmail_opensMailApp() {
-//        MailApp mailApp = new MailApp(GEORGE);
-//        mailApp.handleEmailClicked();
-//    }
 
     @Test
     public void handleEmailClicked_noDesktopMailApp_throwsException() {

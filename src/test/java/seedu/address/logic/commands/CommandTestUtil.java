@@ -54,7 +54,7 @@ public class CommandTestUtil {
     public static final String EMAIL_DESC_BOB = " " + PREFIX_EMAIL + VALID_EMAIL_BOB;
     public static final String ADDRESS_DESC_AMY = " " + PREFIX_ADDRESS + VALID_ADDRESS_AMY;
     public static final String ADDRESS_DESC_BOB = " " + PREFIX_ADDRESS + VALID_ADDRESS_BOB;
-    public static final String GITHUB_USERNAME_DESC_AMY = " " + PREFIX_GITHUB_USERNAME+ VALID_GITHUB_USERNAME_AMY;
+    public static final String GITHUB_USERNAME_DESC_AMY = " " + PREFIX_GITHUB_USERNAME + VALID_GITHUB_USERNAME_AMY;
     public static final String GITHUB_USERNAME_DESC_BOB = " " + PREFIX_GITHUB_USERNAME + VALID_GITHUB_USERNAME_BOB;
     public static final String TECH_STACK_DESC_JAVA = " " + PREFIX_TECH_STACK + VALID_TECH_STACK_JAVA;
     public static final String TECH_STACK_DESC_PYTHON = " " + PREFIX_TECH_STACK + VALID_TECH_STACK_PYTHON;
@@ -69,7 +69,7 @@ public class CommandTestUtil {
     public static final String INVALID_GITHUB_USERNAME_DESC = " " + PREFIX_GITHUB_USERNAME + "ja!?2"; // '!' and '?'
     // not allowed in github usernames
     public static final String INVALID_TAG_DESC = " " + PREFIX_TAG + "hubby*"; // '*' not allowed in tags
-    public static final String INVALID_TECH_STACK_DESC = " " + PREFIX_TECH_STACK; // empty string not allowed for tech stacks
+    public static final String INVALID_TECH_STACK_DESC = " " + PREFIX_TECH_STACK; // empty string not allowed
     public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";
     public static final String PREAMBLE_NON_EMPTY = "NonEmptyPreamble";
 
