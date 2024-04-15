@@ -1,8 +1,8 @@
 package seedu.address.model.contact;
 
-import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import org.junit.jupiter.api.Test;
 
 public class ProfilePictureTest {
 
@@ -10,7 +10,7 @@ public class ProfilePictureTest {
     public void constructor_validUrl_success() {
         String validUrl = "https://example.com/image.jpg";
         ProfilePicture profilePicture = new ProfilePicture(validUrl);
-        assertEquals(validUrl, profilePicture.get());
+        assertEquals(validUrl, profilePicture.getUrl());
     }
 
 

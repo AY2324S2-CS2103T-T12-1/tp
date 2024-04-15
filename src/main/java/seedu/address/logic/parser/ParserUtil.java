@@ -91,8 +91,8 @@ public class ParserUtil {
      *
      * @throws ParseException if the given {@code address} is invalid.
      */
-    public static ProfilePicture parseProfilePicture(String profilePictureURLArgument) {
-        return new ProfilePicture(profilePictureURLArgument);
+    public static ProfilePicture parseProfilePicture(String profilePictureUrlArgument) {
+        return new ProfilePicture(profilePictureUrlArgument);
     }
 
     /**

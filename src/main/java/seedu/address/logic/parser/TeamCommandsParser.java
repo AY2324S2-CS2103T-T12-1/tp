@@ -62,26 +62,26 @@ public class TeamCommandsParser {
         Index parsedIndex;
 
         switch (subCommand) {
-            case AddTeamCommand.COMMAND_WORD:
-                return new AddTeamCommandParser().parse(args);
-            case ListTeamCommand.COMMAND_WORD:
-                parsedIndex = ParserUtil.parseIndex(index);
-                return new ListTeamCommand(parsedIndex);
-            case DeleteTeamCommand.COMMAND_WORD:
-                parsedIndex = ParserUtil.parseIndex(index);
-                return new DeleteTeamCommand(parsedIndex);
-            case AddContactToTeamCommand.COMMAND_WORD:
-                String indices = index + args;
-                return new AddContactToTeamCommandParser().parse(indices);
-            case DeleteContactFromTeamCommand.COMMAND_WORD:
-                indices = index + args;
-                return new DeleteContactFromTeamCommandParser().parse(indices);
-            case ExportTeamCommand.COMMAND_WORD:
+        case AddTeamCommand.COMMAND_WORD:
+            return new AddTeamCommandParser().parse(args);
+        case ListTeamCommand.COMMAND_WORD:
+            parsedIndex = ParserUtil.parseIndex(index);
+            return new ListTeamCommand(parsedIndex);
+        case DeleteTeamCommand.COMMAND_WORD:
+            parsedIndex = ParserUtil.parseIndex(index);
+            return new DeleteTeamCommand(parsedIndex);
+        case AddContactToTeamCommand.COMMAND_WORD:
+            String indices = index + args;
+            return new AddContactToTeamCommandParser().parse(indices);
+        case DeleteContactFromTeamCommand.COMMAND_WORD:
+            indices = index + args;
+            return new DeleteContactFromTeamCommandParser().parse(indices);
+        case ExportTeamCommand.COMMAND_WORD:
             parsedIndex = ParserUtil.parseIndex(index);
             return new ExportTeamCommand(parsedIndex);
-            default:
-                logger.finer("This user input caused a ParseException: " + arguments);
-                throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, MESSAGE_USAGE));
+        default:
+            logger.finer("This user input caused a ParseException: " + arguments);
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, MESSAGE_USAGE));
         }
 
     }

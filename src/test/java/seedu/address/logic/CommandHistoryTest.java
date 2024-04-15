@@ -26,7 +26,7 @@ public class CommandHistoryTest {
     }
 
     @Test
-    public void constructor_withCapacity_negativeSize_throwsIllegalArgumentException() {
+    public void constructor_withNegativeCapacity_throwsIllegalArgumentException() {
         assertThrows(IllegalArgumentException.class, () -> new CommandHistory(-5));
     }
 

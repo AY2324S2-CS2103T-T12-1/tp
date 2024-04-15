@@ -6,9 +6,11 @@ import java.net.URI;
 import java.net.URISyntaxException;
 
 import javafx.fxml.FXML;
-
 import seedu.address.model.contact.Contact;
 
+/**
+ * Handles opening the system's default mail application to send an email with the provided email address.
+ */
 public class MailApp {
 
     private Contact contact; // The contact associated with this MailApp

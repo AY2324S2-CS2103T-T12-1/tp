@@ -2,27 +2,31 @@ package seedu.address.model.contact;
 
 import java.util.Objects;
 
-import static java.util.Objects.requireNonNull;
-import static seedu.address.commons.util.AppUtil.checkArgument;
-
+/**
+ * Stores information about the profile picture of a contact.
+ */
 public class ProfilePicture {
-    public final static String DEFAULT_URL = ProfilePicture.class.getResource("/images/avatar_13.jpg").toExternalForm();
-    String url;
+    public static final String DEFAULT_URL =
+            ProfilePicture.class.getResource("/images/avatar_13.jpg").toExternalForm();
+    private String url;
     public ProfilePicture(String url) {
         this.url = url;
     }
 
-    public String get() {
+    public String getUrl() {
         return this.url;
     }
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
+        if (this == o) {
+            return true;
+        }
         // instanceof handles nulls
         if (!(o instanceof ProfilePicture)) {
             return false;
-        }        ProfilePicture that = (ProfilePicture) o;
+        }
+        ProfilePicture that = (ProfilePicture) o;
         return Objects.equals(this.url, that.url);
     }
 

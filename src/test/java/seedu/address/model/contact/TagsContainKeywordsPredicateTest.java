@@ -12,7 +12,7 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.testutil.ContactBuilder;
 
-public class TagsContainKeywordsPredicateTest{
+public class TagsContainKeywordsPredicateTest {
 
     @Test
     public void equals() {

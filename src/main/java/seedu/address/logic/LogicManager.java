@@ -17,7 +17,6 @@ import seedu.address.model.Model;
 import seedu.address.model.ReadOnlyCodeConnect;
 import seedu.address.model.contact.Contact;
 import seedu.address.model.team.Team;
-
 import seedu.address.storage.Storage;
 
 /**

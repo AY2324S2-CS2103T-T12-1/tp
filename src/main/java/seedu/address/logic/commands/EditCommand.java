@@ -20,7 +20,6 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
-import java.util.stream.Collectors;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.CollectionUtil;
@@ -124,7 +123,8 @@ public class EditCommand extends Command {
                 editContactDescriptor.getGitHubUsername().orElse(contactToEdit.getGitHubUsername());
         Set<TechStack> updatedTechStack = editContactDescriptor.getTechStack().orElse(contactToEdit.getTechStack());
         Set<Tag> updatedTags = editContactDescriptor.getTags().orElse(contactToEdit.getTags());
-        ProfilePicture updatedProfilePicture = editContactDescriptor.getProfilePicture().orElse(contactToEdit.getProfilePicture());
+        ProfilePicture updatedProfilePicture =
+                editContactDescriptor.getProfilePicture().orElse(contactToEdit.getProfilePicture());
 
         return new Contact(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedGitHubUsername,
                 updatedTechStack, updatedTags, updatedProfilePicture);
@@ -162,7 +162,9 @@ public class EditCommand extends Command {
      * Checks if the edited contact already exists in CodeConnect. Due to the behavior of Contact::isSameContact,
      * we need to exclude the currently edited contact from this search.
      */
-    private static boolean checkDuplicateContact(Contact editedContact, Contact contactToEdit, List<Contact> contactList) {
+    private static boolean checkDuplicateContact(Contact editedContact,
+                                                 Contact contactToEdit,
+                                                 List<Contact> contactList) {
         return contactList.stream()
                 .filter(Predicate.not(contactToEdit::isSameContact))
                 .anyMatch(editedContact::isSameContact);
