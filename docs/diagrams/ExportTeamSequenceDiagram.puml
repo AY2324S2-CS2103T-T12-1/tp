@@ -1,0 +1,54 @@
+@startuml
+!include style.puml
+skinparam ArrowFontStyle plain
+
+box Logic LOGIC_COLOR_T1
+participant ":LogicManager" as LogicManager LOGIC_COLOR
+participant ":CodeConnectParser" as CodeConnectParser LOGIC_COLOR
+participant ":TeamCommandsParser" as TeamCommandsParser LOGIC_COLOR
+participant "f:ExportTeamCommand" as ExportTeamCommand LOGIC_COLOR
+end box
+
+[-> LogicManager : execute("team export 1")
+activate LogicManager
+
+LogicManager -> CodeConnectParser : parseCommand("team export 1")
+activate CodeConnectParser
+
+create TeamCommandsParser
+CodeConnectParser -> TeamCommandsParser
+activate TeamCommandsParser
+
+TeamCommandsParser --> CodeConnectParser
+deactivate TeamCommandsParser
+
+CodeConnectParser -> TeamCommandsParser : parse("export 1")
+activate TeamCommandsParser
+
+create ExportTeamCommand
+TeamCommandsParser -> ExportTeamCommand
+activate ExportTeamCommand
+
+ExportTeamCommand --> TeamCommandsParser :
+deactivate ExportTeamCommand
+
+TeamCommandsParser --> CodeConnectParser : f
+deactivate TeamCommandsParser
+'Hidden arrow to position the destroy marker below the end of the activation bar.
+TeamCommandsParser -[hidden]-> CodeConnectParser
+destroy TeamCommandsParser
+
+CodeConnectParser --> LogicManager : f
+deactivate CodeConnectParser
+
+LogicManager -> ExportTeamCommand : execute(m:Model)
+activate ExportTeamCommand
+
+ExportTeamCommand -> ExportTeamCommand: Find contacts that contain John
+
+ExportTeamCommand --> LogicManager : r
+deactivate ExportTeamCommand
+
+[<--LogicManager
+deactivate LogicManager
+@enduml
