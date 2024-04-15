@@ -15,8 +15,8 @@ import seedu.address.model.contact.Contact;
  */
 public class MailApp {
 
-    private Contact contact; // The contact associated with this MailApp
     private static final Logger logger = Logger.getLogger(MailApp.class.getName());
+    private Contact contact; // The contact associated with this MailApp
 
     /**
      * Initializes a new instance of the MailApp class with the provided contact object.
@@ -62,7 +62,7 @@ public class MailApp {
                 logger.log(Level.SEVERE, "Error opening default mail application", e);
             }
         } else {
-        logger.log(Level.SEVERE, "Desktop doesn't support mailto");
+            logger.log(Level.SEVERE, "Desktop doesn't support mailto");
             throw new RuntimeException("Desktop doesn't support mailto");
         }
     }

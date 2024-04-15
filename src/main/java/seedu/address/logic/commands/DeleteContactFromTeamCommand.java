@@ -36,8 +36,10 @@ public class DeleteContactFromTeamCommand extends Command {
      */
     public DeleteContactFromTeamCommand(Index teamIndex, Index contactIndex) {
         requireAllNonNull(teamIndex, contactIndex);
-        assert teamIndex.getZeroBased() >= 0 : "Team index must be non-negative";
-        assert contactIndex.getZeroBased() >= 0 : "Contact index must be non-negative";
+        assert teamIndex.getZeroBased() >= 0
+                : "Team index must be non-negative";
+        assert contactIndex.getZeroBased() >= 0
+                : "Contact index must be non-negative";
         this.teamIndex = requireNonNull(teamIndex);
         this.contactIndex = requireNonNull(contactIndex);
     }
@@ -46,10 +48,10 @@ public class DeleteContactFromTeamCommand extends Command {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
 
-        assert teamIndex.getZeroBased() < model.getCodeConnect().getTeamList().size() :
-                "Team index out of bounds";
-        assert contactIndex.getZeroBased() < model.getFilteredContactList().size() :
-                "Contact index out of bounds";
+        assert teamIndex.getZeroBased() < model.getCodeConnect().getTeamList().size()
+                : "Team index out of bounds";
+        assert contactIndex.getZeroBased() < model.getFilteredContactList().size()
+                : "Contact index out of bounds";
 
         if (teamIndex.getZeroBased() < 0 || teamIndex.getZeroBased() >= model.getCodeConnect().getTeamList().size()) {
             throw new CommandException(Messages.MESSAGE_INVALID_TEAM_DISPLAYED_INDEX);
