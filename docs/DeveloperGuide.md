@@ -15,6 +15,9 @@ pageNav: 3
 
 _{ list here sources of all reused/adapted ideas, code, documentation, and third-party libraries -- include links to the
 original source as well }_
+1. - Package `seedu.address.logic.MailAppTest`:
+- Utilizes Mockito for testing. Mockito is an open-source testing framework for Java, providing easy mocking capabilities 
+for unit tests. In this case, Mockito was used to mock the MailApp for testing purposes.
 
 --------------------------------------------------------------------------------------------------------------------
 
