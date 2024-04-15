@@ -178,7 +178,7 @@ How the parsing works:
 The **API** of this component is specified
 in [`Model.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/model/Model.java)
 
-<puml src="diagrams/ModelClassDiagram.puml" width="450" />
+<puml src="diagrams/ModelClassDiagram.puml" width="100%" />
 
 The `Model` component,
 
@@ -198,7 +198,7 @@ The `Model` component,
   which <code>Contact</code> references. This allows <code>CodeConnect</code> to only require one <code>Tag</code> object per unique tag, instead of
   each <code>Contact</code> needing their own <code>Tag</code> objects.<br/>
 
-<puml src="diagrams/BetterModelClassDiagram.puml" width="450" />
+<puml src="diagrams/BetterModelClassDiagram.puml" width="100%" />
 </div>
 
 ### Storage component
@@ -228,7 +228,7 @@ Classes used by multiple components are in the `seedu.address.commons` package.
 The Contact class is a fundamental component of the contact management system within the application.
 It represents an individual contact entry, encapsulating various details such as name, contact information, address, GitHub username, associated tech stack, tags, and a profile picture.
 
-<puml src="diagrams/ContactClassDiagram.puml" width="550" />
+<puml src="diagrams/ContactClassDiagram.puml" width="100%" />
 
 Take note that while contacts may not always have all valid details, such as a missing profile picture, these
 null cases should be handled separately within each Attribute's class (in this context, the ProfilePicture class). A contact's attribute should never
@@ -240,7 +240,7 @@ The Team class is another fundamental component of the contact management system
 groups of contacts, and hold aggregate data about these contacts. These teams are used by the user to keep track of
 hackathon teams. Multiple teams are kept track by ModelManager.
 
-<puml src="diagrams/TeamClassDiagram.puml" width="550" /> <br/>
+<puml src="diagrams/TeamClassDiagram.puml" width="100%" /> <br/>
 &nbsp; <br/>
 
 <div class="alert alert-info" markdown="1">
@@ -255,7 +255,7 @@ Every time a new contact is added to a team, team aggregate statistics is recalc
 ModelManager keeps track of all Contacts and Teams. Only existing contacts can be added to a Team. They are added
 to a team by passing the reference of an existing contact.
 
-<puml src="diagrams/TeamContactModelDiagram.puml" width="550" />
+<puml src="diagrams/TeamContactModelDiagram.puml" width="100%" />
 
 ---
 
@@ -283,7 +283,7 @@ General commands follow the same flow, with only differences deep within the `ex
 
 The following sequence diagram models the interactions between the different components of CodeConnect for the execution of the Find Command.
 
-<puml src="diagrams/FindSequenceDiagram.puml" width="550" /><br/>
+<puml src="diagrams/FindSequenceDiagram.puml" width="100%" /><br/>
 &nbsp; <br/>
 
 **Details:**
@@ -303,7 +303,7 @@ Team commands follow either one of the two sequences stated below, depending on 
 **In this section, we will focus on the `AddTeamCommand` as an example.**
 
 The following sequence diagram models the interactions between the different components of CodeConnect for the execution of the `AddTeamCommand`.
-<puml src="diagrams/AddTeamSequenceDiagram.puml" width="550" /><br/>
+<puml src="diagrams/AddTeamSequenceDiagram.puml" width="100%" /><br/>
 &nbsp; <br/>
 
 **Details:**
@@ -319,7 +319,7 @@ The following sequence diagram models the interactions between the different com
 **In this section, we will focus on the `ExportTeamCommand` as an example.**
 
 The following sequence diagram models the interactions between the different components of CodeConnect for the execution of the `ExportTeamCommand`.
-<puml src="diagrams/ExportTeamSequenceDiagram.puml" width="550" /><br/>
+<puml src="diagrams/ExportTeamSequenceDiagram.puml" width="100%" /><br/>
 &nbsp; <br/>
 
 **Details:**
