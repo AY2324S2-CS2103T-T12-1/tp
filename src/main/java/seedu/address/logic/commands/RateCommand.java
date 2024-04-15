@@ -57,7 +57,6 @@ public class RateCommand extends Command {
     public RateCommand(Index index, String techStackName, int rating) {
         requireNonNull(index);
         requireNonNull(techStackName);
-        assert (rating >= 0 && rating <= 10);
 
         this.index = index;
         this.rating = rating;
@@ -96,6 +95,7 @@ public class RateCommand extends Command {
      */
     private Contact rateTechStack(Contact contactToRate, TechStack techStack, int rating) {
         assert contactToRate != null;
+        assert (rating >= 0 && rating <= 10);
         Name contactName = contactToRate.getName();
         Phone contactPhone = contactToRate.getPhone();
         Email contactEmail = contactToRate.getEmail();
