@@ -10,7 +10,7 @@
     <li><a href="{{baseUrl}}/AboutUs.html" class="nav-link">About Us</a></li>
     <li> 
             <a target="_blank" class="nav-link" href="https://github.com/AY2324S2-CS2103T-T12-1/tp">
-                <img src="images/github-icon.png" class="icon" alt="View on GitHub">
+                <img src="/images/github-icon.png" class="icon" alt="View on GitHub">
             </a>
     </li>
     </li>
