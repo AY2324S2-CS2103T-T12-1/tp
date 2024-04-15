@@ -1090,7 +1090,7 @@ testers are expected to do more *exploratory* testing.
 
    - Other incorrect commands to try: `team 1 add-contact 0`.
 
-   - Test case: `team  add-contact 1`<br>
+   - Test case: `team add-contact 1`<br>
      Expected: This command will return an error message indicating that the team index provided is invalid as it does
      not exist.
 
@@ -1148,9 +1148,9 @@ testers are expected to do more *exploratory* testing.
 
 1. Exporting team details
 
-   - Prerequisites: List all teams using the list teams command. Ensure there is at least one team present.
+   - Prerequisites: Team list contains one or more teams. First team in list should have > 0 members.
 
-   - Test Case: `team 0 export`<br>
+   - Test Case: `team 1 export`<br>
      Expected Outcome: All team details are exported successfully to clipboard
 
 ### Deleting a team
