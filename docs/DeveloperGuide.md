@@ -794,14 +794,14 @@ testers are expected to do more _exploratory_ testing.
 
    1. Prerequisites: Clear the contact list using the `clear` command.
 
-   1. Test case: `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01`<br>
+   1. Test case: `add n/John Doe`<br>
       Expected: Contact is not added to the contact list. Error message shown in status message.
 
 1. Adding contact to non-empty list
 
    1. Prerequisites: List all contacts using the `list` command. Contact list must be non-empty.
 
-   1. Test case: `add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 g/betBetty t/criminal ts/Flutter`<br>
+   1. Test case: `add n/Betsy Crowe`<br>
       Expected: Contact is not added to the contact list. Error message shown in status message.
 
 ### Deleting a contact
