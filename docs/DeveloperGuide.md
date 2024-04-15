@@ -778,277 +778,277 @@ testers are expected to do more _exploratory_ testing.
 
 1. Adding a contact to empty list
 
-      * Prerequisites: Clear the contact list using the `clear` command.
+   - Prerequisites: Clear the contact list using the `clear` command.
 
-      * Test case: `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 g/johnDoee ts/Java`<br>
-        Expected: Contact is added to the contact list with correct details. Details of added contact shown in status message.
+   - Test case: `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 g/johnDoee ts/Java`<br>
+     Expected: Contact is added to the contact list with correct details. Details of added contact shown in status message.
 
-2.  Adding contact to non-empty list
+2. Adding contact to non-empty list
 
-      * Prerequisites: List all contacts using the `list` command. Contact list must be non-empty.
+   - Prerequisites: List all contacts using the `list` command. Contact list must be non-empty.
 
-      * Test case: `add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 g/betBetty t/criminal ts/Flutter`<br>
-        Expected: Contact is added to the end of the contact list with correct details. Details of added contact shown in status message.
+   - Test case: `add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 g/betBetty t/criminal ts/Flutter`<br>
+     Expected: Contact is added to the end of the contact list with correct details. Details of added contact shown in status message.
 
-3.  Adding invalid contact to empty list
+3. Adding invalid contact to empty list
 
-      * Prerequisites: Clear the contact list using the `clear` command.
+   - Prerequisites: Clear the contact list using the `clear` command.
 
-      * Test case: `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01`<br>
-        Expected: Contact is not added to the contact list. Error message shown in status message.
+   - Test case: `add n/John Doe`<br>
+     Expected: Contact is not added to the contact list. Error message shown in status message.
 
-4.  Adding contact to non-empty list
+4. Adding invalid contact to non-empty list
 
-      * Prerequisites: List all contacts using the `list` command. Contact list must be non-empty.
+   - Prerequisites: List all contacts using the `list` command. Contact list must be non-empty.
 
-      * Test case: `add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 g/betBetty t/criminal ts/Flutter`<br>
-        Expected: Contact is not added to the contact list. Error message shown in status message.
+   - Test case: `add n/Betsy Crowe`<br>
+     Expected: Contact is not added to the contact list. Error message shown in status message.
 
 ### Deleting a contact
 
 1. Deleting a contact while all contacts are being shown
- 
-      * Prerequisites: List all contacts using the `list` command. Multiple contacts in the list.
 
-      * Test case: `delete 1`<br>
-        Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message.
+   - Prerequisites: List all contacts using the `list` command. Multiple contacts in the list.
 
-      * Test case: `delete 0`<br>
-        Expected: No contact is deleted. Error details shown in the status message. Contact list remains the same.
+   - Test case: `delete 1`<br>
+     Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message.
 
-      * Other incorrect delete commands to try: `delete`, `delete -1`, `delete x`, (where x is larger than the list size)<br>
-        Expected: Similar to previous.
+   - Test case: `delete 0`<br>
+     Expected: No contact is deleted. Error details shown in the status message. Contact list remains the same.
+
+   - Other incorrect delete commands to try: `delete`, `delete -1`, `delete x`, (where x is larger than the list size)<br>
+     Expected: Similar to previous.
 
 2. Deleting a contact when list is empty
 
-      * Prerequisites: No contacts shown in filtered list. Use find command e.g. `find someonethatdoesntexist` to show empty contact list.
+   - Prerequisites: No contacts shown in filtered list. Use find command e.g. `find someonethatdoesntexist` to show empty contact list.
 
-      * Test case: `delete 1`<br>
-        Expected: No contact is deleted. Error details shown in the status message. Contact list remains the same.
+   - Test case: `delete 1`<br>
+     Expected: No contact is deleted. Error details shown in the status message. Contact list remains the same.
 
 ### Editing a contact
 
 1. Editing a contact while all contacts are being shown
 
-      * Prerequisites: List all contacts using the `list` command. Multiple contacts in the list.
+   - Prerequisites: List all contacts using the `list` command. Multiple contacts in the list.
 
-      * Test case: `edit 1 ts/C ts/Java`<br>
-        Expected: First contact's tech stacks are updated to contain `C` and `Java`. Details of edited contact shown in status message.
+   - Test case: `edit 1 ts/C ts/Java`<br>
+     Expected: First contact's tech stacks are updated to contain `C` and `Java`. Details of edited contact shown in status message.
 
-      * Test case: `edit 0 ts/C ts/Java`<br>
-        Expected: No contact is edited. Error details shown in the status message. Contact list remains the same.
+   - Test case: `edit 0 ts/C ts/Java`<br>
+     Expected: No contact is edited. Error details shown in the status message. Contact list remains the same.
 
-      * Other incorrect edit commands to try: `edit`, `edit 0`, `edit 1 invalid/field`<br>
-        Expected: Similar to previous.
+   - Other incorrect edit commands to try: `edit`, `edit 0`, `edit 1 invalid/field`<br>
+     Expected: Similar to previous.
 
 2. Edited contact matches another existing contact in CodeConnect.
 
-      * Prerequisites: List all contacts using the `list` command. Multiple contacts in the list.
+   - Prerequisites: List all contacts using the `list` command. Multiple contacts in the list.
 
-      * Test case: `edit 2 n/SAME_NAME` (where SAME_NAME is the name of the first contact)<br>
-        Expected: No contact is edited. Error details shown in the status message. Contact list remains the same.
+   - Test case: `edit 2 n/SAME_NAME` (where SAME_NAME is the name of the first contact)<br>
+     Expected: No contact is edited. Error details shown in the status message. Contact list remains the same.
 
 ### Finding a contact by name
 
 1. Searching for a contact with a single keyword
 
-      * Prerequisites: List all contacts using the `list` command. Multiple contacts in the list. In the following test
-        cases, we assume we have contacts named `Alex`, `Bernice`, `David`, and `John`.
+   - Prerequisites: List all contacts using the `list` command. Multiple contacts in the list. In the following test
+     cases, we assume we have contacts named `Alex`, `Bernice`, `David`, and `John`.
 
-      * Test case: `find John`<br>
-        Expected: The search should return contacts matching the keyword `John`. The search is case-insenstive and matches
-        only the name.
+   - Test case: `find John`<br>
+     Expected: The search should return contacts matching the keyword `John`. The search is case-insenstive and matches
+     only the name.
 
-      * Test case: `find XYZ`<br>
-        Expected: The search should return no contacts since there are no matches for the keyword `XYZ`.
+   - Test case: `find XYZ`<br>
+     Expected: The search should return no contacts since there are no matches for the keyword `XYZ`.
 
-      * Test case: `find BERNICE`<br>
-        Expected: The search should return contacts matching the keyword `BERNICE` in a case-insensitive manner. It should
-        match contacts with names like `Bernice`, `bernice`, `BERNICE`, etc.
+   - Test case: `find BERNICE`<br>
+     Expected: The search should return contacts matching the keyword `BERNICE` in a case-insensitive manner. It should
+     match contacts with names like `Bernice`, `bernice`, `BERNICE`, etc.
 
-      * Test case: `find Dav`
-        Expected: The search should return no contacts because the search only matches full keywords. Partial matches
-        like `Dav` won't match `David`.
+   - Test case: `find Dav`
+     Expected: The search should return no contacts because the search only matches full keywords. Partial matches
+     like `Dav` won't match `David`.
 
 2. Searching for contacts with multiple keywords
 
-      * Prerequisites: List all contacts using the `list` command. Multiple contacts in the list.
+   - Prerequisites: List all contacts using the `list` command. Multiple contacts in the list.
 
-      * Test case: `find alex david`<br>
-        Expected: The search should return contacts matching either of the keywords `alex` or `david`. The order of the
-        keywords do not matter, and partial matches will not be considered.
+   - Test case: `find alex david`<br>
+     Expected: The search should return contacts matching either of the keywords `alex` or `david`. The order of the
+     keywords do not matter, and partial matches will not be considered.
 
 ### Finding a contact by tag
 
 1. Finding a contact by tag while all contacts are shown
 
-      * Prerequisites: List all contacts using the `list` command. Multiple contacts in the list.
+   - Prerequisites: List all contacts using the `list` command. Multiple contacts in the list.
 
-      * Test case: `find-tags friend`<br>
-        Expected: All contacts with tag `friend` are shown in list.
+   - Test case: `find-tags friend`<br>
+     Expected: All contacts with tag `friend` are shown in list.
 
-      * Test case: `find-tags doesnotexist`<br>
-        Expected: Given that the tag `doesnotexist` does not exist, no contacts are shown in list.
+   - Test case: `find-tags doesnotexist`<br>
+     Expected: Given that the tag `doesnotexist` does not exist, no contacts are shown in list.
 
-      * Other incorrect find tags command to try: `find-tags`, `find-tags `<br>
-        Expected: No contact is found. Error details shown in the status message.
+   - Other incorrect find tags command to try: `find-tags`, `find-tags `<br>
+     Expected: No contact is found. Error details shown in the status message.
 
 ### Finding a contact by tech stack
 
 1. Finding a contact by tech stack while all contacts are shown
 
-      * Prerequisites: List all contacts using the `list` command. Multiple contacts in the list.
+   - Prerequisites: List all contacts using the `list` command. Multiple contacts in the list.
 
-      * Test case: `find-ts Java`<br>
-        Expected: All contacts with tech stack `Java` are shown in list.
-   
-      * Test case: `find-ts doesnotexist`<br>
-        Expected: Given that the tech stack `doesnotexist` does not exist, no contacts are shown in list.
+   - Test case: `find-ts Java`<br>
+     Expected: All contacts with tech stack `Java` are shown in list.
 
-      * Other incorrect find tech stack command to try: `find-ts`, `find-ts `<br>
-        Expected: No contact is found. Error details shown in the status message.
+   - Test case: `find-ts doesnotexist`<br>
+     Expected: Given that the tech stack `doesnotexist` does not exist, no contacts are shown in list.
+
+   - Other incorrect find tech stack command to try: `find-ts`, `find-ts `<br>
+     Expected: No contact is found. Error details shown in the status message.
 
 ### Rating a contact's tech stack
 
 1. Rating a contact's tech stack while all contacts are shown
 
-      * Prerequisites: List all contacts using the `list` command. Multiple contacts in the list.
+   - Prerequisites: List all contacts using the `list` command. Multiple contacts in the list.
 
-      * Test case: `rate 1 ts/Java r/8`<br>
-        Expected: Tech stack `Java` of contact at index `1` is rated with a rating `8`.
+   - Test case: `rate 1 ts/Java r/8`<br>
+     Expected: Tech stack `Java` of contact at index `1` is rated with a rating `8`.
 
-      * Test case: `rate 0 ts/Java r/8`<br>
-        Expected: Given tech stack of given contact is not rated. Error details shown in the status message.
+   - Test case: `rate 0 ts/Java r/8`<br>
+     Expected: Given tech stack of given contact is not rated. Error details shown in the status message.
 
-      * Other incorrect find tech stack command to try: `rate -1 ts/Java r/8`, `rate 1 ts/Java r/18`, `rate 1 ts/Java r/-8`<br>
-        Expected: Given tech stack of given contact is not rated. Error details shown in the status message.
+   - Other incorrect find tech stack command to try: `rate -1 ts/Java r/8`, `rate 1 ts/Java r/18`, `rate 1 ts/Java r/-8`<br>
+     Expected: Given tech stack of given contact is not rated. Error details shown in the status message.
 
 2. Rating a contact's tech stack when contact list is empty
 
-      * Prerequisites: No contacts shown in filtered list. Use find command e.g. `find someonethatdoesntexist` to get empty list showing.
+   - Prerequisites: No contacts shown in filtered list. Use find command e.g. `find someonethatdoesntexist` to get empty list showing.
 
-      * Test case: `rate 1 ts/Java r/8`<br>
-        Expected: Given tech stack of given contact is not rated. Error details shown in the status message.
+   - Test case: `rate 1 ts/Java r/8`<br>
+     Expected: Given tech stack of given contact is not rated. Error details shown in the status message.
 
 ### Adding a team
 
 1. Adding a team
 
-      * Prerequisites: Added team should not already exist in CodeConnect.
+   - Prerequisites: Added team should not already exist in CodeConnect.
 
-      * Test case: `team add n/NUS HACK 2024`<br>
-        Expected: Team is added to the team list. Details of team shown in status message.
+   - Test case: `team add n/NUS HACK 2024`<br>
+     Expected: Team is added to the team list. Details of team shown in status message.
 
 1. Adding an invalid team
 
-      * Prerequisites: Should be run after test case `Adding a team`. Team `NUS HACK 2024` should exist in the team list.
+   - Prerequisites: Should be run after test case `Adding a team`. Team `NUS HACK 2024` should exist in the team list.
 
-      * Test case: `team add n/NUS HACK 2024`<br>
-        Expected: No team is added. Error details shown in the status message. Team list remains the same.
+   - Test case: `team add n/NUS HACK 2024`<br>
+     Expected: No team is added. Error details shown in the status message. Team list remains the same.
 
-      * Other incorrect delete commands to try: `team add`, `team add NUS`.<br>
-        Expected: Similar to previous.
+   - Other incorrect delete commands to try: `team add`, `team add NUS`.<br>
+     Expected: Similar to previous.
 
 ### Adding members to a team
 
 1. Adding a contact to a team
 
-      * Prerequisites: Ensure there are several contacts and teams in the list. A contact that needs to be added to a
-        team should not already be a member of that team.
+   - Prerequisites: Ensure there are several contacts and teams in the list. A contact that needs to be added to a
+     team should not already be a member of that team.
 
-      * Test case: `team 1 add-contact 1`<br>
-        Expected: The contact at index 1 of the contact list should be added to the first team in the team list. After
-        executing the command, verify that the contact is added to the team by entering `team 1`.
+   - Test case: `team 1 add-contact 1`<br>
+     Expected: The contact at index 1 of the contact list should be added to the first team in the team list. After
+     executing the command, verify that the contact is added to the team by entering `team 1`.
 
-      * Test case: `team 0 add-contact 1`<br>
-        Expected: This command will return an error message indicating that the index is not a non-zero unsigned
-        integer. The contact will not be added to the team.
+   - Test case: `team 0 add-contact 1`<br>
+     Expected: This command will return an error message indicating that the index is not a non-zero unsigned
+     integer. The contact will not be added to the team.
 
-      * Other incorrect commands to try: `team 1 add-contact 0`.
+   - Other incorrect commands to try: `team 1 add-contact 0`.
 
-      * Test case: `team  add-contact 1`<br>
-        Expected: This command will return an error message indicating that the team index provided is invalid as it does
-        not exist.
+   - Test case: `team  add-contact 1`<br>
+     Expected: This command will return an error message indicating that the team index provided is invalid as it does
+     not exist.
 
-      * Other incorrect commands to try: `team 1 add-contact (inexistent contact index number)`,
-        `team INEXISTENT_TEAM_INDEX add-contact INEXISTENT_CONTACT_INDEX`.
+   - Other incorrect commands to try: `team 1 add-contact (inexistent contact index number)`,
+     `team INEXISTENT_TEAM_INDEX add-contact INEXISTENT_CONTACT_INDEX`.
 
 2. Adding a contact that is already in the team
 
-      * Prerequisites: View the members of the team with the `team INDEX` command. Ensure that the contact already exists
-        in the team. We assume contact 2 already exists in team 2 for the test case below.
+   - Prerequisites: View the members of the team with the `team INDEX` command. Ensure that the contact already exists
+     in the team. We assume contact 2 already exists in team 2 for the test case below.
 
-      * Test case: `team 2 add-contact 2`
-        Expected: A message indicating that the contact already exists in the team is displayed.
+   - Test case: `team 2 add-contact 2`
+     Expected: A message indicating that the contact already exists in the team is displayed.
 
 ### Listing members of a team
 
 1. List members of a team
 
-      * Prerequisites: Team list contains one or more teams. First team in list should have > 0 members.
+   - Prerequisites: Team list contains one or more teams. First team in list should have > 0 members.
 
-      * Test case: `team 1`<br>
-        Expected: Contact list shows the members of the team. Team name correctly shown in status message.
+   - Test case: `team 1`<br>
+     Expected: Contact list shows the members of the team. Team name correctly shown in status message.
 
-      * Test case: `team 0`<br>
-        Expected: Contact list does not change. Error details shown in the status message.
+   - Test case: `team 0`<br>
+     Expected: Contact list does not change. Error details shown in the status message.
 
-      * Test case: `team X` (where X is greater than the last team's index)<br>
-        Expected: Similar to previous.
+   - Test case: `team X` (where X is greater than the last team's index)<br>
+     Expected: Similar to previous.
 
 ### Removing members from a team
 
 1. Deleting a contact from a team
 
-     * Prerequisites: Enter the command `team INDEX` to ensure that there are serveral contacts in a team. A contact that
-       needs to be deleted should already be a member of that team.
+   - Prerequisites: Enter the command `team INDEX` to ensure that there are serveral contacts in a team. A contact that
+     needs to be deleted should already be a member of that team.
 
-     * Test Case: `team 1 delete-contact 1`<br>
-       Expected: The contact at index 1 of the team's member list should be deleted from the first team in the team list.
-       After executing the command, enter `team 1` to ensure that the contact has been removed from the team.
+   - Test Case: `team 1 delete-contact 1`<br>
+     Expected: The contact at index 1 of the team's member list should be deleted from the first team in the team list.
+     After executing the command, enter `team 1` to ensure that the contact has been removed from the team.
 
-     * Test case: `team 0 delete-contact 1`<br>
-       Expected: This command will return an error message indicating that the index is not a non-zero unsigned
-       integer. The contact will not be deleted from the team.
+   - Test case: `team 0 delete-contact 1`<br>
+     Expected: This command will return an error message indicating that the index is not a non-zero unsigned
+     integer. The contact will not be deleted from the team.
 
-     * Other incorrect commands to try: `team 1 delete-contact 0`.
+   - Other incorrect commands to try: `team 1 delete-contact 0`.
 
-     * Test case: `team X delete-contact 1`<br>
-       Expected: This command will return an error message indicating that the team index provided is invalid as it does
-       not exist.
+   - Test case: `team X delete-contact 1`<br>
+     Expected: This command will return an error message indicating that the team index provided is invalid as it does
+     not exist.
 
-     * Similar incorrect commands to try: `team 1 delete-contact (inexistent contact index number)`,
+   - Similar incorrect commands to try: `team 1 delete-contact (inexistent contact index number)`,
      `team INEXISTENT_TEAM_INDEX delete-contact INEXISTENT_CONTACT_INDEX`.
 
 ### Exporting team details
 
 1. Exporting team details
 
-    * Prerequisites: List all teams using the list teams command. Ensure there is at least one team present.
+   - Prerequisites: List all teams using the list teams command. Ensure there is at least one team present.
 
-    * Test Case: `team 0 export`<br>
-      Expected Outcome: All team details are exported successfully to clipboard
+   - Test Case: `team 0 export`<br>
+     Expected Outcome: All team details are exported successfully to clipboard
 
 ### Deleting a team
 
 1. Deleting a team
 
-    * Prerequisites: Team list contains one or more teams.
+   - Prerequisites: Team list contains one or more teams.
 
-    * Test case: `team 1 delete`<br>
-      Expected: Team is deleted from the team list. Contact list does not change. Status message shows team name and its members.
+   - Test case: `team 1 delete`<br>
+     Expected: Team is deleted from the team list. Contact list does not change. Status message shows team name and its members.
 
-    * Test case: `team 0 delete`<br>
-      Expected: Team list does not change. Contact list does not change. Error details shown in the status message.
+   - Test case: `team 0 delete`<br>
+     Expected: Team list does not change. Contact list does not change. Error details shown in the status message.
 
-    * Test case: `team X delete` (where X is greater than the last team's index)<br>
-      Expected: Similar to previous.
+   - Test case: `team X delete` (where X is greater than the last team's index)<br>
+     Expected: Similar to previous.
 
 ### Corrupted or Missing Data files
 
 1. Dealing with missing/corrupted data files
 
-   * Prerequisites: Add a contact. Access addressbook.json and remove the name field from a address book. This simulates corrupt data. Restart the program to run into error.
+   - Prerequisites: Add a contact. Access addressbook.json and remove the name field from a address book. This simulates corrupt data. Restart the program to run into error.
 
-   * Test Case: Delete addressbook.json and restart the app.
+   - Test Case: Delete addressbook.json and restart the app.
      Expected Outcome: A new addressbook.json is created.
