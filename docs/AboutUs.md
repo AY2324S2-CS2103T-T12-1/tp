@@ -12,45 +12,45 @@ We are a team based in the [School of Computing, National University of Singapor
 
 ### Guo Yang
 
-<img src="images/developers/tanguoyang.png" width="200px">
+<img src="images/tanguoyang.png" width="200px">
 
-[[github](http://github.com/tanguoyang)]
+[[GitHub](http://github.com/tanguoyang)]
 
 * Role: Team Lead
-* Responsibilities: Tracking deliverables
+* Responsibilities: Tracking deliverables and deadlines, ensuring that the team is on track.
 
 ### Song Yee
 
-<img src="images/developers/angsongyee.png" width="200px">
+<img src="images/angsongyee.png" width="200px">
 
-[[github](http://github.com/angsongyee)]
+[[GitHub](http://github.com/angsongyee)]
 
 * Role: Git Expert
-* Responsibilities: Ensure that good Git practices are adhered to
+* Responsibilities: Ensure that good Git practices are adhered to.
 
 ### Tresa
 
-<img src="images/developers/teee728.png" width="200px">
+<img src="images/teee728.png" width="200px">
 
-[[github](http://github.com/Teee728)]
+[[GitHub](http://github.com/Teee728)]
 
 * Role: Testing IC
-* Responsibilities: Ensure features are well tested
+* Responsibilities: Ensure features are well-tested and bug-free.
 
 ### Sumaiya
 
-<img src="images/developers/maiyasaliha.png" width="200px">
+<img src="images/maiyasaliha.png" width="200px">
 
-[[github](http://github.com/maiyasaliha)]
+[[GitHub](http://github.com/maiyasaliha)]
 
 * Role: Code Quality IC
-* Responsibilities: Ensures that good code quality
+* Responsibilities: Ensures that code quality follows industry standards.
 
 ### Yuechen
 
-<img src="images/developers/yuechen2001.png" width="200px">
+<img src="images/yuechen2001.png" width="200px">
 
-[[github](http://github.com/yuechen2001)]
+[[GitHub](http://github.com/yuechen2001)]
 
 * Role: Documentation IC
-* Responsibilities: Ensures that features are well documented
+* Responsibilities: Ensures that features are well-documented.

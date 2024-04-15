@@ -21,8 +21,8 @@ import seedu.address.model.team.exceptions.DuplicateTeamException;
 import seedu.address.model.team.exceptions.TeamNotFoundException;
 
 public class UniqueTeamListTest {
-    Team teamA = new Team(new Name("A"), Arrays.asList(ALICE, BOB, CARL));
-    Team teamB = new Team(new Name("B"), Arrays.asList(ALICE, BOB, CARL));
+    final Team teamA = new Team(new Name("A"), Arrays.asList(ALICE, BOB, CARL));
+    final Team teamB = new Team(new Name("B"), Arrays.asList(ALICE, BOB, CARL));
     private final UniqueTeamList uniqueTeamList = new UniqueTeamList();
 
     @Test

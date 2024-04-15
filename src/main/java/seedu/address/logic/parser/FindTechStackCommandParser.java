@@ -6,12 +6,11 @@ import java.util.Arrays;
 
 import seedu.address.logic.commands.FindTechStackCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.contact.TsContainsKeywordsPredicate;
 
 /**
  * Parses input arguments and creates a new FindTechStackCommand object
  */
-public class FindTechStackCommandParser  implements Parser<FindTechStackCommand> {
+public class FindTechStackCommandParser implements Parser<FindTechStackCommand> {
 
     /**
      * Parses the given {@code String} of arguments in the context of the FindTechStackCommand

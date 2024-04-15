@@ -32,7 +32,7 @@ public class JsonAdaptedContactTest {
     private static final String VALID_EMAIL = BENSON.getEmail().toString();
     private static final String VALID_ADDRESS = BENSON.getAddress().toString();
     private static final String VALID_GITHUB_USERNAME = BENSON.getGitHubUsername().toString();
-    private static final String VALID_PROFILE_PICTURE = BENSON.getProfilePicture().get();
+    private static final String VALID_PROFILE_PICTURE = BENSON.getProfilePicture().getUrl();
     private static final List<JsonAdaptedTechStack> VALID_TECH_STACK = BENSON.getTechStack().stream()
             .map(JsonAdaptedTechStack::new)
             .collect(Collectors.toList());
@@ -49,8 +49,8 @@ public class JsonAdaptedContactTest {
     @Test
     public void toModelType_invalidName_throwsIllegalValueException() {
         JsonAdaptedContact contact =
-                new JsonAdaptedContact(INVALID_NAME, VALID_PHONE, VALID_EMAIL, VALID_ADDRESS, VALID_GITHUB_USERNAME, VALID_PROFILE_PICTURE,
-                        VALID_TECH_STACK, VALID_TAGS);
+                new JsonAdaptedContact(INVALID_NAME, VALID_PHONE, VALID_EMAIL, VALID_ADDRESS,
+                        VALID_GITHUB_USERNAME, VALID_PROFILE_PICTURE, VALID_TECH_STACK, VALID_TAGS);
         String expectedMessage = Name.MESSAGE_CONSTRAINTS;
         assertThrows(IllegalValueException.class, expectedMessage, contact::toModelType);
     }

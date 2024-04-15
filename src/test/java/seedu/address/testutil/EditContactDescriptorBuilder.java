@@ -5,12 +5,12 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import seedu.address.logic.commands.EditCommand.EditContactDescriptor;
+import seedu.address.model.contact.Address;
+import seedu.address.model.contact.Contact;
+import seedu.address.model.contact.Email;
+import seedu.address.model.contact.GitHubUsername;
 import seedu.address.model.contact.Name;
 import seedu.address.model.contact.Phone;
-import seedu.address.model.contact.Email;
-import seedu.address.model.contact.Address;
-import seedu.address.model.contact.GitHubUsername;
-import seedu.address.model.contact.Contact;
 import seedu.address.model.tag.Tag;
 
 /**

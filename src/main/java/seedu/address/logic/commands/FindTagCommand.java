@@ -26,6 +26,9 @@ public class FindTagCommand extends Command {
     private final List<String> tagKeywords;
     private final Logger logger = Logger.getLogger("FindTagCommand");
 
+    /**
+     * Creates a new {@code FindTagCommand}.
+     */
     public FindTagCommand(List<String> tagKeywords) {
         assert(!tagKeywords.isEmpty());
         this.tagKeywords = tagKeywords;

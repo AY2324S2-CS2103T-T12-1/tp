@@ -1,5 +1,14 @@
 package seedu.address.logic.commands;
 
+import static java.util.Objects.requireNonNull;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_RATING;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_TECH_STACK;
+import static seedu.address.model.Model.PREDICATE_SHOW_ALL_CONTACTS;
+
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
@@ -15,15 +24,6 @@ import seedu.address.model.contact.ProfilePicture;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.techstack.TechStack;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
-import static java.util.Objects.requireNonNull;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_RATING;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_TECH_STACK;
-import static seedu.address.model.Model.PREDICATE_SHOW_ALL_CONTACTS;
-
 /**
  * Rates the skills of an existing contact in the address book.
  */
@@ -35,7 +35,8 @@ public class RateCommand extends Command {
             + "by the index number used in the displayed contact list. "
             + "Existing tech stack matching the input will be rated with the input values.\n"
             + "Parameters: INDEX (must be a positive integer) "
-            + "[" + PREFIX_TECH_STACK + "TECH_STACK...\n"
+            + PREFIX_TECH_STACK + "TECH_STACK "
+            + PREFIX_RATING + "RATING (must be a positive integer from 0 to 10)\n"
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_TECH_STACK + "C " + PREFIX_RATING + "7";
 
@@ -94,6 +95,7 @@ public class RateCommand extends Command {
      */
     private Contact rateTechStack(Contact contactToRate, TechStack techStack, int rating) {
         assert contactToRate != null;
+        assert (rating >= 0 && rating <= 10);
         Name contactName = contactToRate.getName();
         Phone contactPhone = contactToRate.getPhone();
         Email contactEmail = contactToRate.getEmail();

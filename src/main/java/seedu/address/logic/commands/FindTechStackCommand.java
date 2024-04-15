@@ -2,12 +2,12 @@ package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 
+import java.util.List;
+
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
 import seedu.address.model.Model;
 import seedu.address.model.contact.TsContainsKeywordsPredicate;
-
-import java.util.List;
 
 /**
  * Finds and lists all contacts in address book whose tech stack contains any of the argument keywords.

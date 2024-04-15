@@ -6,9 +6,15 @@ import java.util.function.Predicate;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.commons.util.ToStringBuilder;
 
+/**
+ * Tests that a {@code Contact}'s {@code Tag} matches any of the keywords given.
+ */
 public class TagsContainKeywordsPredicate implements Predicate<Contact> {
     private final List<String> tagKeywords;
 
+    /**
+     * Creates a new predicate with the given keywords.
+     */
     public TagsContainKeywordsPredicate(List<String> tagKeywords) {
         assert(!tagKeywords.isEmpty());
         this.tagKeywords = tagKeywords;

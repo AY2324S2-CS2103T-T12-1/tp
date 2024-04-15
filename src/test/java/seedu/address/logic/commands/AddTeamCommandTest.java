@@ -29,9 +29,9 @@ import seedu.address.model.contact.Name;
 import seedu.address.model.team.Team;
 
 public class AddTeamCommandTest {
-    Team validTeam = new Team(new Name("Team"), Arrays.asList(ALICE, BOB, CARL));
-    Team teamA = new Team(new Name("A"), Arrays.asList(ALICE, BOB, CARL));
-    Team teamB = new Team(new Name("B"), Arrays.asList(ALICE, BOB, CARL));
+    final Team validTeam = new Team(new Name("Team"), Arrays.asList(ALICE, BOB, CARL));
+    final Team teamA = new Team(new Name("A"), Arrays.asList(ALICE, BOB, CARL));
+    final Team teamB = new Team(new Name("B"), Arrays.asList(ALICE, BOB, CARL));
 
     @Test
     public void constructor_nullTeam_throwsNullPointerException() {
@@ -39,8 +39,9 @@ public class AddTeamCommandTest {
     }
 
     @Test
-    public void execute_TeamAcceptedByModel_addSuccessful() throws Exception {
-        seedu.address.logic.commands.AddTeamCommandTest.ModelStubAcceptingTeamAdded modelStub = new seedu.address.logic.commands.AddTeamCommandTest.ModelStubAcceptingTeamAdded();
+    public void execute_teamAcceptedByModel_addSuccessful() throws Exception {
+        seedu.address.logic.commands.AddTeamCommandTest.ModelStubAcceptingTeamAdded modelStub =
+                new seedu.address.logic.commands.AddTeamCommandTest.ModelStubAcceptingTeamAdded();
 
         CommandResult commandResult = new AddTeamCommand(validTeam).execute(modelStub);
 
@@ -52,9 +53,11 @@ public class AddTeamCommandTest {
     @Test
     public void execute_duplicateTeam_throwsCommandException() {
         AddTeamCommand addCommand = new AddTeamCommand(validTeam);
-        seedu.address.logic.commands.AddTeamCommandTest.ModelStub modelStub = new seedu.address.logic.commands.AddTeamCommandTest.ModelStubWithTeam(validTeam);
+        seedu.address.logic.commands.AddTeamCommandTest.ModelStub modelStub =
+                new seedu.address.logic.commands.AddTeamCommandTest.ModelStubWithTeam(validTeam);
 
-        assertThrows(CommandException.class, AddTeamCommand.MESSAGE_DUPLICATE_TEAM, () -> addCommand.execute(modelStub));
+        assertThrows(CommandException.class,
+                AddTeamCommand.MESSAGE_DUPLICATE_TEAM, () -> addCommand.execute(modelStub));
     }
 
     @Test

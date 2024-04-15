@@ -11,7 +11,7 @@
 >Student Developer
 
 **Value Proposition**
->CodeConnect aims to let student developers keep track of and reach out easily to other student developers with relevant skills for collaboration opportunities or recommendations.
+>CodeConnect aims to let student developers keep track of and reach out easily to other student developers with relevant skills for collaboration opportunities or recommendations when forming hackathon teams.
 
 Project notes (internal): [see here](https://docs.google.com/document/d/1wDRApxjKgLv_gZx7Fe1u0XLsa73Taj0THSegizHslss/edit#heading=h.gue37j8ig519)
 
