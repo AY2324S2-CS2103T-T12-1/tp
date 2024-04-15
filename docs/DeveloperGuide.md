@@ -483,7 +483,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     Use case ends.
 
 - 1c. Updated value does not follow format of the specific field.
-
   - 1b1. CodeConnect shows an error message. <br/>
     Use case ends.
 
@@ -511,7 +510,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **Extensions**
 
 - 1a. No substring is given.
-
   - 1a1. CodeConnect shows an error message. <br/>
     Use case ends.
 
@@ -531,7 +529,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **Extensions**
 
 - 1a. No tag is given.
-
   - 1a1. CodeConnect shows an error message. <br/>
     Use case ends.
 
@@ -551,7 +548,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **Extensions**
 
 - 1a. No tech stack is given.
-
   - 1a1. CodeConnect shows an error message. <br/>
     Use case ends.
 
@@ -571,17 +567,14 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **Extensions**
 
 - 1a. No tech stack is given.
-
   - 1a1. CodeConnect shows an error message. <br/>
     Use case ends.
 
 - 1b. No rating is given.
-
   - 1b1. CodeConnect shows an error message. <br/>
     Use case ends.
 
 - 1c. No index is given.
-
   - 1c1. CodeConnect shows an error message. <br/>
     Use case ends.
 
@@ -632,7 +625,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **Extensions**
 
 - 2a. An invalid index is passed into the command.
-
   - 2a1. CodeConnect shows an error message. <br/>
     Use case ends.
 
@@ -653,6 +645,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 - 1a. No name is provided.
   - 1a1. CodeConnect shows an error message. <br/>
     Use case ends.
+
 - 2a. Another team with the same name already exists in CodeConnect.
   - 2a1. CodeConnect shows an error message. <br/>
     Use case ends.
@@ -696,7 +689,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **Extensions**
 
 - 1a. The given contact index does not exist in CodeConnect.
-
   - 1a1. CodeConnect shows an error message.
     Use case ends.
 
@@ -715,7 +707,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **Extensions**
 
 - 1a. The given contact index does not exist in CodeConnect.
-
   - 1a1. CodeConnect shows an error message.
     Use case ends.
 
