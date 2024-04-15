@@ -1157,8 +1157,7 @@ testers are expected to do more *exploratory* testing.
    - Similar incorrect commands to try: `team 1 delete-contact 0`, `team 1 delete-contact X`, (where X is greater than 
      the last team's index)<br>
      Expected: Similar to previous.
-   
->>>>>>> 85303bd3efdcd3f8f07198280e6f71adf7023916
+
 ### Exporting team details
 
 1. Exporting team details
