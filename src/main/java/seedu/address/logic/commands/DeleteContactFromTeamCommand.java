@@ -1,6 +1,7 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.ToStringBuilder;
@@ -34,6 +35,11 @@ public class DeleteContactFromTeamCommand extends Command {
      * Creates a DeleteContactFromTeamCommand to delete the specified {@code Contact}
      */
     public DeleteContactFromTeamCommand(Index teamIndex, Index contactIndex) {
+        requireAllNonNull(teamIndex, contactIndex);
+        assert teamIndex.getZeroBased() >= 0
+                : "Team index must be non-negative";
+        assert contactIndex.getZeroBased() >= 0
+                : "Contact index must be non-negative";
         this.teamIndex = requireNonNull(teamIndex);
         this.contactIndex = requireNonNull(contactIndex);
     }

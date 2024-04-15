@@ -4,6 +4,8 @@ import java.awt.Desktop;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javafx.fxml.FXML;
 import seedu.address.model.contact.Contact;
@@ -13,6 +15,7 @@ import seedu.address.model.contact.Contact;
  */
 public class MailApp {
 
+    private static final Logger logger = Logger.getLogger(MailApp.class.getName());
     private Contact contact; // The contact associated with this MailApp
 
     /**
@@ -35,7 +38,10 @@ public class MailApp {
     @FXML
     public void handleEmailClicked() {
         if (contact != null && contact.getEmail() != null) {
+            logger.log(Level.INFO, "Opening default mail application for contact: " + contact.getName());
             openDefaultMailApp(contact.getEmail().toString());
+        } else {
+            logger.log(Level.WARNING, "No email address found for contact: " + contact.getName());
         }
     }
 
@@ -50,10 +56,13 @@ public class MailApp {
             try {
                 URI mailto = new URI("mailto:" + recipientEmail);
                 Desktop.getDesktop().mail(mailto);
+                logger.log(Level.INFO, "Default mail application opened for email: " + recipientEmail);
             } catch (IOException | URISyntaxException e) {
                 e.printStackTrace();
+                logger.log(Level.SEVERE, "Error opening default mail application", e);
             }
         } else {
+            logger.log(Level.SEVERE, "Desktop doesn't support mailto");
             throw new RuntimeException("Desktop doesn't support mailto");
         }
     }
