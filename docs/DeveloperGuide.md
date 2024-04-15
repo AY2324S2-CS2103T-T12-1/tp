@@ -861,9 +861,55 @@ testers are expected to do more *exploratory* testing.
 
 ### Finding a contact by tag
 
+1. Finding a contact by tag while all contacts are shown
+
+    1. Test case: `find-tags friend`<br>
+       Expected: All contacts with tag `friend` are shown in list.
+       Message: NUMBER contacts listed! (where NUMBER is the number of contacts that match)
+
+    2. Test case: `find-tags doesnotexist`<br>
+       Expected: Given that the tag `doesnotexist` does not exist, no contacts are shown in list.
+       Message: 0 contacts listed!
+
+    3. Other incorrect find tags command to try: `find-tags`, `find-tags `<br>
+       Expected: No contact is found. Error details shown in the status message.
+
 ### Finding a contact by tech stack
 
+1. Finding a contact by tech stack while all contacts are shown
+
+    1. Test case: `find-ts Java`<br>
+       Expected: All contacts with tech stack `Java` are shown in list.
+       Message: NUMBER contacts listed! (where NUMBER is the number of contacts that match)
+
+    2. Test case: `find-ts doesnotexist`<br>
+       Expected: Given that the tech stack `doesnotexist` does not exist, no contacts are shown in list.
+       Message: 0 contacts listed!
+
+    3. Other incorrect find tech stack command to try: `find-ts`, `find-ts `<br>
+       Expected: No contact is found. Error details shown in the status message.
+
 ### Rating a contact's tech stack
+
+1. Rating a contact's tech stack while all contacts are shown
+
+    1. Prerequisites: List all contacts using the `list` command. Multiple contacts in the list.
+
+    2. Test case: `rate 1 ts/Java r/8`<br>
+       Expected: Tech stack `Java` of contact at index `1` is rated with a rating `8`.
+
+    3. Test case: `rate 0 ts/Java r/8`<br>
+       Expected: Given tech stack of given contact is not rated. Error details shown in the status message.
+
+    4. Other incorrect find tech stack command to try: `rate -1 ts/Java r/8`, `rate 1 ts/Java r/18`, `rate 1 ts/Java r/-8`<br>
+       Expected: Given tech stack of given contact is not rated. Error details shown in the status message.
+
+2. Rating a contact's tech stack when contact list is empty
+
+    1. Prerequisites: No contacts shown in filtered list. Use find command e.g. `find someonethatdoesntexist` to get empty list showing.
+
+    2. Test case: `rate 1 ts/Java r/8`<br>
+       Expected: Given tech stack of given contact is not rated. Error details shown in the status message.
 
 ### Adding a team
 
