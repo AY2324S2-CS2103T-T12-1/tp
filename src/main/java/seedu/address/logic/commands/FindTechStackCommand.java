@@ -35,7 +35,7 @@ public class FindTechStackCommand extends Command {
         requireNonNull(model);
         TsContainsKeywordsPredicate predicate = new TsContainsKeywordsPredicate(techKeywords);
 
-        logger.info("Matching contacts with tech stacks containing the keywords: " + techKeywords);
+        logger.info("Matching contacts with tech stack containing the keywords: " + techKeywords);
         model.updateFilteredContactList(predicate);
 
         return new CommandResult(
