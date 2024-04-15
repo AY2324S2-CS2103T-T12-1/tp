@@ -57,6 +57,7 @@ public class RateCommand extends Command {
     public RateCommand(Index index, String techStackName, int rating) {
         requireNonNull(index);
         requireNonNull(techStackName);
+        assert (rating >= 0 && rating <= 10);
 
         this.index = index;
         this.rating = rating;
