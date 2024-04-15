@@ -34,7 +34,6 @@ Before you begin your development journey in Codeconnect, make sure that you mee
 
 ### Minimum Requirements
 
-
 CodeConnect uses Java 11 with JavaFX. If you are not sure how to install Java 11 and JavaFX, refer to this [section](UserGuide.html#installation-guide) in our User Guide to install and start CodeConnect.
 
 <div class="alert alert-warning" markdown="1">
@@ -154,7 +153,7 @@ PlantUML, the lifeline continues till the end of diagram.
 
 How the `Logic` component works:
 
-1. When `Logic` is called upon to execute a command, it is passed to an `CodeConnectParser` object which in turn creates
+1. When `Logic` is called upon to execute a command, it is passed to a `CodeConnectParser` object which in turn creates
    a parser that matches the command (e.g., `DeleteCommandParser`) and uses it to parse the command.
 1. This results in a `Command` object (more precisely, an object of one of its subclasses e.g., `DeleteCommand`) which
    is executed by the `LogicManager`.
@@ -188,7 +187,7 @@ The `Model` component,
 - stores the address book data i.e., all `Contact` objects (which are contained in a `UniqueContactList` object).
 - stores the currently 'selected' `Contact` objects (e.g., results of a search query) as a separate _filtered_ list which
   is exposed to outsiders as an unmodifiable `ObservableList<Contact>` that can be 'observed' e.g. the UI can be bound to
-  this list so that the UI automatically updates when the data in the list change.
+  this list so that the UI automatically updates when the data in the list changes.
 - stores a `UserPref` object that represents the user’s preferences. This is exposed to the outside as
   a `ReadOnlyUserPref` objects.
 - does not depend on any of the other three components (as the `Model` represents data entities of the domain, they
@@ -301,7 +300,7 @@ The following sequence diagram models the interactions between the different com
 
 Team commands follow either one of the two sequences stated below, depending on the command type. Within each flow, the only differences lie in the `execute` method of each command.
 
-#### Sequence 1 
+#### Sequence 1
 
 <div class="alert alert-info" markdown="1">
 ℹ️ <b>Commands Included:</b> <br/> 
@@ -377,14 +376,14 @@ The following sequence diagram shows what happens as the user double-clicks on t
 2. The `handleEmailClicked()` method of the MailApp class is invoked.
 3. The MailApp class checks if the associated contact object and its email address are not null.
 4. If the email address is valid, the `openDefaultMailApp()` method is called with the email address as a parameter.
-5. The `openDefaultMailApp()` method attempts to open the default mail application with a new email composition window 
+5. The `openDefaultMailApp()` method attempts to open the default mail application with a new email composition window
    addressed to the recipient's email address.
 
 #### Possible Improvements
 
 - There can be a feature where multiple emails can be selected to send a mass email to them.
 - There can be a check that ensures a valid email address has been input, following the correct format of what is expected
-  of an email address.  
+  of an email address.
 
 ---
 
@@ -465,6 +464,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **Extensions**
 
 - 1a. The list is empty.
+
   - 1a1. CodeConnect shows an error message. <br/>
     Use case ends.
 
@@ -483,6 +483,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **Extensions**
 
 - 1a. The contact already exists in the system.
+
   - 1a1. CodeConnect shows an error message. <br/>
     Use case ends.
 
@@ -501,14 +502,17 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **Extensions**
 
 - 1a. The given index to identify contact is invalid.
+
   - 1a1. CodeConnect shows an error message. <br/>
     Use case ends.
 
 - 1b. No fields are entered.
+
   - 1b1. CodeConnect shows an error message. <br/>
     Use case ends.
 
 - 1c. Updated value does not follow format of the specific field.
+
   - 1b1. CodeConnect shows an error message. <br/>
     Use case ends.
 
@@ -536,6 +540,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **Extensions**
 
 - 1a. No substring is given.
+
   - 1a1. CodeConnect shows an error message. <br/>
     Use case ends.
 
@@ -555,6 +560,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **Extensions**
 
 - 1a. No tag is given.
+
   - 1a1. CodeConnect shows an error message. <br/>
     Use case ends.
 
@@ -574,6 +580,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **Extensions**
 
 - 1a. No tech stack is given.
+
   - 1a1. CodeConnect shows an error message. <br/>
     Use case ends.
 
@@ -593,14 +600,17 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **Extensions**
 
 - 1a. No tech stack is given.
+
   - 1a1. CodeConnect shows an error message. <br/>
     Use case ends.
 
 - 1b. No rating is given.
+
   - 1b1. CodeConnect shows an error message. <br/>
     Use case ends.
 
 - 1c. No index is given.
+
   - 1c1. CodeConnect shows an error message. <br/>
     Use case ends.
 
@@ -651,6 +661,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **Extensions**
 
 - 2a. An invalid index is passed into the command.
+
   - 2a1. CodeConnect shows an error message. <br/>
     Use case ends.
 
@@ -669,6 +680,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **Extensions**
 
 - 1a. No name is provided.
+
   - 1a1. CodeConnect shows an error message. <br/>
     Use case ends.
 
@@ -715,6 +727,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **Extensions**
 
 - 1a. The given contact index does not exist in CodeConnect.
+
   - 1a1. CodeConnect shows an error message.
     Use case ends.
 
@@ -733,6 +746,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **Extensions**
 
 - 1a. The given contact index does not exist in CodeConnect.
+
   - 1a1. CodeConnect shows an error message.
     Use case ends.
 
@@ -1119,7 +1133,6 @@ testers are expected to do more *exploratory* testing.
      Expected: This command will return an error message indicating that the team index provided is invalid as it does
      not exist.
 
-
 2. Adding a contact that is already in the team
 
    - Prerequisites: View the members of the team with the `team INDEX` command. Ensure that the contact already exists
@@ -1164,7 +1177,7 @@ testers are expected to do more *exploratory* testing.
      Expected: This command will return an error message indicating that the team index provided is invalid as it does
      not exist.
 
-   - Similar incorrect commands to try: `team 1 delete-contact 0`, `team 1 delete-contact X`, (where X is greater than 
+   - Similar incorrect commands to try: `team 1 delete-contact 0`, `team 1 delete-contact X`, (where X is greater than
      the last team's index)<br>
      Expected: Similar to previous.
 
