@@ -1029,13 +1029,15 @@ testers are expected to do more *exploratory* testing.
 
 1. Finding a contact by tag while all contacts are shown
 
-   - Prerequisites: List all contacts using the `list` command. Multiple contacts in the list.
+   - Prerequisites: List all contacts using the `list` command. Multiple contacts in the list. In the following test
+     cases, we assume we have contacts containing only the tag `friend`.
 
    - Test case: `find-tags friend`<br>
-     Expected: All contacts with tag `friend` are shown in list.
+     Expected: All contacts with tag `friend` are shown in list. The search is case-insenstive and matches
+     only the tag.
 
    - Test case: `find-tags doesnotexist`<br>
-     Expected: Given that the tag `doesnotexist` does not exist, no contacts are shown in list.
+     Expected: No contacts are shown in list.
 
    - Other incorrect find tags command to try: `find-tags`, `find-tags `<br>
      Expected: No contact is found. Error details shown in the status message.
@@ -1044,13 +1046,15 @@ testers are expected to do more *exploratory* testing.
 
 1. Finding a contact by tech stack while all contacts are shown
 
-   - Prerequisites: List all contacts using the `list` command. Multiple contacts in the list.
+   - Prerequisites: List all contacts using the `list` command. Multiple contacts in the list. In the following test
+     cases, we assume we have contacts containing only the tech stack `Java`.
 
    - Test case: `find-ts Java`<br>
-     Expected: All contacts with tech stack `Java` are shown in list.
+     Expected: All contacts with tech stack `Java` are shown in list. The search is case-insenstive and matches
+     only the tech stack.
 
    - Test case: `find-ts doesnotexist`<br>
-     Expected: Given that the tech stack `doesnotexist` does not exist, no contacts are shown in list.
+     Expected: No contacts are shown in list.
 
    - Other incorrect find tech stack command to try: `find-ts`, `find-ts `<br>
      Expected: No contact is found. Error details shown in the status message.
