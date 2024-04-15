@@ -1,5 +1,14 @@
 package seedu.address.logic.commands;
 
+import static java.util.Objects.requireNonNull;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_RATING;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_TECH_STACK;
+import static seedu.address.model.Model.PREDICATE_SHOW_ALL_CONTACTS;
+
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
@@ -14,15 +23,6 @@ import seedu.address.model.contact.Phone;
 import seedu.address.model.contact.ProfilePicture;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.techstack.TechStack;
-
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
-import static java.util.Objects.requireNonNull;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_RATING;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_TECH_STACK;
-import static seedu.address.model.Model.PREDICATE_SHOW_ALL_CONTACTS;
 
 /**
  * Rates the skills of an existing contact in the address book.

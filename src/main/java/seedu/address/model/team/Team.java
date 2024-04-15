@@ -45,20 +45,20 @@ public class Team {
         this.stats = new TeamStats(members);
     }
 
-      /**
-       * Returns the name of the team.
-       *
-       * @return The name of the team.
-       */
-      public Name getName() {
-          return name;
-      }
+    /**
+     * Returns the name of the team.
+     *
+     * @return The name of the team.
+     */
+    public Name getName() {
+        return name;
+    }
 
     public TeamStats getStats() {
         return stats;
     }
 
-   /**
+    /**
      * Returns an unmodifiable list of members in the team.
      *
      * @return An unmodifiable list of members in the team.

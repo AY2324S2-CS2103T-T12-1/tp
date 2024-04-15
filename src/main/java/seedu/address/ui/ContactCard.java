@@ -6,7 +6,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import seedu.address.logic.MailApp;
@@ -61,11 +60,11 @@ public class ContactCard extends UiPart<Region> {
         this.contact = contact;
 
         try {
-            Image image = new Image(contact.getProfilePicture().get());
+            Image image = new Image(contact.getProfilePicture().getUrl());
             profilePicture.setImage(image);
         } catch (IllegalArgumentException e) {
             // Handle invalid image URL
-            System.err.println("Invalid image URL: " + contact.getProfilePicture().get());
+            System.err.println("Invalid image URL: " + contact.getProfilePicture().getUrl());
             profilePicture.setImage(new Image(ProfilePicture.DEFAULT_URL));
         }
 
@@ -75,7 +74,7 @@ public class ContactCard extends UiPart<Region> {
         address.setText("Address: " + contact.getAddress().value);
         emailLabel.setText("Email: ");
         email.setText(contact.getEmail().value);
-        githubUsername.setText("@"+ contact.getGitHubUsername().username);
+        githubUsername.setText("@" + contact.getGitHubUsername().username);
         contact.getTechStack().stream()
                 .sorted(Comparator.comparing(techStack -> techStack.techStackName))
                 .forEach(techStack -> techStacks.getChildren()

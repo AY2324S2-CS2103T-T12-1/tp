@@ -3,16 +3,13 @@ package seedu.address.testutil;
 import java.util.HashSet;
 import java.util.Set;
 
-import seedu.address.model.contact.Name;
-import seedu.address.model.contact.ProfilePicture;
-import seedu.address.model.contact.GitHubUsername;
-import seedu.address.model.contact.Phone;
-import seedu.address.model.contact.Email;
 import seedu.address.model.contact.Address;
 import seedu.address.model.contact.Contact;
-
-
-
+import seedu.address.model.contact.Email;
+import seedu.address.model.contact.GitHubUsername;
+import seedu.address.model.contact.Name;
+import seedu.address.model.contact.Phone;
+import seedu.address.model.contact.ProfilePicture;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.techstack.TechStack;
 import seedu.address.model.util.SampleDataUtil;
@@ -82,7 +79,8 @@ public class ContactBuilder {
     }
 
     /**
-     * Parses the {@code tech stack} into a {@code Set<TechStack>} and set it to the {@code Contact} that we are building.
+     * Parses the {@code tech stack} into a {@code Set<TechStack>}
+     * and set it to the {@code Contact} that we are building.
      */
     public ContactBuilder withTechStack(String ... techStack) {
         this.techStack = SampleDataUtil.getTechStackSet(techStack);
@@ -121,11 +119,17 @@ public class ContactBuilder {
         return this;
     }
 
+    /**
+     * Sets the {@code ProfilePicture} of the {@code Contact} that we are building.
+     */
     public ContactBuilder withProfilePicture(String url) {
         this.profilePicture = new ProfilePicture(url);
         return this;
     }
 
+    /**
+     * Returns the built {@code Contact}.
+     */
     public Contact build() {
         return new Contact(name, phone, email, address, gitHubUsername, techStack, tags, profilePicture);
     }

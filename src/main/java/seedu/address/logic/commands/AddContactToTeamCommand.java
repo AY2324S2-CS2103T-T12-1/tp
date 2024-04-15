@@ -1,5 +1,7 @@
 package seedu.address.logic.commands;
 
+import static java.util.Objects.requireNonNull;
+
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
@@ -9,8 +11,9 @@ import seedu.address.model.Model;
 import seedu.address.model.contact.Contact;
 import seedu.address.model.team.Team;
 
-import static java.util.Objects.requireNonNull;
-
+/**
+ * Adds a {@code Contact} to the specified team {@code Team}.
+ */
 public class AddContactToTeamCommand extends Command {
 
     public static final String COMMAND_WORD = "add-contact";
@@ -20,10 +23,9 @@ public class AddContactToTeamCommand extends Command {
             + "Parameters: TEAM_INDEX (must be a positive integer), CONTACT_INDEX (must be a positive integer)\n"
             + "Example: " + TeamCommandsParser.COMMAND_WORD + " 1 " + COMMAND_WORD + " 2 ";
 
-
     public static final String MESSAGE_SUCCESS = "New contact added to team: %1$s";
-    public static final String MESSAGE_DUPLICATE_CONTACT_IN_TEAM = "A contact with the name corresponding to this" +
-            " index already exists in the team";
+    public static final String MESSAGE_DUPLICATE_CONTACT_IN_TEAM = "A contact with the name corresponding to this"
+            + " index already exists in the team";
 
     private final Index teamIndex;
     private final Index contactIndex;
@@ -44,7 +46,8 @@ public class AddContactToTeamCommand extends Command {
             throw new CommandException(Messages.MESSAGE_INVALID_TEAM_DISPLAYED_INDEX);
         }
 
-        if (contactIndex.getZeroBased() < 0 || contactIndex.getZeroBased() >= model.getCodeConnect().getContactList().size()) {
+        if (contactIndex.getZeroBased() < 0
+                || contactIndex.getZeroBased() >= model.getCodeConnect().getContactList().size()) {
             throw new CommandException(Messages.MESSAGE_INVALID_CONTACT_DISPLAYED_INDEX);
         }
 
@@ -60,7 +63,7 @@ public class AddContactToTeamCommand extends Command {
         if (originalTeam.hasMember(contactToAdd)) {
             throw new CommandException(MESSAGE_DUPLICATE_CONTACT_IN_TEAM);
         }
-            Team updatedTeam = originalTeam.withAddedMember(contactToAdd);
+        Team updatedTeam = originalTeam.withAddedMember(contactToAdd);
 
 
         // Update the model with the updated team

@@ -37,9 +37,6 @@ class JsonAdaptedContact {
     private final List<JsonAdaptedTechStack> techStack = new ArrayList<>();
     private final List<JsonAdaptedTag> tags = new ArrayList<>();
 
-    final static String SAMPLE_PROFILE_PICTURE_URL = "https://static.vecteezy.com/system/resources/previews/019/766/19"
-            + "8/non_2x/apple-logo-apple-icon-transparent-free-png.png";
-
     /**
      * Constructs a {@code JsonAdaptedContact} with the given contact details.
      */
@@ -73,7 +70,7 @@ class JsonAdaptedContact {
         email = source.getEmail().value;
         address = source.getAddress().value;
         gitHubUsername = source.getGitHubUsername().username;
-        profilePicture = source.getProfilePicture().get();
+        profilePicture = source.getProfilePicture().getUrl();
         techStack.addAll(source.getTechStack().stream()
                 .map(JsonAdaptedTechStack::new)
                 .collect(Collectors.toList()));

@@ -199,7 +199,8 @@ public class ParserUtilTest {
 
     @Test
     public void parseTags_collectionWithTooManyTags_throwsParseException() {
-        assertThrows(ParseException.class, () -> ParserUtil.parseTags(Arrays.asList(VALID_TAG_1, VALID_TAG_2, VALID_TAG_3, VALID_TAG_4)));
+        assertThrows(ParseException.class, () -> ParserUtil.parseTags(
+                Arrays.asList(VALID_TAG_1, VALID_TAG_2, VALID_TAG_3, VALID_TAG_4)));
     }
 
     @Test
@@ -233,9 +234,9 @@ public class ParserUtilTest {
 
     @Test
     public void parseTechStack_validValueWithWhitespace_returnsTrimmedTS() throws Exception {
-        String TSWithWhitespace = WHITESPACE + VALID_TS_1 + WHITESPACE;
+        String tsWithWhitespace = WHITESPACE + VALID_TS_1 + WHITESPACE;
         TechStack expectedTS = new TechStack(VALID_TS_1);
-        assertEquals(expectedTS, ParserUtil.parseTechStack(TSWithWhitespace));
+        assertEquals(expectedTS, ParserUtil.parseTechStack(tsWithWhitespace));
     }
 
     @Test
@@ -249,13 +250,15 @@ public class ParserUtilTest {
     }
 
     @Test
-    public void parseTechStacks_collectionWithInvalidTSLength_throwsParseException() {
-        assertThrows(ParseException.class, () -> ParserUtil.parseTechStacks(Arrays.asList(VALID_TS_1, INVALID_TS_LENGTH)));
+    public void parseTechStacks_collectionWithInvalidTsLength_throwsParseException() {
+        assertThrows(ParseException.class, () -> ParserUtil.parseTechStacks(
+                Arrays.asList(VALID_TS_1, INVALID_TS_LENGTH)));
     }
 
     @Test
     public void parseTechStacks_collectionWithTooManyTechStacks_throwsParseException() {
-        assertThrows(ParseException.class, () -> ParserUtil.parseTechStacks(Arrays.asList(VALID_TS_1, VALID_TS_2, VALID_TS_3, VALID_TS_4)));
+        assertThrows(ParseException.class, () -> ParserUtil.parseTechStacks(
+                Arrays.asList(VALID_TS_1, VALID_TS_2, VALID_TS_3, VALID_TS_4)));
     }
 
     @Test
@@ -264,9 +267,10 @@ public class ParserUtilTest {
     }
 
     @Test
-    public void parseTechStacks_collectionWithValidTechStacks_returnsTSSet() throws Exception {
+    public void parseTechStacks_collectionWithValidTechStacks_returnsTsSet() throws Exception {
         Set<TechStack> actualTechStackset = ParserUtil.parseTechStacks(Arrays.asList(VALID_TS_1, VALID_TS_2));
-        Set<TechStack> expectedTechStackset = new HashSet<TechStack>(Arrays.asList(new TechStack(VALID_TS_1), new TechStack(VALID_TS_2)));
+        Set<TechStack> expectedTechStackset = new HashSet<TechStack>(Arrays.asList(
+                new TechStack(VALID_TS_1), new TechStack(VALID_TS_2)));
 
         assertEquals(expectedTechStackset, actualTechStackset);
     }

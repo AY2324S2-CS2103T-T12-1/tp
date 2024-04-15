@@ -3,13 +3,13 @@ package seedu.address.logic.parser;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_PROFILE_PICTURE;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_GITHUB_USERNAME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_PROFILE_PICTURE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TECH_STACK;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -69,8 +69,8 @@ public class EditCommandParser implements Parser<EditCommand> {
                     ParserUtil.parseGitHubUsername(argMultimap.getValue(PREFIX_GITHUB_USERNAME).get()));
         }
         if (argMultimap.getValue(PREFIX_PROFILE_PICTURE).isPresent()) {
-            editContactDescriptor.setProfilePicture(ParserUtil.parseProfilePicture(argMultimap.
-                    getValue(PREFIX_PROFILE_PICTURE).get()));
+            editContactDescriptor.setProfilePicture(ParserUtil.parseProfilePicture(argMultimap
+                    .getValue(PREFIX_PROFILE_PICTURE).get()));
         }
         parseTechStackForEdit(argMultimap.getAllValues(PREFIX_TECH_STACK))
                 .ifPresent(editContactDescriptor::setTechStack);
@@ -94,8 +94,8 @@ public class EditCommandParser implements Parser<EditCommand> {
         if (techStack.isEmpty()) {
             return Optional.empty();
         }
-        Collection<String> techStackSet = techStack.size() == 1 && techStack.contains("") ? Collections.emptySet() :
-                techStack;
+        Collection<String> techStackSet = techStack.size() == 1
+                && techStack.contains("") ? Collections.emptySet() : techStack;
         return Optional.of(ParserUtil.parseTechStacks(techStackSet));
     }
 

@@ -23,7 +23,7 @@ import seedu.address.model.contact.Name;
 public class TeamTest {
 
     @Test
-    public void Team() {
+    public void constructor() {
         Name name = new Name("Team");
         List<Contact> contactList = Arrays.asList(ALICE, BOB, CARL);
 

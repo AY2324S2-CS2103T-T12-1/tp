@@ -84,7 +84,8 @@ public class CodeConnect implements ReadOnlyCodeConnect {
     /**
      * Replaces the given contact {@code target} in the list with {@code editedContact}.
      * {@code target} must exist in the address book.
-     * The contact identity of {@code editedContact} must not be the same as another existing contact in the address book.
+     * The contact identity of {@code editedContact} must not be
+     * the same as another existing contact in the address book.
      */
     public void setContact(Contact target, Contact editedContact) {
         requireNonNull(editedContact);
