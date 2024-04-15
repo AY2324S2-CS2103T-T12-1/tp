@@ -826,13 +826,22 @@ testers are expected to do more *exploratory* testing.
 
 ### Exporting team details
 
+Prerequisites: List all teams using the list teams command. Ensure there is at least one team present.
+
+Test Case: `team 0 export`<br>
+Expected Outcome: All team details are exported successfully to clipboard
+
+
 ### Deleting a team
 
 
 
-### Saving data
+### Corrupted or Missing Data files
 
 1. Dealing with missing/corrupted data files
 
-    1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
+Prerequisites: Add a contact. Access addressbook.json and remove a field to simulate corruption.
+
+Test Case: Delete addressbook.json and restart the app.
+Expected Outcome: A new addressbook.json is created.
 
